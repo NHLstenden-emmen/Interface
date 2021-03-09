@@ -2,7 +2,7 @@
 	if (empty($_SESSION['Team'])) { 
 		switch(strtolower($pagePath)) 
 			{ //everything is in lowercase so the cases must also be in lowercase
-				case 'interface':
+				case 'robotv':
 				case 'home':
 					include 'guest/home.php';
 					break;
