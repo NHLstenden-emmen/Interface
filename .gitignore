@@ -348,3 +348,14 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Stop vscode junk
+.vscode
+
+# Hide . env file
+.env.php
+.DS_Store
+css/.DS_Store
+pages/.DS_Store
+gebruikersBestanden/profilePictures/
+gebruikersBestanden/uploads/
