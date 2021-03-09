@@ -19,10 +19,16 @@
 		<!-- style sheet -->
 		<link rel="stylesheet" href="css/main/main.css">
 		<link rel="stylesheet" href="css/main/navbar.css">
+		<link rel="stylesheet" href="css/pages/404.css">
 		<?php
 		// add css to the page
-		echo '<link rel="stylesheet" href="css/guest/home.css">';
-		
+		switch(strtolower($pagePath))
+		{
+			case 'robotv':
+			case 'home':
+				echo '<link rel="stylesheet" href="css/guest/home.css">';
+				break;
+		}
 		// add css to the teams pages
 		if (!empty($_SESSION['Team'])) {
 			$checkUsersAllowance = $db->checkUsersAllowance($_SESSION['user_id'],$_SESSION['name'],$_SESSION['email']);
