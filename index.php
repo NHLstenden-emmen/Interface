@@ -19,4 +19,5 @@
     // build the website
     include 'inc/navbar.php';
     include 'pages/content.php';
+    include 'inc/footer.php';
 ?>
