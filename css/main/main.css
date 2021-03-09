@@ -1,15 +1,179 @@
 @font-face {
-	font-family: CeraPro;
+	font-family: CeraPro, sans-serif;
 	src: url(../font/Cera_Pro_medium.otf);
 }
 /* var(--primaryColor); */
 * {
 	margin: 0px;
 	padding: 0px;
-	font-family: "CeraPro";
+	font-family: "CeraPro", sans-serif;
 	font-weight: normal;
 	--primaryColor: #a72700;
 	--secondaryColor: #870075;
 	--dark: #151515;
 	--white: #ffffff;
+
+	/* Button colors */
+	--buttonColor: #870075;
+	--buttonHoverColor: #ac0796;
+
+	/* Send colors */
+	--sendColor: #6d6d6d;
+	--sendHoverColor: #9c9c9c;
+
+	/* Input colors */
+	--placeholder: rgb(110, 110, 110);
 }
+
+html,
+body{
+	width: 100vw;
+	min-height: 100vh;	
+	background-color: rgb(22, 22, 22);
+	overflow-x: hidden;
+}
+
+
+/* Button styling */
+
+button.button{
+	padding: 12.5px 30px;
+	border: none;
+	color: white;
+	font-weight: bold;
+	background: #870075;
+	animation-name: button;
+	animation-duration: .2s;	
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+}
+button.button:hover{
+	cursor: pointer;
+	animation-name: buttonHover;
+	animation-duration: .2s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+}
+
+a.button{	
+	padding: 12.5px 30px;
+	border: none;
+	color: white;
+	font-weight: bold;
+	background: #870075;
+	animation-name: button;
+	animation-duration: .2s;	
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+	text-decoration: none;
+	font-size: .8em;
+}
+
+a.button:hover{
+	animation-name: buttonHover;
+	animation-duration: .2s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+}
+
+@keyframes button {
+	from{
+		background-color: var(--buttonHoverColor);		
+		transform: scale(1.05);
+	}
+	to {
+		background-color: var(--buttonColor);
+	}
+}
+
+@keyframes buttonHover {
+	to {
+		background-color: var(--buttonHoverColor);	
+		box-shadow: 0 5px 15px rgba(145, 92, 182, .4);		
+		transform: scale(1.05);
+	}
+}
+
+a#send{
+	background-color: var(--sendColor);
+	padding: 10px 15px;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 1.2em;
+	animation-name: send;
+	animation-duration: .2s;	
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+	text-decoration: none;
+}
+
+a#send:hover{
+	animation-name: sendHover;
+	animation-duration: .2s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+}
+
+@keyframes send {
+	from{
+		background-color: var(--sendHoverColor);
+	}
+	to {
+		background-color: var(--sendColor);
+	}
+}
+
+@keyframes sendHover {
+	to {
+		background-color: var(--sendHoverColor);	
+		box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+	}
+}
+
+/* Input elementen */
+
+input,
+input:focus,
+input:active{
+	border: 0;
+	-webkit-appearance: none;
+	outline: -webkit-focus-ring-color auto 0px;
+}
+
+input[type="radio"]{
+	-webkit-appearance: radio;
+	width: 15px;
+	height: 15px;
+}
+
+input[type="radio"]:checked{
+	background-color: red;
+}
+
+::placeholder {
+	color: var(--placeholder);
+	opacity: 1; 
+}
+  
+:-ms-input-placeholder {
+	color: var(--placeholder);
+}
+  
+::-ms-input-placeholder {
+	color: var(--placeholder);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"]{
+	padding: 13px 13px;
+	background-color: rgb(241, 241, 241);
+}
+
+
+
+
+
+  
