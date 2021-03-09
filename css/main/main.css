@@ -2,28 +2,38 @@
 	font-family: CeraPro, sans-serif;
 	src: url(../font/Cera_Pro_medium.otf);
 }
-/* var(--primaryColor); */
+
 * {
 	margin: 0px;
 	padding: 0px;
 	font-family: "CeraPro", sans-serif;
 	font-weight: normal;
-	--primaryColor: #a72700;
-	--secondaryColor: #870075;
+	--primaryColor: #37167e;
+	--secondaryColor: #280f5f;
 	--dark: #151515;
 	--white: #ffffff;
 
 	/* Button colors */
-	--buttonColor: #870075;
-	--buttonHoverColor: #ac0796;
+	--buttonColor: #550de8;
+	--buttonHoverColor: #37167e;	
+	--gradientButton: radial-gradient(circle, var(--primaryColor) 0%, var(--secondaryColor) 100%);
+	--gradientButtonHover: radial-gradient(circle, #451e97 0%, #331475 100%);
 
 	/* Send colors */
 	--sendColor: #6d6d6d;
 	--sendHoverColor: #9c9c9c;
 
 	/* Input colors */
-	--placeholder: rgb(110, 110, 110);
+	--placeholder: rgb(180, 180, 180);
+	--inputColor: rgb(61, 61, 61);
+	--inputText: white;
+
+	/* Glow */
+	--glowColor: #380ece;
+	--glowLightColor: rgb(207, 207, 207);
 }
+
+/* Algemene items */
 
 html,
 body{
@@ -33,6 +43,9 @@ body{
 	overflow-x: hidden;
 }
 
+hr{
+	width: 100%;
+}
 
 /* Button styling */
 
@@ -41,18 +54,13 @@ button.button{
 	border: none;
 	color: white;
 	font-weight: bold;
-	background: #870075;
-	animation-name: button;
-	animation-duration: .2s;	
-	animation-timing-function: ease-in-out;
-	animation-fill-mode: forwards;
+	background: var(--gradientButton);
+	animation: button .2s ease-in-out forwards;
 }
+
 button.button:hover{
 	cursor: pointer;
-	animation-name: buttonHover;
-	animation-duration: .2s;
-	animation-timing-function: ease-in-out;
-	animation-fill-mode: forwards;
+	animation: buttonHover .2s ease-in-out forwards;
 }
 
 a.button{	
@@ -60,11 +68,8 @@ a.button{
 	border: none;
 	color: white;
 	font-weight: bold;
-	background: #870075;
-	animation-name: button;
-	animation-duration: .2s;	
-	animation-timing-function: ease-in-out;
-	animation-fill-mode: forwards;
+	background: var(--gradientButton);
+	animation: button .2s ease-in-out forwards;
 	text-decoration: none;
 	font-size: .8em;
 }
@@ -73,25 +78,7 @@ a.button:hover{
 	animation-name: buttonHover;
 	animation-duration: .2s;
 	animation-timing-function: ease-in-out;
-	animation-fill-mode: forwards;
-}
-
-@keyframes button {
-	from{
-		background-color: var(--buttonHoverColor);		
-		transform: scale(1.05);
-	}
-	to {
-		background-color: var(--buttonColor);
-	}
-}
-
-@keyframes buttonHover {
-	to {
-		background-color: var(--buttonHoverColor);	
-		box-shadow: 0 5px 15px rgba(145, 92, 182, .4);		
-		transform: scale(1.05);
-	}
+	animation: buttonHover .2s ease-in-out forwards;
 }
 
 a#send{
@@ -115,22 +102,6 @@ a#send:hover{
 	animation-fill-mode: forwards;
 }
 
-@keyframes send {
-	from{
-		background-color: var(--sendHoverColor);
-	}
-	to {
-		background-color: var(--sendColor);
-	}
-}
-
-@keyframes sendHover {
-	to {
-		background-color: var(--sendHoverColor);	
-		box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
-	}
-}
-
 /* Input elementen */
 
 input,
@@ -139,16 +110,6 @@ input:active{
 	border: 0;
 	-webkit-appearance: none;
 	outline: -webkit-focus-ring-color auto 0px;
-}
-
-input[type="radio"]{
-	-webkit-appearance: radio;
-	width: 15px;
-	height: 15px;
-}
-
-input[type="radio"]:checked{
-	background-color: red;
 }
 
 ::placeholder {
@@ -168,12 +129,78 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="number"]{
-	padding: 13px 13px;
-	background-color: rgb(241, 241, 241);
+	padding: 0 13px;
+    background-color: var(--inputColor);
+    color: var(--inputText);
+    height: 42px;
 }
 
-
-
-
-
+input[type="radio"]{
+	-webkit-appearance: radio;
+	width: 20px;
+	height: 20px;	
+	opacity: 1;
+	cursor: pointer;
+	margin: 5px;
+}
   
+/* Blocks */
+
+.neonBlock{	
+	padding: 15px;
+	border: 2px solid var(--glowColor);
+    box-shadow: 0 0 10px var(--glowColor);
+	border-radius: 1px;
+	margin: 10px;
+}
+
+.neonBorder{	
+	border: 2px solid var(--glowColor);
+    box-shadow: 0 0 10px var(--glowColor);
+	border-radius: 1px;
+}
+
+/* All keyframes */
+
+@keyframes fadein {
+    from { 
+		opacity: 0; 
+	}
+    to{ 
+		opacity: 1; 
+	}
+}
+
+@keyframes send {
+	from{
+		background-color: var(--sendHoverColor);
+	}
+	to{
+		background-color: var(--sendColor);
+	}
+}
+
+@keyframes sendHover {
+	to{
+		background-color: var(--sendHoverColor);	
+		box-shadow: 0 0px 10px var(--glowLightColor);
+	}
+}
+
+@keyframes button {
+	from{
+		background: var(--gradientButtonHover);		
+		transform: scale(1.05);
+	}
+	to {
+		background: var(--gradientButton);
+	}
+}
+
+@keyframes buttonHover {
+	to {
+		background: var(--gradientButtonHover);	
+		box-shadow: 0 0px 10px var(--glowColor);		
+		transform: scale(1.05);
+	}
+}

@@ -8,6 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/main/main.css">
 
+        <!-- FONT AWESOME -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
         <style>
             body{
                 display: flex;
@@ -16,11 +19,18 @@
                 flex-direction: column;
                 padding: 100px 0;
             }
-
-            p{                
+            p{
+                font-weight: bold;
+            }
+            p, 
+            pre{                
                 color: white;
                 margin: 10px 0;
                 font-size: 0.8em;
+            }
+            pre{
+                color: rgb(167, 167, 167);
+                font-style:italic;
             }
             h3{
                 color: white;
@@ -29,34 +39,60 @@
         </style>
     </head>
     <body>
+
         <!-- Knoppen -->
         <hr><br><h3>Knoppen</h3><br>
         <p>Type: <code>button</code> | Class: <code>button</code></p>
+        <pre>&lt;button class="button" type="button"&gt;Knop&lt;/button&gt;</pre><br>
         <button class="button" type="button">Knop</button>
         <br><br>
         <p>Type: <code>a</code> | Class: <code>button</code></p>
-        <a class="button" href="">Knop</a>
+        <pre>&lt;a class="button" href="#"&gt;Knop&lt;/a&gt;</pre><br>
+        <a class="button" href="#">Knop</a>
         <br><br>
         <p>Type: <code>a</code> | ID: <code>send</code></p>
-        <a id="send" href="">></a>
+        <pre>&lt;a id="send" href="#"&gt;&lt;i class="fa fa-angle-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;</pre><br>
+        <a id="send" href="#"><i class="fas fa-chevron-right"></i></a>
         <br><br>
 
         <!-- Inputs -->
         <hr><br><h3>Input elementen</h3><br>
-        <p>Type: <code>input</code> | <code>text</code></p>
+        <p>Type: <code>input</code> | <code>text</code></p>        
+        <pre>&lt;input type="text" name="" id="" placeholder="Text"&gt;</pre><br>
         <input type="text" name="" id="" placeholder="Text">
         <br><br>
         <p>Type: <code>input</code> | <code>email</code></p>
+        <pre>&lt;input type="email" name="" id="" placeholder="E-mailadres"&gt;</pre><br>
         <input type="email" name="" id="" placeholder="E-mailadres">
         <br><br>
         <p>Type: <code>input</code> | <code>number</code></p>
+        <pre>&lt;input type="number" name="" id="" placeholder="Nummer"&gt;</pre><br>
         <input type="number" name="" id="" placeholder="Nummer">
         <br><br>
         <p>Type: <code>input</code> | <code>password</code></p>
+        <pre>&lt;input type="password" name="" id="" placeholder="Wachtwoord"&gt;</pre><br>
         <input type="password" name="" id="" placeholder="Wachtwoord">
         <br><br>
-        <p>Type: <code>input</code> | <code>radio</code> | Class: <code>radioInput</code></p>
-        <div class="radioInput"><input type="radio" checked="checked" name="" id=""></div>
+        <p>Type: <code>input</code> | <code>radio</code></p>
+        <pre>&lt;input type="radio" checked="checked" name="" id=""&gt;</pre><br>
+        <input type="radio" checked="checked" name="RadioDemo" id="">
+        <input type="radio" checked="checked" name="RadioDemo" id="">
         <br><br>
+
+        <!-- Blocks -->
+        <hr><br><h3>Blocks</h3><br>
+        <p>Type: <code>div</code> | Class: <code>neonBorder</code></p>
+        <pre>&lt;div class="neonBorder"&gt;&lt;/div&gt;</pre><br>
+        <div class="neonBorder">
+            <p>Dit is alleen een border.</p>
+        </div>
+        <br><br>
+        <p>Type: <code>div</code> | Class: <code>neonBlock</code></p>
+        <pre>&lt;div class="neonBlock"&gt;&lt;/div&gt;</pre><br>
+        <div class="neonBlock">
+            <p>In dit blok kun je meerdere <br>elementen stoppen.</p>
+        </div>
+        <br><br>
+
     </body>
 </html>
