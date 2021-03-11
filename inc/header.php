@@ -28,6 +28,9 @@
 			case 'home':
 				echo '<link rel="stylesheet" href="css/guest/home.css">';
 				break;
+			case 'gamerules':
+				echo '<link rel="stylesheet" href="css/guest/gameRules.css">';
+				break;
 		}
 		// add css to the teams pages
 		if (!empty($_SESSION['Team'])) {
