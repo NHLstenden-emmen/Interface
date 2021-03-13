@@ -18,6 +18,7 @@
 
 		<!-- style sheet -->
 		<link rel="stylesheet" href="css/main/main.css">
+		<link rel="stylesheet" href="css/main/main-mobile.css" media="screen and (max-width: 960px)">
 		<link rel="stylesheet" href="css/main/navbar.css">
 		<link rel="stylesheet" href="css/pages/404.css">
 		<?php
