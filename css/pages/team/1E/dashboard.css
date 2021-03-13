@@ -50,7 +50,6 @@ body{
 	width: 100vw;
 	min-height: 100vh;	
 	overflow-x: hidden;
-	background-color: rgb(14, 14, 14);	
 }
 
 hr{
@@ -87,6 +86,15 @@ p{
   
 ::-webkit-scrollbar-thumb:hover {
 	background: var(--scollbarHoverColor); 
+}
+
+::-moz-selection { 
+	background: var(--glowColor); 	
+	color: white;
+}
+::selection { 
+	background: var(--glowColor); 
+	color: white;
 }
 
 /* Button styling */
@@ -194,7 +202,8 @@ input[type="radio"]{
     box-shadow: 0 0 10px var(--glowColor);
 	border-radius: 1px;
 	margin: 0px;
-	min-height: 50px;;
+	min-height: 50px;
+	background-color: rgb(15, 15, 15);
 }
 
 .neonBorder{	
@@ -277,6 +286,12 @@ input[type="radio"]{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.pageBar > div{
+	background-color: #0f0f0f;	
+	padding: 15px;
+	border-left: 5px solid var(--glowColor);
 }
 
 #block1 > .content,
