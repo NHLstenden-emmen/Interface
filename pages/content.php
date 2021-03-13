@@ -53,6 +53,10 @@
                         include 'guest/ranking.php';
                         echo '<link href="css/pages/guest/ranking.css" type="text/css" rel="stylesheet">';
                         break;
+                case 'score':
+                        include 'guest/score.php';
+                        echo '<link rel="stylesheet" type="text/css" href="css/pages/guest/score.css">';
+                        break;
 		default:
 			include '404.php'; // when the page isset found
 	}

@@ -1,0 +1,52 @@
+table, th, td {
+    border: 2px solid grey;
+}
+
+.table {
+    height: 250px;
+    overflow: auto;
+    
+    
+    
+    width: 85vw;
+    height: 75vh;
+    margin: 10% 0% 0% 15%;
+    padding: 3% 0% 3% 10%;
+    border: 6px solid var(--primaryColor);
+    border-right: none;
+    border-radius: 25px 0px 0px 25px;
+    background-color: black;
+}
+
+table {
+    margin: 20px;
+    width: 70%;
+}
+
+thead {
+/*    position: absolute;*/
+}
+
+td, th {
+    text-align: center;
+    padding: 7px;
+    color: white;
+    width: 20%;
+}
+
+td:nth-child(3n + 1) {
+    width: 30%;
+}
+
+th {
+    background-color: var(--primaryColor);
+}
+
+table {
+/*    overflow: auto;*/
+}
+
+/*weghalen*/
+td {
+    background-color: black;
+}

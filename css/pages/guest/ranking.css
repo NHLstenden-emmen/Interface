@@ -47,7 +47,7 @@ table {
 
 td, th {
     width: 10%;
-    height: 20%;
+    height: calc(100% / 6);
     /*    font-size: 40px;*/
 font-size: max(calc(90% + 0.25vw), 2vw);
 /*    font-size: max(max(calc(150% + 0.25vw), 2vw, calc(150% + 5vh)));*/
