@@ -1,5 +1,5 @@
 <div id="title">
-    <h2>Statistieken:</h2>
+    <h2>Statistieken</h2>
 </div>
 <div id="ranking">
     <div id="tableContainer">
