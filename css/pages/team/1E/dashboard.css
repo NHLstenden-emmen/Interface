@@ -97,6 +97,13 @@ p{
 	color: white;
 }
 
+iframe{
+	height: 300px;
+    border: 0;
+	width: 225px;
+	overflow: hidden;
+}
+
 /* Button styling */
 
 button.button{

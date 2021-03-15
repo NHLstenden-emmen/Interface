@@ -11,6 +11,18 @@
         <div class="col-lg-6 block" id="block1">
             <div class="neonBlock content">
                 <h5 class="blockTitle">Controle</h5>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <iframe src="pages/team/1E/joy.html" scrolling="no" title="JoyStick"></iframe>
+                    </div>
+                    <div class="col-lg-6" id="WASD">
+                        <!-- Hiertussen komen de WASD knoppen -->
+
+
+
+                        <!-- Hiertussen komen de WASD knoppen -->
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-lg-3 block" id="block2">
