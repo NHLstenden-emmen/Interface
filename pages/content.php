@@ -49,6 +49,13 @@
 		case 'home':
 			include 'guest/home.php';
 			break;
+
+		/* Custom case for INF1E - will be removed when loginsystem is working */
+		case '1e':
+			include 'pages/team/1E/dashboard.php';
+			break;
+		/* End custom INF1E */
+		
 		default:
 			include '404.php'; // when the page isset found
 	}
