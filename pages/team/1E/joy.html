@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>JoyStick</title>
+		<meta charset="utf-8">
+		<script src="joy.js"></script>
+
+		<style>
+			html,
+			body{
+				height: auto;
+			}
+			#joyDiv{
+				width:200px;
+				height:200px;
+			}
+			#joyPosizioneX,
+			#joyPosizioneY,
+			#joyX,
+			#joyY{
+				display: none;
+			}
+			p{
+				display: inline-block;
+				color: white;
+				margin: 10px;
+			}
+			#joyDirezione{
+				width: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="joyDiv"></div>
+		<div>
+			<input id="joyPosizioneX" type="text" /><br />
+			<input id="joyPosizioneY" type="text" /><br />
+			<p>Richting: </p><input id="joyDirezione" type="text" /><br />
+			<input id="joyX" type="text" /></br>
+			<input id="joyY" type="text" />
+		</div>
+		
+		<script type="text/javascript">
+			var Joy = new JoyStick('joyDiv');
+
+			var joyIinputPosX = document.getElementById("joyPosizioneX");
+			var joyInputPosY = document.getElementById("joyPosizioneY");
+			var joyDirezione = document.getElementById("joyDirezione");
+			var joyX = document.getElementById("joyX");
+			var joyY = document.getElementById("joyY");
+
+			setInterval(function(){ joyIinputPosX.value=Joy.GetPosX(); }, 50);
+			setInterval(function(){ joyInputPosY.value=Joy.GetPosY(); }, 50);
+			setInterval(function(){ joyDirezione.value=Joy.GetDir(); }, 50);
+			setInterval(function(){ joyX.value=Joy.GetX(); }, 50);
+			setInterval(function(){ joyY.value=Joy.GetY(); }, 50);
+		</script>
+	</body>
+</html>
