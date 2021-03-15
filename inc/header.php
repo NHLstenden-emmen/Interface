@@ -16,7 +16,7 @@
 		<!-- Font Awesome CDN -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
-		<!-- AOS -->
+		<!-- Animaties -->
 		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
@@ -72,7 +72,11 @@
 					switch(strtolower($pagePath))
 					{
 						case 'dashboard':
-							echo '<link rel="stylesheet" href="css/team/1E/dashboard.css">';
+							echo '<link rel="stylesheet" href="css/pages/team/1E/dashboard.css" />';
+							echo '<link rel="stylesheet" media="screen and (min-device-width: 1440px)" href="css/pages/team/1E/desktop-style.css" />';
+							echo '<link rel="stylesheet" media="screen and (min-width: 800px) and (max-width: 1439px)" href="css/pages/team/1E/tablet-style.css" />';
+							echo '<link rel="stylesheet" media="screen and (min-width: 100px) and (max-width: 799px)" href="css/pages/team/1E/mobile-style.css" />';
+							echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';
 							break;
 					}
 				}

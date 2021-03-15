@@ -49,18 +49,6 @@
 		case 'home':
 			include 'guest/home.php';
 			break;
-
-		/* BEGIN CUSTOM 1E NIET MEENEMEN NAAR MAIN BRANCE*/
-		case 'dashboard':
-			include 'team/1E/dashboard.php';
-			echo '<link rel="stylesheet" href="css/pages/team/1E/dashboard.css" />';
-			echo '<link rel="stylesheet" media="screen and (min-device-width: 1440px)" href="css/pages/team/1E/desktop-style.css" />';
-			echo '<link rel="stylesheet" media="screen and (min-width: 800px) and (max-width: 1439px)" href="css/pages/team/1E/tablet-style.css" />';
-			echo '<link rel="stylesheet" media="screen and (min-width: 100px) and (max-width: 799px)" href="css/pages/team/1E/mobile-style.css" />';
-			echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';
-			break;
-		/* EINDE CUSTOM 1E */
-
 		default:
 			include '404.php'; // when the page isset found
 	}
