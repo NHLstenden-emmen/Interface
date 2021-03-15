@@ -355,7 +355,7 @@ var JoyStick = (function(container, parameters)
 			}
 		}
 		if(result == "-"){
-			console.clear();
+			//console.clear();
 		} else {
 			console.log(result);
 		}

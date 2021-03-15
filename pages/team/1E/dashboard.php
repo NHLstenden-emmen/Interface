@@ -8,7 +8,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-6 block" id="block1">
+        <div data-aos="fade-right" class="col-lg-6 block" id="block1">
             <div class="neonBlock content">
                 <h5 class="blockTitle">Controle</h5>
                 <div class="row">
@@ -25,24 +25,24 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 block" id="block2">
+        <div data-aos="fade-down" class="col-lg-3 block" id="block2">
             <div class="neonBlock content">
                 <h5 class="blockTitle">Commands</h5>
             </div>
         </div>
-        <div class="col-lg-3 block" id="block3">
+        <div data-aos="fade-left" class="col-lg-3 block" id="block3">
             <div class="neonBlock content">
                 <h5 class="blockTitle">Stand</h5>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6 block" id="block4">
+        <div data-aos="fade-right" class="col-lg-6 block" id="block4">
             <div class="neonBlock content">
                 <h5 class="blockTitle">Huidige game</h5>
             </div>
         </div>
-        <div class="col-lg-6 block" id="block5">
+        <div data-aos="fade-left" class="col-lg-6 block" id="block5">
             <div class="neonBlock content">
                 <h5 class="blockTitle">Speelschema</h5>
                 <!-- Display afhankelijk van spel -->
@@ -152,12 +152,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6 block" id="block6">
+        <div data-aos="fade-right" class="col-lg-6 block" id="block6">
             <div class="neonBlock content">
                 <h5 class="blockTitle">Historie</h5>
             </div>
         </div>
-        <div class="col-lg-6 block" id="block7">
+        <div data-aos="fade-left" class="col-lg-6 block" id="block7">
             <div class="neonBlock content">
                 <h5 class="blockTitle">Console</h5>
                 <div id="console">
