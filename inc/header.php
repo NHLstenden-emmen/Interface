@@ -16,6 +16,10 @@
 		<!-- Font Awesome CDN -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
+		<!-- Animaties -->
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 		<!-- style sheet -->
 		<link rel="stylesheet" href="css/main/main.css">
 		<link rel="stylesheet" href="css/main/main-mobile.css" media="screen and (max-width: 960px)">
