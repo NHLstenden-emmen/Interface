@@ -6,6 +6,9 @@
 	color: white;
 	text-align: center;
 }
+#neoBlockContainer .neonBlock {
+	background-color: var(--dark);
+}
 #neoBlockContainer input[type="text"],
 #neoBlockContainer input[type="password"] {
 	width: 100%;
