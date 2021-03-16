@@ -1,15 +1,487 @@
 @font-face {
-	font-family: CeraPro;
+	font-family: CeraPro, sans-serif;
 	src: url(../font/Cera_Pro_medium.otf);
 }
-/* var(--primaryColor); */
+
 * {
 	margin: 0px;
 	padding: 0px;
-	font-family: "CeraPro";
+	font-family: "CeraPro", sans-serif;
 	font-weight: normal;
-	--primaryColor: #a72700;
-	--secondaryColor: #870075;
+	--primaryColor: #37167e;
+	--secondaryColor: #280f5f;
 	--dark: #151515;
 	--white: #ffffff;
+
+	/* Button colors */
+	--buttonColor: #550de8;
+	--buttonHoverColor: #37167e;	
+	--gradientButton: radial-gradient(circle, var(--primaryColor) 0%, var(--secondaryColor) 100%);
+	--gradientButtonHover: radial-gradient(circle, #451e97 0%, #331475 100%);
+
+	/* Send colors */
+	--sendColor: #6d6d6d;
+	--sendHoverColor: #9c9c9c;
+
+	/* Input colors */
+	--placeholder: rgb(180, 180, 180);
+	--inputColor: rgb(61, 61, 61);
+	--inputText: white;
+
+	/* Glow */
+	--glowColor: #380ece;
+	--glowLightColor: rgb(207, 207, 207);
+
+	/* Line width */
+	--animatedLines: 5px;	
+}
+
+/* Algemene items */
+
+html,
+body{
+	width: 100vw;
+	min-height: 100vh;	
+	/* background-color: rgb(22, 22, 22); */
+	overflow-x: hidden;
+}
+
+hr{
+	width: 100%;
+	margin: 15px 0;
+}
+
+/* Button styling */
+
+button.button{
+	padding: 12.5px 30px;
+	border: none;
+	color: white;
+	font-weight: bold;
+	background: var(--gradientButton);
+	animation: button .2s ease-in-out forwards;
+}
+
+button.button:hover{
+	cursor: pointer;
+	animation: buttonHover .2s ease-in-out forwards;
+}
+
+a.button{	
+	padding: 12.5px 30px;
+	border: none;
+	color: white;
+	font-weight: bold;
+	background: var(--gradientButton);
+	animation: button .2s ease-in-out forwards;
+	text-decoration: none;
+	font-size: .8em;
+}
+
+a.button:hover{
+	animation-name: buttonHover;
+	animation-duration: .2s;
+	animation-timing-function: ease-in-out;
+	animation: buttonHover .2s ease-in-out forwards;
+}
+
+a#send{
+	background-color: var(--sendColor);
+	padding: 10px 15px;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 1.2em;
+	animation-name: send;
+	animation-duration: .2s;	
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+	text-decoration: none;
+}
+
+a#send:hover{
+	animation-name: sendHover;
+	animation-duration: .2s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+}
+
+/* Input elementen */
+
+input,
+input:focus,
+input:active{
+	border: 0;
+	-webkit-appearance: none;
+	outline: -webkit-focus-ring-color auto 0px;
+}
+
+::placeholder {
+	color: var(--placeholder);
+	opacity: 1; 
+}
+  
+:-ms-input-placeholder {
+	color: var(--placeholder);
+}
+  
+::-ms-input-placeholder {
+	color: var(--placeholder);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"]{
+	padding: 0 13px;
+    background-color: var(--inputColor);
+    color: var(--inputText);
+    height: 42px;
+}
+
+input[type="radio"]{
+	-webkit-appearance: radio;
+	width: 20px;
+	height: 20px;	
+	opacity: 1;
+	cursor: pointer;
+	margin: 5px;
+}
+  
+/* Blocks */
+
+.neonBlock{	
+	padding: 15px;
+	border: 2px solid var(--glowColor);
+    box-shadow: 0 0 10px var(--glowColor);
+	border-radius: 1px;
+	margin: 10px;
+}
+
+.neonBorder{	
+	border: 2px solid var(--glowColor);
+    box-shadow: 0 0 10px var(--glowColor);
+	border-radius: 1px;
+}
+
+/* All keyframes */
+
+@keyframes fadein {
+    from { 
+		opacity: 0; 
+	}
+    to{ 
+		opacity: 1; 
+	}
+}
+
+@keyframes send {
+	from{
+		background-color: var(--sendHoverColor);
+	}
+	to{
+		background-color: var(--sendColor);
+	}
+}
+
+@keyframes sendHover {
+	to{
+		background-color: var(--sendHoverColor);	
+		box-shadow: 0 0px 10px var(--glowLightColor);
+	}
+}
+
+@keyframes button {
+	from{
+		background: var(--gradientButtonHover);		
+		transform: scale(1.05);
+	}
+	to {
+		background: var(--gradientButton);
+	}
+}
+
+@keyframes buttonHover {
+	to {
+		background: var(--gradientButtonHover);	
+		box-shadow: 0 0px 10px var(--glowColor);		
+		transform: scale(1.05);
+	}
+}
+
+/* Background website */
+
+#background{
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgb(15, 15, 15);
+	overflow: hidden;                 
+	position: fixed;   
+	z-index: -10;         
+}
+
+.lines{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+/* Animation 1 */
+
+.line1{
+	position: absolute;
+	background-color: var(--primaryColor);
+	box-shadow: 0 0 10px var(--glowColor);
+
+	animation-name: line1;
+	animation-duration: 9s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-delay: 1.5s;
+}
+
+@keyframes line1 {
+	0%{
+		width: var(--animatedLines);
+		height: 0px;
+		left: 40%;
+		top: 0px;
+	}
+	10%{   
+		width: var(--animatedLines);
+		left: 40%;
+		height: calc(100vh / 15);                       
+		top: 0px;     
+		background-color: var(--glowColor);
+	}
+	25%{
+		height: var(--animatedLines);
+		top: calc(calc(100vh / 15) - var(--animatedLines));
+		left: 40%;
+		width: var(--animatedLines);
+	}
+	50%{
+		top: calc(calc(100vh / 15) - var(--animatedLines));
+		width: 40%;
+		left: 0px;
+		height: var(--animatedLines);
+		background-color: var(--primaryColor);
+	}
+	100%{
+		top: calc(calc(100vh / 15) - var(--animatedLines));
+		left: 0px;
+		width: 0px;
+		height: var(--animatedLines);
+		background-color: var(--glowColor);
+	}
+}
+
+/* Animation 2 */
+
+.line2{
+	position: absolute;
+	background-color: var(--primaryColor);
+	box-shadow: 0 0 10px var(--glowColor);
+
+	animation-name: line2;
+	animation-duration: 2s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+}
+
+@keyframes line2 {
+	0%{
+		width: 0px;
+		height: var(--animatedLines);
+		right: 0px;
+		top: 50vh;
+	}
+	15%{
+		width: 20%;
+		right: 0px;
+		background-color: var(--glowColor);
+	}
+	25%{
+		top: 50vh;
+		width: var(--animatedLines);
+		right: calc(20% - var(--animatedLines));
+		height: var(--animatedLines);
+	}
+	50%{
+		height: calc(50vh);
+		top: 0px;
+		width: var(--animatedLines);
+		right: calc(20% - var(--animatedLines));
+		background-color: var(--primaryColor);
+	}
+	100%{
+		height: 0px;                    
+		right: calc(20% - var(--animatedLines));
+		top: 0px;
+		width: var(--animatedLines);
+		background-color: var(--glowColor);
+	}
+}
+
+/* Animation 3 */
+
+.line3{
+	position: absolute;
+	background-color: var(--primaryColor);
+	box-shadow: 0 0 10px var(--glowColor);
+
+	animation-name: line3;
+	animation-duration: 3s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-delay: 2s;
+}
+
+@keyframes line3 {
+	0%{
+		right: 0px;
+		top: 15%;
+		width: 0%;
+		height: var(--animatedLines);
+		background-color: var(--glowColor);
+	}
+	10%{
+		right: 0px;
+		top: 15%;
+		width: 0%;
+		height: var(--animatedLines);
+		background-color: var(--glowColor);
+	}
+	55%{                    
+		right: 0px;
+		background-color: var(--primaryColor);
+	}
+	60%{
+		top: 15%;
+		width: 10%;
+		height: var(--animatedLines);
+	}
+	100%{
+		background-color: var(--glowColor);
+		right: calc(10% - var(--animatedLines));
+		top: 15%;
+		width: 0%;
+		height: var(--animatedLines);        
+	}
+
+}
+
+/* Animation 4 */
+
+.line4{
+	position: absolute;
+	background-color: var(--primaryColor);
+	box-shadow: 0 0 10px var(--glowColor);
+
+	animation-name: line4;
+	animation-duration: 7s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-delay: 3s;
+}
+
+@keyframes line4{
+	0%{
+		width: var(--animatedLines);
+		height: 0px;
+		top: 0;
+		left: 60%;
+		background-color: var(--glowColor);
+	}
+	15%{
+		width: var(--animatedLines);
+		height: 25%;
+		top: 0;
+		left: 60%;
+	}
+	30%{
+		width: var(--animatedLines);
+		height: var(--animatedLines);
+		top: calc(25% - var(--animatedLines));
+		left: 60%;
+	}
+	45%{
+		background-color: var(--primaryColor);
+		width: 30%;
+		left: 30%;                    
+		top: calc(25% - var(--animatedLines));                    
+		height: var(--animatedLines);
+	}
+	60%{
+		width: var(--animatedLines);
+		left: 30%;                    
+		top: calc(25% - var(--animatedLines));                    
+		height: var(--animatedLines);
+	}
+	75%{
+		width: var(--animatedLines);
+		left: 30%;                    
+		top: calc(25% - var(--animatedLines));                    
+		height: 75%;
+	}
+	100%{
+		width: var(--animatedLines);
+		left: 30%;                    
+		top: 100%;                    
+		height: 0%;
+		background-color: var(--glowColor);
+	}
+
+}
+
+/* Animation 5 */
+
+.line5{
+	position: absolute;
+	background-color: var(--primaryColor);
+	box-shadow: 0 0 10px var(--glowColor);
+
+	animation-name: line5;
+	animation-duration: 5s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-delay: 3.5s;
+}
+
+@keyframes line5{
+	0%{
+		bottom: 0;
+		right: 35%;
+		width: var(--animatedLines);
+		height: 0px;
+		background-color: var(--glowColor);
+	}
+	25%{
+		bottom: 0px;
+		width: var(--animatedLines);
+		height: 18%;
+		right: 35%;
+	}  
+	50%{
+		bottom: calc(18% - var(--animatedLines));
+		width: var(--animatedLines);
+		height: var(--animatedLines);
+		right: 35%;
+		background-color: var(--primaryColor);
+	}   
+	75%{
+		bottom: calc(18% - 10var(--animatedLines)px);
+		width: 35%;                    
+		right: calc(-1 * var(--animatedLines));
+		height: var(--animatedLines);
+	}  
+	100%{
+		bottom: calc(18% - var(--animatedLines));
+		width: 0%;
+		right: calc(-1 * var(--animatedLines));
+		height: var(--animatedLines);
+		background-color: var(--glowColor);
+	}            
 }
