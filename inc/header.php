@@ -31,7 +31,10 @@
 		{
 			case 'robotv':
 			case 'home':
-				echo '<link rel="stylesheet" href="css/guest/home.css">';
+				echo '<link rel="stylesheet" href="css/pages/guest/home.css">';
+				break;
+			case 'login':
+				echo '<link rel="stylesheet" href="css/pages/team/login.css">';
 				break;
 		}
 		// add css to the teams pages

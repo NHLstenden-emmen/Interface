@@ -34,17 +34,19 @@
     }
 ?>
 
-<form method="POST">
-	<input value="<?php if(isset($_COOKIE["member_login"])) { echo $_COOKIE["member_login"]; } ?>" type="text" name="email" placeholder="<?php echo $lang["E-MAIL"];?>" required>
-	<input type="password" name="password" placeholder="<?php echo $lang["PASSWORD"];?>" required>
-	<div class="error"><?php echo $error; ?></div>
-	<label class="check">
-		<input type="checkbox" name="remember" id="remember"
-		<?php if(isset($_COOKIE["member_login"])) { ?> checked 
-		<?php } ?> /><?php echo $lang["REMEMBER_EMAIL"];?>
-	</label><br>
-	<button class="inloggen" type="submit"><?php echo $lang["LOGIN"];?></button><br>
-	<div class="vergeten">
-		<a href="https://passwordreset.microsoftonline.com/?whr=nhlstenden.com" target=”_blank” class="vergeten-tekst"><?php echo $lang["FORGOT_YOUR_PASSWORD"];?> </a>
-	</div>
-</form>
+<div id="neoBlockContainer">
+    <div class="neonBlock Content">
+        <h1 class="blockTitle"><?php echo $lang["LOGIN"];?></h1>
+        <form method="POST">
+            <div class="error"><?php echo $error; ?></div>
+            <input value="<?php if(isset($_COOKIE["member_login"])) { echo $_COOKIE["member_login"]; } ?>" type="text" name="email" placeholder="<?php echo $lang["E-MAIL"];?>" required>
+            <input type="password" name="password" placeholder="<?php echo $lang["PASSWORD"];?>" required>
+            <label class="check">
+                <input type="checkbox" name="remember" id="remember"
+                <?php if(isset($_COOKIE["member_login"])) { ?> checked 
+                <?php } ?> /> <?php echo $lang["REMEMBER_EMAIL"];?>
+            </label><br>
+            <button class="inloggen" type="submit"><?php echo $lang["LOGIN"];?></button><br>
+        </form>
+    </div>
+</div>
