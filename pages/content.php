@@ -49,6 +49,9 @@
 		case 'home':
 			include 'guest/home.php';
 			break;
+		case 'teams':
+			include 'guest/teams.php';
+			break;
 		default:
 			include '404.php'; // when the page isset found
 	}
