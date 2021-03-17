@@ -59,11 +59,11 @@ var JoyStick = (function(container, parameters)
 	var title = (typeof parameters.title === "undefined" ? "joystick" : parameters.title),
 		width = (typeof parameters.width === "undefined" ? 0 : parameters.width),
 		height = (typeof parameters.height === "undefined" ? 0 : parameters.height),
-		internalFillColor = (typeof parameters.internalFillColor === "undefined" ? "#FFC300" : parameters.internalFillColor),
+		internalFillColor = (typeof parameters.internalFillColor === "undefined" ? "#e0e0e0" : parameters.internalFillColor),
 		internalLineWidth = (typeof parameters.internalLineWidth === "undefined" ? 2 : parameters.internalLineWidth),
-		internalStrokeColor = (typeof parameters.internalStrokeColor === "undefined" ? "#FFC300" : parameters.internalStrokeColor),
+		internalStrokeColor = (typeof parameters.internalStrokeColor === "undefined" ? "#e0e0e0" : parameters.internalStrokeColor),
 		externalLineWidth = (typeof parameters.externalLineWidth === "undefined" ? 2 : parameters.externalLineWidth),
-		externalStrokeColor = (typeof parameters.externalStrokeColor ===  "undefined" ? "#FFD000" : parameters.externalStrokeColor),
+		externalStrokeColor = (typeof parameters.externalStrokeColor ===  "undefined" ? "#e0e0e0" : parameters.externalStrokeColor),
 		autoReturnToCenter = (typeof parameters.autoReturnToCenter === "undefined" ? true : parameters.autoReturnToCenter);
 
 	// Create Canvas element and add it in the Container object
@@ -313,52 +313,74 @@ var JoyStick = (function(container, parameters)
 	 * @desc Get the direction of the cursor as a string that indicates the cardinal points where this is oriented
 	 * @return String of cardinal point N, NE, E, SE, S, SW, W, NW and C when it is placed in the center
 	 */
+
+	var lastResult = "";
+	var lastByte = "";
+
 	this.GetDir = function()
 	{
 		var result = "";
+		var byte = "";
 		var orizontal = movedX - centerX;
 		var vertical = movedY - centerY;
 
 		if(vertical >= directionVerticalLimitNeg && vertical <= directionVerticalLimitPos)
 		{
-			result = "-";
+			result = "Stop";
+			byte = "a";
 		}
 		if(vertical < directionVerticalLimitNeg)
 		{
-			result = "N";
+			result = "Voren";
+			byte = "b";
 		}
 		if(vertical > directionVerticalLimitPos)
 		{
-			result = "Z";
+			result = "Achteren";
+			byte = "c";
 		}
 
 		if(orizontal < directionHorizontalLimitNeg)
 		{
-			if(result === "-")
+			
+			byte = "d";
+
+			if(result === "Stop")
 			{
-				result = "W";
+				result = "Links";
 			}
 			else
 			{
-				result += "W";
+				result += " - Links";
 			}
 		}
 		if(orizontal > directionHorizontalLimitPos)
 		{
-			if(result === "-")
+			
+			byte = "e";
+
+			if(result === "Stop")
 			{
-				result = "O";
+				result = "Rechts";
 			}
 			else
 			{
-				result += "O";
+				result += " - Rechts";
 			}
+		}	
+
+		if(lastResult != result){
+			lastResult = result;		
+			//console.log(result);
 		}
-		if(result == "-"){
-			//console.clear();
-		} else {
-			console.log(result);
+		
+		if(lastByte != byte){
+			lastByte = byte;		
+			console.log(byte);
 		}
-		return result;
+		
+		
+	
+		return lastResult;
 	};
 });

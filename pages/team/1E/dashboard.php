@@ -177,6 +177,34 @@ echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';
                     <p>> Excecute function followLine();</p>
                     <p class="correct">> Connected to server as ROBOT#1323</p>
                     <p>> Connecting to server</p>
+                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
+                    <p>> Excecute function followLine();</p>
+                    <p class="correct">> Connected to server as ROBOT#1323</p>
+                    <p>> Connecting to server</p>
+                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
+                    <p>> Excecute function followLine();</p>
+                    <p class="correct">> Connected to server as ROBOT#1323</p>
+                    <p>> Connecting to server</p>
+                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
+                    <p>> Excecute function followLine();</p>
+                    <p class="correct">> Connected to server as ROBOT#1323</p>
+                    <p>> Connecting to server</p>
+                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
+                    <p>> Excecute function followLine();</p>
+                    <p class="correct">> Connected to server as ROBOT#1323</p>
+                    <p>> Connecting to server</p>
+                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
+                    <p>> Excecute function followLine();</p>
+                    <p class="correct">> Connected to server as ROBOT#1323</p>
+                    <p>> Connecting to server</p>
+                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
+                    <p>> Excecute function followLine();</p>
+                    <p class="correct">> Connected to server as ROBOT#1323</p>
+                    <p>> Connecting to server</p>
+                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
+                    <p>> Excecute function followLine();</p>
+                    <p class="correct">> Connected to server as ROBOT#1323</p>
+                    <p>> Connecting to server</p>
                 </div>
             </div>
         </div>

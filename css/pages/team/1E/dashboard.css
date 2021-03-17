@@ -8,17 +8,17 @@
 	padding: 0px;
 	font-family: "CeraPro", sans-serif;
 	font-weight: normal;
-	color: white;
-	--primaryColor: #FFC300;
-	--secondaryColor: #FFD000;
+	color: var(--dark);
+	--primaryColor: #e0e0e0;
+	--secondaryColor: #c4c4c4;
 	--dark: #151515;
 	--white: #ffffff;
 
 	/* Button colors */
-	--buttonColor: #daa111;
-	--buttonHoverColor: #e0920a;	
+	--buttonColor: #e7e7e7;
+	--buttonHoverColor: #ececec;	
 	--gradientButton: radial-gradient(circle, var(--buttonColor) 0%, var(--buttonHoverColor) 100%);
-	--gradientButtonHover: radial-gradient(circle, #FFB700 0%, #FFA200 100%);
+	--gradientButtonHover: radial-gradient(circle, #dfdfdf 0%, #aaaaaa 100%);
 
 	/* Send colors */
 	--sendColor: #6d6d6d;
@@ -30,7 +30,7 @@
 	--inputText: white;
 
 	/* Glow */
-	--glowColor: #FFAA00;
+	--glowColor: #d3d3d3;
 	--glowLightColor: rgb(207, 207, 207);
 
 	/* Tables */
@@ -39,8 +39,8 @@
 
 	/* Scrollbar */
 	--scollbarColor: #ffc40000;
-	--scollbarHoldColor: #c58f24;
-	--scollbarHoverColor: #ffaa00;
+	--scollbarHoldColor: #7c7c7c;
+	--scollbarHoverColor: #d1d1d1;
 }
 
 /* Algemene items */
@@ -123,7 +123,7 @@ button.button:hover{
 a.button{	
 	padding: 12.5px 30px;
 	border: none;
-	color: white;
+	color: var(--dark);
 	font-weight: bold;
 	background: var(--gradientButton);
 	animation: button .2s ease-in-out forwards;
@@ -210,7 +210,7 @@ input[type="radio"]{
 	border-radius: 1px;
 	margin: 0px;
 	min-height: 50px;
-	background-color: rgb(15, 15, 15);
+	background-color: rgba(15, 15, 15, 0.90);
 }
 
 .neonBorder{	
@@ -308,21 +308,20 @@ input[type="radio"]{
 #block5 > .content,
 #block6 > .content,
 #block7 > .content{
-	max-height: 500px;	
+	min-height: 250px;
+	max-height: 600px;	
     overflow: auto;
 }
 
 #block1 > .content,
 #block2 > .content,
 #block3 > .content{
-	min-height: 380px;
-	max-height: 380px;
+	min-height: 400px;
 }
 
 #block4 > .content,
 #block5 > .content{
-	min-height: 500px;
-	max-height: 500px;
+	min-height: 600px;
 }
 
 h2#titel,
@@ -345,6 +344,7 @@ h5.blockTitle{
 #block5 > .content > table#schemaSPS th,
 #block5 > .content > table#schemaSPS td{
 	font-size: 0.8em;
+	color: white;
 }
 
 #block5 > .content > table#schemaSPS tr:nth-child(odd){
@@ -367,10 +367,6 @@ h5.blockTitle{
 
 
 /* Consoleblock */
-
-#block7 > .content{
-	background: black;
-}
 
 #block7 > .content > #console > p{
 	color: white;
