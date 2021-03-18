@@ -5,6 +5,7 @@
 
 .gameRulesSection {
 	padding-top: 50px;
+	padding-bottom: 150px;
 }
 
 .gameRulesImage {
@@ -21,10 +22,6 @@
 	padding-bottom: 30px;
 	margin-left: 120px;
 
-}
-
-.gameRulesSection {
-	min-height: 800px;
 }
 
 .neon {
@@ -48,8 +45,14 @@ p, h4, ul, table, tr {
 
 
 @media screen and (max-width: 900px) {
+	.gameRulesSection {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
 	.gameTitle {
 		margin: 0;
+		display: flex;
+		justify-content: center;
 	}
 	.neon {
 		padding: 0;
