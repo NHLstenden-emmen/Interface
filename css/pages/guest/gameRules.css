@@ -12,7 +12,7 @@
 }
 
 .gameRulesImage {
-	width: 75%;
+	width: 50%;
 	margin-left: 120px;
 }
 
@@ -24,11 +24,6 @@
 	padding-top: 20px;
 	padding-bottom: 30px;
 	margin-left: 120px;
-}
-
-.neon {
-	width: 100%;
-	padding-left: 150px;
 }
 
 .neonBlock {
@@ -52,19 +47,20 @@
 		padding-bottom: 50px;
 	}
 
+	.gameRulesImageContainer {
+		display: flex;
+		justify-content: center;
+	}
+
 	.gameTitle {
 		margin: 0;
 		display: flex;
 		justify-content: center;
 	}
 
-	.neon {
-		padding: 0;
-		padding-top: 30px;
-	}
-
 	.gameRulesImage {
 		margin: 0;
-		width: 100%;
+		width: 70%;
+		padding-bottom: 30px;
 	}
 }
