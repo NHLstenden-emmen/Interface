@@ -1,5 +1,8 @@
-.gameRulesContainer {
+.gameRulesContainer p, h4, ul, table, tr {
 	color: var(--white);
+}
+
+.gameRulesContainer {
 	padding-top: 20px;
 }
 
@@ -21,7 +24,6 @@
 	padding-top: 20px;
 	padding-bottom: 30px;
 	margin-left: 120px;
-
 }
 
 .neon {
@@ -39,8 +41,8 @@
 	margin: 25px;
 }
 
-p, h4, ul, table, tr {
-	color: var(--white);
+.scoreTable td {
+	padding-right: 10px;
 }
 
 
@@ -49,19 +51,20 @@ p, h4, ul, table, tr {
 		padding-top: 50px;
 		padding-bottom: 50px;
 	}
+
 	.gameTitle {
 		margin: 0;
 		display: flex;
 		justify-content: center;
 	}
+
 	.neon {
 		padding: 0;
 		padding-top: 30px;
-
 	}
+
 	.gameRulesImage {
 		margin: 0;
 		width: 100%;
 	}
-
 }

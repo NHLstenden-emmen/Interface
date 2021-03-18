@@ -22,7 +22,7 @@
 							<li>Indien geen enkele robot de eindstreep haalt wint de robot die het verst op het parcours is gekomen zonder van de lijn te komen en de daarop volgende is nr 2 enz.</li> 
 						</ul>
 						<p>Scores:</p>
-						<table>
+						<table class="scoreTable">
 							<tr>
 								<td>1e plaats:</td>
 								<td>10 punten</td>
@@ -74,7 +74,7 @@
 							<li>Bij de “Finish” staat een obstakel (muur) die moet worden gedetecteerd door de ultrasonicsensor, als de robot er 5 cm van is stopt hij en wordt de tijd verstuurd naar de server.</li> 
 						</ul>
 						<p>Scores:</p>
-						<table>
+						<table class="scoreTable">
 							<tr>
 								<td>1e plaats:</td>
 								<td>10 punten</td>
@@ -127,7 +127,7 @@
 							<li>Bij de “Finish” staat een obstakel (muur) die moet worden gedetecteerd door de ultrasonicsensor, als de robot er 5 cm van is stopt hij en wordt de tijd verstuurd naar de server.</li> 
 						</ul>
 						<p>Scores:</p>
-						<table>
+						<table class="scoreTable">
 							<tr>
 								<td>1e plaats:</td>
 								<td>10 punten</td>
@@ -173,7 +173,7 @@
 						<p>De tekening challenge is een spel waarbij de robot een tekening maakt met een bepaald thema. De robot krijgt een canvas waar hij in moet blijven. Voor meer dan 10 seconden buiten het canvas gaan betekent dan ook een ongeldige tekening waarbij geen score kan worden toegekend. De winnaar zal worden gekozen door middel van een poll die achteraf wordt gerouleerd tussen de tekeningen waarbij alleen ingelogde gebruikers hun stem kunnen laten gelden.</p>
 						<p>* Bij gelijk gemiddelde wordt gekeken welk team als eerste klaar is</p>
 						<p>Scores:</p>
-						<table>
+						<table class="scoreTable">
 							<tr>
 								<td>1e plaats:</td>
 								<td>10 punten</td>
