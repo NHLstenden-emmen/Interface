@@ -1,7 +1,7 @@
 <?php
 	if (!empty($_SESSION['Team'])) {
 
-		$checkUsersAllowance = $db->checkUsersAllowance($_SESSION['user_id'],$_SESSION['name'],$_SESSION['email']);
+		$checkUsersAllowance = $db->checkUsersAllowance($_SESSION['user_id'],$_SESSION['email']);
 		while ($result = $checkUsersAllowance->fetch_array(MYSQLI_ASSOC)){
 			$_SESSION['Team'] = $result['Team'];
 
@@ -49,17 +49,20 @@
 		case 'home':
 			include 'guest/home.php';
 			break;
+		case 'login':
+			include 'team/login.php';
+			break;
 		case 'teams':
 			include 'guest/teams.php';
 			break;
-        case 'ranking':
-                include 'guest/ranking.php';
-                echo '<link href="css/pages/guest/ranking.css" type="text/css" rel="stylesheet">';
-                break;
-        case 'score':
-                include 'guest/score.php';
-                echo '<link rel="stylesheet" type="text/css" href="css/pages/guest/score.css">';
-                break;
+    case 'ranking':
+      include 'guest/ranking.php';
+      echo '<link href="css/pages/guest/ranking.css" type="text/css" rel="stylesheet">';
+      break;
+    case 'score':
+      include 'guest/score.php';
+      echo '<link rel="stylesheet" type="text/css" href="css/pages/guest/score.css">';
+      break;
 		default:
 			include '404.php'; // when the page isset found
 	}

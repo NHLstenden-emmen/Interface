@@ -34,18 +34,19 @@
             }
 		}
 
-		public function selectAllUsers(){
-			// this gets all the users and returns them
-			if ($stmt = $this->conn->prepare("SELECT `user_id`, `name`, `email`, `user_number`, `lang`, `Team` FROM `users`")) {
+		public function getTheUserPasswordForLogin($email){
+
+			$email = htmlspecialchars($email);
+
+			if ($stmt = $this->conn->prepare("SELECT * FROM users WHERE username = ?")) {
+				$stmt->bind_param("s", $email);
 				$stmt->execute();
 				$result = $stmt->get_result();
 				$stmt->free_result();
 				$stmt->close();
 				return $result;
 			}
-			else{ 
-				return mysqli_error($this->conn);
-			}
+			return NULL;
 		}
 	}
 ?>
