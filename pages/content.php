@@ -51,6 +51,7 @@
 			break;
 		case 'gamerules':
 			include 'guest/gameRules.php';
+			break;
 		case 'teams':
 			include 'guest/teams.php';
 			break;

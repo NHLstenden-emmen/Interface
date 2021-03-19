@@ -35,6 +35,7 @@
 				break;
 			case 'gamerules':
 				echo '<link rel="stylesheet" href="css/pages/guest/gameRules.css">';
+				break;
 			case 'teams':
 				echo '<link rel="stylesheet" href="css/pages/guest/teams.css">';
 				break;

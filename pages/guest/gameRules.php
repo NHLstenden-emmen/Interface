@@ -1,4 +1,6 @@
 <div class="gameRulesContainer">
+
+	<!-- Race -->
 	<div class="gameRulesSection row">
 		<div class="gameTitle row col-lg-12">
 			<h4>Race</h4>
@@ -51,6 +53,8 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Maze -->
 	<div class="gameRulesSection row">
 		<div class="gameTitle row col-lg-12">
 			<h4>Doolhof</h4>
@@ -101,6 +105,8 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Rock, Scissors, Paper -->
 	<div class="gameRulesSection row">
 		<div class="gameTitle row col-lg-12">
 			<h4>Steen, Papier, Schaar</h4>
@@ -150,6 +156,8 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Drawing -->
 	<div class="gameRulesSection row">
 		<div class="gameTitle row col-lg-12">
 			<h4>Tekening</h4>
