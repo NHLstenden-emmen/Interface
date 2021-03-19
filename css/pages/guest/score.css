@@ -44,11 +44,10 @@ table {
 }
 
 td, th {
-    font-size: max(calc(90% + 0.25vw), 2vw);
+    font-size: max(calc(90% + 0.25vw), 1.5vw);
     text-align: center;
     padding: 7px;
     color: white;
-    width: 20%;
 }
 
 th {
@@ -65,12 +64,12 @@ td {
     box-sizing: border-box;
 }
 
-td:nth-child(3n + 1), th:nth-child(3n + 1) {
-    width: 30%;
+th:nth-child(1), td:nth-child(1) {
+    width: 40%;
 }
 
-th:nth-child(1), td:nth-child(1) {
-    width: 20vw;
+th:nth-child(2), td:nth-child(2) {
+    width: 25%;
 }
 
 tbody { 
