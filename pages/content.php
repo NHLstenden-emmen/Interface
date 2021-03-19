@@ -51,6 +51,8 @@
 			break;
 		case 'gamerules':
 			include 'guest/gameRules.php';
+		case 'teams':
+			include 'guest/teams.php';
 			break;
 		default:
 			include '404.php'; // when the page isset found

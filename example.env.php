@@ -1,8 +1,8 @@
 <?php
 	return [
-		'DB_HOST' => 'fill',
-		'DB_USERNAME' => 'fill',
-		'DB_PASSWORD' => 'fill',
-		'DB_TABLE' => 'fill'
+		'DB_HOST' => '',
+		'DB_USERNAME' => '',
+		'DB_PASSWORD' => '',
+		'DB_TABLE' => ''
 	]
 ?>
