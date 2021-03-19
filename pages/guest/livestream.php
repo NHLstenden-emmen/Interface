@@ -68,16 +68,27 @@
 					</table>
 				</div>
 			</div>
-			<div class="liveVideo col-lg-8">
-				<h1>LiveStream</h1>
+			<div class="liveVideoContainer col-lg-8">
+				<h2>LiveStream</h2>
+				<div id="cameraButtons">
+					<button class="button">Camera1</button>
+					<button class="button">Camera2</button>
+				</div>
+				<video controls>
+					Your browser does not support the video tag.
+				</video>
 			</div>
 		</div>
 		<div class="row">
-			<div class="neonBlock">
-				<p>Data spel</p>
+			<div class="col-lg-6">
+				<div class="neonBlock">
+					<p>Data spel</p>
+				</div>
 			</div>
-			<div class="neonBlock">
-				<p>spelregels/poll</p>
+			<div class="col-lg-6">
+				<div class="neonBlock">
+					<p>spelregels/poll</p>
+				</div>
 			</div>
 		</div>
 	</div>
