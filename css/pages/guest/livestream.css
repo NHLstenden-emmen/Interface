@@ -1,0 +1,22 @@
+h2, p, th, td, h1 {
+	color: white;
+}
+
+#livestream {
+	margin: 100px 0 0 0;
+    color: white;
+    min-height: 60vh;
+}
+
+.nextGame {
+	border-bottom: 1px solid grey;
+	border-left: 1px solid grey;
+	text-align: center;
+	margin-bottom: 30px;
+	font-size: 25px;
+}
+
+.nextGame th, tr {
+	border-bottom: 1px solid grey;
+	width: 70px;
+}

@@ -41,6 +41,9 @@
 			case 'teams':
 				echo '<link rel="stylesheet" href="css/pages/guest/teams.css">';
 				break;
+			case 'livestream':
+				echo '<link rel="stylesheet" href="css/pages/guest/livestream.css">';
+				break;
 		}
 		// add css to the teams pages
 		if (!empty($_SESSION['Team'])) {

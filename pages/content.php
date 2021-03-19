@@ -58,6 +58,9 @@
 		case 'teams':
 			include 'guest/teams.php';
 			break;
+		case 'livestream':
+			include 'guest/livestream.php';
+			break;
     case 'ranking':
       include 'guest/ranking.php';
       echo '<link href="css/pages/guest/ranking.css" type="text/css" rel="stylesheet">';
