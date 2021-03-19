@@ -14,5 +14,8 @@ return [
 	'PASSWORDSDONTMATCH' => 'Wachtwoorden komen niet overeen',
 	'REPEAT_PASSWORD' => 'Wachtwoord herhalen',
 	'USERNOTFOUND' => 'Gebruiker niet gevonden',
+	'TEAMS_DESC' => 'Bekijk hier alle informatie over de teams die aan dit evenement meedoen. Of bekijk de livestream!',
+	'TEAMS_INTRODUCING' => 'Maak kennis met.',
+	'TEAMS_TITLE' => 'De Teams'
 	]
 ?>

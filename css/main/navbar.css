@@ -1,0 +1,25 @@
+nav {
+	display:flex;
+	flex-direction:row;
+	margin-top: 10px ;
+}
+.navul {
+	display: inline ;
+	text-decoration: none;
+}
+.navli {
+	display: inline;
+	text-decoration: none ;
+	font-size:150%;
+	margin-right:40px;
+}
+.nav1 {
+	display:flex;
+	justify-content:center;
+	width:60%;
+}
+.nav2 {
+	display:flex;
+	justify-content:flex-end;
+	width:40%;
+}

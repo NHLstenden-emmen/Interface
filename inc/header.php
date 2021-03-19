@@ -35,6 +35,8 @@
 				break;
 			case 'login':
 				echo '<link rel="stylesheet" href="css/pages/team/login.css">';
+			case 'teams':
+				echo '<link rel="stylesheet" href="css/pages/guest/teams.css">';
 				break;
 		}
 		// add css to the teams pages
