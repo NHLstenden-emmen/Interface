@@ -1,6 +1,6 @@
 <!-- Styling kan weg wanneer loginsysteem klaar is -->
 
-<?php 
+<?php
 echo '<link rel="stylesheet" href="css/pages/team/1E/dashboard.css" />';
 echo '<link rel="stylesheet" media="screen and (min-device-width: 1440px)" href="css/pages/team/1E/desktop-style.css" />';
 echo '<link rel="stylesheet" media="screen and (min-width: 800px) and (max-width: 1439px)" href="css/pages/team/1E/tablet-style.css" />';
@@ -28,9 +28,17 @@ echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';
                     </div>
                     <div class="col-lg-6" id="WASD">
                         <!-- Hiertussen komen de WASD knoppen -->
-
-
-
+                      <div class="wasd">
+                        <div class="row-one">
+                          <button>W</button>
+                        </div>
+                        <div class="row-two">
+                          <button>A</button>
+                          <button>S</button>
+                          <button>D</button>
+                        </div>
+                      </div>
+                    </div>
                         <!-- Hiertussen komen de WASD knoppen -->
                     </div>
                 </div>
