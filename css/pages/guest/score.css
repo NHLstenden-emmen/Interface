@@ -79,7 +79,7 @@ tbody {
 } 
  
  @media only screen and (max-aspect-ratio: 1/1) {
-    body > div {
+    #title, .box {
         width: 100vw !important;
         margin: 25% 0% 0% 2% !important;
         padding-left: 2% !important;
