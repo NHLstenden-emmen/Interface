@@ -35,6 +35,20 @@ h2, p, th, td, h1 {
 	width: 100%;
 }
 
+
+/*Game details */
+.gameDetailsSection {
+	border-bottom: none;
+}
+
+#gameDetailsTable tr {
+	border: none;
+}
+
+#gameDetailsTable td {
+	padding-right: 10px;
+}
+
 @media screen and (max-width: 900px) {
 	.nextGameBlock h2 {
 		text-align: center;

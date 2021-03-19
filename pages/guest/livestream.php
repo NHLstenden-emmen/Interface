@@ -81,8 +81,22 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-6">
-				<div class="neonBlock">
-					<p>Data spel</p>
+				<div class="neonBlock gameDetailsSection">
+					<!-- Door de ontvangen data heen lopen -->
+					<?php
+						echo "<table id='gameDetailsTable'>";
+						echo "<tr>";
+						echo "<td>Team A</td>";
+						echo "<td>2 pnt</td>";
+						echo "</tr>";
+						echo "<tr>";
+						echo "<td>Team B</td>";
+						echo "<td>1 pnt</td>";
+						echo "</tr>";
+						echo "</table>";
+					?>
+					<!-- Data duur game -->
+					<p>00:02:40</p>
 				</div>
 			</div>
 			<div class="col-lg-6">
