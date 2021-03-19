@@ -49,6 +49,9 @@
 		case 'home':
 			include 'guest/home.php';
 			break;
+		case 'gamerules':
+			include 'guest/gameRules.php';
+			break;
 		case 'login':
 			include 'team/login.php';
 			break;
