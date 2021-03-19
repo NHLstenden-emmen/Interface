@@ -27,23 +27,23 @@ td:nth-child(1) {
 }
 
 #teamA td {
-    background-color: yellow;
+    background-color: #fff700;
 }
 
 #teamB td {
-    background-color: blue;
+    background-color: #28478f;
 }
 
 #teamC td {
-    background-color: red;
+    background-color: #d92626;
 }
 
 #teamD td {
-    background-color: green;
+    background-color: #57c511;
 }
 
 #teamE td {
-    background-color: orange;
+    background-color: #ff8000;
 }
 
 #tableContainer {
@@ -126,7 +126,7 @@ th.games::after {
 }
 
 @media only screen and (max-width: 520px) {
-    body > div {
+    #ranking, #title {
         width: 100vw !important;
         margin: 25% 0% 0% 2% !important;
         padding-left: 2% !important;
