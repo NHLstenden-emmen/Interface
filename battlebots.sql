@@ -110,12 +110,12 @@ CREATE TABLE `spel` (
 --
 
 CREATE TABLE `users` (
-  `user_id` int NOT NULL,
+  `user_id` int(11) NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `team` varchar(5) COLLATE utf8mb4_general_ci NOT NULL,
   `lang` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  `deleted_at` date NOT NULL
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
