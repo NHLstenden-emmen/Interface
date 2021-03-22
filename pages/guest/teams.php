@@ -57,6 +57,9 @@
             <!-- Team B -->
             <div class="col-sm-12 teamBlock" id="teamB" data-aos="fade-up">
                 <div class="row">
+                    <div class="col-sm-6 teamPhoto">
+                        <img class="neonBorder" src="images/team/1B/logo.png" title="Team B" alt="Team B"> 
+                    </div>
                     <div class="col-sm-6">
                         <h4 class="teamTitle">Team B</h4>
                         <p class="teamDescription">
@@ -65,9 +68,6 @@
                             Nulla vulputate id tellus ac consequat
                             Curabitur mattis nibh magna, sit amet fermentum elit luctus sed. 
                         </p>
-                    </div>
-                    <div class="col-sm-6 teamPhoto">
-                        <img class="neonBorder" src="images/team/1B/logo.png" title="Team B" alt="Team B"> 
                     </div>
                 </div>
             </div>
@@ -93,6 +93,9 @@
             <!-- Team D -->
             <div class="col-sm-12 teamBlock" id="teamD" data-aos="fade-up">
                 <div class="row">
+                    <div class="col-sm-6 teamPhoto">
+                        <img class="neonBorder" src="images/team/1D/logo.png" title="Team D" alt="Team D"> 
+                    </div>
                     <div class="col-sm-6">
                         <h4 class="teamTitle">Team D</h4>
                         <p class="teamDescription">
@@ -101,10 +104,7 @@
                             Nulla vulputate id tellus ac consequat
                             Curabitur mattis nibh magna, sit amet fermentum elit luctus sed. 
                         </p>
-                    </div>
-                    <div class="col-sm-6 teamPhoto">
-                        <img class="neonBorder" src="images/team/1D/logo.png" title="Team D" alt="Team D"> 
-                    </div>
+                    </div>                    
                 </div>
             </div>
 
