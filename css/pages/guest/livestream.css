@@ -38,17 +38,25 @@ p, th, td, h1, h2, h3 {
 	width: 100%;
 }
 
+/*Live chat */
+.liveChatContainer {
+	background-color: red;
+}
 
 /*Game details */
+.container-fluid {
+	padding: 0;
+}
 
 .neonBlock {
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .gameDetailsSection {
-	height: 100px;
+	min-height: 200px;
 	margin: 0;
 	margin-top: 50px;
+	width: 100%;
 }
 
 #gameDetailsTable tr {
@@ -79,16 +87,14 @@ p, th, td, h1, h2, h3 {
 	color: var(--glowColor);
 }
 
-#gameRulesDialog {
-	width: 100%;
-	margin-top: 50px;
-	height: auto;
+#dialogContent {
+	padding-right: 50px;
 }
 
-#gameRulesDialog button {
+#closeDialogButton {
 	display: flex;
+	justify-content: flex-end;
 }
-
 
 @media screen and (max-width: 900px) {
 	.block {
@@ -107,5 +113,9 @@ p, th, td, h1, h2, h3 {
 
 	.liveVideoContainer video {
 		width: 100%;
+	}
+
+	dialog {
+		width: 50%;
 	}
 }
