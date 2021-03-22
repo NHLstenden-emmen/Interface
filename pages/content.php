@@ -90,11 +90,11 @@
 		case 'teams':
 			include 'guest/teams.php';
 			break;
-			// moet hier nog weg\/
+		// moet hier nog weg\/
 		case 'adduser':
 			include 'team/addUser.php';
 			return;
-			// moet hier nog weg/\
+		// moet hier nog weg/\
 		case 'ranking':
 			include 'guest/ranking.php';
 			echo '<link href="css/pages/guest/ranking.css" type="text/css" rel="stylesheet">';
