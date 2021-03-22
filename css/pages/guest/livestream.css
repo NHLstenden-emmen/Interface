@@ -1,8 +1,8 @@
-h2, p, th, td, h1 {
+p, th, td, h1, h2, h3 {
 	color: white;
 }
 
-#livestream h2 {
+#livestreamContainer h2 {
 	padding-bottom: 60px;
 }
 
@@ -20,8 +20,8 @@ h2, p, th, td, h1 {
 }
 
 /*Live stream */
-#livestream {
-	margin: 100px 0 0 0;
+#livestreamContainer {
+	margin-top: 100px;
     color: white;
     min-height: 60vh;
 }
@@ -40,6 +40,11 @@ h2, p, th, td, h1 {
 
 
 /*Game details */
+
+.neonBlock {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
 .gameDetailsSection {
 	height: 100px;
 	margin: 0;
@@ -58,23 +63,40 @@ h2, p, th, td, h1 {
 	margin-bottom: 50px;
 }
 
+.gameDetailIcons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .fa-info-circle, .fa-poll {
-	color: var(--primaryColor);
 	cursor: pointer;
-	
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .fa-info-circle:hover, .fa-poll:hover {
-	color: var(--glowcolor);
+	color: var(--glowColor);
 }
 
+#gameRulesDialog {
+	width: 100%;
+	margin-top: 50px;
+	height: auto;
+}
+
+#gameRulesDialog button {
+	display: flex;
+}
+
+
 @media screen and (max-width: 900px) {
-	.nextGameBlock h2 {
-		text-align: center;
+	.block {
+		margin-bottom: 50px;
 	}
 
-	.nextGameBlock {
-		margin-bottom: 50px;
+	#livestreamContainer h2 {
+		text-align: center;
 	}
 
 	.liveVideoContainer {
