@@ -1,7 +1,7 @@
 <div id="title">
     <h2>Statistieken</h2>
 </div>
-<div id="ranking">
+<div id="ranking" class="neonBlock">
     <div id="tableContainer">
         <table>
             <thead>
