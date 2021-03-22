@@ -29,7 +29,16 @@ echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';
                     <div class="col-lg-6" id="WASD">
                         <!-- Hiertussen komen de WASD knoppen -->
 
-
+                        <div class="container">
+                            <div class="row-one">
+                                <button>W</button>
+                            </div>
+                            <div class="row-two">
+                                <button>A</button>
+                                <button>S</button>
+                                <button>D</button>
+                            </div>
+                        </div>
 
                         <!-- Hiertussen komen de WASD knoppen -->
                     </div>

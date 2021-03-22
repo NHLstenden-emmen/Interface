@@ -385,3 +385,31 @@ p.blink{
 	animation: blink .8s ease-in-out infinite;
 }
 
+#WASD button{
+	display: inline-block;
+}
+
+#WASD{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#WASD > .container{
+	padding-bottom: 90px;
+}
+
+#WASD > .container > .row-one,
+#WASD > .container > .row-two{
+	width: 100%;	
+    text-align: center;
+}
+
+#WASD > .container > .row-one > button,
+#WASD > .container > .row-two > button{
+	padding: 10px;	
+	min-width: 50px;
+	margin: 5px;
+    text-align: center;
+	border: 0;
+}
