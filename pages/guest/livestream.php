@@ -3,69 +3,70 @@
 		<div class="row">
 			<div class="nextGameBlock col-lg-4">
 				<h2 class="col-lg-12">Volgende Spel</h2>
+				<div class="row">
+					<!-- Dag -->
+					<div class="col-3 col-lg-12">
+						<table class="nextGame">
+							<thead>
+								<tr>
+									<th>1</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Dag</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 
-				<!-- Dag -->
-				<div class="col-lg-12">
-					<table class="nextGame">
-						<thead>
-							<tr>
-								<th>1</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Dag</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+					<!-- Uren -->
+					<div class="col-3 col-lg-12">
+						<table class="nextGame">
+							<thead>
+								<tr>
+									<th>12</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Uur</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 
-				<!-- Uren -->
-				<div class="col-lg-12">
-					<table class="nextGame">
-						<thead>
-							<tr>
-								<th>12</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Uur</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+					<!-- Minuten -->
+					<div class="col-3 col-lg-12">
+						<table class="nextGame">
+							<thead>
+								<tr>
+									<th>40</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Min</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 
-				<!-- Minuten -->
-				<div class="col-lg-12">
-					<table class="nextGame">
-						<thead>
-							<tr>
-								<th>40</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Min</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
-				<!-- Seconden -->
-				<div class="col-lg-12">
-					<table class="nextGame">
-						<thead>
-							<tr>
-								<th>32</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Sec</td>
-							</tr>
-						</tbody>
-					</table>
+					<!-- Seconden -->
+					<div class="col-3 col-lg-12">
+						<table class="nextGame">
+							<thead>
+								<tr>
+									<th>32</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Sec</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 			<div class="liveVideoContainer col-lg-8">
@@ -79,7 +80,7 @@
 				</video>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row gameDetailsContainer">
 			<div class="col-lg-6">
 				<div class="neonBlock gameDetailsSection">
 					<!-- Door de ontvangen data heen lopen -->
@@ -100,8 +101,9 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<div class="neonBlock">
-					<p>spelregels/poll</p>
+				<div class="neonBlock gameDetailsSection">
+					<i class="fas fa-info-circle fa-3x"></i>
+					<i class="fas fa-poll fa-3x"></i>
 				</div>
 			</div>
 		</div>
