@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 19, 2021 at 04:37 PM
+-- Generation Time: Mar 22, 2021 at 10:00 AM
 -- Server version: 8.0.23
 -- PHP Version: 7.4.16
 
@@ -24,36 +24,61 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eindscore`
---
-
-CREATE TABLE `eindscore` (
-  `game_id` int NOT NULL,
-  `robot_id` int NOT NULL,
-  `score` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `livedata`
 --
 
 CREATE TABLE `livedata` (
   `type` varchar(255) NOT NULL,
   `json` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `livedata`
+--
+
+INSERT INTO `livedata` (`type`, `json`) VALUES
+('scheme', '{\"11\":[\"Steen papier schaar Knockout\",\"10:13\",\"ALL\"],\"22\":[\"Doolhof\",\"BOT1\"],\"12\":[\"Race\",\"10:18\",\"BOT3\"],\"23\":[\"Doolhof\",\"BOT2\"],\"13\":[\"Race\",\"10:23\",\"BOT5\"],\"14\":[\"Race\",\"10:28\",\"BOT1\"],\"15\":[\"Race\",\"10:33\",\"BOT4\"],\"16\":[\"Race\",\"10:38\",\"BOT2\"],\"17\":[\"Tekening\",\"10:43\",\"ALL\"],\"18\":[\"Tekening\",\"10:48\",\"ALL\"],\"19\":[\"Tekening\",\"10:53\",\"ALL\"],\"1\":[\"Steen papier schaar\",\"09:23\",\"BOT1\",\"BOT2\"],\"2\":[\"Steen papier schaar\",\"09:28\",\"BOT1\",\"BOT3\"],\"3\":[\"Steen papier schaar\",\"09:33\",\"BOT1\",\"BOT4\"],\"4\":[\"Steen papier schaar\",\"09:38\",\"BOT1\",\"BOT5\"],\"5\":[\"Steen papier schaar\",\"09:43\",\"BOT2\",\"BOT3\"],\"6\":[\"Steen papier schaar\",\"09:48\",\"BOT2\",\"BOT4\"],\"7\":[\"Steen papier schaar\",\"09:53\",\"BOT2\",\"BOT5\"],\"8\":[\"Steen papier schaar\",\"09:58\",\"BOT3\",\"BOT4\"],\"9\":[\"Steen papier schaar\",\"10:03\",\"BOT3\",\"BOT5\"],\"20\":[\"Tekening\",\"10:58\",\"ALL\"],\"10\":[\"Steen papier schaar\",\"10:08\",\"BOT4\",\"BOT5\"],\"21\":[\"Tekening\",\"11:03\",\"ALL\"]}'),
+('score', '{\"doolhof\":[{\"ready\":true,\"finished\":true,\"team\":\"BOT1\",\"time\":\"00:00.700\",\"matchId\":21},{\"ready\":true,\"finished\":true,\"team\":\"BOT2\",\"time\":\"00:00.557\",\"matchId\":22}]}');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `robot`
+-- Table structure for table `punten`
 --
 
-CREATE TABLE `robot` (
-  `robot_id` int NOT NULL,
-  `robotnaam` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `punten` (
+  `game` varchar(255) NOT NULL,
+  `robot` varchar(255) NOT NULL,
+  `score` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `punten`
+--
+
+INSERT INTO `punten` (`game`, `robot`, `score`) VALUES
+('doolhof', 'BOT1', 20),
+('doolhof', 'BOT2', 25);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resultaat`
+--
+
+CREATE TABLE `resultaat` (
+  `game` varchar(255) NOT NULL,
+  `robot` varchar(255) NOT NULL,
+  `score` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `resultaat`
+--
+
+INSERT INTO `resultaat` (`game`, `robot`, `score`) VALUES
+('doolhof', 'BOT1', '00:00.700'),
+('doolhof', 'BOT2', '00:00.557');
 
 -- --------------------------------------------------------
 
@@ -62,12 +87,10 @@ CREATE TABLE `robot` (
 --
 
 CREATE TABLE `speelschema` (
-  `speelschema_id` int NOT NULL,
-  `spel_id` int NOT NULL,
-  `tijd` time NOT NULL,
-  `robot_1` int NOT NULL,
-  `robot_2` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `spel_naam` varchar(100) NOT NULL,
+  `robot_1` varchar(100) NOT NULL,
+  `robot_2` varchar(100) DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -76,10 +99,9 @@ CREATE TABLE `speelschema` (
 --
 
 CREATE TABLE `spel` (
-  `spel_id` int NOT NULL,
-  `spel_naam` varchar(255) NOT NULL,
+  `naam` varchar(100) NOT NULL,
   `uitleg` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -89,23 +111,16 @@ CREATE TABLE `spel` (
 
 CREATE TABLE `users` (
   `user_id` int NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `team` varchar(10) NOT NULL,
-  `lang` varchar(10) NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `team` varchar(5) COLLATE utf8mb4_general_ci NOT NULL,
+  `lang` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
   `deleted_at` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `eindscore`
---
-ALTER TABLE `eindscore`
-  ADD PRIMARY KEY (`game_id`,`robot_id`),
-  ADD KEY `fk_robot_id_idx` (`robot_id`);
 
 --
 -- Indexes for table `livedata`
@@ -114,25 +129,29 @@ ALTER TABLE `livedata`
   ADD PRIMARY KEY (`type`);
 
 --
--- Indexes for table `robot`
+-- Indexes for table `punten`
 --
-ALTER TABLE `robot`
-  ADD PRIMARY KEY (`robot_id`,`robotnaam`);
+ALTER TABLE `punten`
+  ADD PRIMARY KEY (`game`,`robot`);
+
+--
+-- Indexes for table `resultaat`
+--
+ALTER TABLE `resultaat`
+  ADD PRIMARY KEY (`game`,`robot`);
 
 --
 -- Indexes for table `speelschema`
 --
 ALTER TABLE `speelschema`
-  ADD PRIMARY KEY (`speelschema_id`,`spel_id`),
-  ADD KEY `fk_speelschema_spel1_idx` (`spel_id`),
-  ADD KEY `fk_speelschema_robot1_idx` (`robot_1`),
-  ADD KEY `fk_speelschema_robot2_idx` (`robot_2`);
+  ADD PRIMARY KEY (`spel_naam`),
+  ADD KEY `fk_speelschema_spel1_idx` (`spel_naam`);
 
 --
 -- Indexes for table `spel`
 --
 ALTER TABLE `spel`
-  ADD PRIMARY KEY (`spel_id`);
+  ADD PRIMARY KEY (`naam`);
 
 --
 -- Indexes for table `users`
@@ -145,18 +164,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `robot`
---
-ALTER TABLE `robot`
-  MODIFY `robot_id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `speelschema`
---
-ALTER TABLE `speelschema`
-  MODIFY `speelschema_id` int NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -167,18 +174,10 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `eindscore`
---
-ALTER TABLE `eindscore`
-  ADD CONSTRAINT `fk_robot_id` FOREIGN KEY (`robot_id`) REFERENCES `robot` (`robot_id`);
-
---
 -- Constraints for table `speelschema`
 --
 ALTER TABLE `speelschema`
-  ADD CONSTRAINT `fk_speelschema_robot1` FOREIGN KEY (`robot_1`) REFERENCES `robot` (`robot_id`),
-  ADD CONSTRAINT `fk_speelschema_robot2` FOREIGN KEY (`robot_2`) REFERENCES `robot` (`robot_id`),
-  ADD CONSTRAINT `fk_speelschema_spel1` FOREIGN KEY (`spel_id`) REFERENCES `spel` (`spel_id`);
+  ADD CONSTRAINT `fk_spel_naamspeelschema` FOREIGN KEY (`spel_naam`) REFERENCES `spel` (`naam`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
