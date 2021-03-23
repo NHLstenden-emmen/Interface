@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-areas:
 		"liveChat startGame liveFeed"
-		"console huidigeGameData liveFeed";
+		"console robotControl liveFeed";
 	grid-template-rows: 400px 300px;
 	grid-template-columns: 19vw 40vw 40vw;
 }
@@ -19,8 +19,8 @@
 .console {
 	grid-area: console;
 }
-.huidigeGameData {
-	grid-area: huidigeGameData;
+.robotControl {
+	grid-area: robotControl;
 }
 /* border block design */
 .neonBlock1B {
@@ -50,7 +50,7 @@
 	margin-right: auto;
 	margin-top: 20px;
 }
-#panicButton a {
+#panicButton button {
 	display: block;
 	width: 250px;
 	height: 50px;
@@ -86,13 +86,13 @@
 	transform: rotate(-45deg);
 	transition: all 0.35s;
 }
-#panicButton a:hover {
+#panicButton button:hover {
 	width: 200px;
 	box-shadow: 0 0 10px var(--red);
 	background: transparent;
 	color: var(--red);
 }
-#panicButton a:hover + .icon {
+#panicButton button:hover + .icon {
 	box-shadow: 0 0 10px var(--red);
 	right: -25%;
 }

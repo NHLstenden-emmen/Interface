@@ -1,6 +1,6 @@
 <div id="panicButton">
 	<div class="bigStop">
-		<a href="#">STOP THE BOT</a>
+		<button onclick="stop()">STOP THE BOT</button>
 		<div class="icon">
 			<!-- <i class="fas fa-times"></i> -->
 			<i class="fas fa-skull-crossbones"></i>
@@ -52,7 +52,61 @@
 	<div class="console neonBlock1B">
 		<h1>console</h1>
 	</div>
-	<div class="huidigeGameData neonBlock1B">
-		<h1>huidigeGameData</h1>
+	<div class="robotControl neonBlock1B">
+		<h1>Robot control</h1>
+		
+		<div class="row-one">
+			<button onclick="joystickW()">W</button>
+		</div>
+		<div class="row-two">
+			<button onclick="joystickA()">A</button>
+			<button onclick="joystickS()">S</button>
+			<button onclick="joystickD()">D</button>
+		</div>
 	</div>
 </div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	function stop() {
+		$(document).ready(function() {
+			$.post("pages/team/1B/botControls/sendData.php",{'action':'Stop'});
+			var timestamp = '[' + Date.now() + '] ';
+			console.log(timestamp + 'Stop');
+		});
+	}
+
+	function joystickW() {
+		$(document).ready(function() {
+			$.post("pages/team/1B/botControls/sendData.php",{'action':'W'});
+			var timestamp = '[' + Date.now() + '] ';
+			console.log(timestamp + 'W');
+		});
+	}
+
+	function joystickA() {
+		$(document).ready(function() {
+			$.post("pages/team/1B/botControls/sendData.php",{'action':'A'});
+			var timestamp = '[' + Date.now() + '] ';
+			console.log(timestamp + 'A');
+		});
+	}
+
+	function joystickS() {
+		$(document).ready(function() {
+			$.post("pages/team/1B/botControls/sendData.php",{'action':'S'});
+			var timestamp = '[' + Date.now() + '] ';
+			console.log(timestamp + 'S');
+		});
+	}
+
+	function joystickD() {
+		$(document).ready(function() {
+			$.post("pages/team/1B/botControls/sendData.php",{'action':'D'});
+			var timestamp = '[' + Date.now() + '] ';
+			console.log(timestamp + 'D');
+		});
+	}
+</script>
