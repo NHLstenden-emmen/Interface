@@ -50,28 +50,28 @@
 				switch(strtolower($pagePath))
 				{
 					case 'dashboard':
-						echo '<link rel="stylesheet" href="css/team/1A/dashboard.css">';
+						echo '<link rel="stylesheet" href="css/pages/team/1A/dashboard.css">';
 						break;
 				}
 			} elseif ($_SESSION['Team'] == '1B') {
 				switch(strtolower($pagePath))
 				{
 					case 'dashboard':
-						echo '<link rel="stylesheet" href="css/team/1B/dashboard.css">';
+						echo '<link rel="stylesheet" href="css/pages/team/1B/dashboard.css">';
 						break;
 				}
 			} elseif ($_SESSION['Team'] == '1C') {
 				switch(strtolower($pagePath))
 				{
 					case 'dashboard':
-						echo '<link rel="stylesheet" href="css/team/1C/dashboard.css">';
+						echo '<link rel="stylesheet" href="css/pages/team/1C/dashboard.css">';
 						break;
 				}
 			} elseif ($_SESSION['Team'] == '1D') {
 				switch(strtolower($pagePath))
 				{
 					case 'dashboard':
-						echo '<link rel="stylesheet" href="css/team/1D/dashboard.css">';
+						echo '<link rel="stylesheet" href="css/pages/team/1D/dashboard.css">';
 						break;
 				}
 			} elseif ($_SESSION['Team'] == '1E') {
