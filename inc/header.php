@@ -34,7 +34,7 @@
 				echo '<link rel="stylesheet" href="css/guest/home.css">';
 				break;
 		}
-		// add css to the teams pages
+		// add js and css to the teams pages
 		if (!empty($_SESSION['Team'])) {
 			$checkUsersAllowance = $db->checkUsersAllowance($_SESSION['user_id'],$_SESSION['name'],$_SESSION['email']);
 			while ($result = $checkUsersAllowance->fetch_array(MYSQLI_ASSOC)){
@@ -76,7 +76,8 @@
 							echo '<link rel="stylesheet" media="screen and (min-device-width: 1440px)" href="css/pages/team/1E/desktop-style.css" />';
 							echo '<link rel="stylesheet" media="screen and (min-width: 800px) and (max-width: 1439px)" href="css/pages/team/1E/tablet-style.css" />';
 							echo '<link rel="stylesheet" media="screen and (min-width: 100px) and (max-width: 799px)" href="css/pages/team/1E/mobile-style.css" />';
-							echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';
+							echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';							
+							echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
 							break;
 					}
 				}
