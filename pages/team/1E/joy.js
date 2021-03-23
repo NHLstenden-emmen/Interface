@@ -316,70 +316,137 @@ var JoyStick = (function(container, parameters)
 
 	var lastResult = "";
 	var lastByte = "";
+	var lastKeyboard;
 
 	this.GetDir = function()
 	{
 		var result = "";
 		var byte = "";
+		var keyboard = "";
 		var orizontal = movedX - centerX;
 		var vertical = movedY - centerY;
 
 		if(vertical >= directionVerticalLimitNeg && vertical <= directionVerticalLimitPos)
 		{
 			result = "Stop";
-			byte = "a";
+			byte = "Stop";
 		}
 		if(vertical < directionVerticalLimitNeg)
 		{
-			result = "Voren";
-			byte = "b";
+			result = "W";
+			byte = "W";
 		}
 		if(vertical > directionVerticalLimitPos)
 		{
-			result = "Achteren";
-			byte = "c";
+			result = "S";
+			byte = "S";
 		}
 
 		if(orizontal < directionHorizontalLimitNeg)
 		{
 			
-			byte = "d";
+			byte = "A";
 
 			if(result === "Stop")
 			{
-				result = "Links";
+				result = "A";
 			}
 			else
 			{
-				result += " - Links";
+				result += "A";
 			}
 		}
 		if(orizontal > directionHorizontalLimitPos)
 		{
 			
-			byte = "e";
+			byte = "D";
 
 			if(result === "Stop")
 			{
-				result = "Rechts";
+				result = "D";
 			}
 			else
 			{
-				result += " - Rechts";
+				result += "D";
 			}
-		}	
+		}			
 
 		if(lastResult != result){
-			lastResult = result;		
-			//console.log(result);
+			lastResult = result;	
+			$(document).ready(function() {
+				$.post("joystick/sendData.php",{'action':result});
+				var timestamp = '[' + Date.now() + '] ';
+				console.log(timestamp + result);
+			});
 		}
-		
+
+		$(document).keydown(function (event){
+
+			// Spatiebalk
+			if (event.which === 32) {
+				if(event.which !== lastKeyboard){
+					lastKeyboard = 32;
+					var timestamp = '[' + Date.now() + '] ';
+					console.log(timestamp + 'Stop');
+					$(document).ready(function() {
+						$.post("joystick/sendData.php",{'action':'Stop'});
+					});
+				}
+			}
+
+			// Naar voren
+			if (event.which === 87) {
+				if(event.which != lastKeyboard){
+					lastKeyboard = 87;
+					var timestamp = '[' + Date.now() + '] ';
+					console.log(timestamp + 'W');
+					$(document).ready(function() {
+						$.post("joystick/sendData.php",{'action':'W'});
+					});
+				}
+			}
+
+			// Naar achteren
+			if (event.which === 83) {
+				if(event.which != lastKeyboard){
+					lastKeyboard = 83;
+					var timestamp = '[' + Date.now() + '] ';
+					console.log(timestamp + 'S');
+					$(document).ready(function() {
+						$.post("joystick/sendData.php",{'action':'S'});
+					});
+				}
+			}
+
+			// Naar links
+			if (event.which === 65) {
+				if(event.which != lastKeyboard){
+					lastKeyboard = 65;
+					var timestamp = '[' + Date.now() + '] ';
+					console.log(timestamp + 'A');
+					$(document).ready(function() {
+						$.post("joystick/sendData.php",{'action':'A'});
+					});
+				}
+			}
+
+			// Naar rechts
+			if (event.which === 68) {
+				if(event.which != lastKeyboard){
+					lastKeyboard = 68;
+					var timestamp = '[' + Date.now() + '] ';
+					console.log(timestamp + 'D');
+					$(document).ready(function() {
+						$.post("joystick/sendData.php",{'action':'D'});
+					});
+				}
+			}
+
+		  });
+
 		if(lastByte != byte){
-			lastByte = byte;		
-			console.log(byte);
-		}
-		
-		
+			lastByte = byte;
+		}	
 	
 		return lastResult;
 	};

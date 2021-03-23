@@ -6,6 +6,7 @@ echo '<link rel="stylesheet" media="screen and (min-device-width: 1440px)" href=
 echo '<link rel="stylesheet" media="screen and (min-width: 800px) and (max-width: 1439px)" href="css/pages/team/1E/tablet-style.css" />';
 echo '<link rel="stylesheet" media="screen and (min-width: 100px) and (max-width: 799px)" href="css/pages/team/1E/mobile-style.css" />';
 echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';
+
 ?>
 
 
@@ -31,14 +32,58 @@ echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';
 
                         <div class="container">
                             <div class="row-one">
-                                <button>W</button>
+                                <button onclick="joystickW()">W</button>
                             </div>
                             <div class="row-two">
-                                <button>A</button>
-                                <button>S</button>
-                                <button>D</button>
+                                <button onclick="joystickA()">A</button>
+                                <button onclick="joystickS()">S</button>
+                                <button onclick="joystickD()">D</button>
                             </div>
                         </div>
+
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                        <script>
+
+                        function stop() {
+                            $(document).ready(function() {
+                                $.post("pages/team/1E/joystick/sendData.php",{'action':'Stop'});
+                                var timestamp = '[' + Date.now() + '] ';
+                                console.log(timestamp + 'Stop');
+                            });
+                        }
+
+                        function joystickW() {
+                            $(document).ready(function() {
+                                $.post("pages/team/1E/joystick/sendData.php",{'action':'W'});
+                                var timestamp = '[' + Date.now() + '] ';
+                                console.log(timestamp + 'W');
+                            });
+                        }
+
+                        function joystickA() {
+                            $(document).ready(function() {
+                                $.post("pages/team/1E/joystick/sendData.php",{'action':'A'});
+                                var timestamp = '[' + Date.now() + '] ';
+                                console.log(timestamp + 'A');
+                            });
+                        }
+
+                        function joystickS() {
+                            $(document).ready(function() {
+                                $.post("pages/team/1E/joystick/sendData.php",{'action':'S'});
+                                var timestamp = '[' + Date.now() + '] ';
+                                console.log(timestamp + 'S');
+                            });
+                        }
+
+                        function joystickD() {
+                            $(document).ready(function() {
+                                $.post("pages/team/1E/joystick/sendData.php",{'action':'D'});
+                                var timestamp = '[' + Date.now() + '] ';
+                                console.log(timestamp + 'D');
+                            });
+                        }
+                        </script>
 
                         <!-- Hiertussen komen de WASD knoppen -->
                     </div>
