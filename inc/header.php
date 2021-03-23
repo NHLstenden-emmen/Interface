@@ -43,7 +43,7 @@
 				echo '<link rel="stylesheet" href="css/pages/guest/teams.css">';
 				break;
 		}
-		// add css to the teams pages
+		// add js and css to the teams pages
 		if (!empty($_SESSION['Team'])) {
 			if($_SESSION['Team'] == '1A') {
 				switch(strtolower($pagePath))
