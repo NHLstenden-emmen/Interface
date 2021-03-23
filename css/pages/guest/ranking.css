@@ -3,7 +3,7 @@ h2 {
     font-weight: bold;
     font-size: max(calc(130% + 0.25vw), 2vw);
     text-align: center;
-    margin-top: 6%;
+    margin-top: 4%;
 }
 
 table {
@@ -20,14 +20,12 @@ td:nth-child(1) {
     height: 70vh;
     margin: 2% 0% 0% 15%;
     padding: 5% 0% 3% 10%;
-    border: 0.7vw solid var(--primaryColor);
     border-right: none;
-    border-radius: 2vw 0px 0px 2vw;
     background-color: black;
 }
 
 #teamA td {
-    background-color: #fff700;
+    background-color: #f9c901;
 }
 
 #teamB td {
@@ -43,7 +41,7 @@ td:nth-child(1) {
 }
 
 #teamE td {
-    background-color: #ff8000;
+    background-color: white;
 }
 
 #tableContainer {
@@ -79,6 +77,7 @@ td, th {
 td {
     position: relative;
     z-index: 1;
+    -webkit-text-stroke: 0.035vw black;
 }
 
 td:nth-child(1) {
@@ -105,7 +104,7 @@ th.games::after {
 }
 
 @media only screen and (max-width: 800px) {
-    * {
+    #ranking *, #title * {
         font-size: 13px;
     }
 }

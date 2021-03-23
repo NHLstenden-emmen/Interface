@@ -1,7 +1,7 @@
 <div id="title">
     <h2>Score</h2>
 </div>
-<div class="box">
+<div class="box neonBlock">
     <div class="table">
         <table>
             <thead>
