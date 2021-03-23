@@ -11,8 +11,6 @@
     }
 
     // main dependencies
-    include 'inc/mysql.php';
-    $db = new Database();
     include 'inc/select.php';
     include 'inc/header.php';
     

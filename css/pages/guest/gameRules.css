@@ -1,0 +1,66 @@
+.gameRulesContainer p, h4, ul, table, tr {
+	color: var(--white);
+}
+
+.gameRulesContainer {
+	padding-top: 20px;
+}
+
+.gameRulesSection {
+	padding-top: 50px;
+	padding-bottom: 150px;
+}
+
+.gameRulesImage {
+	width: 50%;
+	margin-left: 120px;
+}
+
+.gameRulesExplanation {
+	display: flex;
+}
+
+.gameTitle {
+	padding-top: 20px;
+	padding-bottom: 30px;
+	margin-left: 120px;
+}
+
+.neonBlock {
+	margin: 0px;
+	border-right: none;
+	height: 100%;
+}
+
+.gameRules {
+	margin: 25px;
+}
+
+.scoreTable td {
+	padding-right: 10px;
+}
+
+
+@media screen and (max-width: 900px) {
+	.gameRulesSection {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
+	.gameRulesImageContainer {
+		display: flex;
+		justify-content: center;
+	}
+
+	.gameTitle {
+		margin: 0;
+		display: flex;
+		justify-content: center;
+	}
+
+	.gameRulesImage {
+		margin: 0;
+		width: 70%;
+		padding-bottom: 30px;
+	}
+}

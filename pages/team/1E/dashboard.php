@@ -30,7 +30,6 @@
                     </div>
                     <div class="col-lg-6" id="WASD">
                         <!-- Hiertussen komen de WASD knoppen -->
-
                         <div class="container">
                             <div class="row-one">
                                 <button onclick="joystickW()">W</button>
@@ -84,7 +83,6 @@
                             });
                         }
                         </script>
-
                         <!-- Hiertussen komen de WASD knoppen -->
                     </div>
                 </div>
