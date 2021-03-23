@@ -32,8 +32,8 @@
 
 			switch(strtolower($pagePath))
 			{ //everything is in lowercase so the cases must also be in lowercase
-				case 'adduser':
-					include 'team/addUser.php';
+				case 'addusertoteam':
+					include 'team/addUserToTeam.php';
 					return;
 			}
 
@@ -90,11 +90,17 @@
 		case 'teams':
 			include 'guest/teams.php';
 			break;
-			// moet hier nog weg\/
+<<<<<<< Updated upstream
+		// moet hier nog weg\/
 		case 'adduser':
 			include 'team/addUser.php';
+=======
+			// moet hier nog weg\/
+		case 'addguest':
+			include 'guest/addGuest.php';
+>>>>>>> Stashed changes
 			return;
-			// moet hier nog weg/\
+		// moet hier nog weg/\
 		case 'ranking':
 			include 'guest/ranking.php';
 			echo '<link href="css/pages/guest/ranking.css" type="text/css" rel="stylesheet">';

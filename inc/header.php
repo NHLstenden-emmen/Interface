@@ -37,7 +37,8 @@
 				echo '<link rel="stylesheet" href="css/pages/guest/gameRules.css">';
 				break;
 			case 'login':
-			case 'adduser':
+			case 'addguest':
+			case 'addusertoteam':
 				echo '<link rel="stylesheet" href="css/pages/team/loginAddUser.css">';
 			case 'teams':
 				echo '<link rel="stylesheet" href="css/pages/guest/teams.css">';
