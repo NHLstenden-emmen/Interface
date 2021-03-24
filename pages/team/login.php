@@ -3,14 +3,37 @@
     if (isset($_POST['username']) && isset($_POST['password'])) {
 
         $username = $_POST['username'];
-        $pass = $_POST['password'];
-        $loginInfo = $db->getTheUserPasswordForLogin($username);
+        $password = $_POST['password'];
+
+        // het mysql block
+            // include the env file pagina
+            $host = $env['DB_HOST'];
+            $user = $env['DB_USERNAME'];
+            $pass = $env['DB_PASSWORD'];
+            $table = $env['DB_TABLE'];
+            $conn = @mysqli_connect($host,$user,$pass, $table);
+            if(!$conn)
+            {
+                DIE("could not connect". mysqli_connect_error($conn));
+            }
+
+            $username = htmlspecialchars($username);
+
+            if ($stmt = $conn->prepare("SELECT * FROM users WHERE username = ?")) {
+                $stmt->bind_param("s", $username);
+                $stmt->execute();
+                $loginInfo = $stmt->get_result();
+                $stmt->free_result();
+                $stmt->close();
+            }
+        
+        // het mysql block
         if ($loginInfo->num_rows === 0) { 
             $error = $lang['USERNOTFOUND'];
         }
         while ($result = $loginInfo->fetch_array(MYSQLI_ASSOC)){
             // this is a check if the password is correct
-            if (password_verify($pass, $result['password'])) {
+            if (password_verify($password, $result['password'])) {
                 // this is a checkbox check for the remember me check 
                 if (!empty($_POST["remember"])) {
                     setcookie("member_login", $username);
@@ -21,11 +44,11 @@
                 setcookie("lang", $result['lang'], time()+(3600 * 24 * 30));
 
                 // store values in session
-                $_SESSION['username'] = $result['username'];
                 $_SESSION['user_id'] = $result['user_id'];
-                $_SESSION['Team'] = $result['Team'];
+                $_SESSION['username'] = $result['username'];
+                $_SESSION['Team'] = $result['team'];
                 
-				echo "<script>window.location.href='home';</script>";
+				echo "<script>window.location.href='dashboard';</script>";
 				exit;
             } else {
                 $error = $lang['PASSWORDINCORRECT'];
