@@ -37,52 +37,54 @@
 				echo '<link rel="stylesheet" href="css/pages/guest/gameRules.css">';
 				break;
 			case 'login':
-				echo '<link rel="stylesheet" href="css/pages/team/login.css">';
+			case 'addguest':
+			case 'addusertoteam':
+				echo '<link rel="stylesheet" href="css/pages/team/loginAddUser.css">';
 			case 'teams':
 				echo '<link rel="stylesheet" href="css/pages/guest/teams.css">';
 				break;
 		}
-		// add css to the teams pages
+		// add js and css to the teams pages
 		if (!empty($_SESSION['Team'])) {
-			$checkUsersAllowance = $db->checkUsersAllowance($_SESSION['user_id'],$_SESSION['name'],$_SESSION['email']);
-			while ($result = $checkUsersAllowance->fetch_array(MYSQLI_ASSOC)){
-				$_SESSION['Team'] = $result['Team'];
-
-				if($result['Team'] == '1A') {
-					switch(strtolower($pagePath))
-					{
-						case 'dashboard':
-							echo '<link rel="stylesheet" href="css/team/1A/dashboard.css">';
-							break;
-					}
-				} elseif ($result['Team'] == '1B') {
-					switch(strtolower($pagePath))
-					{
-						case 'dashboard':
-							echo '<link rel="stylesheet" href="css/team/1B/dashboard.css">';
-							break;
-					}
-				} elseif ($result['Team'] == '1C') {
-					switch(strtolower($pagePath))
-					{
-						case 'dashboard':
-							echo '<link rel="stylesheet" href="css/team/1C/dashboard.css">';
-							break;
-					}
-				} elseif ($result['Team'] == '1D') {
-					switch(strtolower($pagePath))
-					{
-						case 'dashboard':
-							echo '<link rel="stylesheet" href="css/team/1D/dashboard.css">';
-							break;
-					}
-				} elseif ($result['Team'] == '1E') {
-					switch(strtolower($pagePath))
-					{
-						case 'dashboard':
-							echo '<link rel="stylesheet" href="css/team/1E/dashboard.css">';
-							break;
-					}
+			if($_SESSION['Team'] == '1A') {
+				switch(strtolower($pagePath))
+				{
+					case 'dashboard':
+						echo '<link rel="stylesheet" href="css/pages/team/1A/dashboard.css">';
+						break;
+				}
+			} elseif ($_SESSION['Team'] == '1B') {
+				switch(strtolower($pagePath))
+				{
+					case 'dashboard':
+						echo '<link rel="stylesheet" href="css/pages/team/1B/dashboard.css">';
+						break;
+				}
+			} elseif ($_SESSION['Team'] == '1C') {
+				switch(strtolower($pagePath))
+				{
+					case 'dashboard':
+						echo '<link rel="stylesheet" href="css/pages/team/1C/dashboard.css">';
+						break;
+				}
+			} elseif ($_SESSION['Team'] == '1D') {
+				switch(strtolower($pagePath))
+				{
+					case 'dashboard':
+						echo '<link rel="stylesheet" href="css/pages/team/1D/dashboard.css">';
+						break;
+				}
+			} elseif ($_SESSION['Team'] == '1E') {
+				switch(strtolower($pagePath))
+				{
+					case 'dashboard':
+						echo '<link rel="stylesheet" href="css/team/1E/dashboard.css">';
+						echo '<link rel="stylesheet" href="css/pages/team/1E/dashboard.css" />';
+						echo '<link rel="stylesheet" media="screen and (min-device-width: 1440px)" href="css/pages/team/1E/desktop-style.css" />';
+						echo '<link rel="stylesheet" media="screen and (min-width: 800px) and (max-width: 1439px)" href="css/pages/team/1E/tablet-style.css" />';
+						echo '<link rel="stylesheet" media="screen and (min-width: 100px) and (max-width: 799px)" href="css/pages/team/1E/mobile-style.css" />';
+						echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';
+						break;
 				}
 			}
 		}

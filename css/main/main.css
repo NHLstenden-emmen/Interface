@@ -13,6 +13,13 @@
 	--dark: rgb(15, 15, 15);
 	--white: #ffffff;
 
+	/* Team colors */
+	--team1A: #f9c901;
+	--team1B: #28478f;
+	--team1C: #d92626;
+	--team1D: #57c511;
+	--team1E: #ff8000;
+
 	/* Button colors */
 	--buttonColor: #550de8;
 	--buttonHoverColor: #37167e;
