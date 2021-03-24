@@ -3,7 +3,7 @@
         <ul class="navul">
             <li class="navli"><a href="home">Home</a></li>
             <li class="navli"><a href="teams">Teams</a></li>
-            <li class="navli"><a href="#">Live</a></li>
+            <li class="navli"><a href="live">Live</a></li>
             <li class="navli"><a href="score">Games</a></li>
         </ul>
     </div>

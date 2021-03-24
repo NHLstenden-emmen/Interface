@@ -89,6 +89,13 @@
 		case '':
 			include 'guest/home.php';
 			break;
+		
+			
+		case '1c':
+			include 'team/1c/dashboard.php';
+			break;
+			
+		
 		case 'gamerules':
 			include 'guest/gameRules.php';
 			break;
