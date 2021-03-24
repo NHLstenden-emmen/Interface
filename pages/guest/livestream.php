@@ -88,7 +88,7 @@
 	</div>
 </div>
 <div class="container-fluid">
-	<div class="row justify-content-between gameDetailsContainer">
+	<div class="row justify-content-between">
 		<div class="col-12 col-lg-3">
 			<div class="neonBlock gameDetailsSection">
 				<!-- Door de ontvangen data heen lopen -->
@@ -122,8 +122,8 @@
 			</dialog>
 		</div>
 
-		<div id="gameDetailIcons" class="col-12 col-lg-3">
-			<div class="neonBlock gameDetailsSection">
+		<div id="gameDetailIconsContainer" class="col-12 col-lg-3">
+			<div class="neonBlock gameDetailsSection gameDetailIcons">
 				<button class="button" onclick="toggleDialog('gameRules')"><i class="fas fa-info-circle fa-3x"></i></button>
 				<button class="button" onclick="toggleDialog('gamePoll')"><i class="fas fa-poll fa-3x"></i></button>
 			</div>
@@ -136,16 +136,16 @@
 		var dialogGameRules = document.getElementById("gameDialog");
 		if (clicked == "gameRules") {
 			document.getElementById("dialogTitle").innerHTML = "Spelregels";
-			document.getElementById("dialogText").innerHTML = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>";
+			document.getElementById("dialogText").innerHTML = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>";
 		} else if (clicked == "gamePoll"){
 			document.getElementById("dialogTitle").innerHTML = "Poll";
 			document.getElementById("dialogText").innerHTML = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>";
 		}
 		if (dialogGameRules.open) {
-			document.getElementById("gameDetailIcons").style.display = "block";
+			document.getElementById("gameDetailIconsContainer").style.display = "block";
 			dialogGameRules.open = false;
 		} else {
-			document.getElementById("gameDetailIcons").style.display = "none";
+			document.getElementById("gameDetailIconsContainer").style.display = "none";
 			dialogGameRules.open = true;
 		}
 	}
