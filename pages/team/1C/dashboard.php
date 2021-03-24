@@ -5,7 +5,7 @@
 
 		<div class="container3delen">
 			<div class="blocklinks neonBorder">
-				<p><h3> Dashboard: </h3></p> 
+				<p><h3 class="Ctitels"> Controlle </h3></p> 
 					<p>
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -13,17 +13,15 @@
 					</p>
 			</div>
 			<div class="blockmidden neonBorder">
-				<p>
-					<h3> Dashboard: </h3>
+					<p><h3 class="Ctitels"> Commands </h3></p>
 					<p>
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 					</p>
-				</p>
 			</div>
 			<div class="blockrechts neonBorder">
-				<p><h3> Dashboard:</h3></p>
+					<p><h3 class="Ctitels"> Stand </h3></p>
 					<p>
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -34,6 +32,7 @@
 		</div>
 		<div class="container2delen">
 			<div class="vaklinks neonBorder">
+			<p><h3 class="Ctitels"> Huidige game </h3></p>
 				<p>
 					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -41,6 +40,7 @@
 				</p>
 			</div>
 			<div class="vakrechts neonBorder">
+			<p><h3 class="Ctitels"> Spelschema </h3></p>
 				<p>
 					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -50,6 +50,7 @@
 		</div>
 		<div class="container2delen">
 			<div class="vaklinks neonBorder">
+			<p><h3 class="Ctitels"> Historie </h3></p>
 				<p>
 					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -57,6 +58,7 @@
 				</p>
 			</div>
 			<div class="vakrechts neonBorder">
+			<p><h3 class="Ctitels"> Console </h3></p>
 				<p>
 					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -66,6 +68,7 @@
 		</div>
 		<div class="container2delen">
 			<div class="vaklinks neonBorder">
+			<p><h3 class="Ctitels"> Dashboard: </h3></p>
 				<p>
 					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -73,6 +76,7 @@
 				</p>
 			</div>
 			<div class="vakrechts neonBorder">
+			<p><h3 class="Ctitels"> Dashboard: </h3></p>
 				<p>
 					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
