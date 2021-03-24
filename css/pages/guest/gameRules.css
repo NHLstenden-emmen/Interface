@@ -1,6 +1,6 @@
 .container-fluid {
-	padding-right: unset;
-	margin-left: unset;
+	padding-right: 0;
+	padding-left: 0;
 }
 
 h4, p {
@@ -14,7 +14,7 @@ h4, p {
 }
 
 .gameBlock {
-    max-height: 100vh;
+	left: -5px;
 }
 
 .gameBlock > .row{
