@@ -1,65 +1,61 @@
-.gameRulesContainer p, h4, ul, table, tr {
-	color: var(--white);
+.container-fluid {
+	padding-right: unset;
+	margin-left: unset;
 }
 
-.gameRulesContainer {
-	margin: 100px 0 0 0;
+h4, p {
+	color:white;
 }
 
-.gameRulesSection {
-	padding-bottom: 150px;
+#gameRules {
+    margin: 70px 0 0 0;
+    color: white;
+    overflow: hidden;
 }
 
+.gameBlock {
+    max-height: 100vh;
+}
+
+.gameBlock > .row{
+    min-height: 100vh;
+    margin: 80px 0;
+}
+
+
+/*Gamerules*/
+.gameDescription {
+	height: fit-content;
+	padding: 25px;
+}
+
+/*gamePhoto*/
 .gameRulesImage {
-	width: 50%;
-	margin-left: 120px;
+	background-color: red;
+	height: 300px;
 }
 
-.gameRulesExplanation {
-	display: flex;
+.gamePhoto {
+    display: flex;
+    align-items: flex-start;
 }
 
-.gameTitle {
-	padding-top: 20px;
-	padding-bottom: 30px;
-	margin-left: 120px;
+.gameBlock img {
+    width: 50%;
 }
 
-.neonBlock {
-	margin: 0px;
-	border-right: none;
-	height: 100%;
-}
-
-.gameRules {
-	margin: 25px;
-}
-
-.scoreTable td {
-	padding-right: 10px;
+.neonBorder {
+    background: #0f0f0fa6;
 }
 
 
 @media screen and (max-width: 900px) {
-	.gameRulesSection {
-		padding-top: 50px;
-		padding-bottom: 50px;
+	.container-fluid {
+		padding-right: 15px;
+		padding-left: 15px;
 	}
 
-	.gameRulesImageContainer {
-		display: flex;
-		justify-content: center;
-	}
-
-	.gameTitle {
-		margin: 0;
-		display: flex;
-		justify-content: center;
-	}
-
-	.gameRulesImage {
-		margin: 0;
-		width: 70%;
-		padding-bottom: 30px;
+	.photoLeft {
+		text-align: center;
 	}
 }
