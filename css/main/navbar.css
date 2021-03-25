@@ -1,29 +1,19 @@
 nav {
 	display:flex;
 	flex-direction:row;
-	margin-top: 10px ;
-}
-.navul {
-	display: inline ;
-	text-decoration: none;
-}
-.navli {
-	display: inline;
-	text-decoration: none ;
-	font-size:150%;
-	margin-right:40px;
-}
-.navli > a {
 	color: white;
+}
+.nav-link{
+	text-decoration: none;
+	color: white !important;
+	font-size:150% ;
+	opacity: 90% ;
+}
+.navbar-toggler {
+	background-color: white;
 	opacity:90%;
 }
-.nav1 {
-	display:flex;
-	justify-content:center;
-	width:60%;
+.navmargin {
+	margin-left: 20%;
 }
-.nav2 {
-	display:flex;
-	justify-content:flex-end;
-	width:40%;
-}
+

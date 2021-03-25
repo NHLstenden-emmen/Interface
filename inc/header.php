@@ -33,6 +33,12 @@
 			case 'home':
 				echo '<link rel="stylesheet" href="css/pages/guest/home.css">';
 				break;
+				
+			case '1c':
+			echo '<link rel="stylesheet" href="css/pages/team/1C/dashboard.css">';
+			break;
+			
+			
 			case 'gamerules':
 				echo '<link rel="stylesheet" href="css/pages/guest/gameRules.css">';
 				break;
