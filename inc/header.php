@@ -43,6 +43,8 @@
 			case 'teams':
 				echo '<link rel="stylesheet" href="css/pages/guest/teams.css">';
 				break;
+			case 'live':
+				echo '<link rel="stylesheet" href="css/pages/guest/livestream.css">';
 			case 'speelschema':
 				echo '<link rel="stylesheet" href="css/pages/guest/speelschema.css">';
 				break;
