@@ -102,9 +102,11 @@
 		case 'login':
 			include 'team/login.php';
 			break;
-			
 		case 'teams':
 			include 'guest/teams.php';
+			break;
+		case 'speelschema':
+			include 'guest/speelschema.php';
 			break;
 		case 'addguest':
 			include 'guest/addGuest.php';
