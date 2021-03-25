@@ -46,6 +46,8 @@
 			case 'gamerules':
 				echo '<link rel="stylesheet" href="css/pages/guest/gameRules.css">';
 				break;
+			case 'live':
+				echo '<link rel="stylesheet" href="css/pages/guest/livestream.css">';
 			case 'speelschema':
 				echo '<link rel="stylesheet" href="css/pages/guest/speelschema.css">';
 				break;
