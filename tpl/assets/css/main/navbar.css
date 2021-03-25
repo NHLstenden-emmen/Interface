@@ -1,0 +1,225 @@
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: white;
+}
+
+.nav>#menu,
+.nav>#alternative-menu {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0;
+}
+
+.nav>#logo {
+	width: 100px;
+}
+.nav> ul {
+	z-index: 100;
+}
+.nav>#menu>li,
+.nav>#alternative-menu>li {
+	list-style-type: none;
+	display: table-cell;
+	position: relative;
+	padding: 20px 0;
+}
+
+.nav>#menu>li a,
+.nav>#alternative-menu>li a,
+.nav>#menu>li>div{
+	color: white;
+	padding: 20px 10px;
+	font-weight: bold;
+	font-size: 1.2em;
+	text-decoration: none;
+	margin: 0 5px;
+}
+
+.nav>#menu>#games-dropdown
+{
+	padding-right: 8vw;
+}
+
+.nav>#menu>li>a:after,
+.nav>#alternative-menu>li>a:after {
+	background: none repeat scroll 0 0 transparent;
+	bottom: 0;
+	content: "";
+	display: block;
+	height: 4px;
+	left: 50%;
+	position: absolute;
+	background: var(--buttonColor);
+	transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	width: 0;
+}
+
+.nav>#menu>li>a:hover:after,
+.nav>#alternative-menu>li>a:hover:after {
+	width: 100%;
+	left: 0;
+	text-decoration: none;
+}
+
+.alternative-button:after {
+	background: none repeat scroll 0 0 transparent;
+	bottom: 0;
+	content: "";
+	display: block;
+	height: 0px !important;
+	left: 50%;
+	position: absolute;
+	background: var(--buttonColor);
+	transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	width: 0;
+}
+
+.alternative-button:hover:after {
+	width: 100%;
+	left: 0;
+	text-decoration: none;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+	color: white;
+	font-weight: bold;
+  }
+  
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	min-width: 160px;
+	color: white;
+	text-align: left;
+	padding: 12px 0px;
+	z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+	display: block;
+	margin-top: 0;
+  }
+
+  .dropdownLink{
+	  font-weight: bold;
+  }
+
+  .dropdown-content a {
+	font-weight: 400;
+	font-size: 1em !important;
+	padding: 5px 0 !important;
+	min-width: 160px !important;
+}
+
+.dropdown-content a:hover {
+	color: rgb(160, 160, 160) !important;
+}
+
+.language{
+	font-size: 1.5em;
+}
+
+/* TOP NAV MOBILEBURGER */
+.mobileBurger {
+    cursor: pointer;
+}
+
+.mobileBurger div {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.mobileBurger.active div:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobileBurger.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.mobileBurger.active div:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+@media (max-width: 1050px) {
+	.container, .container-md, .container-sm {
+		 max-width: unset;
+	}
+
+	body.active {
+		overflow: hidden;
+	}
+
+    /* REPSONSIVE NAVBAR */
+	#navbar {
+		padding: 0px;
+		position: absolute !important;
+		z-index: 1 !important;
+	}
+
+	.nav>#logo {
+		margin-left: 35px;
+	}
+
+	#navbar.active {
+		background-color: var(--primaryColor);
+
+	}
+	.nav>#menu>#games-dropdown {
+		padding-right: 0;
+	}
+
+    .nav ul {
+        position: absolute;
+        top: 100px;
+        height: calc(100vh - 100px);
+        margin: 0;
+        width: 100%;
+        background-color: var(--primaryColor);
+        display: flex;
+        flex-direction: column;
+        transform: translateY(-150%) !important;
+        justify-content: space-evenly !important;
+        align-items: center  !important;
+        transition: transform 0.4s ease-in;
+        opacity: 1;
+    }
+
+	
+	 #menu.active {
+        opacity: 1;
+        transform: translateY(0%) !important;
+
+    } 
+	
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@keyframes navLinkFade {
+	from {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+
+@media (min-width: 1050px) {
+    .mobileBurger {
+        display: none;
+    }
+}
