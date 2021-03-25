@@ -1,5 +1,5 @@
 <?php
-class Socket
+class SocketServer
 {
         private $port;
         private $host;
