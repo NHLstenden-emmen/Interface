@@ -89,22 +89,23 @@
 		case '':
 			include 'guest/home.php';
 			break;
-		
-			
 		case '1c':
 			include 'team/1c/dashboard.php';
 			break;
-			
-		
 		case 'gamerules':
 			include 'guest/gameRules.php';
 			break;
 		case 'login':
 			include 'team/login.php';
 			break;
-			
 		case 'teams':
 			include 'guest/teams.php';
+			break;
+		case 'live':
+			include 'guest/livestream.php';
+			break;
+		case 'speelschema':
+			include 'guest/speelschema.php';
 			break;
 		case 'addguest':
 			include 'guest/addGuest.php';
