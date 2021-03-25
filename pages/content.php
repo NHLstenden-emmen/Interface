@@ -105,6 +105,9 @@
 		case 'teams':
 			include 'guest/teams.php';
 			break;
+		case 'speelschema':
+			include 'guest/speelschema.php';
+			break;
 		case 'addguest':
 			include 'guest/addGuest.php';
 			return;

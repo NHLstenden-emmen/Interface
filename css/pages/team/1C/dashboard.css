@@ -1,0 +1,180 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: "CeraPro", sans-serif;
+	font-weight: normal;
+	--primaryColor: #d92626;
+	--secondaryColor: #e56969;
+	--dark: #151515;
+	--white: #ffffff;
+
+	/* Button colors */
+	--buttonColor: #550de8;
+	--buttonHoverColor: #37167e;	
+	--gradientButton: radial-gradient(circle, var(--primaryColor) 0%, var(--secondaryColor) 100%);
+	--gradientButtonHover: radial-gradient(circle, #d92626 0%, #331475 100%);
+
+	/* Send colors */
+	--sendColor: #6d6d6d;
+	--sendHoverColor: #9c9c9c;
+
+	/* Input colors */
+	--placeholder: rgb(180, 180, 180);
+	--inputColor: rgb(61, 61, 61);
+	--inputText: white;
+
+	/* Glow */
+	--glowColor: #d92626;
+	--glowLightColor: rgb(207, 207, 207);
+
+	/* Line width */
+	--animatedLines: 5px;	
+}
+
+p {
+	font-weight: bold;
+}
+
+p, pre {                
+	color: white;
+	margin: 10px 0;
+	font-size: 0.8em;
+}
+
+pre {
+	color: rgb(167, 167, 167);
+	font-style:italic;
+}
+
+h3 {
+	color: #d92626;
+	font-weight: bold;
+}
+
+.Ctitels {
+	font-size:120% ;
+}
+.titleinf1c {
+	padding-left: 50px;
+}
+
+#titleinf1c {
+	color: #d92626;
+}
+
+.container2delen {
+	text-align: center;
+	padding-top: 10px;
+	padding-right: 40px;
+	padding-left: 40px;
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.container3delen {
+	padding-top: 20px;
+	padding-right: 40px;
+	padding-left: 40px;
+	text-align: center;
+	display: grid;
+	grid-template-columns: 50% 25% 25%;
+}
+
+.container2delen .vaklinks {
+	background-color: black;
+	height: 100%;
+	width: 98%;
+	grid-column: span 1 / -2;
+	margin-bottom: 2%;
+	margin-left: 2%;
+
+}
+
+.container2delen .vakrechts {
+	background-color: black;
+	height: 100%;
+	width: 98%;
+	grid-column: span 1 / -1;
+	margin-bottom: 2%;
+	margin-left: 1%;
+}
+
+.container3delen .blocklinks {
+	background-color: black;
+	height: 100%;
+	width: 98%;
+	grid-column: span 1 / -3;
+	margin-left: 2%;
+	margin-bottom: 2%;
+}
+
+.container3delen .blockmidden {
+	background-color: black;
+	height: 100%;
+	width: 98%;
+	grid-column: span 1 / -2;
+	margin-left: 2%;
+	margin-bottom: 2%;
+}
+
+.container3delen .blockrechts {
+	background-color: black;
+	height: 100%;
+	width: 98%;
+	grid-column: span 1 / -1;
+	margin-bottom: 2%;
+	margin-left: 2%;
+}
+
+@media screen and (max-width: 900px) {
+
+	.container3delen {
+		padding: 20px;
+		text-align: center;
+		display: grid;
+		grid-template-columns: 5% 90% 5%;
+	}
+	
+	.container4delen {
+		padding: 20px;
+		text-align: center;
+		display: grid;
+		grid-template-columns: 5% 90% 5%;
+	}
+
+	
+	.container3delen .blockrechts {
+		background-color: black;
+		height: 100%;
+		width: 90%;
+		grid-column: span 1 / -2;
+		margin-bottom: 5%;
+		margin-left: 5%;
+	}
+
+	.container3delen .blocklinks {
+		background-color: black;
+		height: 100%;
+		width: 90%;
+		grid-column: span 1 / -2;
+		margin-left: 5%;
+		margin-bottom: 5%;
+	}
+	
+	.container4delen .vaklinks {
+		background-color: black;
+		height: 100%;
+		width: 90%;
+		grid-column: span 1 / -2;
+		margin-bottom: 5%;
+		margin-left: 5%;
+	}
+
+	.container4delen .vakrechts {
+		background-color: black;
+		height: 100%;
+		width: 90%;
+		grid-column: span 1 / -2;
+		margin-bottom: 5%;
+		margin-left: 5%;
+	}
