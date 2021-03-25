@@ -21,29 +21,29 @@ class Socket
                         $this->connect();
                         return true;
                 }
-                else 
+                else
                 {
                         $this->error .= "Could not create socket \n";
                         return false;
                 }
         }
 
-        function connect() 
+        function connect()
         {
-                if(!$this->socketClient = socket_connect($this->socketHost, $this->host, $this->port))  $this->error .= "Could not connect to socket \n";  
+                if(!$this->socketClient = socket_connect($this->socketHost, $this->host, $this->port))  $this->error .= "Could not connect to socket \n";
         }
 
-        function sendToBot($bot, $command) 
+        function sendToBot($bot, $command)
         {
                 if($response = $this->write(json_encode(["BOT" => $bot, "CMD" => $command]))) return $response->server;
         }
 
-        function sendStartToBot($bot) 
+        function sendStartToBot($bot)
         {
                 if($response = $this->write(json_encode(["BOT" => $bot, "CMD" => "START"]))) return $response->server;
         }
 
-        function sendStoptoBot($bot) 
+        function sendStoptoBot($bot)
         {
                 if($response = $this->write(json_encode(["BOT" => $bot, "CMD" => "STOP"]))) return $response->server;
         }
@@ -144,8 +144,14 @@ if(isset($_POST['action'])){
     }
     if($action == "SA"){
         $command = "n";
-    }    
-    
+    }
+
+    // Commands
+
+    if ($action == "test") {
+      $command = "0";
+    }
+
     var_dump($socket->sendToBot($bot, $command));
         $fp = fopen('ESP Log.txt', 'a');
         fwrite($fp, microtime() . ": " . $action . "\n");

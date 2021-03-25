@@ -1,12 +1,13 @@
 <!-- Styling kan weg wanneer loginsysteem klaar is -->
 
-<?php 
+<?php
 
 // echo '<link rel="stylesheet" href="css/pages/team/1E/dashboard.css" />';
 // echo '<link rel="stylesheet" media="screen and (min-device-width: 1440px)" href="css/pages/team/1E/desktop-style.css" />';
 // echo '<link rel="stylesheet" media="screen and (min-width: 800px) and (max-width: 1439px)" href="css/pages/team/1E/tablet-style.css" />';
 // echo '<link rel="stylesheet" media="screen and (min-width: 100px) and (max-width: 799px)" href="css/pages/team/1E/mobile-style.css" />';
 // echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';
+ echo '<script src="https://code.jquery.com/jquery-3.5.1.js"></script>';
 
 ?>
 
@@ -91,6 +92,17 @@
         <div data-aos="fade-down" class="col-lg-3 block" id="block2">
             <div class="neonBlock content">
                 <h5 class="blockTitle">Commands</h5>
+                <button type="button" onclick="test()"name="button">Test</button>
+                <script>
+                function test() {
+                    $(document).ready(function() {
+                        $.post("pages/team/1E/joystick/sendData.php",{'action':'test'});
+                        var timestamp = '[' + Date.now() + '] ';
+                        console.log(timestamp + 'test');
+                    });
+                }
+                </script>
+
             </div>
         </div>
         <div data-aos="fade-left" class="col-lg-3 block" id="block3">

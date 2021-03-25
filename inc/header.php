@@ -8,7 +8,7 @@
 		<meta name="description" content="Livestream page for the battle bots">
 		<meta name="keywords" content="RoboTV">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
+
 		<title>RoboTV<?php if (strtolower($pagePath) !== "robotv") { echo " - " . $pagePath; } ?></title>
 
 		<!-- Bootstrap -->
@@ -33,12 +33,12 @@
 			case 'home':
 				echo '<link rel="stylesheet" href="css/pages/guest/home.css">';
 				break;
-				
+
 			case '1c':
 			echo '<link rel="stylesheet" href="css/pages/team/1C/dashboard.css">';
 			break;
-			
-			
+
+
 			case 'gamerules':
 				echo '<link rel="stylesheet" href="css/pages/guest/gameRules.css">';
 				break;
@@ -104,6 +104,7 @@
 			}
 		}
 
-		?> 
+
+		?>
     </head>
 	<body>
