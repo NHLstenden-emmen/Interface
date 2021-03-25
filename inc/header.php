@@ -48,6 +48,7 @@
 				break;
 			case 'live':
 				echo '<link rel="stylesheet" href="css/pages/guest/livestream.css">';
+				break;
 			case 'speelschema':
 				echo '<link rel="stylesheet" href="css/pages/guest/speelschema.css">';
 				break;
