@@ -1,12 +1,13 @@
-<div id="livestreamContainer" class="container">
+<div class="container" id="livestreamContainer">
+
 	<div class="row">
-		<div class="block col-lg-3">
-			<h2 class="col-lg-12">Volgende Spel</h2>
+		<div class="col-sm-3 block">
+			<h2 class="title">Volgende Spel</h2>
 			<div class="row">
 
 				<!-- Dag -->
-				<div class="col-3 col-lg-12">
-					<table class="nextGame">
+				<div class="col-3 col-sm-12">
+					<table class="nextGameTimer">
 						<thead>
 							<tr>
 								<th>1</th>
@@ -21,8 +22,8 @@
 				</div>
 
 				<!-- Uren -->
-				<div class="col-3 col-lg-12">
-					<table class="nextGame">
+				<div class="col-3 col-sm-12">
+					<table class="nextGameTimer">
 						<thead>
 							<tr>
 								<th>12</th>
@@ -37,8 +38,8 @@
 				</div>
 
 				<!-- Minuten -->
-				<div class="col-3 col-lg-12">
-					<table class="nextGame">
+				<div class="col-3 col-sm-12">
+					<table class="nextGameTimer">
 						<thead>
 							<tr>
 								<th>40</th>
@@ -53,8 +54,8 @@
 				</div>
 
 				<!-- Seconden -->
-				<div class="col-3 col-lg-12">
-					<table class="nextGame">
+				<div class="col-3 col-sm-12">
+					<table class="nextGameTimer">
 						<thead>
 							<tr>
 								<th>32</th>
@@ -70,47 +71,34 @@
 
 			</div>
 		</div>
-		<div class="liveVideoContainer block col-lg-6">
-			<h2>LiveStream</h2>
-			<div id="cameraButtons" class="row">
+
+		<div class="col-sm-6 block" id="liveVideoContainer">
+			<h2 class="title">LiveStream</h2>
+			<div id="cameraButtons">
 				<button class="button">Camera1</button>
 				<button class="button">Camera2</button>
 			</div>
-			<div class="row">
-				<video controls>
-					Your browser does not support the video tag.
-				</video>
-			</div>
+			<video controls>
+				Your browser does not support the video tag.
+			</video>
 		</div>
-		<div class="liveChatContainer col-lg-3 block"> 
-			<h2 class="col-lg-12">Live Chat</h2>
+		<div class="liveChatContainer col-sm-3 block"> 
+			<h2 class="title">Live Chat</h2>
 		</div>
 	</div>
+
 </div>
-<div class="container-fluid">
+
+<div class="container-fluid" id="gameDetailsContainer">
 	<div class="row justify-content-between">
-		<div class="col-12 col-lg-3">
-			<div class="neonBlock gameDetailsSection">
-				<!-- Door de ontvangen data heen lopen -->
-				<?php
-					echo "<table id='gameDetailsTable'>";
-					echo "<tr>";
-					echo "<td>Team A</td>";
-					echo "<td>2 pnt</td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<td>Team B</td>";
-					echo "<td>1 pnt</td>";
-					echo "</tr>";
-					echo "</table>";
-				?>
-				<!-- Data duur game -->
-				<p>00:02:40</p>
+		<div class="col-sm-12 col-lg-3">
+			<div class="neonBlock gameDetailsSection" id="currentGameDetails">
+				<p>Spel details</p><!-- Door de ontvangen data van de game heen lopen -->
 			</div>
 		</div>
 
 		<!-- Spelregels dialog -->
-		<div class="col-12 col-lg-6">
+		<div class="col-sm-12 col-lg-5">
 			<dialog id="gameDialog" class="neonBlock gameDetailsSection" close>
 				<div id="dialogContent">
 					<h3 id="dialogTitle"></h3>
@@ -122,7 +110,7 @@
 			</dialog>
 		</div>
 
-		<div id="gameDetailIconsContainer" class="col-12 col-lg-3">
+		<div id="gameDetailIconsContainer" class="col-sm-12 col-lg-4">
 			<div class="neonBlock gameDetailsSection gameDetailIcons">
 				<button class="button" onclick="toggleDialog('gameRules')"><i class="fas fa-info-circle fa-3x"></i></button>
 				<button class="button" onclick="toggleDialog('gamePoll')"><i class="fas fa-poll fa-3x"></i></button>

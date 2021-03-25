@@ -101,7 +101,7 @@
 		case 'teams':
 			include 'guest/teams.php';
 			break;
-		case 'livestream':
+		case 'live':
 			include 'guest/livestream.php';
 			break;
 	    case 'ranking':

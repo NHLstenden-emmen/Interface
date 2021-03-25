@@ -43,7 +43,7 @@
 			case 'teams':
 				echo '<link rel="stylesheet" href="css/pages/guest/teams.css">';
 				break;
-			case 'livestream':
+			case 'live':
 				echo '<link rel="stylesheet" href="css/pages/guest/livestream.css">';
 				break;
 		}
