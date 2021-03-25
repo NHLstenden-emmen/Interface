@@ -102,6 +102,7 @@
 		case 'login':
 			include 'team/login.php';
 			break;
+			
 		case 'teams':
 			include 'guest/teams.php';
 			break;

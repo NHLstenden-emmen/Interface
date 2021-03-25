@@ -11,6 +11,12 @@
     }
 
     // main dependencies
+
+    include 'inc/mysql.php';
+	include 'inc/socket.php';
+	$socket = new Socket(49153, "194.171.181.139");
+    $db = new Database();
+
     include 'inc/select.php';
     include 'inc/header.php';
     
