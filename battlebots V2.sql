@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2021 at 02:47 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Gegenereerd op: 26 mrt 2021 om 23:56
+-- Serverversie: 10.4.14-MariaDB
+-- PHP-versie: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `livedata`
+-- Tabelstructuur voor tabel `livedata`
 --
 
 CREATE TABLE `livedata` (
@@ -33,7 +33,7 @@ CREATE TABLE `livedata` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `livedata`
+-- Gegevens worden geëxporteerd voor tabel `livedata`
 --
 
 INSERT INTO `livedata` (`type`, `json`) VALUES
@@ -43,7 +43,7 @@ INSERT INTO `livedata` (`type`, `json`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `punten`
+-- Tabelstructuur voor tabel `punten`
 --
 
 CREATE TABLE `punten` (
@@ -53,7 +53,7 @@ CREATE TABLE `punten` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `punten`
+-- Gegevens worden geëxporteerd voor tabel `punten`
 --
 
 INSERT INTO `punten` (`game`, `robot`, `score`) VALUES
@@ -63,7 +63,7 @@ INSERT INTO `punten` (`game`, `robot`, `score`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `resultaat`
+-- Tabelstructuur voor tabel `resultaat`
 --
 
 CREATE TABLE `resultaat` (
@@ -73,7 +73,7 @@ CREATE TABLE `resultaat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `resultaat`
+-- Gegevens worden geëxporteerd voor tabel `resultaat`
 --
 
 INSERT INTO `resultaat` (`game`, `robot`, `score`) VALUES
@@ -83,7 +83,7 @@ INSERT INTO `resultaat` (`game`, `robot`, `score`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `speelschema`
+-- Tabelstructuur voor tabel `speelschema`
 --
 
 CREATE TABLE `speelschema` (
@@ -95,7 +95,7 @@ CREATE TABLE `speelschema` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teams`
+-- Tabelstructuur voor tabel `teams`
 --
 
 CREATE TABLE `teams` (
@@ -105,20 +105,20 @@ CREATE TABLE `teams` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `teams`
+-- Gegevens worden geëxporteerd voor tabel `teams`
 --
 
 INSERT INTO `teams` (`TeamID`, `TeamDesc`, `RobotName`) VALUES
 ('1A', 'Test', 'Test'),
 ('1B', 'Test', 'Test'),
-('1C', 'Test', 'Test'),
+('1C', 'Test', 'BrokkoBot'),
 ('1D', 'Test', 'Test'),
-('1E', 'Test', 'Test');
+('1E', 'Test', 'ROBot Jetten');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tabelstructuur voor tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -129,75 +129,76 @@ CREATE TABLE `users` (
   `achternaam` varchar(100) NOT NULL,
   `team` char(2) DEFAULT NULL,
   `level` int(11) NOT NULL DEFAULT 0,
-  `lang` varchar(2) NOT NULL,
-  `deleted_at` datetime DEFAULT current_timestamp()
+  `lang` varchar(2) NOT NULL DEFAULT 'nl',
+  `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Gegevens worden geëxporteerd voor tabel `users`
 --
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `voornaam`, `achternaam`, `team`, `level`, `lang`, `deleted_at`) VALUES
-(1, 'Remco', 'test', '', '', NULL, 2, 'nl', NULL);
+(2, 'bruh@nhlstenden.com', '$2y$10$Vb3MB36efti8OOI0TlJfY.O29v1dAeQ7sYgkWSUrHXy7ngHAzFcLu', 'Remco', 'Hassing', NULL, 2, 'nl', NULL),
+(3, 'feike', '$2y$10$XUKMFqcOpR9Yn./HeGAzQ.mItDg009ljRog1KeQYFxGe2onHeuTbW', 'Feike', 'Falkena', '1E', 2, 'nl', NULL);
 
 --
--- Indexes for dumped tables
+-- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexes for table `livedata`
+-- Indexen voor tabel `livedata`
 --
 ALTER TABLE `livedata`
   ADD PRIMARY KEY (`type`);
 
 --
--- Indexes for table `punten`
+-- Indexen voor tabel `punten`
 --
 ALTER TABLE `punten`
   ADD PRIMARY KEY (`game`,`robot`);
 
 --
--- Indexes for table `resultaat`
+-- Indexen voor tabel `resultaat`
 --
 ALTER TABLE `resultaat`
   ADD PRIMARY KEY (`game`,`robot`);
 
 --
--- Indexes for table `speelschema`
+-- Indexen voor tabel `speelschema`
 --
 ALTER TABLE `speelschema`
   ADD PRIMARY KEY (`spel_naam`),
   ADD KEY `fk_speelschema_spel1_idx` (`spel_naam`);
 
 --
--- Indexes for table `teams`
+-- Indexen voor tabel `teams`
 --
 ALTER TABLE `teams`
   ADD PRIMARY KEY (`TeamID`);
 
 --
--- Indexes for table `users`
+-- Indexen voor tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD KEY `UserTeam` (`team`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Constraints for dumped tables
+-- Beperkingen voor geëxporteerde tabellen
 --
 
 --
--- Constraints for table `users`
+-- Beperkingen voor tabel `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `UserTeam` FOREIGN KEY (`team`) REFERENCES `teams` (`TeamID`) ON DELETE CASCADE ON UPDATE CASCADE;
