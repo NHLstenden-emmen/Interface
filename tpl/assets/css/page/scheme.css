@@ -1,0 +1,12 @@
+/* Scheme */
+
+#scheme{
+    margin: 100px 0 0 0;
+    color: white;
+    min-height: 60vh;
+	z-index: -9;
+}
+
+#scheme > .title{
+    font-weight: bold;
+}

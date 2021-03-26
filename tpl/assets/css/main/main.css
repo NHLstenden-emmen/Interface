@@ -5,6 +5,8 @@
 	padding: 0px;
 	font-family: 'Lexend', sans-serif;
 	font-weight: normal;
+	color: white;
+	
 	--primaryColor: #37167e;
 	--secondaryColor: #280f5f;
 	--dark: rgb(15, 15, 15);
@@ -47,6 +49,12 @@
 	--scollbarColor: #ffc40000;
 	--scollbarHoldColor: #7c7c7c;
 	--scollbarHoverColor: #d1d1d1;
+
+	/* Tables */
+	--tableEven: #3c0c9c15;
+	--tableOdd: #3c0c9c15;
+	--tableHead: #560de8b9;
+
 }
 
 /* Algemene items */
@@ -88,6 +96,10 @@ hr {
 ::selection { 
 	background: var(--glowColor); 
 	color: white;
+}
+
+.noPadding{
+	padding: 0;
 }
 
 /* Button styling */
@@ -202,6 +214,34 @@ input[type="radio"] {
 	cursor: pointer;
 	margin: 5px;
 }
+
+/* Tables */
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+	border: 0;
+}
+
+th{
+	font-weight: bold;
+	background-color: var(--tableHead);
+}
+  
+  td, th {
+	border: 0px;
+	text-align: left;
+	padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+	background-color: var(--tableEven);
+  }
+
+  tr:nth-child(odd) {
+	background-color: var(--tableOdd);
+  }
 
 /* Blocks */
 

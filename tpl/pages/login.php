@@ -6,6 +6,7 @@
         $password = $_POST['password'];
 
         // het mysql block
+            $env = include '.env.php';
             // include the env file pagina
             $host = $env['DB_HOST'];
             $user = $env['DB_USERNAME'];
@@ -30,31 +31,36 @@
             }
         
         // het mysql block
-        if ($loginInfo->num_rows === 0) { 
-            $error = $lang['USERNOTFOUND'];
-        }
-        while ($result = $loginInfo->fetch_array(MYSQLI_ASSOC)){
-            // this is a check if the password is correct
-            if (password_verify($password, $result['password'])) {
-                // this is a checkbox check for the remember me check 
-                if (!empty($_POST["remember"])) {
-                    setcookie("member_login", $username);
-                } else {
-                    setcookie("member_login", '');
-                }
-                // this changes the cookie lang to the users database prefred lang
-                setcookie("lang", $result['lang'], time()+(3600 * 24 * 30));
-
-                // store values in session
-                $_SESSION['user_id'] = $result['user_id'];
-                $_SESSION['username'] = $result['username'];
-                $_SESSION['Team'] = $result['team'];
-                
-				echo "<script>window.location.href='dashboard';</script>";
-				exit;
-            } else {
-                $error = $lang['PASSWORDINCORRECT'];
+        if(isset($loginInfo)){
+            if ($loginInfo->num_rows === 0) { 
+                $error = $lang['USERNOTFOUND'];
             }
+       
+            while ($result = $loginInfo->fetch_array(MYSQLI_ASSOC)){
+                // this is a check if the password is correct
+                if (password_verify($password, $result['password'])) {
+                    // this is a checkbox check for the remember me check 
+                    if (!empty($_POST["remember"])) {
+                        setcookie("member_login", $username);
+                    } else {
+                        setcookie("member_login", '');
+                    }
+                    // this changes the cookie lang to the users database prefred lang
+                    setcookie("lang", $result['lang'], time()+(3600 * 24 * 30));
+
+                    // store values in session
+                    $_SESSION['user_id'] = $result['user_id'];
+                    $_SESSION['username'] = $result['username'];
+                    $_SESSION['Team'] = $result['team'];
+                    
+                    echo "<script>window.location.href='dashboard';</script>";
+                    exit;
+                } else {
+                    $error = $lang['PASSWORDINCORRECT'];
+                }
+            }
+        } else {
+            echo "<script>alert('Er ging iets fout bij het inloggen.');</script>";
         }
     }
 ?>

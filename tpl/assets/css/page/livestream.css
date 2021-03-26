@@ -22,7 +22,7 @@ video#livestreamVideo{
 }
 
 .chatStyle{
-	background-color: rgba(7, 7, 7, 0.65);	
+	background-color: rgba(7, 7, 7, 0.65);
 	overflow-y: scroll;
 }
 
@@ -68,16 +68,29 @@ p.message {
 	width: 100%;
 }
 
-.sendMessage{
-	padding: 0;
-}
-
 #sendMessage{
-	width: 85%;
+	width: 100%;
+	position: relative;
 }
 
-#send{
-	width: 15%;
-	padding: 0;
-	margin: 0;
+#sendMessage > input[type=text]{
+	width: 100%;
 }
+
+.send{
+	padding: 15px;
+    margin-top: -2px;
+	color: white;
+	min-width: 50px;
+	text-align: center;
+	right: 0;
+}
+
+.input-icons i {
+	position: absolute;
+}
+  
+.input-icons {
+	width: 100%;
+}
+

@@ -1,80 +1,133 @@
-<div id="title">
-    <h2>Score</h2>
-</div>
-<div class="box neonBlock">
-    <div class="table">
-        <table>
-            <thead>
-                <tr>
-                    <th>Spelnaam</th>
-                    <th>Score</th>
-                    <th>Gespeeld door</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Doolhof</td>
-                    <td>00:14:56</td>
-                    <td>Team A</td>
-                </tr>
-                <tr>
-                    <td>Tekenen</td>
-                    <td>8</td>
-                    <td>Team B</td>
-                </tr>
-                <tr>
-                    <td>Steen, Papier, Schaar</td>
-                    <td>3-2</td>
-                    <td>Team C - Team E</td>
-                </tr>
-                <tr>
-                    <td>Race</td>
-                    <td>00:14:35</td>
-                    <td>Team D</td>
-                </tr>
-                <tr>
-                    <td>Doolhof</td>
-                    <td>00:10:56</td>
-                    <td>Team E</td>
-                </tr>
-                <tr>
-                    <td>Race</td>
-                    <td>00:14:35</td>
-                    <td>Team B</td>
-                </tr>
-                <tr>
-                    <td>Steen, Papier, Schaar</td>
-                    <td>2-3</td>
-                    <td>Team A - Team B</td>
-                </tr>
-                <tr>
-                    <td>Tekenen</td>
-                    <td>10</td>
-                    <td>Team D</td>
-                </tr>
-                <tr>
-                    <td>Tekenen</td>
-                    <td>10</td>
-                    <td>Team D</td>
-                </tr>
-                <tr>
-                    <td>Tekenen</td>
-                    <td>10</td>
-                    <td>Team D</td>
-                </tr>
-                <tr>
-                    <td>Tekenen</td>
-                    <td>10</td>
-                    <td>Team D</td>
-                </tr>
-                <tr>
-                    <td>Tekenen</td>
-                    <td>10</td>
-                    <td>Team D</td>
-                </tr>
-            </tbody>
-        </table>
+<div class="container">
+    <div id="scheme">
+        <h1 class="title">{SCHEME_TITLE}</h1>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="neonBlock" data-aos="fade-up">
+                    <table>
+                        <tr>
+                            <th>{SCHEME_GAMENAME}</th>
+                            <th>{SCHEME_PLAYERS}</th>
+                            <th>{SCHEME_TIMELIMIT}</th>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>5:00 min</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>5:00 min</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>5:00 min</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>5:00 min</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>5:00 min</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>5:00 min</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>5:00 min</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>5:00 min</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>5:00 min</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <br><br>
+        <h1 class="title">{SCHEME_HISTORY}</h1>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="neonBlock" data-aos="fade-up">
+                    <table>
+                        <tr>
+                            <th>{SCHEME_GAMENAME}</th>
+                            <th>{SCHEME_PLAYERS}</th>
+                            <th>Score</th>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>1-0</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>1-0</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>1-0</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>1-0</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>1-0</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>1-0</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>1-0</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>1-0</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>1-0</td>
+                        </tr>
+                        <tr>
+                            <td>Steen, papier, schaar</td>
+                            <td>Groep E, Groep A</td>
+                            <td>1-0</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-        

@@ -5,6 +5,10 @@
     overflow: hidden;
 }
 
+.title{
+	font-weight: bold;
+}
+
 /* Game block */
 .gameBlock > .row{
     min-height: 100vh;

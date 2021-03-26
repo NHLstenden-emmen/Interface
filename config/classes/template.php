@@ -135,7 +135,7 @@ class Template
 		
 		//echo str_ireplace($k, $v, $this->content);
 
-		echo str_ireplace($k, $v, $this->content. '<!-- Site geladen in '.(microtime(true) - Start).' seconden :O -->');
+		echo str_ireplace($k, $v, $this->content. '<!-- Site geladen in '.(microtime(true) - Start).' seconden. -->');
 	}
 }
 ?>

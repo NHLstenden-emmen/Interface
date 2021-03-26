@@ -26,5 +26,24 @@ $this->lang['USERNOTFOUND'] = 'User not found';
 $this->lang['SELECT_TEAM'] = 'Select a team';
 $this->lang['TEAMS_DESC'] = 'Lookup all information avout the competitors in the challenges. Or take a look at the livestream!';
 $this->lang['TEAMS_INTRODUCING'] = 'Introducing to you:';
-$this->lang['TEAMS_TITLE'] = 'All Teams'
+$this->lang['TEAMS_TITLE'] = 'All Teams';
+$this->lang['HOME_TITLE'] = 'Home';
+$this->lang['HOME_INTRO'] = 'Lorem ipsum dolar sit amet, consectetur adipescing elit. Mauris mattis hendrerit lorem a orenare.';
+$this->lang['HOME_BUTTON'] = 'Meet the Teams!';
+$this->lang['NAV_HOME'] = 'Home';
+$this->lang['NAV_TEAMS'] = 'Teams';
+$this->lang['NAV_LIVESTREAM'] = 'Livestream';
+$this->lang['NAV_GAMES'] = 'Games';
+$this->lang['NAV_SCHEME'] = 'Scheme';
+$this->lang['NAV_RULES'] = 'Rules';
+$this->lang['NAV_LOGIN'] = 'Login';
+$this->lang['NAV_LOGOUT'] = 'Logout';
+$this->lang['SCHEME_TITLE'] = 'Scheme';
+$this->lang['SCHEME_GAMENAME'] = 'Game name';
+$this->lang['SCHEME_PLAYERS'] = 'Player(s)';
+$this->lang['SCHEME_TIMELIMIT'] = 'Timelimit';
+$this->lang['SCHEME_HISTORY'] = 'History';
+$this->lang['RULES_TITLE'] = 'Game rules';
+
+
 ?>

@@ -26,4 +26,23 @@ $this->lang['SELECT_TEAM'] = 'Selecteer een team';
 $this->lang['TEAMS_DESC'] = 'Bekijk hier alle informatie over de teams die aan dit evenement meedoen. Of bekijk de livestream!';
 $this->lang['TEAMS_INTRODUCING'] = 'Maak kennis met';
 $this->lang['TEAMS_TITLE'] = 'De Teams';
+$this->lang['HOME_TITLE'] = 'Home';
+$this->lang['HOME_INTRO'] = 'Lorem ipsum dolar sit amet, consectetur adipescing elit. Mauris mattis hendrerit lorem a orenare.';
+$this->lang['HOME_BUTTON'] = 'Ontmoet de Teams!';
+$this->lang['NAV_HOME'] = 'Home';
+$this->lang['NAV_TEAMS'] = 'Teams';
+$this->lang['NAV_LIVESTREAM'] = 'Livestream';
+$this->lang['NAV_GAMES'] = 'Spellen';
+$this->lang['NAV_SCHEME'] = 'Speelschema';
+$this->lang['NAV_RULES'] = 'Speluitleg';
+$this->lang['NAV_LOGIN'] = 'Login';
+$this->lang['NAV_LOGOUT'] = 'Uitloggen';
+$this->lang['SCHEME_TITLE'] = 'Speelschema';
+$this->lang['SCHEME_GAMENAME'] = 'Spelnaam';
+$this->lang['SCHEME_PLAYERS'] = 'Speler(s)';
+$this->lang['SCHEME_TIMELIMIT'] = 'Tijdslimiet';
+$this->lang['SCHEME_HISTORY'] = 'Historie';
+$this->lang['RULES_TITLE'] = 'Spelregels';
+
+
 ?>
