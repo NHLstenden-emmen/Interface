@@ -40,6 +40,7 @@
     margin: 0px 0;
     width: 100%;
     text-align: center;
+    left: 0;
     animation: seeMore 2s ease-in-out infinite backwards;
 }
 
