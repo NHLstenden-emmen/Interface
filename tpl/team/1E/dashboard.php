@@ -11,6 +11,7 @@
 
 ?>
 
+<img src="{assetsFolder}/images/logo.png" width="100px">
 
 <div class="containerDashboard" id="block">
     <div class="pageBar">
@@ -93,6 +94,7 @@
             <div class="neonBlock content">
                 <h5 class="blockTitle">Commands</h5>
                 <button type="button" onclick="test()"name="button">Test</button>
+                <button type="button" onclick="stop()"name="button">Stop</button>
                 <script>
                 function test() {
                     $(document).ready(function() {

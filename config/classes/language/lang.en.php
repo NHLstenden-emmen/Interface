@@ -45,5 +45,4 @@ $this->lang['SCHEME_TIMELIMIT'] = 'Timelimit';
 $this->lang['SCHEME_HISTORY'] = 'History';
 $this->lang['RULES_TITLE'] = 'Game rules';
 
-
 ?>

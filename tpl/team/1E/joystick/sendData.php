@@ -149,7 +149,13 @@ if(isset($_POST['action'])){
     // Commands
 
     if ($action == "test") {
-      $command = "0";
+        $command = "2";      
+        var_dump($socket->sendToBot($bot, $command));
+        sleep(1);
+        $command = "a";      
+        var_dump($socket->sendToBot($bot, $command));
+
+        die();
     }
 
     var_dump($socket->sendToBot($bot, $command));
