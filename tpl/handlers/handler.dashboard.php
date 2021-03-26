@@ -14,7 +14,7 @@ if(file_exists(TeamPages.$_GET['Path_1'].'/dashboard.php'))
 {
 	$page = $_GET['Path_1'];
 
-	$this->Set("extraCSS", "<link rel='stylesheet' href='/tpl/assets/css/team/".$page."/dashboard.css'>");
+	$this->Set("extraCSS", "<link rel='stylesheet' href='../tpl/assets/css/team/".$page."/dashboard.css'>");
 
 	require(TeamPages.$page.'/dashboard.php');
 }
