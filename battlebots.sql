@@ -197,12 +197,6 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `speelschema`
---
-ALTER TABLE `speelschema`
-  ADD CONSTRAINT `fk_spel_naamspeelschema` FOREIGN KEY (`spel_naam`) REFERENCES `spel` (`naam`);
-
---
 -- Constraints for table `users`
 --
 ALTER TABLE `users`

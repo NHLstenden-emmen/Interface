@@ -74,6 +74,7 @@ var JoyStick = (function(container, parameters)
 	if(height === 0) { height = objContainer.clientHeight; }
 	canvas.width = width;
 	canvas.height = height;
+	canvas.background = "#FFF";
 	objContainer.appendChild(canvas);
 	var context=canvas.getContext("2d");
 
@@ -372,12 +373,16 @@ var JoyStick = (function(container, parameters)
 		}			
 
 		if(lastResult != result){
-			lastResult = result;	
-			$(document).ready(function() {
-				$.post("joystick/sendData.php",{'action':result});
-				var timestamp = '[' + Date.now() + '] ';
-				console.log(timestamp + result);
-			});
+			if(lastResult != ""){
+				lastResult = result;	
+				$(document).ready(function() {
+					$.post("/tpl/team/1E/sendData.php",{'action':result});
+					var timestamp = '[' + Date.now() + '] ';
+					console.log(timestamp + result);
+				});
+			} else {
+				lastResult = result;
+			}
 		}
 
 		$(document).keydown(function (event){
@@ -389,7 +394,7 @@ var JoyStick = (function(container, parameters)
 					var timestamp = '[' + Date.now() + '] ';
 					console.log(timestamp + 'Stop');
 					$(document).ready(function() {
-						$.post("joystick/sendData.php",{'action':'Stop'});
+						$.post("/tpl/team/1E/sendData.php",{'action':'Stop'});
 					});
 				}
 			}
@@ -401,7 +406,7 @@ var JoyStick = (function(container, parameters)
 					var timestamp = '[' + Date.now() + '] ';
 					console.log(timestamp + 'W');
 					$(document).ready(function() {
-						$.post("joystick/sendData.php",{'action':'W'});
+						$.post("/tpl/team/1E/sendData.php",{'action':'W'});
 					});
 				}
 			}
@@ -413,7 +418,7 @@ var JoyStick = (function(container, parameters)
 					var timestamp = '[' + Date.now() + '] ';
 					console.log(timestamp + 'S');
 					$(document).ready(function() {
-						$.post("joystick/sendData.php",{'action':'S'});
+						$.post("/tpl/team/1E/sendData.php",{'action':'S'});
 					});
 				}
 			}
@@ -425,7 +430,7 @@ var JoyStick = (function(container, parameters)
 					var timestamp = '[' + Date.now() + '] ';
 					console.log(timestamp + 'A');
 					$(document).ready(function() {
-						$.post("joystick/sendData.php",{'action':'A'});
+						$.post("/tpl/team/1E/sendData.php",{'action':'A'});
 					});
 				}
 			}
@@ -437,7 +442,7 @@ var JoyStick = (function(container, parameters)
 					var timestamp = '[' + Date.now() + '] ';
 					console.log(timestamp + 'D');
 					$(document).ready(function() {
-						$.post("joystick/sendData.php",{'action':'D'});
+						$.post("/tpl/team/1E/sendData.php",{'action':'D'});
 					});
 				}
 			}

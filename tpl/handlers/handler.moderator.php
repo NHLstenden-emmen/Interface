@@ -1,14 +1,14 @@
 <?php
 
-//$user->Redirect(false);
+$user->Redirect(false);
 
 define('ModeratorPages', 'tpl/moderator/pages/');
 ob_start();
 
-// if ($user->rank < 2)
-// {
-// 	$core->Redirect('/');
-// }
+if ($user->level < 2)
+{
+	$core->Redirect('/');
+}
 
 if(empty($_GET['Path_1']))
 {

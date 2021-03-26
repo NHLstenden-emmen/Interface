@@ -1,13 +1,14 @@
-
-<div id="neoBlockContainer">
-    <div class="neonBlock Content">
-        <h1 class="blockTitle">{LOGIN}</h1>
-        <form method="POST">
-            <!-- <div class="error"></div> -->
-            <input type="text" name="loginEmail" placeholder="{EMAIL}" required>
-            <input type="password" name="loginPassword" placeholder="{PASSWORD}" required>
-
-            <button class="button" name="loginSubmit" type="submit">{LOGIN}</button><br>
+<div class="container">
+    <div id="login">
+        <h1 class="title">Login</h1>
+    </div>
+    <div class="neonBlock">
+        {loginError}
+        <form method="POST" autocomplete="off">
+            <input type="text" name="loginEmail" placeholder="{EMAIL}" required><br>
+            <input type="password" name="loginPassword" placeholder="{PASSWORD}" required><br>
+            <button class="button" name="loginSubmit" type="submit">Login</button>            
+            <a class="register" href="/register">{NO_ACCOUNT}</a>
         </form>
     </div>
 </div>

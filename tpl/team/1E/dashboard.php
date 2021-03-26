@@ -7,19 +7,16 @@
 // echo '<link rel="stylesheet" media="screen and (min-width: 800px) and (max-width: 1439px)" href="css/pages/team/1E/tablet-style.css" />';
 // echo '<link rel="stylesheet" media="screen and (min-width: 100px) and (max-width: 799px)" href="css/pages/team/1E/mobile-style.css" />';
 // echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';
- echo '<script src="https://code.jquery.com/jquery-3.5.1.js"></script>';
+//  echo '<script src="https://code.jquery.com/jquery-3.5.1.js"></script>';
 
 ?>
-
-<img src="{assetsFolder}/images/logo.png" width="100px">
-
-<div class="containerDashboard" id="block">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<div class="container" id="block">
     <div class="pageBar">
         <div>
             <h2 id="titel">Dashboard</h2>
             <p id="desc">Groep INF1E</p>
         </div>
-        <a class="logout button" href="#">Log uit</a>
     </div>
 
     <div class="row">
@@ -44,10 +41,11 @@
                         </div>
 
                         <script>
-
                         function stop() {
                             $(document).ready(function() {
-                                $.post("/tpl/team/1E/joystick/sendData.php",{'action':'Stop'});
+                                $.post("/tpl/team/1E/joystick/sendData.php", {
+                                    'action': 'Stop'
+                                });
                                 var timestamp = '[' + Date.now() + '] ';
                                 console.log(timestamp + 'Stop');
                             });
@@ -55,7 +53,9 @@
 
                         function joystickW() {
                             $(document).ready(function() {
-                                $.post("/tpl/team/1E/joystick/sendData.php",{'action':'W'});
+                                $.post("/tpl/team/1E/joystick/sendData.php", {
+                                    'action': 'W'
+                                });
                                 var timestamp = '[' + Date.now() + '] ';
                                 console.log(timestamp + 'W');
                             });
@@ -63,7 +63,9 @@
 
                         function joystickA() {
                             $(document).ready(function() {
-                                $.post("/tpl/team/1E/joystick/sendData.php",{'action':'A'});
+                                $.post("/tpl/team/1E/joystick/sendData.php", {
+                                    'action': 'A'
+                                });
                                 var timestamp = '[' + Date.now() + '] ';
                                 console.log(timestamp + 'A');
                             });
@@ -71,7 +73,9 @@
 
                         function joystickS() {
                             $(document).ready(function() {
-                                $.post("/tpl/team/1E/joystick/sendData.php",{'action':'S'});
+                                $.post("/tpl/team/1E/joystick/sendData.php", {
+                                    'action': 'S'
+                                });
                                 var timestamp = '[' + Date.now() + '] ';
                                 console.log(timestamp + 'S');
                             });
@@ -79,7 +83,9 @@
 
                         function joystickD() {
                             $(document).ready(function() {
-                                $.post("/tpl/team/1E/joystick/sendData.php",{'action':'D'});
+                                $.post("/tpl/team/1E/joystick/sendData.php", {
+                                    'action': 'D'
+                                });
                                 var timestamp = '[' + Date.now() + '] ';
                                 console.log(timestamp + 'D');
                             });
@@ -93,12 +99,14 @@
         <div data-aos="fade-down" class="col-lg-3 block" id="block2">
             <div class="neonBlock content">
                 <h5 class="blockTitle">Commands</h5>
-                <button type="button" onclick="test()"name="button">Test</button>
-                <button type="button" onclick="stop()"name="button">Stop</button>
+                <button type="button" onclick="test()" name="button">Test</button>
+                <button type="button" onclick="stop()" name="button">Stop</button>
                 <script>
                 function test() {
                     $(document).ready(function() {
-                        $.post("/tpl/team/1E/joystick/sendData.php",{'action':'test'});
+                        $.post("/tpl/team/1E/joystick/sendData.php", {
+                            'action': 'test'
+                        });
                         var timestamp = '[' + Date.now() + '] ';
                         console.log(timestamp + 'test');
                     });
@@ -276,3 +284,88 @@
         </div>
     </div>
 </div>
+
+
+<script>
+
+    window.addEventListener('keydown', function(e) {
+    if(e.keyCode == 32 && e.target == document.body) {
+        e.preventDefault();
+    }
+    });
+
+    var lastKeyboard;
+    $(document).keydown(function(event) {
+
+        // Spatiebalk
+        if (event.which === 32) {
+            if (event.which !== lastKeyboard) {
+                lastKeyboard = 32;
+                var timestamp = '[' + Date.now() + '] ';
+                console.log(timestamp + 'Stop');
+                $(document).ready(function() {
+                    $.post("/tpl/team/1E/sendData.php", {
+                        'action': 'Stop'
+                    });
+                });
+            }
+        }
+
+        // Naar voren
+        if (event.which === 87) {
+            if (event.which != lastKeyboard) {
+                lastKeyboard = 87;
+                var timestamp = '[' + Date.now() + '] ';
+                console.log(timestamp + 'W');
+                $(document).ready(function() {
+                    $.post("/tpl/team/1E/sendData.php", {
+                        'action': 'W'
+                    });
+                });
+            }
+        }
+
+        // Naar achteren
+        if (event.which === 83) {
+            if (event.which != lastKeyboard) {
+                lastKeyboard = 83;
+                var timestamp = '[' + Date.now() + '] ';
+                console.log(timestamp + 'S');
+                $(document).ready(function() {
+                    $.post("/tpl/team/1E/sendData.php", {
+                        'action': 'S'
+                    });
+                });
+            }
+        }
+
+        // Naar links
+        if (event.which === 65) {
+            if (event.which != lastKeyboard) {
+                lastKeyboard = 65;
+                var timestamp = '[' + Date.now() + '] ';
+                console.log(timestamp + 'A');
+                $(document).ready(function() {
+                    $.post("/tpl/team/1E/sendData.php", {
+                        'action': 'A'
+                    });
+                });
+            }
+        }
+
+        // Naar rechts
+        if (event.which === 68) {
+            if (event.which != lastKeyboard) {
+                lastKeyboard = 68;
+                var timestamp = '[' + Date.now() + '] ';
+                console.log(timestamp + 'D');
+                $(document).ready(function() {
+                    $.post("/tpl/team/1E/sendData.php", {
+                        'action': 'D'
+                    });
+                });
+            }
+        }
+
+    });
+</script>

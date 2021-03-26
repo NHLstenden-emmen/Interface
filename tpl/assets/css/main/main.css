@@ -17,7 +17,7 @@
 	--team1B: #28478f;
 	--team1C: #d92626;
 	--team1D: #57c511;
-	--team1E: #ff8000;
+	--team1E: #e0e0e0;
 
 	/* Button colors */
 	--buttonColor: #550de8;
@@ -102,6 +102,22 @@ hr {
 	padding: 0;
 }
 
+.topPadding{
+	padding-top: 100px;
+}
+
+iframe{
+	height: 100%;
+    border: 0;
+}
+
+.zoom{
+	transition: transform .2s;
+}
+.zoom:hover{
+	transform: scale(1.05);
+}
+
 /* Button styling */
 
 button.button {
@@ -119,6 +135,8 @@ button.button {
 button.button:hover {
 	cursor: pointer;
 	animation: buttonHover 0.2s ease-in-out forwards;
+	outline: 0;
+	border: 0;
 }
 
 a.button {
@@ -130,6 +148,11 @@ a.button {
 	animation: button 0.2s ease-in-out forwards;
 	text-decoration: none;
 	font-size: 0.8em;
+}
+
+.button:hover{	
+	outline: 0;
+	border: 0;
 }
 
 a.alternative-button {
@@ -215,6 +238,24 @@ input[type="radio"] {
 	margin: 5px;
 }
 
+select{
+	background-color: var(--inputColor);
+	color: var(--inputText);
+	border: 0;
+	height: 42px;
+	padding: 0 13px;	
+    outline: none;
+}
+
+textarea:focus, 
+input:focus,
+input:active,
+select:focus,
+select:active{
+    outline: none;
+	border: 0;
+}
+
 /* Tables */
 
 table {
@@ -267,6 +308,15 @@ th{
 	}
 	to {
 		opacity: 1;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
 	}
 }
 
@@ -575,6 +625,56 @@ th{
 		width: 0%;
 		right: calc(-1 * var(--animatedLines));
 		height: var(--animatedLines);
+		background-color: var(--glowColor);
+	}
+}
+
+/* Animation 6 */
+
+.line6 {
+	position: absolute;
+	background-color: var(--primaryColor);
+	box-shadow: 0 0 10px var(--glowColor);
+
+	animation-name: line6;
+	animation-duration: 6s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-delay: 0.2s;
+}
+
+@keyframes line6 {
+	0% {
+		bottom: 0;
+		left: 10%;
+		height: 0px;
+		
+		width: var(--animatedLines);		
+		background-color: var(--glowColor);
+	}	
+	20% {
+		bottom: 0;
+		left: 10%;
+		height: 75%;
+	}
+	40% {
+		bottom: calc(75% - var(--animatedLines));
+		left: 10%;
+		height: var(--animatedLines);		
+		width: var(--animatedLines)
+	}
+	60% {
+		left: 0%;
+		width: 10%;
+	}
+	80% {
+		width: -10%;
+	}
+	100% {
+		bottom: calc(75% - var(--animatedLines));
+		left: 0;
+		height: var(--animatedLines);		
+		width: 0;		
 		background-color: var(--glowColor);
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-class Socket
+class ServerConnection
 {
         private $port;
         private $host;
@@ -103,53 +103,4 @@ class Socket
 
 }
 
-$socket = new Socket(49153, "194.171.181.139");
-// if(isset($_POST['sendButton']))
-// {
-//         var_dump($socket->startMaze());
-// }
-// else if(isset($_POST['readyButton']))
-// {
-//         var_dump($socket->sendStartToBot($bot));
-//         if($socket->sendStartToBot($bot) == "not_your_turn")
-//         {
-//                 var_dump($socket->sendStartToBot("BOT2"));  
-//         }
-// }
-// else if(isset($_POST['generateSchemes']))
-// {
-//         var_dump($socket->generateSchemes());
-// }
-// else if(isset($_POST['stopButton']))
-// {
-//         var_dump($socket->sendStoptoBot($bot));
-//         if($socket->sendStoptoBot($bot) == "not_your_turn")
-//         {
-//                 var_dump($socket->sendStoptoBot("BOT2"));  
-//         }
-// }
-
-
-
-
-if(isset($_POST['sendCustom'])){
-        $bot = "INF1E";
-        $command = $_POST['custom'];
-        var_dump($socket->sendToBot($bot, $command));
-}
-
 ?>
-<meta name="color-scheme" content="dark light">
-<form method="POST">
-
-        <!-- <input type="submit" name="sendButton" value="Maze start">
-        <input type="submit" name="readyButton" value="Ready/Start">
-        <input type="submit" name="stopButton" value="Stop">
-
-        <input type="submit" name="generateSchemes" value="Speelschema genereren"> -->
-
-
-
-        <input type="text" name="custom">
-        <input type="submit" name="sendCustom">
-</form>

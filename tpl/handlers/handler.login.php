@@ -27,7 +27,7 @@ if(isset($_POST['loginSubmit']))
             }
             else 
             {
-                $core->Redirect(Config::$loginStartpage);
+                $core->Refresh();
             }
          }
      }

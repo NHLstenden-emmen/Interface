@@ -4,8 +4,7 @@ const burgerMenu = () => {
     const navbar = document.querySelector('.nav');
     const nav = document.querySelector('#navbar');
 
-    const navLinks = document.querySelectorAll('ul > li');
-    console.table(navLinks);
+    const navLinks = document.querySelectorAll('ul > li, .dropdown-content > a');
     const body = document.querySelector('body');
 
     burger.addEventListener('click', ()=> {
@@ -40,7 +39,59 @@ const menuLinks = () => {
     });
 }
 
+
+const sortByValue = (jsObj) => {
+    return Object.entries(jsObj).sort((a, b) => {
+        if(a[1] < b[1]) { // Numeric value from a is smaller than from b
+          return 1;      // -> b before a
+        }
+        if(a[1] < b[1]) { // Numeric value from a is bigger than from b
+          return -1;     // -> a before b
+        }
+        if(a[0] > b[0]) { // Name from b comes alphabetically before name from a
+          return 1;      // -> b before a
+        }
+        if(a[0] < b[0]) { // Name from b comes alphabetically after name from a
+          return -1;     // ->  a before b
+        }
+        return 0         // No difference found
+      });
+}
+
+const isJSON = (item) => {
+    item = typeof item !== "string" ? JSON.stringify(item) : item;
+
+    try 
+    {
+        item = JSON.parse(item);
+    } 
+    catch (e) 
+    {
+        return false;
+    } 
+
+    if (typeof item === "object" && item !== null) {
+        return true;
+    }
+
+    return false;
+}
+
 document.addEventListener("DOMContentLoaded", function(){
     menuLinks();
     burgerMenu();
 });
+
+
+/* Dashboard logo changer */
+var currentURL = window.location.href;
+var teams = ["1A", "1B", "1C", "1D", "1E"];
+var teamsLength = teams.length;
+const logoTeam = document.getElementById("logo");
+for (var i = 0; i < teamsLength; i++) {
+    var searchURL = currentURL.toUpperCase()
+    var n = searchURL.search(teams[i]);
+    if(n > 0){
+        logoTeam.src = "/tpl/assets/images/team/" + teams[i] + "/logoResize.png";
+    }
+}

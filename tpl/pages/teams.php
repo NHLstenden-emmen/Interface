@@ -36,15 +36,22 @@
         <div class="row">
 
             <!-- Team A -->
+            <?php
+                // Load description team A
+                $A_TeamInfo = $DB->Select("SELECT * FROM teams WHERE TeamID = '1A' LIMIT 1", "");
+                foreach($A_TeamInfo as $row){
+                    $A_RobotName = $row['RobotName'];
+                    $A_TeamDesc = $row['TeamDesc'];
+                }
+            ?>
             <div class="col-sm-12 teamBlock" id="teamA" data-aos="fade-up">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4 class="teamTitle">Team A</h4>
+                        <h4 class="teamTitle">
+                            <?php echo $A_RobotName; ?> [A]
+                        </h4>
                         <p class="teamDescription">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Sed tincidunt massa libero, et blandit purus blandit quis. 
-                            Nulla vulputate id tellus ac consequat
-                            Curabitur mattis nibh magna, sit amet fermentum elit luctus sed. 
+                            <?php echo $A_TeamDesc; ?>
                         </p>
                     </div>
                     <div class="col-sm-6 teamPhoto">
@@ -54,33 +61,47 @@
             </div>
 
             <!-- Team B -->
+            <?php
+                // Load description team B
+                $B_TeamInfo = $DB->Select("SELECT * FROM teams WHERE TeamID = '1B' LIMIT 1", "");
+                foreach($B_TeamInfo as $row){
+                    $B_RobotName = $row['RobotName'];
+                    $B_TeamDesc = $row['TeamDesc'];
+                }
+            ?>
             <div class="col-sm-12 teamBlock" id="teamB" data-aos="fade-up">
                 <div class="row">
                     <div class="col-sm-6 teamPhoto">
                         <img class="neonBorder" src="{assetsFolder}/images/team/1B/logo.png" title="Team B" alt="Team B"> 
                     </div>
                     <div class="col-sm-6">
-                        <h4 class="teamTitle">Team B</h4>
+                        <h4 class="teamTitle">
+                            <?php echo $B_RobotName; ?> [B]
+                        </h4>
                         <p class="teamDescription">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Sed tincidunt massa libero, et blandit purus blandit quis. 
-                            Nulla vulputate id tellus ac consequat
-                            Curabitur mattis nibh magna, sit amet fermentum elit luctus sed. 
+                            <?php echo $B_TeamDesc; ?>
                         </p>
                     </div>
                 </div>
             </div>
 
             <!-- Team C -->
+            <?php
+                // Load description team C
+                $C_TeamInfo = $DB->Select("SELECT * FROM teams WHERE TeamID = '1C' LIMIT 1", "");
+                foreach($C_TeamInfo as $row){
+                    $C_RobotName = $row['RobotName'];
+                    $C_TeamDesc = $row['TeamDesc'];
+                }
+            ?>
             <div class="col-sm-12 teamBlock" id="teamC" data-aos="fade-up">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4 class="teamTitle">Team C</h4>
+                        <h4 class="teamTitle">
+                            <?php echo $C_RobotName; ?> [C]
+                        </h4>
                         <p class="teamDescription">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Sed tincidunt massa libero, et blandit purus blandit quis. 
-                            Nulla vulputate id tellus ac consequat
-                            Curabitur mattis nibh magna, sit amet fermentum elit luctus sed. 
+                            <?php echo $C_TeamDesc; ?>
                         </p>
                     </div>
                     <div class="col-sm-6 teamPhoto">
@@ -90,33 +111,47 @@
             </div>
 
             <!-- Team D -->
+            <?php
+                // Load description team D
+                $D_TeamInfo = $DB->Select("SELECT * FROM teams WHERE TeamID = '1D' LIMIT 1", "");
+                foreach($D_TeamInfo as $row){
+                    $D_RobotName = $row['RobotName'];
+                    $D_TeamDesc = $row['TeamDesc'];
+                }
+            ?>
             <div class="col-sm-12 teamBlock" id="teamD" data-aos="fade-up">
                 <div class="row">
                     <div class="col-sm-6 teamPhoto">
                         <img class="neonBorder" src="{assetsFolder}/images/team/1D/logo.png" title="Team D" alt="Team D"> 
                     </div>
                     <div class="col-sm-6">
-                        <h4 class="teamTitle">Team D</h4>
+                        <h4 class="teamTitle">
+                            <?php echo $D_RobotName; ?> [D]
+                        </h4>
                         <p class="teamDescription">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Sed tincidunt massa libero, et blandit purus blandit quis. 
-                            Nulla vulputate id tellus ac consequat
-                            Curabitur mattis nibh magna, sit amet fermentum elit luctus sed. 
+                            <?php echo $D_TeamDesc; ?>
                         </p>
                     </div>                    
                 </div>
             </div>
 
             <!-- Team E -->
+            <?php
+                // Load description team E
+                $E_TeamInfo = $DB->Select("SELECT * FROM teams WHERE TeamID = '1E' LIMIT 1", "");
+                foreach($E_TeamInfo as $row){
+                    $E_RobotName = $row['RobotName'];
+                    $E_TeamDesc = $row['TeamDesc'];
+                }
+            ?>
             <div class="col-sm-12 teamBlock" id="teamE" data-aos="fade-up">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4 class="teamTitle">Team E</h4>
+                        <h4 class="teamTitle">
+                            <?php echo $E_RobotName; ?> [E]
+                        </h4>
                         <p class="teamDescription">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Sed tincidunt massa libero, et blandit purus blandit quis. 
-                            Nulla vulputate id tellus ac consequat
-                            Curabitur mattis nibh magna, sit amet fermentum elit luctus sed. 
+                            <?php echo $E_TeamDesc; ?>
                         </p>
                     </div>
                     <div class="col-sm-6 teamPhoto">

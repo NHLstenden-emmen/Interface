@@ -4,8 +4,8 @@ if(!defined('Start')) exit('403');
 class Config {
 	static $siteName 		= 'Robo TV';
 
-	static $serverIP 		= 'Robo TV';
-	static $serverPort 		= 'Robo TV';
+	static $serverIP 		= '194.171.181.139';
+	static $serverPort 		=  49153;
 
 	## MySQL Connect Settings
 	static $DB = Array(
@@ -17,15 +17,9 @@ class Config {
 
 	static $errorfile		= 'error';
 
-	static $error_DB 		= true;
-
-	static $error_filter 	= true;
-
 	static $loginStartpage 	= 'start';
 
 	static $cookie_time		= 216000;
-
-
 
 }
 ?>

@@ -38,23 +38,23 @@ video#livestreamVideo{
 }
 
 .user{
+	justify-content: flex-start;
 	font-weight: bold;
 	color: var(--white);
 	font-size: .9em;
-	padding: 0 15px 0 0;
 	display: flex;
 	align-items: baseline;
 }
 
 p.message {
     display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	text-align: right;
-	font-size: .9em;
-	width: 100%;
-	color: var(--placeholder);	
-	font-style: italic;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: right;
+    font-size: .9em;
+    width: 100%;
+    color: var(--placeholder);
+    font-style: italic;
 }
 
 .avatar{
@@ -64,8 +64,6 @@ p.message {
 
 .messageContent{
 	display: grid;
-	grid-template-columns: auto auto;
-	width: 100%;
 }
 
 #sendMessage{
@@ -89,8 +87,20 @@ p.message {
 .input-icons i {
 	position: absolute;
 }
+
+.input-icons:hover{
+	cursor: pointer;
+}
   
 .input-icons {
 	width: 100%;
 }
 
+i.far.fa-trash-alt {
+    padding-bottom: 25px;
+	color: #ce4444;
+}
+
+i.far.fa-trash-alt:hover {
+	cursor: pointer;
+}

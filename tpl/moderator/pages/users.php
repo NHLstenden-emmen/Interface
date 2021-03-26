@@ -1,3 +1,5 @@
+<div class="container topPadding">
+
 <?php 
     $this->Set("pageTitle", $this->Get("ADMIN_GEBRUIKERBEHEER"));
  
@@ -18,27 +20,32 @@
 						{
 							if(isset($_POST['levelSelect']))
 							{
-								$voorNaam = $filter->sanatizeInput($_POST['voorNaam'], 'string');
-								$achterNaam = $filter->sanatizeInput($_POST['achterNaam'], 'string');
-								$regEmail = $filter->sanatizeInput($_POST['regEmail'], 'email');
-								$regPass1 =  $filter->sanatizeInput($_POST['regPass1'], 'string');
-								$regPass2 =  $filter->sanatizeInput($_POST['regPass2'], 'string');
-								$regSelect = $filter->sanatizeInput($_POST['levelSelect'], 'int');
-								$gebruikerID = $filter->sanatizeInput($_POST['gebruikerID'], 'int');
-					
-								$regAntwoord = $user->Edit($voorNaam, $achterNaam, $regEmail, $regPass1, $regPass2, $regSelect, $gebruikerID);
-						
-								if($regAntwoord == 2)
+								if(isset($_POST['teamSelect']))
 								{
-									$this->Set("updateError", $this->Get("GEBRUIKERBEHEER_WACHTWOORDEN_OVEREEN"));
-								}
-								else if($regAntwoord == 3)
-								{
-									$this->Set("updateError",  $this->Get("GEBRUIKERBEHEER_INVOEGEN_VERKEERDE_EMAIL"));
-								}
-								else 
-								{
-									$core->Refresh();
+									$voorNaam = $filter->sanatizeInput($_POST['voorNaam'], 'string');
+									$achterNaam = $filter->sanatizeInput($_POST['achterNaam'], 'string');
+									$Email = $filter->sanatizeInput($_POST['regEmail'], 'email');
+									$Pass1 =  $filter->sanatizeInput($_POST['regPass1'], 'string');
+									$Pass2 =  $filter->sanatizeInput($_POST['regPass2'], 'string');
+									$levelSelect = $filter->sanatizeInput($_POST['levelSelect'], 'int');
+									$teamSelect = $filter->sanatizeInput($_POST['teamSelect'], 'string');
+
+									$gebruikerID = $filter->sanatizeInput($_POST['gebruikerID'], 'int');
+
+									$regAntwoord = $user->Edit($teamSelect, $voorNaam, $achterNaam, $Email, $Pass1, $Pass2, $levelSelect, $gebruikerID);
+							
+									if($regAntwoord == 2)
+									{
+										$this->Set("updateError", $this->Get("GEBRUIKERBEHEER_WACHTWOORDEN_OVEREEN"));
+									}
+									else if($regAntwoord == 3)
+									{
+										$this->Set("updateError", $this->Get("GEBRUIKERBEHEER_INVOEGEN_VERKEERDE_EMAIL"));
+									}
+									else 
+									{
+										$core->Refresh();
+									}
 								}
 							}
 						}
@@ -60,8 +67,8 @@
 						<th>Level</th>
 						<th>Naam</th>
 						<th>Email</th>
-						<th><i class="fa fa-pencil-square-o" aria-hidden="true"></i></th>
-						<th><i class="fa fa-times" aria-hidden="true"></i></th>
+						<th>Aanpassen</th>
+						<th>Verwijderen</th>
 					</tr>
 				</thead>
 				<tbody>';
@@ -73,7 +80,7 @@
 				echo "<td>".$value['voornaam']." ".$value['achternaam']. "</td>";
 				echo "<td>".$value['email']."</td>";
 				echo "<td class='link' data-link='/moderator/users/edit/".$value['user_id']."'>
-				<i class='fa fa-pencil-square-o' aria-hidden='true'></i>
+				<i class='far fa-edit'></i>
 				</td>";
 				echo "<td class='link' data-link='/moderator/users/delete/".$value['user_id']."'>
 						<i class='fa fa-times' aria-hidden='true'></i>
@@ -98,26 +105,40 @@
 	else if(isset($_GET['Path_2']) && $_GET['Path_2'] == 'edit' && isset($_GET['Path_3']) && $user->rank >= 2)
 	{
 		$gebruikerID = $filter->sanatizeInput($_GET['Path_3'], 'int');
-		$gebruikerResult = $DB->Select("SELECT * FROM gebruiker WHERE gebruiker_id = ? LIMIT 1 ", [$gebruikerID]); 
+		$gebruikerResult = $DB->Select("SELECT * FROM users WHERE user_id = ? LIMIT 1 ", [$gebruikerID]); 
+		$teamResult = $DB->Select("SELECT * FROM teams"); 
 
-		echo '<div class="sectionTitle">{VIDEOBEHEER_AANPASSEN_TITEL}</div>
+		echo '
 			<form method="post">{updateError}<br />
-			<label>{GEBRUIKERBEHEER_INVOEGEN_VOORNAAM}: <input type="text" name="voorNaam" placeholder="{GEBRUIKERBEHEER_INVOEGEN_VOORNAAM}" value="'.$gebruikerResult[0]['voornaam'].'" required></label><br />
-			<label>{GEBRUIKERBEHEER_INVOEGEN_ACHTERNAAM}: <input type="text" name="achterNaam" placeholder="{GEBRUIKERBEHEER_INVOEGEN_ACHTERNAAM}" value="'.$gebruikerResult[0]['achternaam'].'" required></label><br />
+			<label>{VOORNAAM}: <input type="text" name="voorNaam" placeholder="{VOORNAAM}" value="'.$gebruikerResult[0]['voornaam'].'" required></label><br />
+			<label>{ACHTERNAAM}: <input type="text" name="achterNaam" placeholder="{ACHTERNAAM}" value="'.$gebruikerResult[0]['achternaam'].'" required></label><br />
 			<label>Email: <input type="email" name="regEmail" placeholder="Emailadres" value="'.$gebruikerResult[0]['email'].'" required></label><br />
-			<label>{PROFIEL_AANPASSEN_WACHTWOORD}: <input type="password" name="regPass1" placeholder="{PROFIEL_AANPASSEN_WACHTWOORD}" required></label><br />
-			<label>{GEBRUIKERBEHEER_INVOEGEN_HERHAAL_WACHTWOORD}: <input type="password" name="regPass2" placeholder="{GEBRUIKERBEHEER_INVOEGEN_HERHAAL_WACHTWOORD}" required></label><br />
-			<input type="hidden" value="'.$gebruikerResult[0]['gebruiker_id'].'" name="gebruikerID">
-			<label>Level: <select name="levelSelect">';
+			<label>{WACHTWOORD}: <input type="password" name="regPass1" placeholder="{WACHTWOORD}" required></label><br />
+			<label>{HERHAAL_WACHTWOORD}: <input type="password" name="regPass2" placeholder="{HERHAAL_WACHTWOORD}" required></label><br />
+			<input type="hidden" value="'.$gebruikerResult[0]['user_id'].'" name="gebruikerID">
+			<label>Level: <select class="" name="levelSelect">';
 
-			for( $i=1; $i < 3; $i++) 
+			for( $i=0; $i <= 2; $i++) 
 			{
 				echo '<option ' . ($gebruikerResult[0]['level'] == $i ? 'selected="selected"' : '') . ' value="'.$i.'">' . $user->userLevelName($i) . '</option>';
 			}
 			
+		echo '</select>
+
+		<label>Team: <select class="" name="teamSelect">';
+
+		foreach ($teamResult as $key => $value) 
+		{
+			echo '<option ' . ($gebruikerResult[0]['team'] == $value['TeamID'] ? 'selected="selected"' : '') . ' value="'.$value['TeamID'].'">' . $value['TeamID'] . '</option>';
+		}
+
 		echo '</select>
 				<br />
 			<button type="submit" name="submitEdit" required>{BEHEER_OPSLAAN}</button>
 		</form>';
 	}
     ?>
+
+
+</div>
+<link rel="stylesheet" href="/tpl/assets/css/page/moderator.css">

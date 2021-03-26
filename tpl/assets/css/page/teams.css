@@ -39,6 +39,7 @@
     font-size: 1.2em;
     margin: 0px 0;
     width: 100%;
+    left: 0;
     text-align: center;
     animation: seeMore 2s ease-in-out infinite backwards;
 }

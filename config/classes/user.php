@@ -2,7 +2,7 @@
 class User
 {
 	public $logged_in = false;
-	public $email, $naam, $id, $team = "", $rank = 0;
+	public $email, $naam, $id = 0, $team = "", $level = 0;
 
 	private $data;
 
@@ -29,7 +29,7 @@ class User
 
 			$this->id = intval($this->data('user_id'));
 			$this->team = $this->data('team');
-			$this->rank = intval($this->data('level'));
+			$this->level = intval($this->data('level'));
 			$this->naam = $this->data('voornaam').'	&nbsp;'.$this->data('achternaam');
 		} 
 	}
@@ -86,7 +86,7 @@ class User
 		return false;
 	}
 
-	function Edit($voorNaam, $achterNaam, $regEmail, $team, $regPass1, $regPass2, $level, $userID)
+	function Edit($team, $voorNaam, $achterNaam, $regEmail, $regPass1, $regPass2, $level, $userID)
 	{
 		global $DB, $filter;
 
@@ -95,6 +95,7 @@ class User
 		$regEmail 		= $filter->sanatizeInput($regEmail, 'email');
 		$regPass1 		= $filter->sanatizeInput($regPass1, 'string');
 		$regPass2 		= $filter->sanatizeInput($regPass2, 'string');
+		$teamSelect 	= $filter->sanatizeInput($teamSelect, 'string');
 
 		$emailLijst = array(
 			'student.nhlstenden.com',
@@ -116,25 +117,31 @@ class User
 		return false;
 	}
 
+	function userLevelName($type, $team = "") 
+	{
+		switch ($type) 
+		{
+			default:
+				return 'Gast';
+			break;
+			case 1:
+				return 'Teamlid';
+			break;			
+			case 2:
+				return 'Moderator';
+			break;		
+		}
+	}
+
 	function userLevel($id) {
 		global $DB;
 
-		$gebruikerResult = $DB->Select("SELECT level FROM users WHERE user_id = ? LIMIT 1", [$id])[0];
+		$gebruikerResult = $DB->Select("SELECT level, team FROM users WHERE user_id = ? LIMIT 1", [$id])[0];
 
-			switch ($gebruikerResult['level']) 
-			{
-				default:
-					return 'Gast';
-				break;
-				case 1:
-					return 'Teamlid';
-				break;
-				case 2:
-					return 'Moderator';
-				break;					
-			}
+		return $this->userLevelName($gebruikerResult['level'], $gebruikerResult['team']);
 		
 	}
+
 
 	function Redirect($if_logged_in)
 	{

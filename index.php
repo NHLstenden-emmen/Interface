@@ -10,6 +10,7 @@ require_once 'config/classes/template.php';
 require_once 'config/classes/user.php';
 require_once 'config/classes/filter.php';
 require_once 'config/classes/language.php';
+require_once 'config/classes/socket.php';
 
 require_once 'config/Configuration.php';
 
@@ -19,6 +20,7 @@ $user           = new User;
 $TPL            = new Template;
 $filter         = new Filter;
 $lang           = new Language;
+$socket         = new ServerConnection(Config::$serverPort, Config::$serverIP);
 
 $TPL->Route($_SERVER['PATH_INFO']);
 $TPL->GetHandlers();
