@@ -102,7 +102,7 @@
 		$core->Redirect("/moderator/users");
 	}
 	//Laat de edit pagina zien
-	else if(isset($_GET['Path_2']) && $_GET['Path_2'] == 'edit' && isset($_GET['Path_3']) && $user->rank >= 2)
+	else if(isset($_GET['Path_2']) && $_GET['Path_2'] == 'edit' && isset($_GET['Path_3']) && $user->level >= 2)
 	{
 		$gebruikerID = $filter->sanatizeInput($_GET['Path_3'], 'int');
 		$gebruikerResult = $DB->Select("SELECT * FROM users WHERE user_id = ? LIMIT 1 ", [$gebruikerID]); 

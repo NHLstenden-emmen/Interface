@@ -485,3 +485,16 @@ p.blink{
 	border: 0;
 }
 
+/* Teaminfo blok */
+
+#block8 textarea{
+    color: red;
+}
+
+#block8 #robotName{
+	color: red;
+}
+
+#block8 input[type=submit]{
+	color: red;
+}
