@@ -77,6 +77,8 @@ class User
 
 		if($regPass1 != $regPass2) return 2;
 
+		if(!empty($userInfo['deleted_at'])) return 3;
+
 		$regPass2 = password_hash($regPass2, PASSWORD_DEFAULT);
 
 		$DB->Insert("INSERT INTO users (email, voornaam, achternaam, password, level) 

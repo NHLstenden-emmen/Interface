@@ -55,6 +55,9 @@
 	--tableOdd: #3c0c9c15;
 	--tableHead: #560de8b9;
 
+	/* Videoplayer */
+	--plyr-color-main: var(--primaryColor);
+
 }
 
 /* Algemene items */

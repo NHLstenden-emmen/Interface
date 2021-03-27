@@ -19,5 +19,3 @@
         </div>
     </div>
 </div>
-
-<link rel="stylesheet" href="/tpl/assets/css/page/moderator.css">

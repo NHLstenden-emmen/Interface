@@ -1,10 +1,9 @@
 <?php 
 $user->Redirect(true);
 
-$this->Set("loginError", "");
-
 $this->Set("extraCSS", '<link rel="stylesheet" href="'.$this->Get("assetsFolder").'/css/page/login.css">');
 $this->Set("pageTitle", $this->Get("LOGIN_INLOGGEN"));
+$this->Set("loginError", "");
 
 if(isset($_POST['loginSubmit']))
 {
@@ -12,22 +11,23 @@ if(isset($_POST['loginSubmit']))
      {
          if(isset($_POST['loginPassword']))
          {
-            $loginEmail = $_POST['loginEmail'];
-            $loginPassword = $_POST['loginPassword'];
+            $loginEmail     =  $filter->sanatizeInput($_POST['loginEmail'], "string");
+            $loginPassword  =  $filter->sanatizeInput($_POST['loginPassword'], "string");;
 
-            $loginAntwoord = $user->Login($loginEmail, $loginPassword);
-
-            if($loginAntwoord == 1)
+            switch ($user->Login($loginEmail, $loginPassword)) 
             {
-                $this->Set("loginError", $this->Get("LOGIN_VERKEERDE_EMAIL"));
-            }
-            else if($loginAntwoord == 2)
-            {
-                $this->Set("loginError", $this->Get("LOGIN_VERKEERDE_WACHTWOORD"));
-            }
-            else 
-            {
-                $core->Refresh();
+                case 1:
+                    $this->Set("loginError", $this->Get("LOGIN_VERKEERDE_EMAIL"));
+                 break;
+                case 2:
+                    $this->Set("loginError", $this->Get("LOGIN_VERKEERDE_WACHTWOORD"));
+                break; 
+                case 3:
+                    $this->Set("loginError", $this->Get("LOGIN_GEBAND"));
+                break; 
+                default:
+                     $core->Refresh();
+                break;
             }
          }
      }

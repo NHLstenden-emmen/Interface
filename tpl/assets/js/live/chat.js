@@ -203,7 +203,7 @@ function launchLiveChat(user_idInput)
     
         livechatWebSocket.onclose = function() { 
             livechatWebSocket.close();
-            showMessage("Connection has been closed");
+            showMessage("Connection has been closed", 0, "Server");
         }
     }
     else

@@ -21,7 +21,7 @@
 		<!-- Animaties -->
 		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+	
         <!-- stylesheets -->
 		<link rel="stylesheet" href="{assetsFolder}/css/main/main.css">
 		<link rel="stylesheet" href="{assetsFolder}/css/main/main-mobile.css" media="screen and (max-width: 960px)">

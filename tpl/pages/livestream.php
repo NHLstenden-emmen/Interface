@@ -4,8 +4,7 @@
         <br>
         <div class="contentLivestream row">
             <div class="col-md-8">
-                <video id="livestreamVideo" controls>
-                    <source src="mov_bbb.mp4" type="video/mp4">
+                <video id="livestreamVideo">
                     Je browser ondersteunt geen HTML5 video's.
                 </video>
             </div>
