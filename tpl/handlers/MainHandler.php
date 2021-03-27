@@ -14,6 +14,7 @@ if(isset($_GET['lang'])) {
 	}
 }
 
+/* Navigatie menu */
 if ($user->logged_in)
 {
 	$this->Set('email', $user->email);

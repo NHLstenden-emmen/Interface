@@ -283,89 +283,139 @@
             </div>
         </div>
     </div>
+
+
+    <!-- VIDEO DINGEN -->
+
+
+    <div class="row">
+        <div data-aos="fade-left" class="col-lg-12 block" id="block8">
+            <div class="neonBlock content">
+
+
+
+                <?php 
+
+                
+                    // Get post from form
+                    if(isset($_POST['editTeamDetails']) && isset($_POST['robotName']) && isset($_POST['teamDescription'])){
+
+                        // Sanitizen
+                        $robotNameNew = $filter->sanatizeInput($_POST['robotName'], "string");
+                        $teamDescNew = $filter->sanatizeInput($_POST['teamDescription'], "string");
+
+                        // Updaten
+                        $DB->Update("UPDATE teams SET RobotName = ?, TeamDesc = ? WHERE TeamID = '1E'", [$robotNameNew, $teamDescNew]);
+                    }
+
+                    // Invoeren binnen inputs
+
+                    // Data DB ophalen
+                    $data = $DB->Select("SELECT * FROM teams WHERE TeamID = '1E'");
+                    // Data doorheen loopen
+                    foreach($data as $value){
+                        $teamDesc = $value['TeamDesc'];
+                        $robotName = $value['RobotName'];
+                    }
+                ?>
+
+                <!-- FORMULIER -->
+                <form method="POST">
+                    <input id="robotName" name="robotName" value="<?php echo $robotName; ?>" required>
+                    <textarea rows="4" cols="50" id="teamDescription"
+                        name="teamDescription"><?php echo $teamDesc; ?></textarea>
+                    <input type="submit" name="editTeamDetails" value="Submit">
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- EINDE VIDEO DINGEN -->
+
+
 </div>
 
 
 <script>
-
-    window.addEventListener('keydown', function(e) {
-    if(e.keyCode == 32 && e.target == document.body) {
+window.addEventListener('keydown', function(e) {
+    if (e.keyCode == 32 && e.target == document.body) {
         e.preventDefault();
     }
-    });
+});
 
-    var lastKeyboard;
-    $(document).keydown(function(event) {
+var lastKeyboard;
+$(document).keydown(function(event) {
 
-        // Spatiebalk
-        if (event.which === 32) {
-            if (event.which !== lastKeyboard) {
-                lastKeyboard = 32;
-                var timestamp = '[' + Date.now() + '] ';
-                console.log(timestamp + 'Stop');
-                $(document).ready(function() {
-                    $.post("/tpl/team/1E/sendData.php", {
-                        'action': 'Stop'
-                    });
+    // Spatiebalk
+    if (event.which === 32) {
+        if (event.which !== lastKeyboard) {
+            lastKeyboard = 32;
+            var timestamp = '[' + Date.now() + '] ';
+            console.log(timestamp + 'Stop');
+            $(document).ready(function() {
+                $.post("/tpl/team/1E/sendData.php", {
+                    'action': 'Stop'
                 });
-            }
+            });
         }
+    }
 
-        // Naar voren
-        if (event.which === 87) {
-            if (event.which != lastKeyboard) {
-                lastKeyboard = 87;
-                var timestamp = '[' + Date.now() + '] ';
-                console.log(timestamp + 'W');
-                $(document).ready(function() {
-                    $.post("/tpl/team/1E/sendData.php", {
-                        'action': 'W'
-                    });
+    // Naar voren
+    if (event.which === 87) {
+        if (event.which != lastKeyboard) {
+            lastKeyboard = 87;
+            var timestamp = '[' + Date.now() + '] ';
+            console.log(timestamp + 'W');
+            $(document).ready(function() {
+                $.post("/tpl/team/1E/sendData.php", {
+                    'action': 'W'
                 });
-            }
+            });
         }
+    }
 
-        // Naar achteren
-        if (event.which === 83) {
-            if (event.which != lastKeyboard) {
-                lastKeyboard = 83;
-                var timestamp = '[' + Date.now() + '] ';
-                console.log(timestamp + 'S');
-                $(document).ready(function() {
-                    $.post("/tpl/team/1E/sendData.php", {
-                        'action': 'S'
-                    });
+    // Naar achteren
+    if (event.which === 83) {
+        if (event.which != lastKeyboard) {
+            lastKeyboard = 83;
+            var timestamp = '[' + Date.now() + '] ';
+            console.log(timestamp + 'S');
+            $(document).ready(function() {
+                $.post("/tpl/team/1E/sendData.php", {
+                    'action': 'S'
                 });
-            }
+            });
         }
+    }
 
-        // Naar links
-        if (event.which === 65) {
-            if (event.which != lastKeyboard) {
-                lastKeyboard = 65;
-                var timestamp = '[' + Date.now() + '] ';
-                console.log(timestamp + 'A');
-                $(document).ready(function() {
-                    $.post("/tpl/team/1E/sendData.php", {
-                        'action': 'A'
-                    });
+    // Naar links
+    if (event.which === 65) {
+        if (event.which != lastKeyboard) {
+            lastKeyboard = 65;
+            var timestamp = '[' + Date.now() + '] ';
+            console.log(timestamp + 'A');
+            $(document).ready(function() {
+                $.post("/tpl/team/1E/sendData.php", {
+                    'action': 'A'
                 });
-            }
+            });
         }
+    }
 
-        // Naar rechts
-        if (event.which === 68) {
-            if (event.which != lastKeyboard) {
-                lastKeyboard = 68;
-                var timestamp = '[' + Date.now() + '] ';
-                console.log(timestamp + 'D');
-                $(document).ready(function() {
-                    $.post("/tpl/team/1E/sendData.php", {
-                        'action': 'D'
-                    });
+    // Naar rechts
+    if (event.which === 68) {
+        if (event.which != lastKeyboard) {
+            lastKeyboard = 68;
+            var timestamp = '[' + Date.now() + '] ';
+            console.log(timestamp + 'D');
+            $(document).ready(function() {
+                $.post("/tpl/team/1E/sendData.php", {
+                    'action': 'D'
                 });
-            }
+            });
         }
+    }
 
-    });
+});
 </script>
