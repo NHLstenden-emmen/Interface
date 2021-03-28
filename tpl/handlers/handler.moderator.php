@@ -17,6 +17,8 @@ define("ModeratorPageRoute", $page);
 define("ModeratorPageView", ModeratorPages.$route."/views/");
 define("ModeratorPageAction", $action);
 
+$this->Set("ModeratorPageAssets", "/".ModeratorPages.$route."/assets");
+
 ob_start();
 
 if ($user->level < 2) $core->Redirect('/');

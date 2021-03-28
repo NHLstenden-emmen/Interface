@@ -12,15 +12,19 @@
 
     switch (ModeratorPageRoute) 
     {
-        case "overview":
         default:
-            require(ModeratorPageView."overview.php");
+        case "overview":
+            require(ModeratorPageView."dashboard.php");
         break;
-        case 'ban':
-        case 'unban':
-        case 'edit':
+        case "scene":
+        case "camera":
+        case "poll":
+        case "start":
+        case "stop":
+        case "schemes":
             require(ModeratorPageView.ModeratorPageRoute.".php");
         break;
+
     }
 
     define('ModeratorPageViewContent', ob_get_clean());
