@@ -1,26 +1,36 @@
-<?php
-    session_start();
-    // all passwords and secrets that are not supposed to be on github
-    // change the example.env.php to .env.php
-    $env = include '.env.php';
+﻿<?php
 
-    // get the current location / path of the page
-    $pagePath = basename($_SERVER['REQUEST_URI'], '.php');
-    if (strpos($pagePath, '?') !== false) {   
-        $pagePath = substr($pagePath, 0, strpos($pagePath, "?")); 
-    }
+define('Start', microtime(true));
+define('styleFolder', 'tpl/');
+define('Handlers', styleFolder.'handlers/');
 
-    // main dependencies
+require_once 'config/classes/mysql.php';
+require_once 'config/classes/core.php';
+require_once 'config/classes/template.php';
+require_once 'config/classes/user.php';
+require_once 'config/classes/filter.php';
+require_once 'config/classes/language.php';
+require_once 'config/classes/socket.php';
 
-	include 'inc/socket.php';
-	$socket = new SocketServer(49153, "194.171.181.139");
+require_once 'config/Configuration.php';
 
-    include 'inc/select.php';
-    include 'inc/header.php';
-    
-    // build the website
-    include 'inc/navbar.php';
-    include 'pages/content.php';
-    include 'inc/footer.php';
-    include 'inc/background.php';
+$DB             = new Database;
+$core           = new Core;
+$user           = new User;
+$TPL            = new Template;
+$filter         = new Filter;
+$lang           = new Language;
+$socket         = new ServerConnection(Config::$serverPort, Config::$serverIP);
+
+$TPL->Route($_SERVER['PATH_INFO']);
+$TPL->GetHandlers();
+
+$TPL->GetHeader();
+$TPL->GetNavigation();
+$TPL->GetBackground();
+$TPL->GetContent();
+$TPL->GetFooter();
+
+$TPL->Output();
+
 ?>

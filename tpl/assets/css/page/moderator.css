@@ -1,0 +1,32 @@
+/* Start.php */
+
+p{
+    margin: 0;
+}
+
+.selectMenu{
+    margin: 100px 0 0 0;
+}
+
+.selectMenu > .row > div > .neonBlock{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vh;
+    margin: 20px 0;
+    background-color: #0f0f0fb0;
+} 
+
+.selectMenu > .row > div > .neonBlock > i{
+    font-size: 3.5em;
+}
+
+.selectMenu > .row > div > .neonBlock:hover{
+    cursor: pointer;
+}
+
+/* Users */
+
+.link > i:hover{
+    cursor: pointer;
+}

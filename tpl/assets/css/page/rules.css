@@ -1,0 +1,67 @@
+/* Container */
+#gameRules {
+    margin: 100px 0 0 0;
+    color: white;
+    overflow: hidden;
+}
+
+.title{
+	font-weight: bold;
+}
+
+/* Game block */
+.gameBlock > .row{
+    min-height: 100vh;
+    margin: 80px 0;
+}
+
+h4.gameTitle{
+    font-weight: bold;
+}
+
+.gameDescription {
+	height: fit-content;
+	padding: 25px;
+}
+
+.neonBorder {
+    background: #0f0f0fa6;
+}
+
+/* Game photo */
+.gameRulesImage {
+	background-color: red;
+	height: 300px;
+}
+
+.gamePhoto {
+    display: flex;
+    flex-direction: column;
+}
+
+.gameBlock img {
+    width: 80%;
+}
+
+.photoRight {
+	padding-left: 100px;
+}
+
+/* Game description */
+.gameDescription h4 {
+	padding-bottom: 20px;
+}
+
+.gameDescription h5 {
+	padding-top: 20px;
+}
+
+.scoreTable td {
+	padding-right: 20px;
+}
+
+@media screen and (max-width: 900px) {
+	.photoRight {
+		padding-left: 0;
+	}
+}

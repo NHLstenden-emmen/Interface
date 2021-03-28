@@ -1,0 +1,110 @@
+/* Landing */
+
+#landing{
+    margin: 100px 0 0 0;
+    color: white;
+    min-height: 60vh;
+    /* position: relative; */
+    overflow: hidden;
+}
+
+#landing > .title{
+    font-weight: bold;
+}
+#landing > #teams{
+    justify-content: center;
+    margin-top: 100px;
+}
+
+#landing > .desc{
+    word-break: break-word;
+}
+
+#landing > #teams > div{
+    overflow: hidden;
+}
+#landing > #teams > div > img{
+    width: 100%;
+    transform: scale(1.5);
+}
+
+.teamDesc{
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: -35px;
+}
+
+#more{
+    position: absolute;
+    font-size: 1.2em;
+    margin: 0px 0;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    left: 0;
+    animation: seeMore 2s ease-in-out infinite backwards;
+}
+
+@keyframes seeMore{
+    0%{
+        bottom: 0px;
+    } 
+    50%{
+        bottom: 5px;
+    }
+    100%{
+        bottom: 0px;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    #landing > #teams{
+        display: none;
+    }
+    #more{
+        display: none;
+    }
+}
+
+
+/* Introducting */
+
+#introduce{
+    margin: 70px 0 0 0;
+    color: white;
+    overflow: hidden;
+}
+
+#introduce > h3 {
+    text-align: center;
+    font-weight: bold;    
+    margin-bottom: 70px;
+}
+
+.teamBlock{
+    max-height: 100vh;
+}
+
+.teamBlock > .row{
+    min-height: 100vh;
+    margin: 80px 0;
+}
+
+h4.teamTitle{
+    font-weight: bold;
+}
+
+.teamBlock img{
+    width: 80%;
+}
+
+.teamPhoto {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.neonBorder{
+    background: #0f0f0fa6;
+}
