@@ -1,10 +1,10 @@
 <?php
     $bot = "BOT1";
-
+    
     $path = "tpl/team/1D/response.txt";
     $currentLog = file_get_contents($path);
     
-    if(isset($_POST["start"]))
+    if(isset($_POST['action']))
     {
         $file = fopen($path, "r+");
         
@@ -31,3 +31,7 @@
     
     echo file_get_contents($path);
 ?>
+
+<script>
+    console.log("werkt");
+</script>

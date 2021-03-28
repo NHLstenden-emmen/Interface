@@ -1,12 +1,23 @@
+<?php
+    // Wijzigen teamdata
+    if(isset($_POST["veranderenTeam"]) && !empty("teamDescription"))
+    {
+        $newDescription = $filter->sanatizeInput($_POST["teamDescription"], "string");
+        $DB->Update("UPDATE teams SET TeamDesc = ? WHERE TeamID = ?", [$newDescription, "1D"]);
+    }
+    
+    // Ophalen teamdata
+    $teamData = $DB->Select("SELECT TeamDesc FROM teams WHERE TeamID = ?", ["1D"]);
+    $description = $teamData[0]["TeamDesc"];
+?>
+
 <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
 
 <div class="containerD">
     <div class="header">
         <div class="logoAndTeam neonBlock">
-            <img src="{assetsFolder}/images/team/1D/logoResize.png" alt="Logo">    
-            <h2>Team D</h2>
+            <h2>Dashboard<span>Team D</span></h2>
         </div>
-        <button class="button">Uitloggen</button>
     </div>
     <div class="live neonBlock">
         <video id="my-video" class="video-js" controls preload="auto" width="100%" height="100%" data-setup="{}">
@@ -17,14 +28,17 @@
             </p>
         </video> 
     </div>
-    <div id='test' class="currentStats neonBlock">
-        <p class="currentTeam">Team D</p>
-        <hr>
+    <div id='test' class="teamData neonBlock">
+        <h3>Beschrijving</h3>
+        <form method="post">
+            <textarea name="teamDescription"><?php echo $description; ?></textarea>
+            <button type="submit" name="veranderenTeam" value="wijzig" class="button">Wijzig</button>
+        </form>
         <?php include ("changeTeamData.php"); ?>
     </div>
     <div class="controls neonBlock">
         <div id="gameMenu" class="selectGame">
-            <img id="menu" onclick="menuVisible();refresh();" src="{assetsFolder}/images/team/1D/menu.png" alt="menu"> 
+            <img id="openLog" onclick="menuVisible();refresh();" src="{assetsFolder}/images/team/1D/menu.png" alt="menu"> 
             <div class="games" id="visible" style="display: none">
                 <div class="logTeamD">
                     <?php include ("control.php"); ?>
@@ -113,6 +127,7 @@
             echo "window.onload = function triggerPlay() 
             {
                 play();
+                menuVisible();
             }";
         }
     ?>
@@ -140,3 +155,6 @@ $(document).ready(function(){
 </script>
 
 <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+
+
+<link rel="stylesheet" href="/tpl/assets/css/team/1D/dashboardResponsive.css">

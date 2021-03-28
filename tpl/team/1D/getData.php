@@ -140,7 +140,7 @@
     $initialE = 0;
 
     // Uitvoeren van query voor het ophalen van de punten per team
-    $points = $DB->Select("SELECT * FROM punten");
+    $points = $DB->Select("SELECT robot, SUM(score) AS score FROM punten GROUP BY robot");
     foreach($points as $point){
         // Opslaan van punten bij het bijbehorende team
         $team = determineTeam($point["robot"]);
