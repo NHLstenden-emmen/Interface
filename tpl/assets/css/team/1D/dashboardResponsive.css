@@ -1,0 +1,261 @@
+@media only screen and (max-aspect-ratio: 1/1) {
+    /* Begin algemene pagina indeling */
+    
+    .containerD {
+        display: grid;
+        grid-template: 1fr 0.75fr 4fr 2.5fr 1.75fr 2fr 4.5fr / 3fr 1fr 4fr;
+        grid-gap: 2vh 2vh;
+        height: 173vh;
+        margin: 0 3vw;
+    }
+    
+    .containerD > div {
+        padding: 2vw;
+    }
+    
+    h3 {
+        font-size: 3.75vw;
+    }
+    
+    .header {
+        grid-area: 1 / 1 / 2 / 4;
+    }
+    
+    .live {
+        grid-area: 3 / 1 / 4 / 4;
+    }
+
+    .currentStats {
+        grid-area: 4 / 1 / 5 / 2;
+    }
+    
+    .controls {
+        grid-area: 4 / 2 / 5 / 4;
+    }
+
+    .timeUntil {
+        grid-area: 2 / 1 / 3 / 4;
+    }
+    
+    .currentRanking {
+        grid-area: 5 / 1 / 7 / 3;
+    }
+
+    .upcoming {
+        grid-area: 5 / 3 / 6 / 4;
+    }
+    
+    .chances {
+        grid-area: 6 / 3 / 7 / 4;
+    }
+    
+    .pastResults {
+        grid-area: 7 / 1 / 8 / 4;
+    }
+    
+    /* Einde algemene pagina indeling */
+    /* Begin header */
+    
+    .logoAndTeam {
+        margin-top: 3vw;
+        width: 40%;
+    }
+    
+    .logoAndTeam h2 {
+        font-size: 4.5vw;
+    }
+    
+    .header button {
+        font-size: 2.75vw;
+        margin-top: -11%;
+    }
+    
+    /* Einde header */
+    /* Begin volgende spel */
+    
+    #next {
+        font-size: 4.4vw !important;
+    }
+    
+    #time {
+        font-size: 3vw !important;
+    }
+    
+    /* Einde volgende spel */
+    /* Begin huidige scores/tijden spel */
+    
+    .currentTeam {
+        margin: 0%;
+        font-size: 3.5vw;
+        text-align: center;
+    }
+    
+    .teamPlaying {
+        display: block;
+        float: none;
+        margin: 2% auto 0%;
+        width: 85%;
+        font-size: 4vw;
+        text-align: left;
+    }
+    
+    .time {
+        float: right;
+        margin-left: 0.5%;
+    }
+    
+    .finished {
+        float: none;
+        margin: 0px auto;
+        width: 85%;
+        margin-top: 8%;
+    }
+    
+    .finished li {
+        font-size: 3vw;
+    }
+
+    /* Einde huidige scores/tijden spel */
+    /* Begin besturing */
+    
+    .controls {
+        min-height: 100%;
+    }
+    
+    .games {
+        width: 72%;
+    }
+    
+    .gameButton {
+        font-size: 2.8vw;
+    }
+    
+    #menu {
+        width: 4vw;
+    }
+    
+    .startStop {
+        width: 35%;
+    }
+    
+    .start, .stop {
+        height: 36%;
+        border-radius: 2vw 2vw;
+        font-size: 4vw;
+    }
+    
+    .start {
+        border-width: 0.5vw;
+    }
+    
+    .stop {
+        border-width: 0.15vw;
+    }
+    
+    .start {
+        animation: greenPulseMobile 3.6s infinite;
+    }
+
+    /* Einde besturing */
+    /* Begin huidige stand */
+    
+    .currentRanking table {
+        margin-top: 6%;
+        width: 90%;
+    }
+    
+    .currentRanking td, th {
+        font-size: 3vw;
+    }
+    
+    /* Einde huidige stand */
+    /* Begin te spelen wedstrijden */
+    
+    .upcoming {
+        min-height: 100%;
+    }
+    
+    .upcoming table {
+        width: 95%;
+    }
+
+    .upcoming table td, .upcoming table th {
+        font-size: 2.75vw;
+    }
+
+    .aankomend {
+        height: 70% !important;
+        margin: 0px auto;
+        margin-top: 5% !important;
+    }
+
+    /* Einde te spelen wedstrijden */    
+    /* Begin kansen */
+
+    .chances p {
+        font-size: 2.75vw;
+    }
+
+    /* Einde kansen */    
+    /* Begin resultaten */
+    
+    .table, .aankomend {
+        height: 75%;
+    }
+
+    .table td, .table th {
+        font-size: 2.75vw;
+    }
+    
+    /* Einde resultaten */
+    
+    @keyframes greenPulseMobile {
+        0% {
+            box-shadow: 0 0 0 0 rgba(87, 197, 17, 0.6);
+        }
+        35% {
+            box-shadow: 0 0 0 1.6vw rgba(87, 197, 17, 0);
+        }
+        50% {
+            box-shadow: 0 0 0 0 rgba(87, 197, 17, 0);
+        }
+    }
+}
+
+@media only screen and (min-aspect-ratio: 3/5) and (max-aspect-ratio: 4/5) {
+    .containerD {
+        height: 210vh;
+    }
+    
+    .gameButton {
+        font-size: 2.4vw;
+    }
+}
+
+@media only screen and (min-aspect-ratio: 4/5) and (max-aspect-ratio: 1/1) {
+    .containerD {
+        height: 260vh;
+    }
+    
+    .gameButton {
+        font-size: 2vw;
+    }
+}
+
+@media only screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 4/3) {
+    .containerD {
+        height: 130vh;
+    }
+}
+
+@media only screen and (min-aspect-ratio: 641/480) and (max-aspect-ratio: 5/3) {
+    .containerD {
+        height: 170vh;
+    }
+}
+
+@media only screen and (min-aspect-ratio: 5/3) and (max-aspect-ratio: 2/1) {
+    .containerD {
+        height: 180vh;
+    }
+}
