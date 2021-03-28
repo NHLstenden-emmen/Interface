@@ -43,10 +43,12 @@ video#livestreamVideo{
 	color: var(--white);
 	font-size: .9em;
 	display: flex;
-	align-items: baseline;
+	align-items: center;
+	margin-bottom: 0.5rem;
 }
 
 p.message {
+    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -97,8 +99,9 @@ p.message {
 }
 
 i.far.fa-trash-alt {
-    padding-bottom: 25px;
-	color: #ce4444;
+    padding-left: 12px;
+    padding-bottom: 1px;
+    color: #ce4444;
 }
 
 i.far.fa-trash-alt:hover {

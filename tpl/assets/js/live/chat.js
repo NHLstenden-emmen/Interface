@@ -4,7 +4,7 @@ const liveChat = document.getElementById("liveChat");
 const chatInput = document.getElementById("liveChatInput");
 
 function scrollTableLoad() { 
-    $(".chatStyle").stop().animate({ scrollTop: $(".chatStyle")[0].scrollHeight}, 200);
+    $(".chatStyle").stop().animate({ scrollTop: $(".chatStyle")[0].scrollHeight}, 700);
 }
 
 function typeMessage(ele) {
@@ -31,12 +31,39 @@ function showMessage(message, id, username)
 
     var messageUsername = document.createElement("p");
     messageUsername.classList.add("user");
-    messageUsername.innerHTML = '<i class="avatar fas fa-user-circle"></i>&nbsp&nbsp' + username;
+
+    var messageUserIcon = document.createElement("img");
+    messageUserIcon.style.width = "2.5rem";
+    messageUserIcon.style.marginRight = ".5rem";
+
+    if(localStorage.getItem("team") != 'undefined' && username != 'Server') {
+        messageUserIcon.src = "/tpl/assets/images/team/" + localStorage.getItem("team") + "/logoResize.png";
+        messageUsername.appendChild(messageUserIcon);
+        messageUsername.appendChild(document.createTextNode(username));
+
+    } else if(username == 'Server') {
+        messageUserIcon.src = "/tpl/assets/images/server.png";
+        messageUsername.appendChild(messageUserIcon);
+        messageUsername.innerText = username;
+    } else if(localStorage.getItem("level") == 2) {
+        messageUsername.innerHTML = '<i class="fas fa-wrench" style="color: var(--primaryColor);"></i>&nbsp&nbsp' + username + " [MOD]";
+    }
+     else {
+        messageUsername.innerHTML = '<i class="avatar fas fa-user-circle"></i>&nbsp&nbsp' + username;
+    }
+
+
 
     var messageText = document.createElement("p");
     messageText.classList.add("message");
     messageText.appendChild(document.createTextNode(message));
 
+    if(localStorage.getItem("level") == 2) {
+        const deleteButton = document.createElement("i");
+        deleteButton.className = "far fa-trash-alt";
+        deleteButton.setAttribute("onclick", "javascript:deleteMessage("+id+")");
+        messageText.appendChild(deleteButton);
+    }
 
     messageContent.appendChild(messageUsername);
     messageContent.appendChild(messageText);
@@ -46,12 +73,6 @@ function showMessage(message, id, username)
     //liElement.appendChild(document.createElement("username").innerHTML = messageData.username);
     //messageElement.appendChild(document.createTextNode(message));
 
-    if(localStorage.getItem("level") == 2) {
-        const deleteButton = document.createElement("i");
-        deleteButton.className = "far fa-trash-alt";
-        deleteButton.setAttribute("onclick", "javascript:deleteMessage("+id+")");
-        messageElement.appendChild(deleteButton);
-    }
 
     liveChat.appendChild(messageElement);
 
