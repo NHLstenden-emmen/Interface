@@ -18,6 +18,8 @@
                 return "D";
             case "BOT5":
                 return "E";
+            default:
+                return "-";
         }
     }
     
@@ -107,61 +109,6 @@
             return "00:45";
         }
     }
-    
-    // Ophalen van data
-    if($conn = mysqli_connect("localhost", "root", "", "battlebots"))
-    {        
-        
-        // Ophalen van opkomende spellen
-        $wedstrijden = array();
-        $sql = "SELECT spel_naam, robot_1, robot_2 FROM speelschema WHERE robot_1 = 'BOT4' OR robot_2 = 'BOT4'";
-        if($stmt = mysqli_prepare($conn, $sql)) 
-        {
-            if(mysqli_stmt_execute($stmt)) 
-            {
-                mysqli_stmt_bind_result($stmt, $spel, $team1, $team2);
-                mysqli_stmt_store_result($stmt); 
-                // Kijken of er resultaat is
-                if(mysqli_stmt_num_rows($stmt) != 0) 
-                {
-                    // data opslaan
-                    while(mysqli_stmt_fetch($stmt)) 
-                    {
-                        if($team1 == "BOT4" || $team2 == "BOT4")
-                        {
-                            $wedstrijd = array('spel' => $spel, 'tegenstander' => ($team1 != "BOT4" ? $team1 : $team2));
-                            $wedstrijden[] = $wedstrijd;
-                        }
-                    }
-                }
-                mysqli_stmt_close($stmt);
-            }
-        }        
-        
-        // Ophalen van uitslagen
-        $uitslagen = array();
-        $sql = "SELECT * FROM resultaat";
-        if($stmt = mysqli_prepare($conn, $sql)) 
-        {
-            if(mysqli_stmt_execute($stmt)) 
-            {
-                mysqli_stmt_bind_result($stmt, $spel, $team, $score);
-                mysqli_stmt_store_result($stmt); 
-                // Kijken of er resultaat is
-                if(mysqli_stmt_num_rows($stmt) != 0) 
-                {
-                    // data opslaan
-                    while(mysqli_stmt_fetch($stmt)) 
-                    {
-                            $uitslag = array('spel' => $spel, 'team' => $team, 'score' => $score);
-                            $uitslagen[] = $uitslag;
-                    }
-                }
-                mysqli_stmt_close($stmt);
-            }
-        }
-        mysqli_close($conn);
-    }
 ?>
 
 
@@ -204,12 +151,13 @@
         $pointsVariable = "initial".$team;
         $$pointsVariable = $score;
     }
+    
+    // Ophalen van aankomende spellen
+    $wedstrijden = $DB->Select("SELECT spel_naam, robot_1, robot_2 FROM speelschema WHERE robot_1 = 'BOT4' OR robot_2 = 'BOT4'");
+
+    // Ophalen van uitslagen
+    $uitslagen = $DB->Select("SELECT * FROM resultaat");
 ?>
-
-
-
-
-
 
         <div class="data currentRanking neonBlock" data-aos="fade-right" data-aos-duration="1000">
             <h3>Huidige stand</h3>
@@ -240,12 +188,13 @@
                     <tbody>
                         <?php
                             if(count($wedstrijden) > 0)
-                            {    foreach($wedstrijden as $wedstrijd)
+                            {   
+                                foreach($wedstrijden as $wedstrijd)
                                 {
                                     echo "<tr>";
-                                    echo "<td>".$wedstrijd['spel']."</td>";
-                                    echo "<td>". TimeGame($wedstrijd['spel'])."</td>";
-                                    echo "<td>".$wedstrijd['tegenstander']."</td>";
+                                    echo "<td>".ucfirst($wedstrijd["spel_naam"])."</td>";
+                                    echo "<td>". TimeGame($wedstrijd['spel_naam'])."</td>";
+                                    echo "<td>".determineTeam($wedstrijd[($wedstrijd['robot_1'] != "BOT4" ? "robot_1" : "robot_2")])."</td>";
                                     echo "</tr>";
                                 }
                             }
@@ -282,9 +231,9 @@
                                 foreach($uitslagen as $uitslag)
                                 {
                                     echo "<tr>";
-                                    echo "<td>".$uitslag['spel']."</td>";
+                                    echo "<td>".ucfirst($uitslag['game'])."</td>";
                                     echo "<td>".$uitslag['score']."</td>";
-                                    echo "<td>".determineTeam($uitslag['team'])."</td>";
+                                    echo "<td>".determineTeam($uitslag['robot'])."</td>";
                                     echo "</tr>";
                                 }
                             }

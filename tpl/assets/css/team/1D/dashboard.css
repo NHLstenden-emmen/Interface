@@ -254,6 +254,10 @@ li {
     font-size: 1vw;
 }
 
+tr, .upcoming th {
+    background: none !important;
+}
+
 .aankomend {
     -ms-overflow-style: none;
     scrollbar-width: none;

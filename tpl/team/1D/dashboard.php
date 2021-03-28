@@ -33,7 +33,7 @@
         </div>
         <div class="startStop">
             <meta name="color-scheme" content="dark light">
-            <form method="post" action="teamD">
+            <form method="post" action="">
                 <button type="submit" name="start" value="start" id="play" class="start" onclick="play()">Start</button>
                 <button type="submit" name="stop" value="stop" id="stop" class="stop stopClicked" onclick="stop()">Stop</button>
             </form>
@@ -122,7 +122,7 @@
 <script>
 $(document).ready(function(){
     
-    setInterval(refreshData, 1800);
+    setInterval(refreshData, 180000);
     
     function refreshData() {
         $(".data").wrapAll("<div id='data' style='display: none'></div>");
