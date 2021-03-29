@@ -22,5 +22,4 @@ class Config {
 	static $cookie_time		= 216000;
 
 }
-
 ?>
