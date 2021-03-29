@@ -25,7 +25,7 @@
 	
         <!-- stylesheets -->
 		<link rel="stylesheet" href="{assetsFolder}/css/main/main.css">
-		<link rel="stylesheet" href="{assetsFolder}/css/main/main-mobile.css" media="screen and (max-width: 960px)">
+		<!-- <link rel="stylesheet" href="{assetsFolder}/css/main/main-mobile.css" media="screen and (max-width: 960px)"> -->
 		<link rel="stylesheet" href="{assetsFolder}/css/main/navbar.css">
 		<link rel="stylesheet" href="{assetsFolder}/css/main/footer.css">
 		<link rel="stylesheet" href="{assetsFolder}/css/page/404.css">

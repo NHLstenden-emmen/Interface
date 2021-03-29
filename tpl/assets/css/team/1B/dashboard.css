@@ -3,7 +3,8 @@
 		display: grid;
 		grid-template-areas:
 			"startGame liveFeed"
-			"startGame liveFeed";
+			"startGame liveFeed"
+			"console liveFeed";
 		grid-template-columns: 40vw 59vw;
 	}
 }
@@ -11,10 +12,10 @@
 	#dashboard {
 		display: grid;
 		grid-template-areas:
-			"startGame startGame"
-			"liveFeed liveFeed"
-			"console liveChat";
-		grid-template-columns: 49vw 49vw;
+			"startGame"
+			"liveFeed"
+			"console";
+		margin-top: 90px;
 	}
 }
 /* block design */
@@ -23,9 +24,6 @@
 }
 .startGame {
 	grid-area: startGame;
-}
-.liveChat {
-	grid-area: liveChat;
 }
 .console {
 	grid-area: console;
@@ -107,186 +105,63 @@
 	z-index: 1;
 }
 
-/* startGame block */
-
-#startGameBlock {
-	border-collapse: collapse;
-	width: 100%;
+#startButton {
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
 }
-#startGameBlock td,
-#startGameBlock th {
-	border: 1px solid #ddd;
-	padding: 8px;
-}
-#startGameBlock tr:nth-child(even) {
-	background-color: var(--gray);
-}
-#startGameBlock tr:nth-child(odd) {
-	background-color: var(--light);
-}
-#startGameBlock .top-line th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	background-color: var(--team1B);
-	text-transform: uppercase;
-	width: 25%;
-	color: var(--white);
-}
-#startGameBlock .side-line th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: var(--team1B);
-	color: var(--white);
-}
-/* table */
-
-#dashboard table {
-	border: 1px solid #28333f;
-	border-collapse: collapse;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	table-layout: fixed;
-	color: white;
-}
-
-#dashboard table thead {
-	background-color: #202932;
-}
-#dashboard table tbody tr:nth-child(even) {
-	background-color: #242e39;
-}
-#dashboard table tbody tr:nth-child(odd) {
-	background-color: #36404b;
-}
-#dashboard table tr {
-	border: 1px solid #1c242d;
-	padding: 0.35em;
-}
-
-#dashboard table th,
-#dashboard table td {
-	padding: 0.625em;
-	text-align: center;
-}
-
-#dashboard table th {
-	font-size: 0.85em;
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
-}
-
-@media screen and (max-width: 600px) {
-	#dashboard table {
-		border: 0;
-	}
-
-	#dashboard table caption {
-		font-size: 1.3em;
-	}
-
-	#dashboard table thead {
-		border: none;
-		clip: rect(0 0 0 0);
-		height: 1px;
-		margin: -1px;
-		overflow: hidden;
-		padding: 0;
-		position: absolute;
-		width: 1px;
-	}
-
-	#dashboard table tr {
-		border-bottom: 3px solid #1c242d;
-		display: block;
-		margin-bottom: 0.625em;
-	}
-
-	#dashboard table td {
-		border-bottom: 1px solid #1c242d;
-		display: block;
-		font-size: 0.8em;
-		text-align: right;
-		padding-right: 20px;
-	}
-
-	#dashboard table td::before {
-		content: attr(data-label);
-		float: left;
-		font-weight: bold;
-		text-transform: uppercase;
-	}
-
-	#dashboard table td:last-child {
-		border-bottom: 0;
-	}
-	#dashboard .toggle .label {
-		width: auto !important;
-	}
-
-	#dashboard .toggle input {
-		left: 20px !important;
-		top: -20px !important;
-	}
-	#dashboard .toggle {
-		margin-right: 25px !important;
-		margin-top: 20px !important;
-		width: auto !important;
-	}
-}
-/* start button knoppie */
-#dashboard .toggle {
+#startButton .bigStart {
 	position: relative;
-	height: 80px;
-	margin-left: 25%;
+	margin-left: auto;
+	margin-right: auto;
 	margin-top: 20px;
-	width: 80px;
 }
-#dashboard .toggle .button {
-	-webkit-filter: blur(1px);
-	-moz-filter: blur(1px);
-	transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
-	border-radius: 50px;
-	position: absolute;
-	background: #ccd0d4;
-	margin-left: -50px;
-	margin-top: -50px;
-	height: 70px;
-	width: 70px;
-	top: 50%;
-}
-#dashboard .toggle .label {
-	text-shadow: 6px 3px 6px #386ade, 0 0 0 rgb(0 0 0 / 80%),
-		2px 2px 6px #004cff;
-	font-size: 30px;
+#startButton button {
 	display: block;
-	opacity: 0.9;
-	width: 50px;
-	color: rgba(0, 0, 0, 0.4);
+	width: 250px;
+	height: 50px;
 	line-height: 50px;
+	font-weight: bold;
+	text-decoration: none;
+	background: var(--dark);
+	text-align: center;
+	color: var(--white);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	box-shadow: 0 0 10px var(--green);
+	transition: all 0.35s;
 }
-#dashboard .toggle input {
-	opacity: 0;
+#startButton .icon {
+	width: 50px;
+	height: 50px;
 	position: absolute;
-	cursor: pointer;
+	transform: rotate(45deg);
+	right: 0;
+	box-shadow: 0 0 10px transparent;
+	top: 0;
+	z-index: -1;
+	transition: all 0.35s;
+}
+#startButton .icon i {
+	width: 30px;
+	position: absolute;
+	top: calc(50% - 17px);
+	left: calc(50% - 12px);
+	color: var(--green);
+	font-size: 30px;
+	transform: rotate(-45deg);
+	transition: all 0.35s;
+}
+#startButton button:hover {
+	width: 200px;
+	box-shadow: 0 0 10px var(--green);
+	background: transparent;
+	color: var(--green);
+}
+#startButton button:hover + .icon,
+#startButton button + .icon:hover {
+	box-shadow: 0 0 10px var(--green);
+	right: -25%;
 	z-index: 1;
-	height: 100%;
-	width: 100%;
-	left: -35px;
-	top: -35px;
-}
-#dashboard .toggle input:checked ~ .button.stop {
-	box-shadow: inset 0 -8px 25px -1px rgb(255 0 0 / 90%);
-}
-#dashboard .toggle input:checked ~ .button.start {
-	box-shadow: inset 0 -8px 25px -1px rgb(0 255 0 / 90%);
-}
-#dashboard .toggle input:checked ~ .button.start ~ .label {
-	text-shadow: 6px 3px 6px rgb(0 255 0), 0 0 0 rgb(0 0 0 / 80%),
-		2px 2px 6px rgb(0 255 0);
-}
-#dashboard .toggle input:checked ~ .button.stop ~ .label {
-	text-shadow: 6px 3px 6px rgb(255 0 0), 0 0 0 rgb(0 0 0 / 80%),
-		2px 2px 6px rgb(255 0 0);
 }

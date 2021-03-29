@@ -8,9 +8,9 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td data-label="Team">Race</td>
-			<td data-label="Robot Naam">15/04/2020</td>
-			<td data-label="Dashboard"> karel info enzo </td>
+			<td data-label="Team">1B</td>
+			<td data-label="Robot Naam">Lennard</td>
+			<td data-label="Dashboard"> <a href="/dashboard/1B">Ga naar het dashboard</a> </td>
 			</td>
 		</tr>
 	</tbody>

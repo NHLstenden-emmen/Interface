@@ -4,6 +4,15 @@ if(isset($_POST['action'])){
     $bot = "Lennart";
     $action = $_POST['action'];
 
+    
+    // start the robot
+    if($action == "Startup"){
+        $command = "a";
+    }// STOP
+    if($action == "STOP"){
+        $command = "a";
+    }
+
     // VOORUIT
     if($action == "W"){
         $command = "b";
@@ -16,9 +25,6 @@ if(isset($_POST['action'])){
     } // 45° GRADEN DRAAI RECHTS 
     if($action == "D"){
         $command = "e";
-    } // STOP
-    if($action == "buttonLos"){
-        $command = "a";
     }
     // start games
     if ($action == "race") {
