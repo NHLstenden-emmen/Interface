@@ -17,6 +17,7 @@ const burgerMenu = () => {
 		document.querySelector("#menu").classList.toggle("active");
 
 		navLinks.forEach((link, index) => {
+			link.style.opacity = "0";
 			if (link.style.animation) {
 				link.style.animation = "";
 			} else {
@@ -24,6 +25,11 @@ const burgerMenu = () => {
 					index / 7 + 0.5
 				}s`;
 			}
+		});
+
+		window.addEventListener("resize", () => 
+		{
+			link.style.opacity = "1";
 		});
 
 		burger.classList.toggle("active");
