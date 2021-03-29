@@ -15,6 +15,7 @@
 			"liveFeed liveFeed"
 			"console liveChat";
 		grid-template-columns: 49vw 49vw;
+		margin-top: 90px;
 	}
 }
 /* block design */
