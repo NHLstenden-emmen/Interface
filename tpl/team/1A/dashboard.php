@@ -10,7 +10,35 @@
 		<div data-aos="fade-right" class="col-lg-6 block dashboardBlock">
 			<div class="neonBlock content">
 				<h3>Team Informatie</h3>
-				<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>	
+				<p>
+					<?php
+						// post form ophalen
+						if(isset($_POST['editTeamDetails']) && isset($_POST['robotName']) && isset($_POST['teamDescription'])){
+							//sanitize
+							$robotNameNew = $filter->sanatizeInput($_POST['robotName'], "string");
+							$teamDescNew = $filter->sanatizeInput($_POST['teamDescription'], "string");
+							//update
+							$DB->Update("UPDATE teams SET RobotName = ?, TeamDesc = ? WHERE TeamId = '1A'", [$robotNameNew, $teamDescNew]);
+						}
+						//Data ophalen
+						$data = $DB->Select("SELECT * FROM teams WHERE teamID = '1A'");
+						foreach($data as $value)
+						{
+							$teamDesc = $value['TeamDesc'];
+							$robotName = $value['RobotName'];
+						}
+						echo $robotName; 
+						echo $teamDesc;
+						
+					?>
+					<!-- FORMULIER -->
+					<form method="POST">
+						<input type="text" id="robotName" name="robotName" value="<?php echo $robotName; ?>" required><br>
+						<textarea id="teamDescription" rows="4" cols="50"
+							name="teamDescription"><?php echo $teamDesc; ?></textarea><br>
+						<input class="button" type="submit" name="editTeamDetails" value="Submit">
+					</form>
+				</p>
 			</div>
 		</div>
 		<div data-aos="fade-down" class="col-lg-5 block dashboardBlock">
