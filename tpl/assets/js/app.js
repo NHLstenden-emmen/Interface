@@ -29,7 +29,9 @@ const burgerMenu = () => {
 
 		window.addEventListener("resize", () => 
 		{
-			link.style.opacity = "1";
+			navLinks.forEach((link, index) => {
+				link.style.opacity = "1";
+			});
 		});
 
 		burger.classList.toggle("active");
