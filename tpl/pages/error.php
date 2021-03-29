@@ -23,7 +23,7 @@
 		Toast.id = i++;
 		// logo of the toast
 		let ToastImage = document.createElement("img");
-		ToastImage.src = "{assetsFolder}/images/logo.png";
+		ToastImage.src = "{assetsFolder}/images/server.png";
 		ToastImage.classList.add("rounded", "mr-2")
 		ToastImage.alt = "Toast logo";
 		
@@ -34,12 +34,14 @@
 		// save the time it was created at
 		let ToastSmall = document.createElement("small");
 		ToastSmall.classList.add("text-muted")
-		ToastSmall.innerHTML = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+		ToastSmall.innerHTML = current.toLocaleTimeString('nl-NL');
+
 		// button
 		let closeButton = document.createElement("button");
 		closeButton.classList.add("ml-2", "mb-1", "close");
 		closeButton.setAttribute("data-dismiss", "toast");
 		closeButton.setAttribute("aria-label", "Close");
+
 		// span of the button
 		let closeButtonSpan = document.createElement("span");
 		closeButtonSpan.innerHTML = "&times;";

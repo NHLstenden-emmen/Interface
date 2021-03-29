@@ -7,6 +7,7 @@
 		<meta name="description" content="Livestream page for the battle bots">
 		<meta name="keywords" content="RoboTV">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="color-scheme" content="dark light">
 
 		<link rel="shortcut icon" href="/tpl/assets/images/favicon/favicon.ico" type="image/x-icon" />
 

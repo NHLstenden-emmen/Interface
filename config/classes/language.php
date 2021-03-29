@@ -11,11 +11,13 @@ class Language {
         switch (@$_COOKIE['lang']) {
             case 'en':
                 $this->chosenLanguage = 'en';
+                $TPL->Set('chosenLanguage', "EN");
                 require("language/lang.en.php");
             break;
             case 'nl':
             default:
                 $this->chosenLanguage = 'nl';
+                $TPL->Set('chosenLanguage', "NL");
                 require("language/lang.nl.php");
             break;
         }

@@ -124,7 +124,12 @@ iframe {
 .zoom:hover {
 	transform: scale(1.05);
 }
-
+.langChange {
+	display: flex;
+	align-items: center; 
+	padding: 0 !important; 
+	margin: 0 20px !important;
+}
 /* Button styling */
 
 button.button {
@@ -688,9 +693,9 @@ tr:nth-child(odd) {
 }
 /* toast */
 .toast img {
-	width: 30px;
+	/* width: 30px; */
 	object-fit: cover;
-	height: 30px;
+	height: 1.5rem;
 }
 .toast strong {
 	margin-left: 10px;

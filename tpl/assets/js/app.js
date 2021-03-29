@@ -90,16 +90,3 @@ document.addEventListener("DOMContentLoaded", function () {
 	burgerMenu();
 });
 
-/* Dashboard logo changer */
-var currentURL = window.location.href;
-var teams = ["1A", "1B", "1C", "1D", "1E"];
-var teamsLength = teams.length;
-const logoTeam = document.getElementById("logo");
-for (var i = 0; i < teamsLength; i++) {
-	var searchURL = currentURL.toUpperCase();
-	var n = searchURL.search(teams[i]);
-	if (n > 0) {
-		logoTeam.src =
-			"/tpl/assets/images/team/" + teams[i] + "/logoResize.png";
-	}
-}
