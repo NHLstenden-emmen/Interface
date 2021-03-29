@@ -5,7 +5,6 @@
 				var_dump($socket->sendStartToBot($botnaam));
 			}
 		?>
-		
 		<div class="titleinf1c">
 			<h3 id="titleinf1c">Dashboard</h3>
 			<p id="titleinf1c">Groep INF1C</p>
