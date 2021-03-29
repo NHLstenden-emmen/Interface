@@ -82,7 +82,7 @@ p{
 button.button {
 	padding: 12.5px 30px;
 	border: none;
-	color: white;
+	color: black;
 	font-weight: bold;
 	background: var(--gradientButton);
 	animation: button 0.2s ease-in-out forwards;
@@ -533,19 +533,17 @@ input[type="radio"] {
 	padding: 15px;
 }
 
-#block1 > .content,
-#block2 > .content,
-#block3 > .content,
-#block4 > .content{
+.dashboardBlock > .content {
 	min-height: 400px;
-	max-height: 600px;	
     overflow: auto;
+    padding: 30px;
 }
+
+h3{
+    margin-bottom: 20px;
 }
-#block5 > .content{
-    min-height: 800px;
-	max-height: 1000px;	
-}
+
+/*Creative Component*/
 
 .intro{
     height: 100vh;
@@ -567,41 +565,38 @@ input[type="radio"] {
     text-shadow: 3px 3px 5px black;
 }
   
+/*Command block*/
+
+/* Team People block */
+
 section{
-    height: 100vh;
+    min-height: 100vh;
     color: white;
 }
-  
+
 section h1{
     padding-top: 300px;
     text-align: center;
     font-size: 80px;
 }
-  
-#section2{
+
+#teamPeople {
     background-color: black;
+    min-height: 100vh;
+    color: white;
 }
 
-/* Team */
-/* Team */
-
-h3{
-    margin: 20px;
-}
 #team{
     width: 80vw;
     margin: 0 auto;
     color: #FFF;
 }
-.title{
+
+.teamPeopleTitle{
     margin: 50px;
-    color: #f9c901;
 }
+
 .fa-laptop, .fa-microchip, .fa-server{
     font-size: 4em;
     color: #f9c901;
-}
-
-#readyKnop {
-	margin: 20px;
 }
