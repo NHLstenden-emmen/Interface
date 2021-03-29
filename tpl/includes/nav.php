@@ -18,7 +18,23 @@
             </div>
         </li>
         <li>
-          <a href="?lang=change"><i class="language fas fa-language"></i></a>
+          <?php
+            // check if there is a cookie for lang set
+            if(!isset($_COOKIE['lang'])){ ?>
+              <input type="checkbox" name="languageSwitch" id="borderBlock" onchange="document.location.href='?lang=change';"/>
+            <?php } // change the button to a dutch button cause the lang is set to english
+            else if($_COOKIE['lang'] == 'en'){ ?>
+              <input type="checkbox" name="languageSwitch" id="borderBlock" onchange="document.location.href='?lang=change';" checked/>
+            <?php }// change the button to a english button cause the lang is set to dutch
+            else if($_COOKIE['lang'] == 'nl'){ ?>
+              <input type="checkbox" name="languageSwitch" id="borderBlock" onchange="document.location.href='?lang=change';"/>
+            <?php }
+          ?>
+          <label id="langSwitchKnop" for="borderBlock">
+            <div id="knoppie"></div>
+            <div id="Dutch">Dutch</div>
+            <div id="English">English</div>
+          </label>
         </li>
         <li>
           {login}
