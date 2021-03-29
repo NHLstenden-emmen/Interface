@@ -9,6 +9,10 @@
 	font-weight: bold;
 }
 
+.title{
+	font-weight: bold;
+}
+
 /* Game block */
 .gameBlock > .row {
 	min-height: 80vh;

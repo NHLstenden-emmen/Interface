@@ -36,7 +36,7 @@ if ($user->logged_in)
 }
 else 
 {
-	$this->Set('login', '<a class="alternative-button" href="/login">' . $this->Get("NAV_LOGIN") . ' &nbsp <i class="fas fa-sign-in-alt"></i></a>');
+	$this->Set('login', '<a class="alternative-button" href="/login">' . $this->Get("NAV_LOGIN") . '&nbsp<i class="fas fa-sign-in-alt"></i></a>');
 	$this->Set('dashboard', '');
 }
 ?>

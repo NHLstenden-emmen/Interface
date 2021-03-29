@@ -10,18 +10,7 @@
 		require(ModeratorPageHandlers.'/handler.'.$page.'.php');
 	}
 
-    switch (ModeratorPageRoute) 
-    {
-        case "overview":
-        default:
-            require(ModeratorPageView."overview.php");
-        break;
-        case 'ban':
-        case 'unban':
-        case 'edit':
-            require(ModeratorPageView.ModeratorPageRoute.".php");
-        break;
-    }
+    require(ModeratorPageView."camera.php");
 
     define('ModeratorPageViewContent', ob_get_clean());
 
