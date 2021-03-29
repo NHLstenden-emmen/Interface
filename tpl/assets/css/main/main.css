@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400&display=swap");
 
 * {
 	margin: 0px;
 	padding: 0px;
-	font-family: 'Lexend', sans-serif;
+	font-family: "Lexend", sans-serif;
 	font-weight: normal;
 	color: white;
-	
+
 	--primaryColor: #37167e;
 	--secondaryColor: #280f5f;
 	--dark: rgb(15, 15, 15);
@@ -59,11 +59,10 @@
 	--plyr-color-main: var(--primaryColor);
 
 	/* Logo */
-	--logoBodyColor:  #5f3fa2;
+	--logoBodyColor: #5f3fa2;
 	--logoWingsColor: #341963;
-	--logoEyesColor:  #281552;
+	--logoEyesColor: #281552;
 	--logoBackdropColor: #fff;
-
 }
 
 /* Algemene items */
@@ -692,4 +691,15 @@ tr:nth-child(odd) {
 	width: 30px;
 	object-fit: cover;
 	height: 30px;
+}
+.toast strong {
+	margin-left: 10px;
+	margin-right: 10px;
+	color: black;
+}
+.toast span {
+	color: black;
+}
+.toast .toast-body {
+	color: black;
 }
