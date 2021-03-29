@@ -9,7 +9,7 @@
 	font-family: "CeraPro", sans-serif;
 	font-weight: normal;
 	--primaryColor: #f9c901;
-	--secondaryColor: #280f5f;
+	--secondaryColor: #e4b701;
 	--dark: rgb(15, 15, 15);
 	--white: #ffffff;
 
@@ -21,14 +21,14 @@
 	--team1E: #ff8000;
 
 	/* Button colors */
-	--buttonColor: #550de8;
-	--buttonHoverColor: #37167e;
+	--buttonColor: #f9c901;
+	--buttonHoverColor: #e4b701;
 	--gradientButton: radial-gradient(
 		circle,
-		var(--primaryColor) 0%,
-		var(--secondaryColor) 100%
+		var(--primaryColor) 100%,
+		var(--secondaryColor) 0%
 	);
-	--gradientButtonHover: radial-gradient(circle, #451e97 0%, #331475 100%);
+	--gradientButtonHover: radial-gradient(circle, #e4b701 0%, #f9c901 100%);
 
 	/* Send colors */
 	--sendColor: #6d6d6d;
@@ -74,7 +74,7 @@ h4,
 h5,
 p{
 	margin: 0;
-	color: var(--primaryColor);
+	color: var(--white);
 }
 
 /* Button styling */
@@ -223,7 +223,7 @@ input[type="radio"] {
 		transform: scale(1.05);
 	}
 	to {
-		background: var(--gradientButton);
+		/*background: var(--gradientButton);*/
 	}
 }
 
@@ -587,7 +587,6 @@ section h1{
 
 h3{
     margin: 20px;
-    color: #f9c901;
 }
 #team{
     width: 80vw;
@@ -601,4 +600,8 @@ h3{
 .fa-laptop, .fa-microchip, .fa-server{
     font-size: 4em;
     color: #f9c901;
+}
+
+#readyKnop {
+	margin: 20px;
 }
