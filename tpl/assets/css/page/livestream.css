@@ -1,85 +1,86 @@
 /* Livestream */
 
-#livestream{
-    margin: 100px 0 0 0;
-    color: white;
-    min-height: 60vh;
+#livestream {
+	margin: 100px 0 0 0;
+	color: white;
+	min-height: 60vh;
 	z-index: -9;
 }
 
-#livestream > .title{
-    font-weight: bold;
+#livestream > .title {
+	font-weight: bold;
 }
 
-video#livestreamVideo{
+video#livestreamVideo {
 	width: 100%;
 }
 
-#liveChat{
+#liveChat {
+	min-height: 40vh;
 	width: 100%;
 	height: 100%;
 	padding: 10px 0;
 }
 
-.chatStyle{
+.chatStyle {
 	background-color: rgba(7, 7, 7, 0.65);
 	overflow-y: scroll;
 }
 
-.message{
+.message {
 	width: 100%;
 }
 
 .user,
-.message{
+.message {
 	width: 100%;
 	display: inline-block;
 	word-break: break-word;
 }
 
-.user{
+.user {
 	justify-content: flex-start;
 	font-weight: bold;
 	color: var(--white);
-	font-size: .9em;
+	font-size: 0.9em;
 	display: flex;
 	align-items: center;
 	margin-bottom: 0.5rem;
 }
 
 p.message {
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: right;
-    font-size: .9em;
-    width: 100%;
-    color: var(--placeholder);
-    font-style: italic;
+	margin-bottom: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	text-align: right;
+	font-size: 0.9em;
+	width: 100%;
+	color: var(--placeholder);
+	font-style: italic;
 }
 
-.avatar{
+.avatar {
 	color: var(--buttonColor);
 	font-size: 1.1em;
 }
 
-.messageContent{
+.messageContent {
 	display: grid;
 }
 
-#sendMessage{
+#sendMessage {
 	width: 100%;
 	position: relative;
 }
 
-#sendMessage > input[type=text]{
+#sendMessage > input[type="text"] {
 	width: 100%;
 }
 
-.send{
+.send {
 	padding: 15px;
-    margin-top: -2px;
+	margin-top: -2px;
 	color: white;
 	min-width: 50px;
 	text-align: center;
@@ -90,18 +91,18 @@ p.message {
 	position: absolute;
 }
 
-.input-icons:hover{
+.input-icons:hover {
 	cursor: pointer;
 }
-  
+
 .input-icons {
 	width: 100%;
 }
 
 i.far.fa-trash-alt {
-    padding-left: 12px;
-    padding-bottom: 1px;
-    color: #ce4444;
+	padding-left: 12px;
+	padding-bottom: 1px;
+	color: #ce4444;
 }
 
 i.far.fa-trash-alt:hover {
