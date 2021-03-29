@@ -680,3 +680,9 @@ tr:nth-child(odd) {
 		background-color: var(--glowColor);
 	}
 }
+/* toast */
+.toast img {
+	width: 30px;
+	object-fit: cover;
+	height: 30px;
+}
