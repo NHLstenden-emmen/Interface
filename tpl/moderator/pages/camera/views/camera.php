@@ -15,7 +15,7 @@
     z-index: -9;
 }
 </style>
-<img src="http://foscam.serverict.nl/videostream.cgi?user=user&pwd=user_12">
+<img src="http://foscam.serverict.nl/videostream.cgi?user=gast&pwd=gast">
 <iframe name="action_zone" style="display:none"></iframe>
 <svg id="joystick" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="100px" height="100px" viewBox="0 0 200 200" version="1.1" id="svg8" inkscape:version="0.92.3 (2405546, 2018-03-11)" sodipodi:docname="joystick.svg">
     <defs id="defs2">

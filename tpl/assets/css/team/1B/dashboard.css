@@ -1,16 +1,21 @@
-* {
-	--logoBodyColor:  #43519c;
-	--logoWingsColor: #1d2860;
-	--logoEyesColor:  #17204e;
+@media screen and (min-width: 1101px) {
+	#dashboard {
+		display: grid;
+		grid-template-areas:
+			"startGame liveFeed"
+			"startGame liveFeed";
+		grid-template-columns: 40vw 59vw;
+	}
 }
-
-#dashboard {
-	display: grid;
-	grid-template-areas:
-		"liveChat startGame liveFeed"
-		"console robotControl liveFeed";
-	grid-template-rows: 400px 300px;
-	grid-template-columns: 19vw 40vw 40vw;
+@media screen and (max-width: 1100px) {
+	#dashboard {
+		display: grid;
+		grid-template-areas:
+			"startGame startGame"
+			"liveFeed liveFeed"
+			"console liveChat";
+		grid-template-columns: 49vw 49vw;
+	}
 }
 /* block design */
 .liveFeed {
@@ -24,9 +29,6 @@
 }
 .console {
 	grid-area: console;
-}
-.robotControl {
-	grid-area: robotControl;
 }
 /* border block design */
 .neonBlock1B {
@@ -98,15 +100,16 @@
 	background: transparent;
 	color: var(--red);
 }
-#panicButton button:hover + .icon {
+#panicButton button:hover + .icon,
+#panicButton button + .icon:hover {
 	box-shadow: 0 0 10px var(--red);
 	right: -25%;
+	z-index: 1;
 }
 
 /* startGame block */
 
 #startGameBlock {
-	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	width: 100%;
 }
@@ -136,9 +139,154 @@
 	background-color: var(--team1B);
 	color: var(--white);
 }
-#startGameBlock .fa-stop {
-	color: var(--red);
+/* table */
+
+#dashboard table {
+	border: 1px solid #28333f;
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	table-layout: fixed;
+	color: white;
 }
-#startGameBlock .fa-play {
-	color: var(--green);
+
+#dashboard table thead {
+	background-color: #202932;
+}
+#dashboard table tbody tr:nth-child(even) {
+	background-color: #242e39;
+}
+#dashboard table tbody tr:nth-child(odd) {
+	background-color: #36404b;
+}
+#dashboard table tr {
+	border: 1px solid #1c242d;
+	padding: 0.35em;
+}
+
+#dashboard table th,
+#dashboard table td {
+	padding: 0.625em;
+	text-align: center;
+}
+
+#dashboard table th {
+	font-size: 0.85em;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+	#dashboard table {
+		border: 0;
+	}
+
+	#dashboard table caption {
+		font-size: 1.3em;
+	}
+
+	#dashboard table thead {
+		border: none;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
+
+	#dashboard table tr {
+		border-bottom: 3px solid #1c242d;
+		display: block;
+		margin-bottom: 0.625em;
+	}
+
+	#dashboard table td {
+		border-bottom: 1px solid #1c242d;
+		display: block;
+		font-size: 0.8em;
+		text-align: right;
+		padding-right: 20px;
+	}
+
+	#dashboard table td::before {
+		content: attr(data-label);
+		float: left;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	#dashboard table td:last-child {
+		border-bottom: 0;
+	}
+	#dashboard .toggle .label {
+		width: auto !important;
+	}
+
+	#dashboard .toggle input {
+		left: 20px !important;
+		top: -20px !important;
+	}
+	#dashboard .toggle {
+		margin-right: 25px !important;
+		margin-top: 20px !important;
+		width: auto !important;
+	}
+}
+/* start button knoppie */
+#dashboard .toggle {
+	position: relative;
+	height: 80px;
+	margin-left: 25%;
+	margin-top: 20px;
+	width: 80px;
+}
+#dashboard .toggle .button {
+	-webkit-filter: blur(1px);
+	-moz-filter: blur(1px);
+	transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+	border-radius: 50px;
+	position: absolute;
+	background: #ccd0d4;
+	margin-left: -50px;
+	margin-top: -50px;
+	height: 70px;
+	width: 70px;
+	top: 50%;
+}
+#dashboard .toggle .label {
+	text-shadow: 6px 3px 6px #386ade, 0 0 0 rgb(0 0 0 / 80%),
+		2px 2px 6px #004cff;
+	font-size: 30px;
+	display: block;
+	opacity: 0.9;
+	width: 50px;
+	color: rgba(0, 0, 0, 0.4);
+	line-height: 50px;
+}
+#dashboard .toggle input {
+	opacity: 0;
+	position: absolute;
+	cursor: pointer;
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+	left: -35px;
+	top: -35px;
+}
+#dashboard .toggle input:checked ~ .button.stop {
+	box-shadow: inset 0 -8px 25px -1px rgb(255 0 0 / 90%);
+}
+#dashboard .toggle input:checked ~ .button.start {
+	box-shadow: inset 0 -8px 25px -1px rgb(0 255 0 / 90%);
+}
+#dashboard .toggle input:checked ~ .button.start ~ .label {
+	text-shadow: 6px 3px 6px rgb(0 255 0), 0 0 0 rgb(0 0 0 / 80%),
+		2px 2px 6px rgb(0 255 0);
+}
+#dashboard .toggle input:checked ~ .button.stop ~ .label {
+	text-shadow: 6px 3px 6px rgb(255 0 0), 0 0 0 rgb(0 0 0 / 80%),
+		2px 2px 6px rgb(255 0 0);
 }
