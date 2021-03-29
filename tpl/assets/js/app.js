@@ -16,6 +16,8 @@ const burgerMenu = () => {
         document.querySelector("#menu").classList.toggle("active");
 
         navLinks.forEach((link, index) =>{
+            link.style.opacity = '0';
+
             if(link.style.animation) {
                 link.style.animation = '';
             }
@@ -27,6 +29,20 @@ const burgerMenu = () => {
 
         burger.classList.toggle('active');
     });
+
+    window.addEventListener("resize", () => {
+        navLinks.forEach((link, index) =>{ 
+            link.style.opacity = '1';
+        });
+    });
+
+    window.addEventListener('scroll', (e) => {
+        console.log("hoi");
+        e.preventDefault();
+        window.scrollTo(0, 0);
+
+    });
+
 
 }
 

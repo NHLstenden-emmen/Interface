@@ -1,3 +1,9 @@
+* {
+	--logoBodyColor:  #43519c;
+	--logoWingsColor: #1d2860;
+	--logoEyesColor:  #17204e;
+}
+
 #dashboard {
 	display: grid;
 	grid-template-areas:

@@ -1,3 +1,9 @@
+<style>
+html, body {
+	margin: 0; height: 100%; overflow: hidden !important
+}
+
+</style>
 <div class="container">
 
 	<div class="row">

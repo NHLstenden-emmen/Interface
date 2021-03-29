@@ -16,6 +16,46 @@
 .nav>#logo {
 	width: 100px;
 }
+
+
+
+#right-wing {
+	pointer-events: none;
+	transform: translateX(0px);
+	transition: all 1s;
+	stroke: var(--logoWingsColor);
+}
+
+#left-wing {
+	pointer-events: none;
+	transform: translateX(0px);
+	transition: all 1s;
+	stroke: var(--logoWingsColor);
+}
+
+#logo-body { 
+	stroke: var(--logoBodyColor); 
+	fill: var(--logoBodyColor);
+}
+
+#eyes-background {
+	stroke: var(--logoBackdropColor); 
+}
+
+#eyes { 
+	fill: var(--logoEyesColor); 
+	paint-order: stroke fill markers;
+}
+
+
+
+#logo:hover #right-wing {
+	transform: translateX(3px);
+}
+
+#logo:hover #left-wing {
+	transform: translateX(-3px);
+}
 .nav> ul {
 	z-index: 100;
 }
@@ -208,7 +248,7 @@
         justify-content: space-evenly !important;
         align-items: center  !important;
         transition: transform 0.4s ease-in;
-        opacity: 1;
+        opacity: 0;
     }
 
 	

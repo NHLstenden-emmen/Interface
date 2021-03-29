@@ -44,7 +44,7 @@ function showMessage(message, id, username)
     } else if(username == 'Server') {
         messageUserIcon.src = "/tpl/assets/images/server.png";
         messageUsername.appendChild(messageUserIcon);
-        messageUsername.innerText = username;
+        messageUsername.appendChild(document.createTextNode(username));
     } else if(localStorage.getItem("level") == 2) {
         messageUsername.innerHTML = '<i class="fas fa-wrench" style="color: var(--primaryColor);"></i>&nbsp&nbsp' + username + " [MOD]";
     }

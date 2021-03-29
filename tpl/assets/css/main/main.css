@@ -58,6 +58,12 @@
 	/* Videoplayer */
 	--plyr-color-main: var(--primaryColor);
 
+	/* Logo */
+	--logoBodyColor:  #5f3fa2;
+	--logoWingsColor: #341963;
+	--logoEyesColor:  #281552;
+	--logoBackdropColor: #fff;
+
 }
 
 /* Algemene items */
