@@ -13,6 +13,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<audio id="audio" src="{assetsFolder}/sound/Lenards_Team_Song.mpeg" style="display:none;"></audio>
 		<div id="panicButton">
 			<div class="bigStop">
 				<button onclick="stop()">PANIC BUTTON</button>
@@ -29,7 +31,22 @@
 </div>
 
 <script>
+
+function playSound(isPlaying){
+	var audio = document.getElementById("audio");
+    if (isPlaying){
+        isPlaying = true
+        audio.play()
+    } 
+    else{
+        isPlaying = false
+        audio.pause()
+        audio.currentTime = 0
+    }
+}
 function Startup() {
+	var isPlaying = true;
+	playSound(isPlaying);
 	$(document).ready(function() {
 		$.post("/tpl/team/1B/sendData.php", {
 			'action': 'Startup'
@@ -39,6 +56,8 @@ function Startup() {
 	});
 }
 function stop() {
+	var isPlaying = false;
+	playSound(isPlaying);
 	$(document).ready(function() {
 		$.post("/tpl/team/1B/sendData.php", {
 			'action': 'STOP'

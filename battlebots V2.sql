@@ -110,7 +110,7 @@ CREATE TABLE `teams` (
 
 INSERT INTO `teams` (`TeamID`, `TeamDesc`, `RobotName`) VALUES
 ('1A', 'Test', 'Test'),
-('1B', 'Test', 'Test'),
+('1B', 'Test', 'Lennart'),
 ('1C', 'Test', 'BrokkoBot'),
 ('1D', 'Test', 'Test'),
 ('1E', 'Test', 'ROBot Jetten');
@@ -139,7 +139,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `voornaam`, `achternaam`, `team`, `level`, `lang`, `deleted_at`) VALUES
 (2, 'bruh@nhlstenden.com', '$2y$10$Vb3MB36efti8OOI0TlJfY.O29v1dAeQ7sYgkWSUrHXy7ngHAzFcLu', 'Remco', 'Hassing', NULL, 2, 'nl', NULL),
-(3, 'feike', '$2y$10$XUKMFqcOpR9Yn./HeGAzQ.mItDg009ljRog1KeQYFxGe2onHeuTbW', 'Feike', 'Falkena', '1E', 2, 'nl', NULL);
+(3, 'feike', '$2y$10$XUKMFqcOpR9Yn./HeGAzQ.mItDg009ljRog1KeQYFxGe2onHeuTbW', 'Feike', 'Falkena', '1E', 2, 'nl', NULL),
+(4, 'kevin.smulders@student.nhlstenden.com', '$2y$10$2IwNmt5aWPhu04UorNWsruPQerBaGus9NrVmQZyzmmP4hV6Ip6Cf6', 'Kevin', 'Smulders', '1B', 2, 'nl', NULL);
 
 --
 -- Indexen voor geëxporteerde tabellen
