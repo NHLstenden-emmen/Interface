@@ -352,4 +352,7 @@ if(isset($_GET['command']))
     echo "<script>sendData('" . $command . "');</script>";
 }
 
+
+error_log("Hoi sausje <3");
+
 ?>

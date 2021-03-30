@@ -1,6 +1,6 @@
   <div id="navbar" class="container-fluid" data-aos="fade-bottom">
     <div class="container nav">
-      <svg width="160" height="100" version="1.1" viewBox="0 5 26.458 20" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <svg class="link" data-link="/start" width="160" height="100" version="1.1" viewBox="0 5 26.458 20" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
           <g id="logo" transform="translate(0 -268.54)">
           <g stroke-linecap="round">
             <g stroke-linejoin="round">

@@ -74,7 +74,7 @@
                     <div class="col-sm-6 teamPhoto">
                         <img class="neonBorder" src="{assetsFolder}/images/team/1B/logo.png" title="Team B" alt="Team B"> 
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" id="switchB">
                         <h4 class="teamTitle">
                             <?php echo $B_RobotName; ?> [B]
                         </h4>
@@ -124,7 +124,7 @@
                     <div class="col-sm-6 teamPhoto">
                         <img class="neonBorder" src="{assetsFolder}/images/team/1D/logo.png" title="Team D" alt="Team D"> 
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" id="switchD">
                         <h4 class="teamTitle">
                             <?php echo $D_RobotName; ?> [D]
                         </h4>

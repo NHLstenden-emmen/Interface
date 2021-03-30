@@ -32,5 +32,4 @@ $TPL->GetContent();
 $TPL->GetFooter();
 
 $TPL->Output();
-
 ?>

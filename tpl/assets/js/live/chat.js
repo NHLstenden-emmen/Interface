@@ -128,7 +128,7 @@ function onJoin(messageData) {
 }
 
 function onLeave(messageData) {
-    showMessage(messageData.message, messageData.id, messageData.username);
+    showMessage(messageData.message, messageData.id, messageData.username, messageData.level, messageData.team);
 }
 
 function sendMessage() {

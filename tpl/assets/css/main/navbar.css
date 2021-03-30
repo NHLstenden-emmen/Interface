@@ -253,6 +253,16 @@
 	::-webkit-scrollbar {
 		display: none;
 	}
+
+	#menu{
+		overflow: hidden;
+		height: 0;
+	}
+	
+	.active #menu{
+		height: auto;
+	}
+
 }
 
 @keyframes navLinkFade {
@@ -344,3 +354,11 @@
 	left: 159px;
 	background-position: -388px 0;
 }
+
+/* Disable scoll */
+
+body.active{
+	overflow: hidden;
+    height: 100vh;
+}
+

@@ -145,7 +145,7 @@ const toastShow = (type, id, title, message, buttons = null, length = null) => {
 
 		for(var option in buttons) {
 			var buttonElement = document.createElement("button");
-			buttonElement.classList.add("B" +id);
+			buttonElement.classList.add("B" +id, "button");
 			buttonElement.innerHTML = buttons[option];
 			buttonElement.setAttribute("onclick", "javascript:sendPoll('"+buttons[option]+"', '"+id+"')");
 			ToastBody.appendChild(buttonElement);
@@ -172,7 +172,7 @@ const toastShow = (type, id, title, message, buttons = null, length = null) => {
 	// show the toast with the settings
 	$('#' + Toast.id).toast('show');
 	$('#' + Toast.id).on('hidden.bs.toast', function (e) {
-		//deleteToast(e.currentTarget.id);
+		deleteToast(e.currentTarget.id);
 	});
 }
 
@@ -184,4 +184,3 @@ document.addEventListener("DOMContentLoaded", function () {
 	menuLinks();
 	burgerMenu();
 });
-
