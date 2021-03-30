@@ -53,9 +53,8 @@
             </form>
         </div>
     </div>
-    <div class="timeUntil neonBlock">
-        <h3  id="next">Hierna</h3>
-        <p id="time"><?php echo (isset($wedstrijden[0]) ? ($wedstrijden[0]['spel'].", tijdsduur: ".TimeGame($wedstrijden[0]['spel'])) : "Geen wedstrijden"); ?></p>
+    <div id="nextGame" class="timeUntil neonBlock">
+        <?php include("upcoming.php"); ?>
     </div>
         <?php include("getData.php"); ?>
     
@@ -137,6 +136,13 @@ $(document).ready(function(){
             }, 25);
 
         }, 25);
+    };
+    
+    setInterval(refreshUpcoming, 1800);
+    
+    function refreshUpcoming() {
+        $("#nextGame").load("../tpl/team/1D/upcoming.php");
+        console.log("ho");
     };
 });
 </script>

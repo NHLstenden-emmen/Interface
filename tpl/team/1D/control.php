@@ -10,7 +10,7 @@
         
         $currentTime = date("H:i:s");
         
-        $text = "hi";
+//        $text = "hi";
         $text = print_r($socket->sendStartToBot($bot), true);
         $text = ucfirst(str_replace("_", " ", $text));
         
