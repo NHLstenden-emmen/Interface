@@ -13,15 +13,13 @@ function typeMessage(ele) {
 
 function deleteMessage(messageID) {
    livechatWebSocket.send(JSON.stringify({"team": localStorage.getItem("team"), "fullname": localStorage.getItem("fullname"), "email": localStorage.getItem("email"), "type": "delete", "id": messageID}));
-
 }
 
 function deleteResponse(messageID) {
    document.getElementById(messageID).remove();
 }
 
-function showMessage(message, id, username, level = null, team = null)
-{
+function showMessage(message, id, username, level = null, team = null) {
     var messageElement = document.createElement("div");
     messageElement.classList.add("message");
     messageElement.id = id;
@@ -67,8 +65,6 @@ function showMessage(message, id, username, level = null, team = null)
         messageUsername.innerHTML = '<i class="avatar fas fa-user-circle"></i>&nbsp&nbsp' + username;
     }
 
-
-
     var messageText = document.createElement("p");
     messageText.classList.add("message");
     messageText.appendChild(document.createTextNode(message));
@@ -85,77 +81,33 @@ function showMessage(message, id, username, level = null, team = null)
     
     messageElement.appendChild(messageContent);
 
-    //liElement.appendChild(document.createElement("username").innerHTML = messageData.username);
-    //messageElement.appendChild(document.createTextNode(message));
-
-
     liveChat.appendChild(messageElement);
 
     scrollTableLoad();
-    //document.getElementById("chatMSG").appendChild(linebreak);
 }
 
-function sendPoll(option) {
-    livechatWebSocket.send(JSON.stringify({"name": localStorage.getItem("email"), "type": "poll", "option": option}));
+function sendPoll(option, id) {
+    livechatWebSocket.send(JSON.stringify({"name": localStorage.getItem("email"), "email": localStorage.getItem("email"), "team": localStorage.getItem("team"), "fullname": localStorage.getItem("fullname"), "type": "poll", "option": option, "id": id}));
 }
 
 function sendDrawingPoll(stars, bot, id) {
-    livechatWebSocket.send(JSON.stringify({"name": localStorage.getItem("email"), "type": "drawingpoll", "bot": bot, "stars":parseInt(stars)+1, "id": id}));
+    livechatWebSocket.send(JSON.stringify({"name": localStorage.getItem("email"), "email": localStorage.getItem("email"), "team": localStorage.getItem("team"), "fullname": localStorage.getItem("fullname"), "type": "drawingpoll", "bot": bot, "stars":parseInt(stars)+1, "id": id}));
 }
 
-function showPollResult(messageData)
-{
-    var liElement = document.createElement("li");
-    liElement.id = messageData.id;
+function showPollResult(messageData) {
+    var resultMessage = "";
+    sortByValue(messageData.result).forEach(element => resultMessage += " " + element[0] + " heeft " + element[1] + " stemmen ");
+    setTimeout(() => {      toastShow('default', messageData.id, 'Server | Poll resultaat', resultMessage, null, 10);}, 2000);
 
-    liElement.classList.add("pollresult");
-
-    var pElement = document.createElement("li");
-    sortByValue(messageData.result).forEach(element => pElement.appendChild(document.createTextNode(element[0] + " heeft " + element[1] + " stemmen ")));
-
-    liElement.appendChild(pElement);
-
-    liveChat.appendChild(liElement);
-    scrollTableLoad();
 }
 
-function showPoll(messageData)
-{
-    var liElement = document.createElement("li");
-    liElement.appendChild(document.createTextNode(messageData.question));
-    liElement.id = messageData.id;
-    liElement.classList.add("poll");
-    var optionsList = messageData.options;
-
-    for(var option in messageData.options) {
-        var buttonElement = document.createElement("button");
-        buttonElement.innerHTML = optionsList[option];
-        buttonElement.setAttribute("onclick", "javascript:sendPoll('"+optionsList[option]+"')");
-        liElement.appendChild(buttonElement);
-    }
-
-    liveChat.appendChild(liElement);
-    scrollTableLoad();
+function showPoll(messageData) {
+    toastShow('default', messageData.id, 'Server | Poll', messageData.question, messageData.options, messageData.length);
 }
 
 
-function showDrawingPoll(messageData) 
-{
-    var liElement = document.createElement("li");
-    liElement.appendChild(document.createTextNode(messageData.question));
-    liElement.id = messageData.id;
-    liElement.classList.add("poll");
-    var optionsList = messageData.options;
-
-    for(var option in messageData.options) {
-        var buttonElement = document.createElement("button");
-        buttonElement.innerHTML = optionsList[option];
-        buttonElement.setAttribute("onclick", "javascript:sendDrawingPoll('"+option+"', '"+messageData.bot+"', '"+messageData.id+"')");
-        liElement.appendChild(buttonElement);
-    }
-
-    liveChat.appendChild(liElement);
-    scrollTableLoad();
+function showDrawingPoll(messageData) {
+    toastShow('drawing', messageData.id, 'Server | Tekening', messageData.question, messageData.options, messageData.length);
 }
 
 function onJoin(messageData) {
@@ -196,6 +148,10 @@ function sendMessage() {
     }
 }
 
+function disableButton(id){ 
+    document.querySelectorAll("." + id).forEach(element => element.disabled = true);
+}
+
 function launchLiveChat(user_idInput)
 {
     if ("WebSocket" in window)
@@ -229,6 +185,9 @@ function launchLiveChat(user_idInput)
                     break;
                     case "drawingpoll":
                         showDrawingPoll(messageData);
+                    break;
+                    case "disablepollbutton":
+                        disableButton(messageData.id);
                     break;
                     default:
                         showMessage(messageData.message, messageData.id, messageData.username, messageData.level, messageData.team);
