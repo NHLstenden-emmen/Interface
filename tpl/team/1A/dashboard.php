@@ -3,11 +3,6 @@
         <div>
             <h2 id="titel">Dashboard</h2>
             <p id="desc">Groep INF1A</p>
-            <div class="box-2">
-  <div class="btn btn-two">
-    <span>HOVER ME</span>
-  </div>
-</div>
         </div>
     </div>
 	
@@ -49,11 +44,9 @@
 		<div data-aos="fade-down" class="col-lg-5 block dashboardBlock">
 			<div class="neonBlock content">
 				<h3>Command</h3>
-				<div class="col-lg-12" id="readyButton">
-					<form method="post">
-						<button class="button" type="submit" name="ready">Ready</button>
-					</form>
-				</div>
+			    <form method="post">
+					<button class="button" type="submit" name="ready">Ready</button>
+				</form>
 			</div>
 		</div>
 	</div>
