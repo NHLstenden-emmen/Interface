@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400&display=swap");
 
 * {
 	margin: 0px;
 	padding: 0px;
-	font-family: 'Lexend', sans-serif;
+	font-family: "Lexend", sans-serif;
 	font-weight: normal;
 	color: white;
-	
+
 	--primaryColor: #37167e;
 	--secondaryColor: #280f5f;
 	--dark: rgb(15, 15, 15);
@@ -58,6 +58,11 @@
 	/* Videoplayer */
 	--plyr-color-main: var(--primaryColor);
 
+	/* Logo */
+	--logoBodyColor: #5f3fa2;
+	--logoWingsColor: #341963;
+	--logoEyesColor: #281552;
+	--logoBackdropColor: #fff;
 }
 
 /* Algemene items */
@@ -75,52 +80,56 @@ hr {
 	margin: 15px 0;
 }
 
-
 ::-webkit-scrollbar {
 	width: 10px;
 }
-  
+
 ::-webkit-scrollbar-track {
-	background: var(--scollbarColor); 
+	background: var(--scollbarColor);
 }
-   
+
 ::-webkit-scrollbar-thumb {
-	background: var(--scollbarHoldColor); 
+	background: var(--scollbarHoldColor);
 }
-  
+
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--scollbarHoverColor); 
+	background: var(--scollbarHoverColor);
 }
 
-::-moz-selection { 
-	background: var(--glowColor); 	
+::-moz-selection {
+	background: var(--glowColor);
 	color: white;
 }
-::selection { 
-	background: var(--glowColor); 
+::selection {
+	background: var(--glowColor);
 	color: white;
 }
 
-.noPadding{
+.noPadding {
 	padding: 0;
 }
 
-.topPadding{
+.topPadding {
 	padding-top: 100px;
 }
 
-iframe{
+iframe {
 	height: 100%;
-    border: 0;
+	border: 0;
 }
 
-.zoom{
-	transition: transform .2s;
+.zoom {
+	transition: transform 0.2s;
 }
-.zoom:hover{
+.zoom:hover {
 	transform: scale(1.05);
 }
-
+.langChange {
+	display: flex;
+	align-items: center; 
+	padding: 0 !important; 
+	margin: 0 20px !important;
+}
 /* Button styling */
 
 button.button {
@@ -130,7 +139,7 @@ button.button {
 	font-weight: bold;
 	background: var(--gradientButton);
 	-webkit-backface-visibility: hidden;
-	-webkit-transform: translateZ(0) scale(1.0, 1.0);
+	-webkit-transform: translateZ(0) scale(1, 1);
 	transform: translateZ(0);
 	animation: button 0.2s ease-in-out forwards;
 }
@@ -153,7 +162,7 @@ a.button {
 	font-size: 0.8em;
 }
 
-.button:hover{	
+.button:hover {
 	outline: 0;
 	border: 0;
 }
@@ -241,21 +250,21 @@ input[type="radio"] {
 	margin: 5px;
 }
 
-select{
+select {
 	background-color: var(--inputColor);
 	color: var(--inputText);
 	border: 0;
 	height: 42px;
-	padding: 0 13px;	
-    outline: none;
+	padding: 0 13px;
+	outline: none;
 }
 
-textarea:focus, 
+textarea:focus,
 input:focus,
 input:active,
 select:focus,
-select:active{
-    outline: none;
+select:active {
+	outline: none;
 	border: 0;
 }
 
@@ -268,24 +277,25 @@ table {
 	border: 0;
 }
 
-th{
+th {
 	font-weight: bold;
 	background-color: var(--tableHead);
 }
-  
-  td, th {
+
+td,
+th {
 	border: 0px;
 	text-align: left;
 	padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-	background-color: var(--tableEven);
-  }
+}
 
-  tr:nth-child(odd) {
+tr:nth-child(even) {
+	background-color: var(--tableEven);
+}
+
+tr:nth-child(odd) {
 	background-color: var(--tableOdd);
-  }
+}
 
 /* Blocks */
 
@@ -651,10 +661,10 @@ th{
 		bottom: 0;
 		left: 10%;
 		height: 0px;
-		
-		width: var(--animatedLines);		
+
+		width: var(--animatedLines);
 		background-color: var(--glowColor);
-	}	
+	}
 	20% {
 		bottom: 0;
 		left: 10%;
@@ -663,8 +673,8 @@ th{
 	40% {
 		bottom: calc(75% - var(--animatedLines));
 		left: 10%;
-		height: var(--animatedLines);		
-		width: var(--animatedLines)
+		height: var(--animatedLines);
+		width: var(--animatedLines);
 	}
 	60% {
 		left: 0%;
@@ -676,8 +686,25 @@ th{
 	100% {
 		bottom: calc(75% - var(--animatedLines));
 		left: 0;
-		height: var(--animatedLines);		
-		width: 0;		
+		height: var(--animatedLines);
+		width: 0;
 		background-color: var(--glowColor);
 	}
+}
+/* toast */
+.toast img {
+	/* width: 30px; */
+	object-fit: cover;
+	height: 1.5rem;
+}
+.toast strong {
+	margin-left: 10px;
+	margin-right: 10px;
+	color: black;
+}
+.toast span {
+	color: black;
+}
+.toast .toast-body {
+	color: black;
 }

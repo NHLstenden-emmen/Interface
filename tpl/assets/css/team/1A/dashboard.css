@@ -600,3 +600,8 @@ section h1{
     font-size: 4em;
     color: #f9c901;
 }
+* {
+	--logoBodyColor:  #d9e000;
+	--logoWingsColor: #7c7c00;
+	--logoEyesColor:  #646600;
+}

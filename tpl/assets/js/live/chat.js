@@ -20,7 +20,7 @@ function deleteResponse(messageID) {
    document.getElementById(messageID).remove();
 }
 
-function showMessage(message, id, username)
+function showMessage(message, id, username, level = null, team = null)
 {
     var messageElement = document.createElement("div");
     messageElement.classList.add("message");
@@ -33,20 +33,35 @@ function showMessage(message, id, username)
     messageUsername.classList.add("user");
 
     var messageUserIcon = document.createElement("img");
-    messageUserIcon.style.width = "2.5rem";
+    messageUserIcon.style.width = "2rem";
     messageUserIcon.style.marginRight = ".5rem";
 
-    if(localStorage.getItem("team") != 'undefined' && username != 'Server') {
-        messageUserIcon.src = "/tpl/assets/images/team/" + localStorage.getItem("team") + "/logoResize.png";
+    if(team != null && team != 'undefined' && username != 'Server' && level != 2) {
+        messageUserIcon.src = "/tpl/assets/images/team/" + team + "/logoResize.png";
         messageUsername.appendChild(messageUserIcon);
         messageUsername.appendChild(document.createTextNode(username));
 
     } else if(username == 'Server') {
         messageUserIcon.src = "/tpl/assets/images/server.png";
         messageUsername.appendChild(messageUserIcon);
-        messageUsername.innerText = username;
-    } else if(localStorage.getItem("level") == 2) {
-        messageUsername.innerHTML = '<i class="fas fa-wrench" style="color: var(--primaryColor);"></i>&nbsp&nbsp' + username + " [MOD]";
+        messageUsername.appendChild(document.createTextNode(username));
+    } else if(level != null && level == 2) {
+        if(team != null && team != 'undefined'){
+            messageUserIcon.src = "/tpl/assets/images/team/" + team + "/logoResize.png";
+
+            var usernameWrapper = document.createElement("span");
+
+            var usernameMod = document.createElement("i");
+            usernameMod.classList.add("fas", "fa-wrench");
+            usernameMod.style.color = "#37167e";
+
+            usernameWrapper.appendChild(usernameMod);
+            usernameWrapper.appendChild(document.createTextNode(" " + username + " [MOD]"));
+
+            messageUsername.appendChild(messageUserIcon);
+            messageUsername.appendChild(usernameWrapper);
+        } else {
+            messageUsername.appendChild(document.createTextNode(usernameMod));        }
     }
      else {
         messageUsername.innerHTML = '<i class="avatar fas fa-user-circle"></i>&nbsp&nbsp' + username;
@@ -151,11 +166,11 @@ function onJoin(messageData) {
         localStorage.setItem("level",  messageData.level);
         localStorage.setItem("team",   messageData.team);
 
-        showMessage(messageData.message, messageData.id,localStorage.getItem("fullname"));
+        showMessage(messageData.message, messageData.id,localStorage.getItem("fullname"), localStorage.getItem("level"), localStorage.getItem("team"));
     } 
     else 
     {
-        showMessage(messageData.message, messageData.id,messageData.username);
+        showMessage(messageData.message, messageData.id, messageData.username, messageData.level, messageData.team);
     }
     
 }
@@ -186,7 +201,7 @@ function launchLiveChat(user_idInput)
     if ("WebSocket" in window)
     {
         user_id = user_idInput;
-        livechatWebSocket = new WebSocket("ws://77.162.30.112:49152");
+       livechatWebSocket = new WebSocket("ws://77.162.30.112:49152");
         
         livechatWebSocket.onopen = function() {
             console.log("Connection to server with url : " + livechatWebSocket.url);
@@ -216,7 +231,7 @@ function launchLiveChat(user_idInput)
                         showDrawingPoll(messageData);
                     break;
                     default:
-                        showMessage(messageData.message, messageData.id, messageData.username);
+                        showMessage(messageData.message, messageData.id, messageData.username, messageData.level, messageData.team);
                     break;
                 }
             }
