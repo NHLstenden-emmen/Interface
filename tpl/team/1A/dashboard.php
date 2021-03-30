@@ -44,7 +44,9 @@
 		<div data-aos="fade-down" class="col-lg-5 block dashboardBlock">
 			<div class="neonBlock content">
 				<h3>Command</h3>
-				<button class="button" type="button" onclick="start()" name="button">Ready</button>
+				<form method="post">
+					<button class="button" type="submit" name="ready">Ready</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -86,13 +88,10 @@
     </div>
   </div>
 </section>       
-   
-	<?php
-		// include 'element.html';
-	?>
 
-<script>
-	function start() {
-        
+<?php
+	// include 'element.html';
+	if (isset($_POST['ready'])) {
+		var_dump($socket->sendStartToBot("BumbleBert"));
 	}
-</script>
+?>
