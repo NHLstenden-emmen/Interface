@@ -119,13 +119,11 @@
 
         require_once '../../../config/classes/mysql.php';
         require_once '../../../config/classes/template.php';
-        require_once '../../../config/classes/socket.php';
 
         require_once '../../../config/Configuration.php';
 
         $DB             = new Database;
         $TPL            = new Template;
-        $socket         = new ServerConnection(Config::$serverPort, Config::$serverIP);
 
         $TPL->Output();
     }

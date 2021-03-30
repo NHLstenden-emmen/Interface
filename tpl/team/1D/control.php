@@ -11,7 +11,7 @@
         $currentTime = date("H:i:s");
         
         $text = "hi";
-//        $text = print_r($socket->sendStartToBot($bot), true);
+        $text = print_r($socket->sendStartToBot($bot), true);
         $text = ucfirst(str_replace("_", " ", $text));
         
         $log = "<p>".$currentTime."\t".$text."</p>\r\n";

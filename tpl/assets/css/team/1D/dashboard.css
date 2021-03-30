@@ -183,11 +183,12 @@ hr {
     height: 20%;
 }
 
-.currentRanking td, th {
+.currentRanking td, .currentRanking th {
     font-size: 1.3vw;
     color: white;
     text-align: center;
     font-weight: bold;
+    padding: 0px !important;
 }
 
 .currentRanking td {

@@ -49,7 +49,7 @@
             <meta name="color-scheme" content="dark light">
             <form method="post" action="">
                 <button type="submit" name="start" value="start" id="play" class="start" onclick="play()">Start</button>
-                <button type="submit" name="stop" value="stop" id="stop" class="stop stopClicked" onclick="stop()">Stop</button>
+<!--                <button type="submit" name="stop" value="stop" id="stop" class="stop stopClicked" onclick="stop()">Stop</button>-->
             </form>
         </div>
     </div>
@@ -97,22 +97,9 @@
     function play()
     {
         var startButton = document.getElementById("play");
-        var stopButton = document.getElementById("stop");
         if(startButton.className !== "start startClicked")
         {
             startButton.className += " startClicked";
-        }
-        stopButton.className = stopButton.className.replace(" stopClicked", "");
-    }
-    
-    function stop() 
-    {
-        var startButton = document.getElementById("play");
-        var stopButton = document.getElementById("stop");
-        startButton.className = startButton.className.replace(" startClicked", "");
-        if(stopButton.className !== "stop stopClicked")
-        {
-            stopButton.className += " stopClicked";
         }
     }
     
@@ -137,7 +124,7 @@
 <script>
 $(document).ready(function(){
     
-    setInterval(refreshData, 180000);
+    setInterval(refreshData, 120000);
     
     function refreshData() {
         $(".data").wrapAll("<div id='data' style='display: none'></div>");
