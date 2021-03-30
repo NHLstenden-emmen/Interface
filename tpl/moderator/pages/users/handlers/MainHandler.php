@@ -14,7 +14,7 @@
     {
         case "overview":
         default:
-            require(ModeratorPageView."/overview.php");
+            require(ModeratorPageView."overview.php");
         break;
         case 'ban':
         case 'unban':

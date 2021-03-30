@@ -61,6 +61,65 @@
 
   /* Lasers */
   --laserHeight: 10px;
+=======
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Lexend', sans-serif;
+	font-weight: normal;
+	color: white;
+	
+	--primaryColor: #e0e0e0;
+	--secondaryColor: #818181;
+	--dark: rgb(15, 15, 15);
+	--white: #ffffff;
+
+	/* Team colors */
+	--team1A: #f9c901;
+	--team1B: #28478f;
+	--team1C: #d92626;
+	--team1D: #57c511;
+	--team1E: #e0e0e0;
+
+	/* Button colors */
+	--buttonColor: #e0e0e0;
+	--buttonHoverColor: #bebebe;
+	--gradientButton: radial-gradient(
+		circle,
+		var(--primaryColor) 0%,
+		var(--secondaryColor) 100%
+	);
+	--gradientButtonHover: radial-gradient(circle, #a3a3a3 0%, rgb(58, 58, 58) 100%);
+
+	/* Send colors */
+	--sendColor: #6d6d6d;
+	--sendHoverColor: #9c9c9c;
+
+	/* Input colors */
+	--placeholder: rgb(180, 180, 180);
+	--inputColor: rgb(61, 61, 61);
+	--inputText: white;
+
+	/* Glow */
+	--glowColor: #b3b3b3;
+	--glowLightColor: rgb(207, 207, 207);
+
+	/* Line width */
+	--animatedLines: 5px;
+
+	/* Scrollbar */
+	--scollbarColor: #ffc40000;
+	--scollbarHoldColor: #7c7c7c;
+	--scollbarHoverColor: #d1d1d1;
+
+	/* Tables */
+	--tableEven: #b8b8b815;
+	--tableOdd: #72727215;
+	--tableHead: #ddddddb9;
+
+	--logoBodyColor:  #fff;
+	--logoWingsColor: #9a9a9a;
+	--logoEyesColor:  #4f4f4f;
+	--logoBackdropColor: #dbdbdb;
 }
 
 /* Algemene items */
