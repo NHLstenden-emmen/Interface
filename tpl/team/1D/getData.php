@@ -1,9 +1,5 @@
 <?php
-    function error()
-    {
-        echo "Er is iets fout gegaan met het ophalen van de data. Probeer het opnieuw.";
-    }
-
+    // Het desbetreffende team bepalen
     function determineTeam($robotNaam)
     {
         switch($robotNaam)
@@ -23,96 +19,20 @@
         }
     }
     
-    function isGameFinished($gameNaam)
-    {
-        global $conn;
-        $sql = "SELECT * FROM punten WHERE game = ? GROUP BY robot";
-        if($stmt = mysqli_prepare($conn, $sql)) 
-        {
-            mysqli_stmt_bind_param($stmt, "s", $gameNaam);
-            if(mysqli_stmt_execute($stmt)) 
-            {
-                mysqli_stmt_store_result($stmt); 
-                // Kijken of alle teams punten hebben voor dit spel
-                if(mysqli_stmt_num_rows($stmt) == 5) 
-                {
-                    mysqli_stmt_close($stmt);
-                    return true;
-                }
-                mysqli_stmt_close($stmt);
-            }
-        }
-        return false;
-    }
-    
-    function isStarted()
-    {
-        global $conn;
-        $sql = "SELECT * FROM resultaat";
-        if($stmt = mysqli_prepare($conn, $sql)) 
-        {
-            if(mysqli_stmt_execute($stmt)) 
-            {
-                mysqli_stmt_store_result($stmt); 
-                // Kijken of er resultaten zijn
-                if(mysqli_stmt_num_rows($stmt) != 0) 
-                {
-                    mysqli_stmt_close($stmt);
-                    return true;
-                }
-                mysqli_stmt_close($stmt);
-            }
-        }
-        return false;
-    }
-    
-    function determineCurrentGame()
-    {
-        if(isStarted())
-        {
-            if(!isGameFinished("doolhof"))
-            {
-                return "doolhof";
-            }
-            elseif(!isGameFinished("race"))
-            {
-                return "race";
-            }    
-            elseif(!isGameFinished("steen, papier, schaar"))
-            {
-                return "sps";
-            }
-            elseif(!isGameFinished("tekenen"))
-            {
-                return "tekenen";
-            }
-            else
-            {
-                return "none";
-            }
-        }
-        else
-        {
-            return "none";
-        }
-    }
-    
     // Tijd van een wedstrijd bepalen
     function TimeGame($game)
     {
         if(strpos(strtolower($game), "steen") === false)
         {
-            return "05:00";
+            return "5 minuten";
         }
         else
         {
-            return "00:45";
+            return "45 seconden";
         }
     }
-?>
 
-
-<?php 
+    // Zorgen voor database object wanneer er wordt gerefreshed
     if(!isset($DB))
     {
         define('Start', microtime(true));
@@ -155,6 +75,19 @@
 
     // Ophalen van uitslagen
     $uitslagen = $DB->Select("SELECT * FROM resultaat");
+    
+    // Ophalen gespeelde spellen
+    $gespeeldeSpel = $DB->Select("SELECT game, COUNT(*) AS gamesPlayed FROM punten GROUP BY game HAVING gamesPlayed = 5");
+       
+    foreach ($wedstrijden as $key => $wedstrijd) {
+        
+        foreach ($gespeeldeSpel as $spel) {
+        if(strtolower($wedstrijd['spel_naam']) == strtolower($spel['game']))
+            {
+                unset($wedstrijden[$key]);
+            }
+        }
+    }
 ?>
 
         <div class="data currentRanking neonBlock" data-aos="fade-right" data-aos-duration="1000">
@@ -173,14 +106,13 @@
             </table>
         </div>
         <div class="data upcoming neonBlock" data-aos="fade-right" data-aos-duration="1250">
-            <h3>Aankomend</h3>
+            <h3>Nog te spelen</h3>
             <div class="aankomend">
                 <table>
                     <thead>
                         <tr>
                             <th>Spel</th>
-                            <th>Duur</th>
-                            <th>Tegen</th>
+                            <th>Wedstrijdlengte</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -191,8 +123,7 @@
                                 {
                                     echo "<tr>";
                                     echo "<td>".ucfirst($wedstrijd["spel_naam"])."</td>";
-                                    echo "<td>". TimeGame($wedstrijd['spel_naam'])."</td>";
-                                    echo "<td>".determineTeam($wedstrijd[($wedstrijd['robot_1'] != "BOT4" ? "robot_1" : "robot_2")])."</td>";
+                                    echo "<td>".TimeGame($wedstrijd['spel_naam'])."</td>";
                                     echo "</tr>";
                                 }
                             }
