@@ -1,3 +1,5 @@
+/* Hieronder volgen stijlaanpassingen voor een staande oriëntatie */
+
 @media only screen and (max-aspect-ratio: 1/1) {
     /* Begin algemene pagina indeling */
     
@@ -97,7 +99,7 @@
     
     .teamData textarea, .teamData form {
         height: 85%;
-        font-size: 2.1vw;
+        font-size: 2.7vw;
     }
     
     .teamData button {
@@ -169,6 +171,8 @@
     
     .upcoming {
         min-height: 100%;
+        padding-left: 0.5vw !important;
+        padding-right: 0.5vw !important;
     }
     
     .upcoming table {
@@ -176,7 +180,7 @@
     }
 
     .upcoming table td, .upcoming table th {
-        font-size: 2.75vw;
+        font-size: 2.25vw;
     }
 
     .aankomend {
@@ -217,6 +221,88 @@
         }
     }
 }
+
+/* Hieronder volgen stijlaanpassingen voor liggende tablets/telefoons */
+
+@media only screen and (max-device-width: 1024px) and (min-aspect-ratio: 1/1) {    
+    h3 {
+        font-size: 2.3vw;
+    }
+    
+    .chances p {
+        font-size: 1.7vw;
+    }
+    
+    .currentRanking td, th {
+        font-size: 2vw;
+    }
+    
+    .upcoming table td, .upcoming table th {
+        font-size: 1.3vw;
+    }
+    
+    .upcoming {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    .table td, .table th {
+        font-size: 1.7vw;
+    }
+    
+    .logTeamD p {
+        font-size: 1.5vw;
+    }
+    
+    #next {
+        font-size: 2.4vw !important;
+    }
+    
+    #time {
+        font-size: 2vw !important;
+    }
+    
+    .teamData textarea {
+        font-size: 1.8vw;
+    }
+    
+    .teamData button {
+        font-size: 1.8vw;
+        height: 10%;
+        padding-top: 1%;
+        padding-bottom: 8%;
+    }
+    
+    .startStop {
+        width: 30%;
+    }
+    
+    .controls button {
+        font-size: 2.5vw;
+        height: 36%;
+        width: 100%;
+    }
+    
+    .controls button {
+        animation: biggerGreenPulse 3.6s infinite;
+    }
+    
+    @keyframes biggerGreenPulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(87, 197, 17, 0.6);
+        }
+        35% {
+            box-shadow: 0 0 0 0.9vw rgba(87, 197, 17, 0);
+        }
+        50% {
+            box-shadow: 0 0 0 0 rgba(87, 197, 17, 0);
+        }
+    }
+}
+
+
+/* Hieronder wordt de hoogte van de pagina gewijzigd
+   op basis van de verhouding tussen de hoogte en de breedte van het scherm */ 
 
 @media only screen and (min-aspect-ratio: 3/5) and (max-aspect-ratio: 4/5) {
     .containerD {

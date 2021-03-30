@@ -130,7 +130,7 @@
                             else
                             {
                                 echo "<tr>";
-                                echo "<td colspan='3'>Er zijn geen wedstrijden gevonden</td>";
+                                echo "<td colspan='2'>Er zijn geen wedstrijden gevonden</td>";
                                 echo "</tr>";
                             }
                         ?>

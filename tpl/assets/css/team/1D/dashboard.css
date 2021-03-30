@@ -7,8 +7,8 @@
     --glowColor: #57c511;
     --gradientButtonHover: radial-gradient(circle, var(--primaryColor) 100%, green 0%);
     --logoBodyColor:  #63c020;
-	--logoWingsColor: #357a02;
-	--logoEyesColor:  #2c6402;
+    --logoWingsColor: #357a02;
+    --logoEyesColor:  #2c6402;
 }
 
 /* Begin algemene pagina indeling */
@@ -199,23 +199,23 @@ hr {
 }
 
 #teamA td {
-    background-color: #f9c901;
+    background-color: var(--team1A);
 }
 
 #teamB td {
-    background-color: #28478f; 
+    background-color: var(--team1B); 
 }
 
 #teamC td {
-    background-color: #d92626;
+    background-color: var(--team1C);
 }
 
 #teamD td {
-    background-color: #57c511;
+    background-color: var(--team1D);
 }
 
 #teamE td {
-    background-color: white;
+    background-color: var(--team1E);
 }
 
 /* Einde huidige stand */
@@ -340,25 +340,6 @@ h3::before {
 
 /* Einde kansen */
 /* Begin besturing */
-    
-.gameButton {
-    background: none;
-    border: none;
-    margin: 0.35vw 0px;
-    width: 85%;
-    height: 50px;
-    flex-grow: 1;
-    font-size: 1vw;
-}
-
-.games {
-    display: none;
-    flex-direction: column;
-    width: 75%;
-    height: 100%;
-    padding: 0px !important;
-    margin: 0px !important;
-}
 
 .selectGame {
     width: 5%;
@@ -366,10 +347,6 @@ h3::before {
     box-shadow: 0.35vw 0 0.35vw -0.35vw var(--glowColor);
     height: 100%;
     transition: 0.5s;
-}
-
-.gameButton:hover, .active {
-    background-color: var(--primaryColor); 
 }
 
 .logTeamD {
@@ -407,27 +384,20 @@ h3::before {
     width: 100%;
 }
 
-.start, .stop {
+.start {
     width: 90%;
     height: 26%;
     margin-bottom: 15%;
     border-radius: 1vw 1vw;
     font-size: 1.5vw;
     position: relative;
-    transition: top 2s ease;
-}
-
-.start {
+    transition: top 2.5s ease;
+    font-weight: bold;
     background-image: radial-gradient(circle, var(--primaryColor) 0%, var(--secondaryColor) 100%);
     border: 0.22vw solid darkgreen;
 }
 
-.stop {
-    background-color: red;
-    border: 0.07vw solid white;
-}
-
-.start:hover, .stop:hover {
+.start:hover {
     opacity: 50%;
 }
 
@@ -436,18 +406,17 @@ h3::before {
     animation: greenPulse 3.6s infinite;
 }
 
-.startClicked, .stopClicked {
+.start:active {
+    top: 0.6vw;
+}
+
+.startClicked {
     top: 5px;
     animation: none;
 }
 
 .startClicked:hover {
     opacity: 100%;
-}
-
-.stopClicked {
-    background-color: #2d2d2d;
-    opacity: 50%;
 }
 
 /* Einde besturing */

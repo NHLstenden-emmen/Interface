@@ -1,17 +1,5 @@
-<?php
-    // Wijzigen teamdata
-    if(isset($_POST["veranderenTeam"]) && !empty("teamDescription"))
-    {
-        $newDescription = $filter->sanatizeInput($_POST["teamDescription"], "string");
-        $DB->Update("UPDATE teams SET TeamDesc = ? WHERE TeamID = ?", [$newDescription, "1D"]);
-    }
-    
-    // Ophalen teamdata
-    $teamData = $DB->Select("SELECT TeamDesc FROM teams WHERE TeamID = ?", ["1D"]);
-    $description = $teamData[0]["TeamDesc"];
-?>
-
-<link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+<link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet">
+<link rel="stylesheet" href="/tpl/assets/css/team/1D/dashboardResponsive.css">
 
 <div class="containerD">
     <div class="header">
@@ -21,7 +9,7 @@
     </div>
     <div class="live neonBlock">
         <video id="my-video" class="video-js" controls preload="auto" width="100%" height="100%" data-setup="{}">
-            <source src="/streams/dome.m3u8" type="application/vnd.apple.mpegurl" />
+            <source id="streamSource" src="/streams/dome.m3u8" type="application/vnd.apple.mpegurl" />
             <p class="vjs-no-js">
                 Om deze video te kijken, moet JavaScript aan staan. Wellicht biedt de huidige browser ook geen 
                 <a href="https://videojs.com/html5-video-support/" target="_blank">ondersteuning voor HTML5 video</a>
@@ -29,12 +17,12 @@
         </video> 
     </div>
     <div id='test' class="teamData neonBlock">
+        <?php include ("changeTeamData.php"); ?>
         <h3>Beschrijving</h3>
         <form method="post">
             <textarea name="teamDescription"><?php echo $description; ?></textarea>
             <button type="submit" name="veranderenTeam" value="wijzig" class="button">Wijzig</button>
         </form>
-        <?php include ("changeTeamData.php"); ?>
     </div>
     <div class="controls neonBlock">
         <div id="gameMenu" class="selectGame">
@@ -49,34 +37,15 @@
             <meta name="color-scheme" content="dark light">
             <form method="post" action="">
                 <button type="submit" name="start" value="start" id="play" class="start" onclick="play()">Start</button>
-<!--                <button type="submit" name="stop" value="stop" id="stop" class="stop stopClicked" onclick="stop()">Stop</button>-->
             </form>
         </div>
     </div>
     <div id="nextGame" class="timeUntil neonBlock">
         <?php include("upcoming.php"); ?>
     </div>
-        <?php include("getData.php"); ?>
-    
+    <?php include("getData.php"); ?>
 </div>
-<script>
-    function makeActive(number)
-    {
-        var druk = document.getElementsByClassName("gameButton");
-        for(var i = 0; i < druk.length; i++)
-        {
-            if(i === number)
-            {
-                var active = document.getElementsByClassName("active");
-                if(active.length === 1)
-                {
-                    active[0].className = active[0].className.replace(" active", "");
-                }
-                druk[i].className += " active"; 
-            }
-        }
-    }
-    
+<script>    
     function menuVisible()
     {
         var status = document.getElementById("visible");
@@ -93,60 +62,56 @@
         }
     }
     
-    function play()
-    {
-        var startButton = document.getElementById("play");
-        if(startButton.className !== "start startClicked")
-        {
-            startButton.className += " startClicked";
-        }
-    }
-    
-    function refresh()
-    {
-        $("#refreshDIV").load("chances.php");
-    }
-    
     <?php
         if(isset($_POST["start"]))
         {
-            echo "window.onload = function triggerPlay() 
+            echo "window.onload = function triggerMenu() 
             {
-                play();
                 menuVisible();
             }";
         }
     ?>
+        
+    $(document).ready(function(){
+        setInterval(refreshData, 120000);
+
+        function refreshData() {
+            $(".data").wrapAll("<div id='data' style='display: none'></div>");
+
+            setTimeout(function() { 
+                $("#data").load("../tpl/team/1D/getData.php");
+
+                setTimeout(function() { 
+                    $(".data").unwrap();
+                }, 25);
+
+            }, 25);
+        };
+
+        setInterval(refreshUpcoming, 60000);
+
+        function refreshUpcoming() {
+            $("#nextGame").load("../tpl/team/1D/upcoming.php");
+            console.log("ho");
+        };
+    });
+
+//    function changeStream()
+//    {
+//        var videoPlayer = document.getElementById('my-video');
+//        
+//        console.log(videoPlayer);
+//
+//        var mp4Vid = document.getElementById("streamSource");
+//
+//        videoPlayer.pause();
+//
+//        mp4Vid.src = "";
+//
+//        videoPlayer.load();
+//        videoPlayer.play();
+//    }
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    
-    setInterval(refreshData, 120000);
-    
-    function refreshData() {
-        $(".data").wrapAll("<div id='data' style='display: none'></div>");
-
-        setTimeout(function() { 
-            $("#data").load("../tpl/team/1D/getData.php");
-
-            setTimeout(function() { 
-                $(".data").unwrap();
-            }, 25);
-
-        }, 25);
-    };
-    
-    setInterval(refreshUpcoming, 1800);
-    
-    function refreshUpcoming() {
-        $("#nextGame").load("../tpl/team/1D/upcoming.php");
-    };
-});
-</script>
-
 <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
-
-
-<link rel="stylesheet" href="/tpl/assets/css/team/1D/dashboardResponsive.css">

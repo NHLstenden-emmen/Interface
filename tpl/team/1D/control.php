@@ -1,5 +1,5 @@
 <?php
-    $bot = "BOT1";
+    $bot = "Wall-D";
 
     $path = "tpl/team/1D/response.txt";
     $currentLog = file_get_contents($path);
@@ -7,10 +7,8 @@
     if(isset($_POST["start"]))
     {
         $file = fopen($path, "r+");
-        
         $currentTime = date("H:i:s");
         
-//        $text = "hi";
         $text = print_r($socket->sendStartToBot($bot), true);
         $text = ucfirst(str_replace("_", " ", $text));
         
@@ -21,12 +19,7 @@
         {
             fwrite($file, $log);
         }
-        
         fclose($file);
-    }
-    elseif(isset($_POST["stop"]))
-    {
-        // Stop
     }
     
     echo file_get_contents($path);
