@@ -32,11 +32,11 @@ if ($user->logged_in)
 	if($user->level == 2) {
 		$this->Set('dashboard', '<li><a href="/moderator/">Moderator</a></li>');
 	}
-
 }
 else 
 {
 	$this->Set('login', '<a class="alternative-button" href="/login">' . $this->Get("NAV_LOGIN") . '&nbsp<i class="fas fa-sign-in-alt"></i></a>');
 	$this->Set('dashboard', '');
+	$monitor = "Guest";
 }
 ?>
