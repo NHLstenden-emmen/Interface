@@ -1,8 +1,15 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-if(isset($_POST['action'])){
-    $bot = "INF1E";
-    $action = $_POST['action'];
+include '../../../config/classes/socket.php';
+$socket = new ServerConnection(49153, "194.171.181.139");
+
+if(isset($_GET['action'])){
+
+    $bot = "ROBot Jetten";
+    $action = $_GET['action'];
 
     if($action == "Stop"){
         $command = "a";
@@ -39,21 +46,13 @@ if(isset($_POST['action'])){
     }
 
     // Commands
-
-    if ($action == "test") {
-        $command = "2";      
-        var_dump($socket->sendToBot($bot, $command));
-        sleep(1);
-        $command = "a";      
-        var_dump($socket->sendToBot($bot, $command));
-
-        die();
+    if($action == "SPS"){
+        $command = "4";
     }
 
-    var_dump($socket->sendToBot($bot, $command));
-    // $fp = fopen('ESP Log.txt', 'a');
-    // fwrite($fp, microtime() . ": " . $action . "\n");
-    // fclose($fp);
+
+    // Send Data
+    print_r($socket->sendToBot($bot, $command));
 }
 
 ?>

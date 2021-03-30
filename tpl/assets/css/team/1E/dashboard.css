@@ -1,188 +1,193 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400&display=swap");
 
 * {
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Lexend', sans-serif;
-	font-weight: normal;
-	color: white;
-	
-	--primaryColor: #e0e0e0;
-	--secondaryColor: #818181;
-	--dark: rgb(15, 15, 15);
-	--white: #ffffff;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Lexend", sans-serif;
+  font-weight: normal;
+  color: white;
 
-	/* Team colors */
-	--team1A: #f9c901;
-	--team1B: #28478f;
-	--team1C: #d92626;
-	--team1D: #57c511;
-	--team1E: #e0e0e0;
+  --primaryColor: #e0e0e0;
+  --secondaryColor: #818181;
+  --dark: rgb(15, 15, 15);
+  --white: #ffffff;
 
-	/* Button colors */
-	--buttonColor: #e0e0e0;
-	--buttonHoverColor: #bebebe;
-	--gradientButton: radial-gradient(
-		circle,
-		var(--primaryColor) 0%,
-		var(--secondaryColor) 100%
-	);
-	--gradientButtonHover: radial-gradient(circle, #a3a3a3 0%, rgb(58, 58, 58) 100%);
+  /* Team colors */
+  --team1A: #f9c901;
+  --team1B: #28478f;
+  --team1C: #d92626;
+  --team1D: #57c511;
+  --team1E: #e0e0e0;
 
-	/* Send colors */
-	--sendColor: #6d6d6d;
-	--sendHoverColor: #9c9c9c;
+  /* Button colors */
+  --buttonColor: #e0e0e0;
+  --buttonHoverColor: #bebebe;
+  --gradientButton: radial-gradient(
+    circle,
+    var(--primaryColor) 0%,
+    var(--secondaryColor) 100%
+  );
+  --gradientButtonHover: radial-gradient(
+    circle,
+    #a3a3a3 0%,
+    rgb(58, 58, 58) 100%
+  );
 
-	/* Input colors */
-	--placeholder: rgb(180, 180, 180);
-	--inputColor: rgb(61, 61, 61);
-	--inputText: white;
+  /* Send colors */
+  --sendColor: #6d6d6d;
+  --sendHoverColor: #9c9c9c;
 
-	/* Glow */
-	--glowColor: #b3b3b3;
-	--glowLightColor: rgb(207, 207, 207);
+  /* Input colors */
+  --placeholder: rgb(180, 180, 180);
+  --inputColor: rgb(61, 61, 61);
+  --inputText: white;
 
-	/* Line width */
-	--animatedLines: 5px;
+  /* Glow */
+  --glowColor: #b3b3b3;
+  --glowLightColor: rgb(207, 207, 207);
 
-	/* Scrollbar */
-	--scollbarColor: #ffc40000;
-	--scollbarHoldColor: #7c7c7c;
-	--scollbarHoverColor: #d1d1d1;
+  /* Line width */
+  --animatedLines: 5px;
 
-	/* Tables */
-	--tableEven: #b8b8b815;
-	--tableOdd: #72727215;
-	--tableHead: #ddddddb9;
+  /* Scrollbar */
+  --scollbarColor: #ffc40000;
+  --scollbarHoldColor: #7c7c7c;
+  --scollbarHoverColor: #d1d1d1;
 
+  /* Tables */
+  --tableEven: #b8b8b815;
+  --tableOdd: #72727215;
+  --tableHead: #ddddddb9;
+
+  /* Lasers */
+  --laserHeight: 10px;
 }
 
 /* Algemene items */
 
 html,
 body {
-	width: 100vw;
-	min-height: 100vh;
-	/* background-color: rgb(22, 22, 22); */
-	overflow-x: hidden;
+  width: 100vw;
+  min-height: 100vh;
+  /* background-color: rgb(22, 22, 22); */
+  overflow-x: hidden;
 }
 
 hr {
-	width: 100%;
-	margin: 15px 0;
+  width: 100%;
+  margin: 15px 0;
 }
-
 
 ::-webkit-scrollbar {
-	width: 10px;
+  width: 10px;
 }
-  
+
 ::-webkit-scrollbar-track {
-	background: var(--scollbarColor); 
+  background: var(--scollbarColor);
 }
-   
+
 ::-webkit-scrollbar-thumb {
-	background: var(--scollbarHoldColor); 
+  background: var(--scollbarHoldColor);
 }
-  
+
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--scollbarHoverColor); 
+  background: var(--scollbarHoverColor);
 }
 
-::-moz-selection { 
-	background: var(--glowColor); 	
-	color: white;
+::-moz-selection {
+  background: var(--glowColor);
+  color: white;
 }
-::selection { 
-	background: var(--glowColor); 
-	color: rgb(66, 66, 66);
-}
-
-.noPadding{
-	padding: 0;
+::selection {
+  background: var(--glowColor);
+  color: rgb(66, 66, 66);
 }
 
-iframe{
-	height: 100%;
-    border: 0;
+.noPadding {
+  padding: 0;
+}
+
+iframe {
+  height: 100%;
+  border: 0;
 }
 
 /* Button styling */
 
 button.button {
-	padding: 25px 60px;
-	border: none;
-	color: white;
-	font-weight: bold;
-	background: var(--gradientButton);
-	-webkit-backface-visibility: hidden;
-	-webkit-transform: translateZ(0) scale(1.0, 1.0);
-	transform: translateZ(0);
-	animation: button 0.2s ease-in-out forwards;
+  /* padding: 25px 60px; */
+  border: none;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  background: var(--gradientButton);
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1, 1);
+  transform: translateZ(0);
+  animation: button 0.2s ease-in-out forwards;
 }
 
 button.button:hover {
-	cursor: pointer;
-	animation: buttonHover 0.2s ease-in-out forwards;
-	outline: 0;
-	border: 0;
+  cursor: pointer;
+  animation: buttonHover 0.2s ease-in-out forwards;
+  outline: 0;
+  border: 0;
 }
 
 a.button {
-	padding: 12.5px 30px;
-	border: none;
-	color: white;
-	font-weight: bold;
-	background: var(--gradientButton);
-	animation: button 0.2s ease-in-out forwards;
-	text-decoration: none;
-	font-size: 0.8em;
+  padding: 12.5px 30px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  background: var(--gradientButton);
+  animation: button 0.2s ease-in-out forwards;
+  text-decoration: none;
+  font-size: 0.8em;
 }
 
-.button:hover{	
-	outline: 0;
-	border: 0;
+.button:hover {
+  outline: 0;
+  border: 0;
 }
 
 a.alternative-button {
-	padding: 12.5px 30px;
-	border: none;
-	color: white;
-	font-weight: bold;
-	border: 3px solid var(--buttonColor);
-	text-decoration: none;
-	font-size: 0.8em;
-	padding: 10px 20px !important;
-	margin: 0 20px;
-	background-color: #0f0f0fad;
+  padding: 12.5px 30px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border: 3px solid var(--buttonColor);
+  text-decoration: none;
+  font-size: 0.8em;
+  padding: 10px 20px !important;
+  margin: 0 20px;
+  background-color: #0f0f0fad;
 }
 
 a.button:hover {
-	animation-name: buttonHover;
-	animation-duration: 0.2s;
-	animation-timing-function: ease-in-out;
-	animation: buttonHover 0.2s ease-in-out forwards;
+  animation-name: buttonHover;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation: buttonHover 0.2s ease-in-out forwards;
 }
 
 a#send {
-	background-color: var(--sendColor);
-	padding: 10px 15px;
-	color: white;
-	font-weight: bold;
-	text-decoration: none;
-	font-size: 1.2em;
-	animation-name: send;
-	animation-duration: 0.2s;
-	animation-timing-function: ease-in-out;
-	animation-fill-mode: forwards;
-	text-decoration: none;
+  background-color: var(--sendColor);
+  padding: 10px 15px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.2em;
+  animation-name: send;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  text-decoration: none;
 }
 
 a#send:hover {
-	animation-name: sendHover;
-	animation-duration: 0.2s;
-	animation-timing-function: ease-in-out;
-	animation-fill-mode: forwards;
+  animation-name: sendHover;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 /* Input elementen */
@@ -190,185 +195,185 @@ a#send:hover {
 input,
 input:focus,
 input:active {
-	border: 0;
-	-webkit-appearance: none;
-	outline: -webkit-focus-ring-color auto 0px;
+  border: 0;
+  -webkit-appearance: none;
+  outline: -webkit-focus-ring-color auto 0px;
 }
 
 ::placeholder {
-	color: var(--placeholder);
-	opacity: 1;
+  color: var(--placeholder);
+  opacity: 1;
 }
 
 :-ms-input-placeholder {
-	color: var(--placeholder);
+  color: var(--placeholder);
 }
 
 ::-ms-input-placeholder {
-	color: var(--placeholder);
+  color: var(--placeholder);
 }
 
 input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="number"] {
-	padding: 0 13px;
-	background-color: var(--inputColor);
-	color: var(--inputText);
-	height: 42px;
+  padding: 0 13px;
+  background-color: var(--inputColor);
+  color: var(--inputText);
+  height: 42px;
 }
 
 input[type="radio"] {
-	-webkit-appearance: radio;
-	width: 20px;
-	height: 20px;
-	opacity: 1;
-	cursor: pointer;
-	margin: 5px;
+  -webkit-appearance: radio;
+  width: 20px;
+  height: 20px;
+  opacity: 1;
+  cursor: pointer;
+  margin: 5px;
 }
 
-select{
-	background-color: var(--inputColor);
-	color: var(--inputText);
-	border: 0;
-	height: 42px;
-	padding: 0 13px;	
-    outline: none;
+select {
+  background-color: var(--inputColor);
+  color: var(--inputText);
+  border: 0;
+  height: 42px;
+  padding: 0 13px;
+  outline: none;
 }
 
-textarea:focus, 
+textarea:focus,
 input:focus,
 input:active,
 select:focus,
-select:active{
-    outline: none;
-	border: 0;
+select:active {
+  outline: none;
+  border: 0;
 }
 
 /* Tables */
 
 table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-	border: 0;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border: 0;
 }
 
-th{
-	font-weight: bold;
-	background-color: var(--tableHead);
+th {
+  font-weight: bold;
+  background-color: var(--tableHead);
 }
-  
-  td, th {
-	border: 0px;
-	text-align: left;
-	padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-	background-color: var(--tableEven);
-  }
 
-  tr:nth-child(odd) {
-	background-color: var(--tableOdd);
-  }
+td,
+th {
+  border: 0px;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: var(--tableEven);
+}
+
+tr:nth-child(odd) {
+  background-color: var(--tableOdd);
+}
 
 /* Blocks */
 
 .neonBlock {
-	padding: 15px;
-	border: 2px solid var(--glowColor);
-	box-shadow: 0 0 10px var(--glowColor);
-	border-radius: 1px;
-	margin: 10px;
+  padding: 15px;
+  border: 2px solid var(--glowColor);
+  box-shadow: 0 0 10px var(--glowColor);
+  border-radius: 1px;
+  margin: 10px;
 }
 
 .neonBorder {
-	border: 2px solid var(--glowColor);
-	box-shadow: 0 0 10px var(--glowColor);
-	border-radius: 1px;
+  border: 2px solid var(--glowColor);
+  box-shadow: 0 0 10px var(--glowColor);
+  border-radius: 1px;
 }
 
 /* All keyframes */
 
 @keyframes fadein {
-    from { 
-		opacity: 0; 
-	}
-    to{ 
-		opacity: 1; 
-	}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes send {
-	from{
-		background-color: var(--sendHoverColor);
-	}
-	to{
-		background-color: var(--sendColor);
-	}
+  from {
+    background-color: var(--sendHoverColor);
+  }
+  to {
+    background-color: var(--sendColor);
+  }
 }
 
 @keyframes sendHover {
-	to{
-		background-color: var(--sendHoverColor);	
-		box-shadow: 0 0px 10px var(--glowLightColor);
-	}
+  to {
+    background-color: var(--sendHoverColor);
+    box-shadow: 0 0px 10px var(--glowLightColor);
+  }
 }
 
 @keyframes button {
-	from{
-		background: var(--gradientButtonHover);		
-		transform: scale(1.05);
-	}
-	to {
-		background: var(--gradientButton);
-	}
+  from {
+    background: var(--gradientButtonHover);
+    transform: scale(1.05);
+  }
+  to {
+    background: var(--gradientButton);
+  }
 }
 
 @keyframes buttonHover {
-	to {
-		background: var(--gradientButtonHover);	
-		box-shadow: 0 0px 10px var(--glowColor);		
-		transform: scale(1.05);
-	}
+  to {
+    background: var(--gradientButtonHover);
+    box-shadow: 0 0px 10px var(--glowColor);
+    transform: scale(1.05);
+  }
 }
 
 @keyframes blink {
-	0% {
-		opacity: 0;
-	}
-	50% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-	}
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
-
 
 /* Blocks dashboard */
 
-#block{
-	margin: 3vh auto;
-	min-height: 94vh;
+#block {
+  margin: 3vh auto;
+  min-height: 94vh;
 }
 
-.block{
-	margin: 15px 0;
+.block {
+  margin: 15px 0;
 }
 
-.pageBar{
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+.pageBar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.pageBar > div{
-	background-color: #0f0f0f;	
-	padding: 15px;
-	border-left: 5px solid var(--glowColor);
+.pageBar > div {
+  background-color: #0f0f0f;
+  padding: 15px;
+  border-left: 5px solid var(--glowColor);
 }
 
 #block1 > .content,
@@ -377,124 +382,232 @@ th{
 #block4 > .content,
 #block5 > .content,
 #block6 > .content,
-#block7 > .content{
-	min-height: 250px;
-	max-height: 600px;	
-    overflow: auto;
-	background-color: rgba(15, 15, 15, 0.7);
+#block7 > .content,
+#block8 > .content,
+#block9 > .content {
+  min-height: 250px;
+  max-height: 600px;
+  overflow: auto;
+  background-color: rgba(15, 15, 15, 0.7);
 }
 
 #block1 > .content,
 #block2 > .content,
-#block3 > .content{
-	min-height: 400px;
+#block3 > .content,
+#block8 > .content {
+  min-height: 400px;
 }
 
 #block4 > .content,
-#block5 > .content{
-	min-height: 600px;
+#block5 > .content,
+#block6 > .content,
+#block7 > .content,
+#block9 > .content {
+  min-height: 600px;
 }
 
 h2#titel,
-p#desc{
-	font-weight: bold;
+p#desc {
+  font-weight: bold;
 }
 
-h5.blockTitle{
-	font-weight: bold;
-	margin-bottom: 10px;
+h5.blockTitle {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 /* Speelschema */
 
-#block5 > .content > table#schemaSPS{
-	width: 100%;
-	border: 0;
+#block5 > .content > table#schemaSPS {
+  width: 100%;
+  border: 0;
 }
 
 #block5 > .content > table#schemaSPS th,
-#block5 > .content > table#schemaSPS td{
-	font-size: 0.8em;
-	color: white;
+#block5 > .content > table#schemaSPS td {
+  font-size: 0.8em;
+  color: white;
 }
 
-#block5 > .content > table#schemaSPS tr:nth-child(odd){
-	background-color: var(--tableOdd);
+#block5 > .content > table#schemaSPS tr:nth-child(odd) {
+  background-color: var(--tableOdd);
 }
 
-#block5 > .content > table#schemaSPS tr:nth-child(even){
-	background-color: var(--tableEven);
+#block5 > .content > table#schemaSPS tr:nth-child(even) {
+  background-color: var(--tableEven);
 }
 
-
-#block5 > .content > table#schemaSPS th{
-	font-weight: bold;
-	padding: 7px;
+#block5 > .content > table#schemaSPS th {
+  font-weight: bold;
+  padding: 7px;
 }
 
-#block5 > .content > table#schemaSPS td{
-	padding: 5px 7px;
+#block5 > .content > table#schemaSPS td {
+  padding: 5px 7px;
 }
-
 
 /* Consoleblock */
 
-#block7 > .content > #console > p{
-	color: white;
-	font-size: 0.8em;
+#block7 > .content > #console > p {
+  color: white;
+  font-size: 0.8em;
 }
 
-#block7 > .content > #console > p.error{
-	color: red;
+#block7 > .content > #console > p.error {
+  color: red;
 }
 
-#block7 > .content > #console > p.correct{
-	color: green;
+#block7 > .content > #console > p.correct {
+  color: green;
 }
 
-p.blink{
-	animation: blink .8s ease-in-out infinite;
+p.blink {
+  animation: blink 0.8s ease-in-out infinite;
 }
 
-#WASD button{
-	display: inline-block;
+#WASD button {
+  display: inline-block;
 }
 
-#WASD{
-	display: flex;
-	align-items: center;
-	justify-content: center;
+#WASD {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#WASD > .container{
-	padding-bottom: 90px;
+#WASD > .container {
+  padding-bottom: 90px;
 }
 
 #WASD > .container > .row-one,
-#WASD > .container > .row-two{
-	width: 100%;	
-    text-align: center;
+#WASD > .container > .row-two {
+  width: 100%;
+  text-align: center;
 }
 
 #WASD > .container > .row-one > button,
-#WASD > .container > .row-two > button{
-	padding: 10px;	
-	min-width: 50px;
-	margin: 5px;
-    text-align: center;
-	border: 0;
+#WASD > .container > .row-two > button {
+  padding: 10px;
+  min-width: 50px;
+  margin: 5px;
+  text-align: center;
+  border: 0;
 }
 
 /* Teaminfo blok */
 
-#block8 textarea{
-    color: red;
+#block8 textarea {
+  color: red;
 }
 
-#block8 #robotName{
-	color: red;
+#block8 #robotName {
+  color: red;
 }
 
-#block8 input[type=submit]{
-	color: red;
+#block8 input[type="submit"] {
+  color: red;
+}
+
+/* Ultra Jetten Cyborg */
+
+#block9 > .content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.botReady {
+  padding: 30px 60px;
+  color: rgba(255, 255, 255, 0);
+  outline: 0;
+  font-weight: bold;
+  border: 0;
+  background-image: url("/tpl/team/1E/D69Color.png");
+  background-size: 100%;
+  background-position: center;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 2;
+}
+
+.botReady:focus {
+  outline: 0;
+  border: 0;
+}
+
+.botReady:hover {
+  animation: fadeIn ease-in-out 1s 1 normal forwards;
+}
+
+.epicRob {
+  color: white;
+}
+
+.epicRob p {
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  0% {
+    background-image: url("/tpl/team/1E/D69Color.png");
+    background-size: 100%;
+  }
+  100% {
+    background-image: url("/tpl/team/1E/D69.png");
+    background-size: 100%;
+  }
+}
+
+.showRob {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  bottom: 0;
+  animation: showRob ease-in-out 1s forwards;
+  background-position: bottom;
+}
+
+@keyframes showRob {
+  0% {
+    background-image: url("/tpl/team/1E/robbie.png");
+    background-size: 0%;
+    background-repeat: no-repeat;
+    opacity: 0;
+  }
+  100% {
+    background-image: url("/tpl/team/1E/robbie.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    opacity: 1;
+  }
+}
+
+.hideRob {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 2;
+  pointer-events: none;
+  bottom: 0;
+  animation: hideRob ease-in-out 1s forwards;
+  background-position: bottom;
+}
+
+@keyframes hideRob {
+  0% {
+    background-image: url("/tpl/team/1E/robbie.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    opacity: 1;
+  }
+  100% {
+    background-image: url("/tpl/team/1E/robbie.png");
+    background-size: 0%;
+    background-repeat: no-repeat;
+    opacity: 0;
+  }
 }
