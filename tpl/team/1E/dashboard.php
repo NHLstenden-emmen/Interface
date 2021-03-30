@@ -17,6 +17,7 @@
 <button class="botReady" onclick="readyBot();playAudio('/tpl/team/1E/quoteJetten.mp3');playAudio('/tpl/team/1E/backgroundMusicJetten.mp3')">Ready</button>
 
 <div class="container" id="block">
+    <button class="button">Test</button>
     <div class="pageBar">
         <div>
             <h2 id="titel">Dashboard</h2>
