@@ -9,7 +9,7 @@
 		</div>
 		
 		<div class="col-md-12 col-lg-9 main">
-		<img class="img" src="{assetsFolder}/images/arduino.png" alt="Arduino schematische weergave">
+			<img class="img" src="{assetsFolder}/images/arduino_0.png" alt="Arduino/ESP32 schematische weergave">
 		</div>
 	</div>
 </div>

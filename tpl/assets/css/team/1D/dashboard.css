@@ -6,6 +6,9 @@
     --secondaryColor: #4fb80c;
     --glowColor: #57c511;
     --gradientButtonHover: radial-gradient(circle, var(--primaryColor) 100%, green 0%);
+    --logoBodyColor:  #63c020;
+	--logoWingsColor: #357a02;
+	--logoEyesColor:  #2c6402;
 }
 
 /* Begin algemene pagina indeling */
