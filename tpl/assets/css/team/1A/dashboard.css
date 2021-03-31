@@ -1,5 +1,157 @@
 * {
-	--logoBodyColor:  #d9e000;
+	--primaryColor: #f9c901;
+	--secondaryColor: #e4b701;
+
+	--logoBodyColor:  #f9c901;
 	--logoWingsColor: #7c7c00;
 	--logoEyesColor:  #646600;
+
+	/* Team colors */
+	--team1A: #f9c901;
+
+	/* Button colors */
+	--buttonColor: #f9c901;
+	--buttonHoverColor: #e4b701;
+	--gradientButtonHover: radial-gradient(circle,  var(--secondaryColor), var(--primaryColor) 100%);
+
+	/* Send colors */
+	--sendColor: #6d6d6d;
+	--sendHoverColor: #9c9c9c;
+
+	/* Glow */
+	--glowColor: #f9c901;
+	--glowLightColor: rgb(207, 207, 207);
 }
+
+/* Button styling */
+
+button.button {
+	padding: 12.5px 30px;
+	color: black;
+}
+
+.button:hover{	
+	outline: 0;
+	border: 0;
+}
+
+/* Input elementen */
+
+input,
+input:focus,
+input:active {
+	border: 0;
+	-webkit-appearance: none;
+	outline: -webkit-focus-ring-color auto 0px;
+}
+
+:-ms-input-placeholder {
+	color: var(--placeholder);
+}
+
+::-ms-input-placeholder {
+	color: var(--placeholder);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"] {
+	padding: 0 13px;
+	background-color: var(--inputColor);
+	color: var(--inputText);
+	height: 42px;
+}
+
+/* Blocks dashboard */
+
+#block{
+	margin: 3vh auto;
+	min-height: 94vh;
+}
+
+.block{
+	margin: 15px 0;
+}
+
+.pageBar{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.pageBar > div{
+	background-color: #0f0f0f;	
+	padding: 15px;
+}
+
+.dashboardBlock > .content {
+	min-height: 400px;
+    overflow: auto;
+    padding: 30px;
+}
+
+h3{
+    margin-bottom: 20px;
+}
+
+/*Creative Component*/
+
+.intro{
+    height: 100vh;
+	display: block;
+} 
+.intro video{
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+.intro h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    color: white;
+    text-shadow: 3px 3px 5px black;
+}
+  
+/*Command block*/
+
+/*Ready button*/
+
+/* Team People block */
+
+section{
+    min-height: 100vh;
+    color: white;
+}
+
+section h1{
+    padding-top: 300px;
+    text-align: center;
+    font-size: 80px;
+}
+
+#teamPeople {
+    background-color: black;
+    min-height: 100vh;
+    color: white;
+}
+
+#team{
+    width: 80vw;
+    margin: 0 auto;
+    color: #FFF;
+}
+
+.teamPeopleTitle{
+    margin: 50px;
+}
+
+.fa-laptop, .fa-microchip, .fa-server{
+    font-size: 4em;
+    color: #f9c901;
+}
+
