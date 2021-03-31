@@ -51,46 +51,14 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div data-aos="fade-up" class="col-lg-12 block">
-			<h3>Hier komt het creatief element</h3>
-		</div>
-	</div>
+	
+	<?php
+		include 'element.html';
+	?>
+	
 </div>
 
-<section data-aos="fade-up" id="teamPeople">
-  <h1>The A-Team</h1>
-  <div class="container" id="team">
-  	<div class="row justify-content-center">
-    	<h2 class="teamPeopleTitle">Projectgroep A</h2>
-	</div>
-    <div class="row text-center">
-        <div class="col-xs-12 col-sm-6 col-md-4">
-            <i class="fas fa-laptop"></i>
-            <h3>Interface Design</h3>
-            <p>Hylke Sijbesma</p>
-            <p>Tamara Kijk in de Vegte</p>
-            <p>Sjouke van der Wal</p>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-            <i class="fas fa-microchip"></i>
-            <h3>Robot</h3>
-            <p>Lucas Haijtink</p>
-            <p>Yaëll Kuipers</p>
-            <p>Jeffrey Roossien</p>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-            <i class="fas fa-server"></i>
-            <h3>Server</h3>
-            <p>Remco van Oenen</p>
-            <p>Nick Wind</p>
-        </div>
-    </div>
-  </div>
-</section>       
-
 <?php
-	// include 'element.html';
 	if (isset($_POST['ready'])) {
 		var_dump($socket->sendStartToBot("BumbleBert"));
 	}
