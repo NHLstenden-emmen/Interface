@@ -72,8 +72,6 @@ function monitorAction() {
 			var clickText = $(event.target).text();
 			var clickSrc = $(event.target).attr("src");
 
-			console.log(clickSrc);
-
 			// Tag
 			if (clickTag == undefined || clickTag == "NaN") {
 				clickTag = "";
