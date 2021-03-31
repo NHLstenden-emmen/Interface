@@ -32,6 +32,11 @@
 	--animatedLines: 5px;	
 }
 
+
+.button {
+	width: 50% !important;
+	height: 400px !important; 
+}
 p {
 	font-weight: bold;
 }
@@ -127,6 +132,13 @@ h3 {
 	margin-left: 2%;
 }
 
+.brokkobot {
+	height: 500px;
+}
+
+.brokkobottekst {
+	height: 150px;
+}
 @media screen and (max-width: 900px) {
 
 	.container3delen {
@@ -178,5 +190,13 @@ h3 {
 		grid-column: span 1 / -2;
 		margin-bottom: 5%;
 		margin-left: 5%;
+	}
+	
+	.brokkobot {
+		height:8%;
+	}
+
+	.brokkobottekst {
+		height: 150px;
 	}
 }
