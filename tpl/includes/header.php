@@ -13,6 +13,9 @@
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+		<!-- Google -->
+		<script src="https://www.google.com/recaptcha/api.js?render=6Lf47ZUaAAAAACWNEMMuL7uheIoWYWdKoJv93Re9"></script>
+
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="{assetsFolder}/css/main/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

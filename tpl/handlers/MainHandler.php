@@ -22,6 +22,7 @@ if ($user->logged_in)
 	$this->Set('username', $user->naam);
 	$this->Set('login', '<a class="alternative-button" id="logout" href="/logout"><span><i class="fas fa-user"></i>&nbsp&nbsp' . $user->naam . '</span><span></span></a>');
 	$this->Set("team", $user->team);
+	$this->Set("disabled", "");
 
 	if(!empty($user->team)) {
 		$this->Set('dashboard', '<li><a href="/dashboard/' . $user->team . '">' . $this->Get("NAV_DASHBOARD") . '</a></li>');
@@ -32,11 +33,13 @@ if ($user->logged_in)
 	if($user->level == 2) {
 		$this->Set('dashboard', '<li><a href="/moderator/">Moderator</a></li>');
 	}
-
 }
 else 
 {
 	$this->Set('login', '<a class="alternative-button" href="/login">' . $this->Get("NAV_LOGIN") . '&nbsp<i class="fas fa-sign-in-alt"></i></a>');
 	$this->Set('dashboard', '');
+	$this->Set("disabled", "disabled");
+
+	$monitor = "Guest";
 }
 ?>
