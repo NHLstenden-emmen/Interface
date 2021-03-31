@@ -92,7 +92,6 @@
 
         function refreshUpcoming() {
             $("#nextGame").load("../tpl/team/1D/upcoming.php");
-            console.log("ho");
         };
     });
 

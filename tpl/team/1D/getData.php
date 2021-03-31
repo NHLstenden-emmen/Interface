@@ -1,24 +1,4 @@
 <?php
-    // Het desbetreffende team bepalen
-    function determineTeam($robotNaam)
-    {
-        switch($robotNaam)
-        {
-            case "BOT1":
-                return "A";
-            case "BOT2":
-                return "B";
-            case "BOT3":
-                return "C";
-            case "BOT4":
-                return "D";
-            case "BOT5":
-                return "E";
-            default:
-                return "-";
-        }
-    }
-    
     // Tijd van een wedstrijd bepalen
     function TimeGame($game)
     {
@@ -48,6 +28,14 @@
         $TPL->Output();
     }
     
+    // Ophalen van de botnamen en deze aan de teams koppelen
+    $botList = array("A" => null, "B" => null, "C" => null, "D" => null, "E" => null);
+    $bots = $DB->Select("SELECT TeamID, RobotName FROM teams");
+    foreach($bots as $bot)
+    {
+        $botList[substr($bot["TeamID"], 1)] = $bot["RobotName"];
+    }
+    
     // Array met scores van de teams
     $arrayOfScores = array("A" => 0, "B" => 0, "C" => 0, "D" => 0, "E" => 0);
 
@@ -61,7 +49,7 @@
     $points = $DB->Select("SELECT robot, SUM(score) AS score FROM punten GROUP BY robot");
     foreach($points as $point){
         // Opslaan van punten bij het bijbehorende team
-        $team = determineTeam($point["robot"]);
+        $team = array_search($point["robot"], $botList);
         $score = $point["score"];
         $arrayOfScores[$team] = $score;
         
@@ -70,9 +58,9 @@
         $$pointsVariable = $score;
     }
     
-    // Ophalen van aankomende spellen
-    $wedstrijden = $DB->Select("SELECT spel_naam, robot_1, robot_2 FROM speelschema WHERE robot_1 = 'Wall-D' OR robot_2 = 'Wall-D'");
-
+    // Te spelen spellen
+    $wedstrijden = array("sps", "doolhof", "race", "tekening");
+    
     // Ophalen van uitslagen
     $uitslagen = $DB->Select("SELECT * FROM resultaat");
     
@@ -80,13 +68,17 @@
     $gespeeldeSpel = $DB->Select("SELECT game, COUNT(*) AS gamesPlayed FROM punten GROUP BY game HAVING gamesPlayed = 5");
        
     foreach ($wedstrijden as $key => $wedstrijd) {
-        
         foreach ($gespeeldeSpel as $spel) {
-        if(strtolower($wedstrijd['spel_naam']) == strtolower($spel['game']))
+            if(strtolower($wedstrijd) == strtolower($spel['game']))
             {
                 unset($wedstrijden[$key]);
             }
         }
+    }
+    
+    $vindsps = array_search("sps", $wedstrijden);
+    if($vindsps !== false) {
+        $wedstrijden[array_search("sps", $wedstrijden)] = "Steen, papier, schaar";
     }
 ?>
 
@@ -98,7 +90,7 @@
                     foreach($arrayOfScores as $team => $score)
                     {
                         echo "<tr id='team".$team."'>";
-                        echo "<td>Team".$team."</td>";
+                        echo "<td>Team ".$team."</td>";
                         echo "<td>".$score."</td>";
                         echo "</tr>";
                     }
@@ -123,8 +115,8 @@
                                 foreach($wedstrijden as $wedstrijd)
                                 {
                                     echo "<tr>";
-                                    echo "<td>".ucfirst($wedstrijd["spel_naam"])."</td>";
-                                    echo "<td>".TimeGame($wedstrijd['spel_naam'])."</td>";
+                                    echo "<td>".ucfirst($wedstrijd)."</td>";
+                                    echo "<td>".TimeGame($wedstrijd)."</td>";
                                     echo "</tr>";
                                 }
                             }
@@ -163,7 +155,7 @@
                                     echo "<tr>";
                                     echo "<td>".ucfirst($uitslag['game'])."</td>";
                                     echo "<td>".$uitslag['score']."</td>";
-                                    echo "<td>".determineTeam($uitslag['robot'])."</td>";
+                                    echo "<td>".array_search($uitslag['robot'], $botList)."</td>";
                                     echo "</tr>";
                                 }
                             }

@@ -15,36 +15,27 @@
 
         $TPL->Output();
     }
-
-    //$upcoming = $DB->Select("SELECT spel_naam FROM speelschema WHERE robot_1 = 'BOT4' OR robot_2 = 'BOT4'");
-    $resultaten = $DB->Select("Select COUNT(*) AS aantalTeams, game FROM punten GROUP BY game");
-
-    $gespeeldeSpellen = array();
-    foreach($resultaten as $resultaat)
-    {
-        if($resultaat["aantalTeams"] == 5)
-        {
-            $gespeeldeSpellen[] = $resultaat["game"];
+    
+    $spellen = array("sps", "doolhof", "race", "tekening");
+    
+    // Ophalen voltooide spellen
+    $voltooideSpellen = $DB->Select("SELECT game, COUNT(*) AS gamesPlayed FROM punten GROUP BY game HAVING gamesPlayed = 5");
+       
+    foreach ($spellen as $key => $spel) {
+        foreach ($voltooideSpellen as $voltooideSpel) {
+            if(strtolower($spel) == strtolower($voltooideSpel['game'])) {
+                unset($spellen[$key]);
+            }
         }
     }
-
+    
+    $spellen = array_values($spellen);
+    
+    $vindsps = array_search("sps", $spellen);
+    if($vindsps !== false) {
+        $spellen[array_search("sps", $spellen)] = "Steen, papier, schaar";
+    }
+    
     echo "<h3 id='next'>Nu bezig</h3>";
-    echo "<p id='time'>";
-    if(!in_array("doolhof", $gespeeldeSpellen))
-    {
-        echo "Doolhof";
-    }
-    else if(!in_array("race", $gespeeldeSpellen))
-    {
-        echo "Race";
-    }
-    else if(!in_array("steen, papier, schaar", $gespeeldeSpellen))
-    {
-        echo "Steen, papier, schaar";
-    }
-    else if(!in_array("tekenen", $gespeeldeSpellen))
-    {
-        echo "Tekening";
-    }
-    echo "</p>";
+    echo "<p id='time'>".(!empty($spellen[0]) ? ucfirst($spellen[0]) : "Alle spellen zijn gespeeld")."</p>";
 ?>
