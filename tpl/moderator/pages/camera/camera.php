@@ -1,3 +1,3 @@
-<div class="container topPadding">
-	<?= ModeratorPageViewContent ?>
+<div class="container aos-init aos-animate"  data-aos="fade-up">
+		<?= ModeratorPageViewContent ?>
 </div>

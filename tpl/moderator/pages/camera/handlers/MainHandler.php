@@ -10,7 +10,17 @@
 		require(ModeratorPageHandlers.'/handler.'.$page.'.php');
 	}
 
-    require(ModeratorPageView."camera.php");
+    switch (ModeratorPageRoute) 
+    {
+        case "overview":
+        default:
+            require(ModeratorPageView."overview.php");
+        break;
+        case 'scene':
+        case 'control':
+            require(ModeratorPageView.ModeratorPageRoute.".php");
+        break;
+    }
 
     define('ModeratorPageViewContent', ob_get_clean());
 

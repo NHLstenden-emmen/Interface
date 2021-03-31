@@ -7,9 +7,23 @@
 
 
     <script src="{assetsFolder}/js/app.js"></script>
+    <script src="{assetsFolder}/js/monitor.js"></script>
 
     {extraJS}
 
-    <script> AOS.init(); </script>
+    <!-- Monitor acties [TESTDAG] --> 
+    <?php 
+
+    if ($user->logged_in){
+        $monitor = $user->email;	
+    } else {
+        $monitor = "Guest";
+    }
+
+    ?>
+    <script> 
+        setUser('<?php echo $monitor; ?>');
+        AOS.init(); 
+    </script>
 </body>
 </html>

@@ -1,3 +1,17 @@
+<?php 
+$teamData = "";
+foreach ($DB->Select("SELECT * FROM teams") as $key => $value) {
+   $teamData.= '<tr>
+                    <td data-label="Team">'.$value['TeamID'].'</td>
+                    <td data-label="Robot Naam">'.$value['RobotName'].'</td>
+                    <td data-label="Dashboard"> <a href="/dashboard/'.$value['TeamID'].'">Ga naar het dashboard</a> </td>
+                    </td>
+                 </tr>';
+}
+
+$this->Set("teamData", $teamData);
+
+?>
 <table>
 	<thead>
 		<tr>
@@ -7,11 +21,6 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td data-label="Team">1B</td>
-			<td data-label="Robot Naam">Lennard</td>
-			<td data-label="Dashboard"> <a href="/dashboard/1B">Ga naar het dashboard</a> </td>
-			</td>
-		</tr>
+		{teamData}
 	</tbody>
 </table>
