@@ -13,15 +13,13 @@ function typeMessage(ele) {
 
 function deleteMessage(messageID) {
    livechatWebSocket.send(JSON.stringify({"team": localStorage.getItem("team"), "fullname": localStorage.getItem("fullname"), "email": localStorage.getItem("email"), "type": "delete", "id": messageID}));
-
 }
 
 function deleteResponse(messageID) {
    document.getElementById(messageID).remove();
 }
 
-function showMessage(message, id, username)
-{
+function showMessage(message, id, username, level = null, team = null) {
     var messageElement = document.createElement("div");
     messageElement.classList.add("message");
     messageElement.id = id;
@@ -33,26 +31,39 @@ function showMessage(message, id, username)
     messageUsername.classList.add("user");
 
     var messageUserIcon = document.createElement("img");
-    messageUserIcon.style.width = "2.5rem";
+    messageUserIcon.style.width = "2rem";
     messageUserIcon.style.marginRight = ".5rem";
 
-    if(localStorage.getItem("team") != 'undefined' && username != 'Server') {
-        messageUserIcon.src = "/tpl/assets/images/team/" + localStorage.getItem("team") + "/logoResize.png";
+    if(team != null && team != 'undefined' && username != 'Server' && level != 2) {
+        messageUserIcon.src = "/tpl/assets/images/team/" + team + "/logoResize.png";
         messageUsername.appendChild(messageUserIcon);
         messageUsername.appendChild(document.createTextNode(username));
 
     } else if(username == 'Server') {
         messageUserIcon.src = "/tpl/assets/images/server.png";
         messageUsername.appendChild(messageUserIcon);
-        messageUsername.innerText = username;
-    } else if(localStorage.getItem("level") == 2) {
-        messageUsername.innerHTML = '<i class="fas fa-wrench" style="color: var(--primaryColor);"></i>&nbsp&nbsp' + username + " [MOD]";
+        messageUsername.appendChild(document.createTextNode(username));
+    } else if(level != null && level == 2) {
+        if(team != null && team != 'undefined'){
+            messageUserIcon.src = "/tpl/assets/images/team/" + team + "/logoResize.png";
+
+            var usernameWrapper = document.createElement("span");
+
+            var usernameMod = document.createElement("i");
+            usernameMod.classList.add("fas", "fa-wrench");
+            usernameMod.style.color = "#37167e";
+
+            usernameWrapper.appendChild(usernameMod);
+            usernameWrapper.appendChild(document.createTextNode(" " + username + " [MOD]"));
+
+            messageUsername.appendChild(messageUserIcon);
+            messageUsername.appendChild(usernameWrapper);
+        } else {
+            messageUsername.appendChild(document.createTextNode(usernameMod));        }
     }
      else {
         messageUsername.innerHTML = '<i class="avatar fas fa-user-circle"></i>&nbsp&nbsp' + username;
     }
-
-
 
     var messageText = document.createElement("p");
     messageText.classList.add("message");
@@ -70,77 +81,33 @@ function showMessage(message, id, username)
     
     messageElement.appendChild(messageContent);
 
-    //liElement.appendChild(document.createElement("username").innerHTML = messageData.username);
-    //messageElement.appendChild(document.createTextNode(message));
-
-
     liveChat.appendChild(messageElement);
 
     scrollTableLoad();
-    //document.getElementById("chatMSG").appendChild(linebreak);
 }
 
-function sendPoll(option) {
-    livechatWebSocket.send(JSON.stringify({"name": localStorage.getItem("email"), "type": "poll", "option": option}));
+function sendPoll(option, id) {
+    livechatWebSocket.send(JSON.stringify({"name": localStorage.getItem("email"), "email": localStorage.getItem("email"), "team": localStorage.getItem("team"), "fullname": localStorage.getItem("fullname"), "type": "poll", "option": option, "id": id}));
 }
 
 function sendDrawingPoll(stars, bot, id) {
-    livechatWebSocket.send(JSON.stringify({"name": localStorage.getItem("email"), "type": "drawingpoll", "bot": bot, "stars":parseInt(stars)+1, "id": id}));
+    livechatWebSocket.send(JSON.stringify({"name": localStorage.getItem("email"), "email": localStorage.getItem("email"), "team": localStorage.getItem("team"), "fullname": localStorage.getItem("fullname"), "type": "drawingpoll", "bot": bot, "stars":parseInt(stars)+1, "id": id}));
 }
 
-function showPollResult(messageData)
-{
-    var liElement = document.createElement("li");
-    liElement.id = messageData.id;
+function showPollResult(messageData) {
+    var resultMessage = "";
+    sortByValue(messageData.result).forEach(element => resultMessage += " " + element[0] + " heeft " + element[1] + " stemmen ");
+    setTimeout(() => {      toastShow('default', messageData.id, 'Server | Poll resultaat', resultMessage, null, 10);}, 2000);
 
-    liElement.classList.add("pollresult");
-
-    var pElement = document.createElement("li");
-    sortByValue(messageData.result).forEach(element => pElement.appendChild(document.createTextNode(element[0] + " heeft " + element[1] + " stemmen ")));
-
-    liElement.appendChild(pElement);
-
-    liveChat.appendChild(liElement);
-    scrollTableLoad();
 }
 
-function showPoll(messageData)
-{
-    var liElement = document.createElement("li");
-    liElement.appendChild(document.createTextNode(messageData.question));
-    liElement.id = messageData.id;
-    liElement.classList.add("poll");
-    var optionsList = messageData.options;
-
-    for(var option in messageData.options) {
-        var buttonElement = document.createElement("button");
-        buttonElement.innerHTML = optionsList[option];
-        buttonElement.setAttribute("onclick", "javascript:sendPoll('"+optionsList[option]+"')");
-        liElement.appendChild(buttonElement);
-    }
-
-    liveChat.appendChild(liElement);
-    scrollTableLoad();
+function showPoll(messageData) {
+    toastShow('default', messageData.id, 'Server | Poll', messageData.question, messageData.options, messageData.length);
 }
 
 
-function showDrawingPoll(messageData) 
-{
-    var liElement = document.createElement("li");
-    liElement.appendChild(document.createTextNode(messageData.question));
-    liElement.id = messageData.id;
-    liElement.classList.add("poll");
-    var optionsList = messageData.options;
-
-    for(var option in messageData.options) {
-        var buttonElement = document.createElement("button");
-        buttonElement.innerHTML = optionsList[option];
-        buttonElement.setAttribute("onclick", "javascript:sendDrawingPoll('"+option+"', '"+messageData.bot+"', '"+messageData.id+"')");
-        liElement.appendChild(buttonElement);
-    }
-
-    liveChat.appendChild(liElement);
-    scrollTableLoad();
+function showDrawingPoll(messageData) {
+    toastShow('drawing', messageData.id, 'Server | Tekening', messageData.question, messageData.options, messageData.length);
 }
 
 function onJoin(messageData) {
@@ -151,17 +118,17 @@ function onJoin(messageData) {
         localStorage.setItem("level",  messageData.level);
         localStorage.setItem("team",   messageData.team);
 
-        showMessage(messageData.message, messageData.id,localStorage.getItem("fullname"));
+        showMessage(messageData.message, messageData.id,localStorage.getItem("fullname"), localStorage.getItem("level"), localStorage.getItem("team"));
     } 
     else 
     {
-        showMessage(messageData.message, messageData.id,messageData.username);
+        showMessage(messageData.message, messageData.id, messageData.username, messageData.level, messageData.team);
     }
     
 }
 
 function onLeave(messageData) {
-    showMessage(messageData.message, messageData.id, messageData.username);
+    showMessage(messageData.message, messageData.id, messageData.username, messageData.level, messageData.team);
 }
 
 function sendMessage() {
@@ -181,12 +148,16 @@ function sendMessage() {
     }
 }
 
+function disableButton(id){ 
+    document.querySelectorAll("." + id).forEach(element => element.disabled = true);
+}
+
 function launchLiveChat(user_idInput)
 {
     if ("WebSocket" in window)
     {
         user_id = user_idInput;
-        livechatWebSocket = new WebSocket("ws://77.162.30.112:49152");
+       livechatWebSocket = new WebSocket("ws://77.162.30.112:49152");
         
         livechatWebSocket.onopen = function() {
             console.log("Connection to server with url : " + livechatWebSocket.url);
@@ -215,8 +186,11 @@ function launchLiveChat(user_idInput)
                     case "drawingpoll":
                         showDrawingPoll(messageData);
                     break;
+                    case "disablepollbutton":
+                        disableButton(messageData.id);
+                    break;
                     default:
-                        showMessage(messageData.message, messageData.id, messageData.username);
+                        showMessage(messageData.message, messageData.id, messageData.username, messageData.level, messageData.team);
                     break;
                 }
             }

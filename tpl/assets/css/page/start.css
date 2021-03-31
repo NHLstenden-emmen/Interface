@@ -1,33 +1,33 @@
 /* Home */
 
 .main {
-  margin-top: 100px;
+	margin-top: 100px;
 }
 .title {
-  color: #fff;
-  font-weight: bold;
+	color: #fff;
+	font-weight: bold;
 }
 .intro {
-  color: #fff;
+	color: #fff;
 }
 .img {
-  position: relative;
-  max-width: 100%;
-  animation: move 2s ease-in-out infinite;
+	position: relative;
+	max-width: 90%;
+	animation: move 2s ease-in-out infinite;
+	border-radius: 60% 32%;
 }
 
-
 @keyframes move {
-  0% {
-    top: 0px;	
-	left: 0px;
-  }
-  50% {
-    top: 5px;
-	left: 0px;
-  }
-  100% {
-    top: 0px;
-	left: 0px;
-  }
+	0% {
+		top: 0px;
+		left: 0px;
+	}
+	50% {
+		top: 5px;
+		left: 0px;
+	}
+	100% {
+		top: 0px;
+		left: 0px;
+	}
 }

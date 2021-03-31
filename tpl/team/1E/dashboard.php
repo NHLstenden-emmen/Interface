@@ -1,27 +1,32 @@
 <!-- Styling kan weg wanneer loginsysteem klaar is -->
-
 <?php
 
-// echo '<link rel="stylesheet" href="css/pages/team/1E/dashboard.css" />';
-// echo '<link rel="stylesheet" media="screen and (min-device-width: 1440px)" href="css/pages/team/1E/desktop-style.css" />';
-// echo '<link rel="stylesheet" media="screen and (min-width: 800px) and (max-width: 1439px)" href="css/pages/team/1E/tablet-style.css" />';
-// echo '<link rel="stylesheet" media="screen and (min-width: 100px) and (max-width: 799px)" href="css/pages/team/1E/mobile-style.css" />';
-// echo '<link rel="stylesheet" href="css/pages/team/1E/background.css" />';
-//  echo '<script src="https://code.jquery.com/jquery-3.5.1.js"></script>';
+    echo '<link rel="stylesheet" href="/tpl/assets/css/team/1E/dashboard.css" />';
+    if(isset($_POST['editTeamDetails']) && isset($_POST['teamDescription'])){
+        $teamDescNew = $filter->sanatizeInput($_POST['teamDescription'], "string");
+        $DB->Update("UPDATE teams SET TeamDesc = ? WHERE TeamID = '1E'", [$teamDescNew]);
+    }
+    $data = $DB->Select("SELECT * FROM teams WHERE TeamID = '1E'");
+    foreach($data as $value){
+        $teamDesc = $value['TeamDesc'];
+    }
 
 ?>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<button class="botReady" onclick="readyBot();playAudio('/tpl/team/1E/quoteJetten.mp3');playAudio('/tpl/team/1E/backgroundMusicJetten.mp3')">Ready</button>
+
 <div class="container" id="block">
+    <button class="button">Test</button>
     <div class="pageBar">
         <div>
             <h2 id="titel">Dashboard</h2>
             <p id="desc">Groep INF1E</p>
         </div>
-    </div>
-
+    </div>    
     <div class="row">
         <div data-aos="fade-right" class="col-lg-6 block" id="block1">
-            <div class="neonBlock content">
+            <div class="neonBlock content" id="keyboardListen" tabindex="0">
                 <h5 class="blockTitle">Controle</h5>
                 <div class="row">
                     <div class="col-lg-6">
@@ -31,67 +36,14 @@
                         <!-- Hiertussen komen de WASD knoppen -->
                         <div class="container">
                             <div class="row-one">
-                                <button onclick="joystickW()">W</button>
+                                <button onclick="sendData('W')">W</button>
                             </div>
                             <div class="row-two">
-                                <button onclick="joystickA()">A</button>
-                                <button onclick="joystickS()">S</button>
-                                <button onclick="joystickD()">D</button>
+                                <button onclick="sendData('A')">A</button>
+                                <button onclick="sendData('S')">S</button>
+                                <button onclick="sendData('D')">D</button>
                             </div>
                         </div>
-
-                        <script>
-                        function stop() {
-                            $(document).ready(function() {
-                                $.post("/tpl/team/1E/joystick/sendData.php", {
-                                    'action': 'Stop'
-                                });
-                                var timestamp = '[' + Date.now() + '] ';
-                                console.log(timestamp + 'Stop');
-                            });
-                        }
-
-                        function joystickW() {
-                            $(document).ready(function() {
-                                $.post("/tpl/team/1E/joystick/sendData.php", {
-                                    'action': 'W'
-                                });
-                                var timestamp = '[' + Date.now() + '] ';
-                                console.log(timestamp + 'W');
-                            });
-                        }
-
-                        function joystickA() {
-                            $(document).ready(function() {
-                                $.post("/tpl/team/1E/joystick/sendData.php", {
-                                    'action': 'A'
-                                });
-                                var timestamp = '[' + Date.now() + '] ';
-                                console.log(timestamp + 'A');
-                            });
-                        }
-
-                        function joystickS() {
-                            $(document).ready(function() {
-                                $.post("/tpl/team/1E/joystick/sendData.php", {
-                                    'action': 'S'
-                                });
-                                var timestamp = '[' + Date.now() + '] ';
-                                console.log(timestamp + 'S');
-                            });
-                        }
-
-                        function joystickD() {
-                            $(document).ready(function() {
-                                $.post("/tpl/team/1E/joystick/sendData.php", {
-                                    'action': 'D'
-                                });
-                                var timestamp = '[' + Date.now() + '] ';
-                                console.log(timestamp + 'D');
-                            });
-                        }
-                        </script>
-                        <!-- Hiertussen komen de WASD knoppen -->
                     </div>
                 </div>
             </div>
@@ -99,20 +51,7 @@
         <div data-aos="fade-down" class="col-lg-3 block" id="block2">
             <div class="neonBlock content">
                 <h5 class="blockTitle">Commands</h5>
-                <button type="button" onclick="test()" name="button">Test</button>
-                <button type="button" onclick="stop()" name="button">Stop</button>
-                <script>
-                function test() {
-                    $(document).ready(function() {
-                        $.post("/tpl/team/1E/joystick/sendData.php", {
-                            'action': 'test'
-                        });
-                        var timestamp = '[' + Date.now() + '] ';
-                        console.log(timestamp + 'test');
-                    });
-                }
-                </script>
-
+                <button type="button" onclick="sendData('Stop')" name="button">Stop</button>
             </div>
         </div>
         <div data-aos="fade-left" class="col-lg-3 block" id="block3">
@@ -284,138 +223,130 @@
         </div>
     </div>
 
-
-    <!-- VIDEO DINGEN -->
-
-
     <div class="row">
         <div data-aos="fade-left" class="col-lg-12 block" id="block8">
             <div class="neonBlock content">
-
-
-
-                <?php 
-
-                
-                    // Get post from form
-                    if(isset($_POST['editTeamDetails']) && isset($_POST['robotName']) && isset($_POST['teamDescription'])){
-
-                        // Sanitizen
-                        $robotNameNew = $filter->sanatizeInput($_POST['robotName'], "string");
-                        $teamDescNew = $filter->sanatizeInput($_POST['teamDescription'], "string");
-
-                        // Updaten
-                        $DB->Update("UPDATE teams SET RobotName = ?, TeamDesc = ? WHERE TeamID = '1E'", [$robotNameNew, $teamDescNew]);
-                    }
-
-                    // Invoeren binnen inputs
-
-                    // Data DB ophalen
-                    $data = $DB->Select("SELECT * FROM teams WHERE TeamID = '1E'");
-                    // Data doorheen loopen
-                    foreach($data as $value){
-                        $teamDesc = $value['TeamDesc'];
-                        $robotName = $value['RobotName'];
-                    }
-                ?>
-
-                <!-- FORMULIER -->
+                <h5 class="blockTitle">Teaminformatie</h5>
                 <form method="POST">
-                    <input id="robotName" name="robotName" value="<?php echo $robotName; ?>" required>
-                    <textarea rows="4" cols="50" id="teamDescription"
+                        <textarea rows="4" cols="50" id="teamDescription"
                         name="teamDescription"><?php echo $teamDesc; ?></textarea>
                     <input type="submit" name="editTeamDetails" value="Submit">
                 </form>
-
             </div>
         </div>
     </div>
-
-    <!-- EINDE VIDEO DINGEN -->
-
-
 </div>
 
+<div id="terrorRob" class=""></div>
+<button class="button">Knop</button>
 
 <script>
-window.addEventListener('keydown', function(e) {
-    if (e.keyCode == 32 && e.target == document.body) {
-        e.preventDefault();
+
+    function playAudio(url) {
+        new Audio(url).play();
     }
-});
 
-var lastKeyboard;
-$(document).keydown(function(event) {
+    function readyBot()
+    {
+        $(document).ready(function(){
+            $("#terrorRob").addClass("showRob");
+            hideRob();
+        });
+        sendData('Ready');
+    }
 
-    // Spatiebalk
-    if (event.which === 32) {
-        if (event.which !== lastKeyboard) {
-            lastKeyboard = 32;
-            var timestamp = '[' + Date.now() + '] ';
-            console.log(timestamp + 'Stop');
-            $(document).ready(function() {
-                $.post("/tpl/team/1E/sendData.php", {
-                    'action': 'Stop'
-                });
+    function hideRob() {
+    setTimeout(
+        function() {            
+            $("#terrorRob").removeClass("showRob");
+            $("#terrorRob").addClass("hideRob");
+            removeRob();
+        }, 5000);
+    }
+
+    function removeRob() {
+    setTimeout(
+        function() {
+            $("#terrorRob").removeClass("hideRob");
+        }, 1000);
+    }
+
+    $(function() {
+        $('#keyboardListen').focus();
+    });
+
+
+
+    var lastKeyboard;
+
+    $('#keyboardListen').on('keydown', function(event) {
+
+        window.addEventListener('keydown', function(e) {
+            if (e.keyCode == 32 && e.target == document.body) {
+                e.preventDefault();
+            }
+        });
+        $(document).keydown(function(event) {
+
+            // Stoppen [Stop]
+            if (event.which === 32) {
+                if (event.which !== lastKeyboard) {
+                    lastKeyboard = 32;
+                    sendData('Stop');
+                }
+            }
+
+            // Naar voren [W]
+            if (event.which === 87) {
+                if (event.which != lastKeyboard) {
+                    lastKeyboard = 87;
+                    sendData('W');
+                }
+            }
+
+            // Naar achteren [S]
+            if (event.which === 83) {
+                if (event.which != lastKeyboard) {
+                    lastKeyboard = 83;
+                    sendData('S');
+                }
+            }
+
+            // Naar links [A]
+            if (event.which === 65) {
+                if (event.which != lastKeyboard) {
+                    lastKeyboard = 65;
+                    sendData('A');
+                }
+            }
+
+            // Naar rechts D
+            if (event.which === 68) {
+                if (event.which != lastKeyboard) {
+                    lastKeyboard = 68;
+                    sendData('D');
+                }
+            }
+
+        });
+    });
+
+    function sendData(data) {
+        $(document).ready(function() {
+            $.post("", {
+                'action': data
             });
-        }
-    }
-
-    // Naar voren
-    if (event.which === 87) {
-        if (event.which != lastKeyboard) {
-            lastKeyboard = 87;
             var timestamp = '[' + Date.now() + '] ';
-            console.log(timestamp + 'W');
-            $(document).ready(function() {
-                $.post("/tpl/team/1E/sendData.php", {
-                    'action': 'W'
-                });
-            });
-        }
+            console.log(timestamp + data);
+        });
     }
 
-    // Naar achteren
-    if (event.which === 83) {
-        if (event.which != lastKeyboard) {
-            lastKeyboard = 83;
-            var timestamp = '[' + Date.now() + '] ';
-            console.log(timestamp + 'S');
-            $(document).ready(function() {
-                $.post("/tpl/team/1E/sendData.php", {
-                    'action': 'S'
-                });
-            });
-        }
-    }
-
-    // Naar links
-    if (event.which === 65) {
-        if (event.which != lastKeyboard) {
-            lastKeyboard = 65;
-            var timestamp = '[' + Date.now() + '] ';
-            console.log(timestamp + 'A');
-            $(document).ready(function() {
-                $.post("/tpl/team/1E/sendData.php", {
-                    'action': 'A'
-                });
-            });
-        }
-    }
-
-    // Naar rechts
-    if (event.which === 68) {
-        if (event.which != lastKeyboard) {
-            lastKeyboard = 68;
-            var timestamp = '[' + Date.now() + '] ';
-            console.log(timestamp + 'D');
-            $(document).ready(function() {
-                $.post("/tpl/team/1E/sendData.php", {
-                    'action': 'D'
-                });
-            });
-        }
-    }
-
-});
 </script>
+
+<?php
+    if(isset($_GET['command']))
+    {
+        $command = $_GET['command'];
+        echo "<script>sendData('" . $command . "');</script>";
+    }
+?>

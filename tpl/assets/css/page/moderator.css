@@ -1,32 +1,111 @@
+/* Algemeen */
+.neonBlock{
+	background: #0f0f0fa3;
+}
+
+.title{
+	font-weight: bold;
+}
+
 /* Start.php */
 
-p{
-    margin: 0;
+p {
+	margin: 0;
 }
 
-.selectMenu{
-    margin: 100px 0 0 0;
+.selectMenu {
+	margin: 100px 0 0 0;
 }
 
-.selectMenu > .row > div > .neonBlock{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 25vh;
-    margin: 20px 0;
-    background-color: #0f0f0fb0;
-} 
-
-.selectMenu > .row > div > .neonBlock > i{
-    font-size: 3.5em;
+.selectMenu > .row > div > .neonBlock {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 25vh;
+	margin: 20px 0;
+	background-color: #0f0f0fb0;
 }
 
-.selectMenu > .row > div > .neonBlock:hover{
-    cursor: pointer;
+.selectMenu > .row > div > .neonBlock > i {
+	font-size: 3.5em;
+}
+
+.selectMenu > .row > div > .neonBlock:hover {
+	cursor: pointer;
 }
 
 /* Users */
 
-.link > i:hover{
-    cursor: pointer;
+.link > i:hover {
+	cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+	table {
+		border: 0;
+	}
+
+	table caption {
+		font-size: 1.3em;
+	}
+
+	table thead {
+		border: none;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
+
+	table tr {
+		border-bottom: 3px solid #1c242d;
+		display: block;
+		margin-bottom: 0.625em;
+	}
+
+	table td {
+		border-bottom: 1px solid #1c242d;
+		display: block;
+		font-size: 0.8em;
+		text-align: right;
+		padding-right: 20px;
+	}
+
+	table td::before {
+		content: attr(data-label);
+		float: left;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	table td:last-child {
+		border-bottom: 0;
+	}
+	.toggle .label {
+		width: auto !important;
+	}
+
+	.toggle input {
+		left: 20px !important;
+		top: -20px !important;
+	}
+	.toggle {
+		margin-right: 25px !important;
+		margin-top: 20px !important;
+		width: auto !important;
+	}
+}
+
+/* Edit user */
+
+#editUser > label{
+    min-width: 175px;
+}
+
+#editUser > input{
+	width: 80%;
+	margin-bottom: 10px;
 }

@@ -4,9 +4,8 @@
 	justify-content: space-between;
 	color: white;
 }
-
-.nav>#menu,
-.nav>#alternative-menu {
+.nav > #menu,
+.nav > #alternative-menu {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -15,6 +14,48 @@
 
 .nav>#logo {
 	width: 100px;
+}
+
+.nav > ul {
+	z-index: 100;
+}
+
+#right-wing {
+	pointer-events: none;
+	transform: translateX(0px);
+	transition: all 1s;
+	stroke: var(--logoWingsColor);
+}
+
+#left-wing {
+	pointer-events: none;
+	transform: translateX(0px);
+	transition: all 1s;
+	stroke: var(--logoWingsColor);
+}
+
+#logo-body { 
+	stroke: var(--logoBodyColor); 
+	fill: var(--logoBodyColor);
+}
+
+#eyes-background {
+	stroke: var(--logoBackdropColor); 
+}
+
+#eyes { 
+	fill: var(--logoEyesColor); 
+	paint-order: stroke fill markers;
+}
+
+
+
+#logo:hover #right-wing {
+	transform: translateX(3px);
+}
+
+#logo:hover #left-wing {
+	transform: translateX(-3px);
 }
 .nav> ul {
 	z-index: 100;
@@ -27,9 +68,9 @@
 	padding: 20px 0;
 }
 
-.nav>#menu>li a,
-.nav>#alternative-menu>li a,
-.nav>#menu>li>div{
+.nav > #menu > li a,
+.nav > #alternative-menu > li a,
+.nav > #menu > li > div {
 	color: white;
 	padding: 20px 10px;
 	font-weight: bold;
@@ -37,18 +78,12 @@
 	text-decoration: none;
 	margin: 0 5px;
 }
-
-.nav>#menu>#games-dropdown
-{
-	padding-right: 12vw;
-}
-
-.dropdown-content a{
+.dropdown-content a {
 	display: block;
 }
 
-.nav>#menu>li>a:after,
-.nav>#alternative-menu>li>a:after {
+.nav > #menu > li > a:after,
+.nav > #alternative-menu > li > a:after {
 	background: none repeat scroll 0 0 transparent;
 	bottom: 0;
 	content: "";
@@ -61,8 +96,8 @@
 	width: 0;
 }
 
-.nav>#menu>li>a:hover:after,
-.nav>#alternative-menu>li>a:hover:after {
+.nav > #menu > li > a:hover:after,
+.nav > #alternative-menu > li > a:hover:after {
 	width: 100%;
 	left: 0;
 	text-decoration: none;
@@ -92,9 +127,9 @@
 	display: inline-block;
 	color: white;
 	font-weight: bold;
-  }
-  
-  .dropdown-content {
+}
+
+.dropdown-content {
 	display: none;
 	position: absolute;
 	min-width: 160px;
@@ -102,18 +137,18 @@
 	text-align: left;
 	padding: 12px 0px;
 	z-index: 1;
-  }
-  
-  .dropdown:hover .dropdown-content {
+}
+
+.dropdown:hover .dropdown-content {
 	display: block;
 	margin-top: 0;
-  }
+}
 
-  .dropdownLink{
-	  font-weight: bold;
-  }
+.dropdownLink {
+	font-weight: bold;
+}
 
-  .dropdown-content a {
+.dropdown-content a {
 	font-weight: 400;
 	font-size: 1em !important;
 	padding: 5px 0 !important;
@@ -124,70 +159,69 @@
 	color: rgb(160, 160, 160) !important;
 }
 
-.language{
+.language {
 	font-size: 1.5em;
 }
 
 /* TOP NAV MOBILEBURGER */
 .mobileBurger {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .mobileBurger div {
-    height: 3px;
-    width: 25px;
-    background-color: white;
-    margin: 5px;
-    transition: all 0.3s ease;
+	height: 3px;
+	width: 25px;
+	background-color: white;
+	margin: 5px;
+	transition: all 0.3s ease;
 }
 
 .mobileBurger.active div:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
+	transform: rotate(-45deg) translate(-5px, 6px);
 }
 
 .mobileBurger.active div:nth-child(2) {
-    opacity: 0;
+	opacity: 0;
 }
 
 .mobileBurger.active div:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+	transform: rotate(45deg) translate(-5px, -6px);
 }
 
 @media (max-width: 1050px) {
-	.container, .container-md, .container-sm {
-		 max-width: unset;
+	.container,
+	.container-md,
+	.container-sm {
+		max-width: unset;
 	}
 
-	.nav>#menu>li, .nav>#alternative-menu>li, 
-	.nav>#menu> li a {
+	.nav > #menu > li,
+	.nav > #alternative-menu > li,
+	.nav > #menu > li a {
 		padding: 0;
 	}
-	
+
 	body.active {
 		overflow: hidden;
 	}
 
-    /* REPSONSIVE NAVBAR */
+	/* REPSONSIVE NAVBAR */
 	#navbar {
 		padding: 0px;
 		position: absolute !important;
 		z-index: 1 !important;
 	}
 
-	.nav>#logo {
+	.nav > #logo {
 		margin-left: 35px;
 	}
 
 	#navbar.active {
 		background-color: var(--primaryColor);
-
-	}
-	.nav>#menu>#games-dropdown {
-		padding-right: 0;
 	}
 
 	.dropdown-content {
-	 	display: unset;
+		display: unset;
 		position: unset;
 	}
 
@@ -195,33 +229,40 @@
 		display: unset;
 	}
 
-    .nav ul {
-        position: absolute;
-        top: 100px;
-        height: calc(100vh - 100px);
-        margin: 0;
-        width: 100%;
-        background-color: var(--primaryColor);
-        display: flex;
-        flex-direction: column;
-        transform: translateY(-150%) !important;
-        justify-content: space-evenly !important;
-        align-items: center  !important;
-        transition: transform 0.4s ease-in;
-        opacity: 1;
-    }
+	.nav ul {
+		position: absolute;
+		top: 100px;
+		height: calc(100vh - 100px);
+		margin: 0;
+		width: 100%;
+		background-color: var(--primaryColor);
+		display: flex;
+		flex-direction: column;
+		transform: translateY(-150%) !important;
+		justify-content: space-evenly !important;
+		align-items: center !important;
+		transition: transform 0.4s ease-in;
+		opacity: 1;
+	}
 
+	#menu.active {
+		opacity: 1;
+		transform: translateY(0%) !important;
+	}
+
+	::-webkit-scrollbar {
+		display: none;
+	}
+
+	#menu{
+		overflow: hidden;
+		height: 0;
+	}
 	
-	 #menu.active {
-        opacity: 1;
-        transform: translateY(0%) !important;
+	.active #menu{
+		height: 100vh;
+	}
 
-    } 
-	
-
-    ::-webkit-scrollbar {
-        display: none;
-    }
 }
 
 @keyframes navLinkFade {
@@ -237,31 +278,87 @@
 }
 
 @media (min-width: 1050px) {
-    .mobileBurger {
-        display: none;
-    }
+	.mobileBurger {
+		display: none;
+	}
 }
 
-.alternative-button span{
+.alternative-button span {
 	font-weight: bold;
 }
 
-#logout{
-	position: relative;	
+#logout {
+	position: relative;
 	transition: 0.3s;
 }
 
-#logout:hover span:nth-child(1) {	
-	animation: fadeout 1s forwards;
+#logout:hover span:nth-child(1) {
+	animation: fadeout 0.5s forwards;
 }
 
-#logout:hover span:nth-child(2):after {	
-	animation: fadein 1s linear;
-	content: 'Logout';
-    position: absolute;
-    left: 0;
-    top: 18%;
-    text-align: center;
-    width: 100%;
-    height: 100%;
+#logout:hover span:nth-child(2):after {
+	animation: fadein 0.5s linear;
+	content: "Logout";
+	position: absolute;
+	left: 0;
+	top: 18%;
+	text-align: center;
+	width: 100%;
+	height: 100%;
 }
+
+/* langswitch */
+#langSwitchKnop {
+	position: relative;
+	display: block;
+	width: 300px;
+	height: 150px;
+	background-color: #000;
+	border-radius: 350px;
+	cursor: pointer;
+	transform: scale(0.4);
+	margin: 50px auto;
+	margin-top: -175px;
+	top: 100px;
+	border: 3px solid var(--buttonColor);
+}
+
+#knoppie {
+	width: 130px;
+	height: 130px;
+	background-image: url(../../images/flag.png);
+	background-size: 258px;
+	position: relative;
+	top: 10px;
+	left: 20px;
+	border-radius: 290px;
+	z-index: 2;
+}
+
+#Dutch,
+#English {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #fff;
+	font-size: 35px;
+	margin-left: 165px;
+	z-index: 1;
+}
+
+#Dutch {
+	margin-left: 30px;
+}
+
+#borderBlock:checked + #langSwitchKnop #knoppie {
+	left: 159px;
+	background-position: -388px 0;
+}
+
+/* Disable scoll */
+
+body.active{
+	overflow: hidden;
+    height: 100vh;
+}
+

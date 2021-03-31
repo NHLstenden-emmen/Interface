@@ -9,7 +9,20 @@
 		</div>
 		
 		<div class="col-md-12 col-lg-9 main">
-		<img class="img" src="{assetsFolder}/images/arduino.png" alt="Arduino schematische weergave">
+			<img onmouseover="hover(this);" onmouseout="unhover(this);" id="ESP" class="img zoom" src="{assetsFolder}/images/arduino_0.png" alt="Arduino/ESP32 schematische weergave">
 		</div>
 	</div>
 </div>
+
+
+<script>
+
+function hover(element) {
+	element.setAttribute('src', '{assetsFolder}/images/arduino_1.png');
+}
+
+function unhover(element) {
+  element.setAttribute('src', '{assetsFolder}/images/arduino_0.png');
+}
+
+</script>

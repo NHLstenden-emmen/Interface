@@ -1,8 +1,12 @@
 /* Container */
 #gameRules {
-    margin: 100px 0 0 0;
-    color: white;
-    overflow: hidden;
+	margin: 100px 0 0 0;
+	color: white;
+	overflow: hidden;
+}
+
+.title {
+	font-weight: bold;
 }
 
 .title{
@@ -10,13 +14,13 @@
 }
 
 /* Game block */
-.gameBlock > .row{
-    min-height: 100vh;
-    margin: 80px 0;
+.gameBlock > .row {
+	min-height: 80vh;
+	margin: 20px 0;
 }
 
-h4.gameTitle{
-    font-weight: bold;
+h4.gameTitle {
+	font-weight: bold;
 }
 
 .gameDescription {
@@ -25,7 +29,7 @@ h4.gameTitle{
 }
 
 .neonBorder {
-    background: #0f0f0fa6;
+	background: #0f0f0fa6;
 }
 
 /* Game photo */
@@ -35,12 +39,12 @@ h4.gameTitle{
 }
 
 .gamePhoto {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .gameBlock img {
-    width: 80%;
+	width: 80%;
 }
 
 .photoRight {
@@ -63,5 +67,20 @@ h4.gameTitle{
 @media screen and (max-width: 900px) {
 	.photoRight {
 		padding-left: 0;
+	}
+}
+@media screen and (max-width: 575px) {
+	/* Game block */
+	.gameBlock > .row {
+		display: grid;
+		grid-template-areas:
+			"gamePhoto"
+			"gameDescription";
+	}
+	.gamePhoto {
+		grid-area: gamePhoto;
+	}
+	.gameDescription {
+		grid-area: gameDescription;
 	}
 }

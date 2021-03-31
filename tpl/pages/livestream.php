@@ -10,22 +10,17 @@
             </div>
             <div class="col-md-4 chatStyle">
                 <div id="liveChat"></div>
-                <!-- 
-                    <i class="far fa-trash-alt"></i>    
-                -->
             </div>
         </div>
 		<div class="row">
-			<div class="col-md-4 noPadding">
-				
-			</div>
+			<div class="col-md-4 noPadding"></div>
 			<div class="col-md-4"></div>
 			<div class="col-md-4 noPadding">
 				<div id="sendMessage">
 					<div onclick="sendMessage()" class="input-icons">
 						<i class="send fas fa-chevron-right"></i>
 					</div>
-					<input onkeydown="typeMessage(this)" type="text" id="liveChatInput" class="input-field" placeholder="Bericht" /> 
+					<input onkeydown="typeMessage(this)" type="text" id="liveChatInput" class="input-field" placeholder="{bericht}" {disabled} />
 				</div>
 			</div>
 		</div>
