@@ -17,12 +17,18 @@ var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
 // Output the result in an element with id="countdown"
-document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-+ minutes + "m " + seconds + "s ";
+document.getElementById("countdowndays").innerHTML = days + "d ";
+
+document.getElementById("countdownhours").innerHTML = hours + "h ";
+
+document.getElementById("countdownminutes").innerHTML = minutes + "m ";
+
+document.getElementById("countdownseconds").innerHTML = seconds + "s ";
     
 // If the count down is over, write some text 
 if (distance < 0) {
     clearInterval(x);
     document.getElementById("countdown").innerHTML = "EXPIRED";
+    document.getElementById("countdown").style.opacity = "0";
 }
 }, 1000);

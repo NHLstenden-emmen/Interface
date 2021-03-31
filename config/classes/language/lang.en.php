@@ -56,4 +56,5 @@ $this->lang['SCHEME_TIMELIMIT'] = 'Timelimit';
 $this->lang['SCHEME_HISTORY'] = 'History';
 $this->lang['RULES_TITLE'] = 'Game rules';
 $this->lang['STATS_TITLE'] = 'Statistics';
+$this->lang['START_COUNTDOWN'] = 'Next tournament in: ';
 ?>
