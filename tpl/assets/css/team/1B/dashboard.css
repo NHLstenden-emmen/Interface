@@ -3,8 +3,8 @@
 		display: grid;
 		grid-template-areas:
 			"startGame liveFeed"
-			"startGame liveFeed"
-			"console liveFeed";
+			"console liveFeed"
+			"credits credits";
 		grid-template-columns: 40vw 59vw;
 	}
 }
@@ -27,6 +27,9 @@
 }
 .console {
 	grid-area: console;
+}
+.credits {
+	grid-area: credits;
 }
 /* border block design */
 .neonBlock1B {
@@ -164,4 +167,15 @@
 	box-shadow: 0 0 10px var(--green);
 	right: -25%;
 	z-index: 1;
+}
+.credits span {
+	color: var(--team1B);
+}
+
+.credits i {
+	font-size: 4em;
+	margin-bottom: 20px;
+}
+.credits h1 {
+	margin-bottom: 30px;
 }
