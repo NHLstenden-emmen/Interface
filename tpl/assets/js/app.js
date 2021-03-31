@@ -27,8 +27,7 @@ const burgerMenu = () => {
 			}
 		});
 
-		window.addEventListener("resize", () => 
-		{
+		window.addEventListener("resize", () => {
 			navLinks.forEach((link, index) => {
 				link.style.opacity = "1";
 			});
@@ -93,31 +92,29 @@ const toastShow = (type, id, title, message, buttons = null, length = null) => {
 	Toast.setAttribute("aria-live", "assertive");
 	Toast.setAttribute("aria-atomic", "true");
 	Toast.setAttribute("class", "toast");
-	if(length != null) {
+	if (length != null) {
 		Toast.setAttribute("data-autohide", "true");
 		Toast.setAttribute("data-delay", length * 1000);
-	}
-	else {
+	} else {
 		Toast.setAttribute("data-autohide", "false");
 	}
-
 
 	Toast.id = id;
 
 	// logo of the toast
 	let ToastImage = document.createElement("img");
 	ToastImage.src = "/tpl/assets/images/server.png";
-	ToastImage.classList.add("rounded", "mr-2")
+	ToastImage.classList.add("rounded", "mr-2");
 	ToastImage.alt = "Toast logo";
-	
+
 	// Title of the toast
 	let ToastStrong = document.createElement("strong");
 	ToastStrong.innerHTML = title;
 
 	// save the time it was created at
 	let ToastSmall = document.createElement("small");
-	ToastSmall.classList.add("text-muted")
-	ToastSmall.innerHTML = current.toLocaleTimeString('nl-NL');
+	ToastSmall.classList.add("text-muted");
+	ToastSmall.innerHTML = current.toLocaleTimeString("nl-NL");
 
 	// button
 	let closeButton = document.createElement("button");
@@ -139,21 +136,22 @@ const toastShow = (type, id, title, message, buttons = null, length = null) => {
 	ToastBody.classList.add("toast-body");
 	// check if a button is needed in the toast
 
-	if(buttons != 'undefined' && buttons != null && type == 'default') {
+	if (buttons != "undefined" && buttons != null && type == "default") {
 		//buttons.
 		ToastBody.appendChild(document.createTextNode(message));
 
-		for(var option in buttons) {
+		for (var option in buttons) {
 			var buttonElement = document.createElement("button");
-			buttonElement.classList.add("B" +id, "button");
+			buttonElement.classList.add("B" + id, "button");
 			buttonElement.innerHTML = buttons[option];
-			buttonElement.setAttribute("onclick", "javascript:sendPoll('"+buttons[option]+"', '"+id+"')");
+			buttonElement.setAttribute(
+				"onclick",
+				"javascript:sendPoll('" + buttons[option] + "', '" + id + "')"
+			);
 			ToastBody.appendChild(buttonElement);
 		}
-	} else if(type == 'drawing') {
-
-	}
-	else {
+	} else if (type == "drawing") {
+	} else {
 		ToastBody.appendChild(document.createTextNode(message));
 	}
 
@@ -170,15 +168,15 @@ const toastShow = (type, id, title, message, buttons = null, length = null) => {
 	document.querySelector("#placeToast").appendChild(Toast);
 
 	// show the toast with the settings
-	$('#' + Toast.id).toast('show');
-	$('#' + Toast.id).on('hidden.bs.toast', function (e) {
+	$("#" + Toast.id).toast("show");
+	$("#" + Toast.id).on("hidden.bs.toast", function (e) {
 		deleteToast(e.currentTarget.id);
 	});
-}
+};
 
-const deleteToast = (id) =>{
+const deleteToast = (id) => {
 	document.getElementById(id).remove();
-}
+};
 
 document.addEventListener("DOMContentLoaded", function () {
 	menuLinks();
@@ -186,6 +184,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Zorgt voor volledige grijze achtergrond voor scrollen body
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 	document.body.style.backgroundColor = "#0f0f0f";
 }
