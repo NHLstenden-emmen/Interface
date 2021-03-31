@@ -8,7 +8,11 @@
 		<a href="teams" class="button">{HOME_BUTTON}</a>
 		</div>
 		
+			
+			
+
 		<div class="col-md-12 col-lg-9 main">
+			<p id="countdown"></p>
 			<img class="img" src="{assetsFolder}/images/arduino_0.png" alt="Arduino/ESP32 schematische weergave">
 		</div>
 	</div>
