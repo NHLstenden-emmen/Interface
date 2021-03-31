@@ -11,10 +11,12 @@
 	color: #fff;
 }
 .img {
-	position: relative;
+	position: absolute;
 	max-width: 90%;
 	animation: move 2s ease-in-out infinite;
-	border-radius: 60% 32%;
+}
+.countdowncontainer {
+	margin-top: -50px;
 }
 .countdown {
 	display: flex;

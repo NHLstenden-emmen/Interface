@@ -117,7 +117,7 @@ $socket = new Socket(49153, "77.162.30.112");
 $bot = "BOT1";
 if(isset($_POST['sendButton']))
 {
-        var_dump($socket->startDrawing());
+        var_dump($socket->startSPS());
 }
 else if(isset($_POST['readyButton']))
 {

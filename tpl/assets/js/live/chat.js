@@ -157,7 +157,7 @@ function launchLiveChat(user_idInput)
     if ("WebSocket" in window)
     {
         user_id = user_idInput;
-       livechatWebSocket = new WebSocket("ws://77.162.30.112:49152");
+       livechatWebSocket = new WebSocket("ws://194.171.181.139:49152");
         
         livechatWebSocket.onopen = function() {
             console.log("Connection to server with url : " + livechatWebSocket.url);
@@ -188,6 +188,9 @@ function launchLiveChat(user_idInput)
                     break;
                     case "disablepollbutton":
                         disableButton(messageData.id);
+                    break;
+                    case "readysignal":
+                        toastShow('default', 0, 'Server | Ready', "[" + messageData.match + "] " + messageData.team + " zet jullie robot klaar!", null, 10);
                     break;
                     default:
                         showMessage(messageData.message, messageData.id, messageData.username, messageData.level, messageData.team);

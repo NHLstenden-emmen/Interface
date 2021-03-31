@@ -7,25 +7,22 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="neonBlock zoom" onclick="location.href='/moderator/camera';">
-                    <i class="fas fa-video"></i>
+                <div class="neonBlock zoom" onclick="location.href='/moderator/games/start';">
+                    <i class="fas fa-play"></i>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="neonBlock zoom" onclick="location.href='/moderator/games';">
-                    <i class="fas fa-gamepad"></i>
+                <div class="neonBlock zoom" onclick="location.href='/moderator/games/stop';">
+                    <i class="fas fa-stop"></i>
+                </div>
+            </div>  
+            <?php if($user->id == 2) { ?>
+            <div class="col-md-4">
+                <div class="neonBlock zoom" onclick="location.href='/moderator/games/restart';">
+                    <i class="fas fa-redo"></i>
                 </div>
             </div>
-            <?php 
-                if($user->id == 2) {
-                echo '<div class="col-md-4">
-                        <div class="neonBlock zoom link" data-link="/moderator/dashboards">
-                            <i class="fas fa-tachometer-alt"></i>
-                        </div>
-                    </div>';
-                }
-            ?>
-
+            <?php } ?>
         </div>
     </div>
 </div>

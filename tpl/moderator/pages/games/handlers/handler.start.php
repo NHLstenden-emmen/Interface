@@ -1,26 +1,26 @@
 <?php 
-    if(isset($_POST['gameStart']))
+
+    switch (ModeratorPageAction) 
     {
-        if(isset($_POST['gameSelect']))
-        {
-            $gameSelect = $_POST['gameSelect'];
-            switch ($gameSelect) 
-            {
-                case 'SPS':
-                    $this->Set("statusResponse", $socket->startSPS());
-                break;
-                case 'maze':
-                    $this->Set("statusResponse", $socket->startMaze());
-                break;               
-                case 'race':
-                    $this->Set("statusResponse", $socket->startRace());
-                break;                
-                case 'draw':
-                    $this->Set("statusResponse", $socket->startDrawing());
-                break; 
-            }
-        }
-    } else {
-        $this->Set("statusResponse", "");
+        case 'SPS':
+            $this->Set("statusResponse", $socket->startSPS()->server);
+            $this->Set("extraJS", '<script>toastShow("default", "0", "Server | Response", "'.$this->Get("statusResponse").'")</script>');
+        break;
+        case 'maze':
+            $this->Set("statusResponse", $socket->startMaze()->server);
+            $this->Set("extraJS", '<script>toastShow("default", "0", "Server | Response", "'.$this->Get("statusResponse").'")</script>');
+        break;               
+        case 'race':
+            $this->Set("statusResponse", $socket->startRace()->server);
+            $this->Set("extraJS", '<script>toastShow("default", "0", "Server | Response", "'.$this->Get("statusResponse").'")</script>');
+        break;                
+        case 'draw':
+            $this->Set("statusResponse", $socket->startDrawing()->server);
+            $this->Set("extraJS", '<script>toastShow("default", "0", "Server | Response", "'.$this->Get("statusResponse").'")</script>');
+        break; 
+        default: 
+            $this->Set("statusResponse", "");
+        break;
     }
+
 ?>

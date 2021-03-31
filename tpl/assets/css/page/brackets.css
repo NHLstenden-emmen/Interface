@@ -1,0 +1,271 @@
+#brackets{
+    margin: 100px 0 35px 0;
+    color: white;
+	z-index: -9;
+}
+
+@media (min-width: 1050px) {
+    #brackets {
+        margin: 0 0 35px 0;
+    }
+}
+
+#brackets > .title{
+    font-weight: bold;
+}
+
+#bracketsHolder{
+    position: relative;
+    transition: ease height 1s;
+    height: 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.match{
+    --height: 92px;
+    --width: 209px;
+    height: var(--height);
+    width: var(--width);
+    position: absolute;
+    display: grid;
+    grid-template-columns: 50px auto;
+    grid-template-rows: 50% auto;
+    grid-gap: 3px;
+    padding: 3px;
+    animation: opening 1.5s;
+    overflow: hidden;
+}
+
+.match.closing{
+    height: 0;
+    width: 0;
+    padding: 0;
+    animation: closing 1s;
+    opacity: 0;
+}
+
+.match > .teamLabel{    
+    transition: ease opacity 2s, ease color 2s;
+    background-color: var(--secondaryColor); 
+    opacity: 1;
+    grid-column: 2;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.match > .teamLabel:empty{
+    color: rgba(255, 255, 255, 0)
+}
+
+.match > .teamLabel.top{
+    grid-row:1;
+}
+
+.match > .teamLabel.bottom{
+    grid-row:2;
+}
+
+.match > .teamLabel.lost{
+    opacity: 0.5;
+}
+
+.match > .matchId{
+    background-color: var(--primaryColor);
+    grid-column: 1;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#scoreboard{
+    --height: 492px;
+    --width: 428px;
+    position: relative;
+    top: 0px;
+    left: 450px;
+    height: var(--height);
+    width: var(--width);
+    animation: opening 1.5s;
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#scoreboard.closing{
+    height: 0;
+    width: 0;
+    padding: 0;
+    animation: closing 1s;
+    opacity: 0;
+}
+
+.scoreRow{
+    height: 100%;
+    margin: 0;
+    display: flex;
+}
+
+.scoreRow:not(:first-child){
+    margin-top: 3px;
+}
+
+#scoreboard > .scoreRow.heading{
+    background-color: var(--primaryColor);
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.scoreRow > .num{
+    background-color: var(--primaryColor);
+    min-width: 50px;
+    height: 100%;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.scoreRow > .game{
+    background-color: var(--secondaryColor);
+    min-width: 100px;
+    height: 100%;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-right: 3px;
+    font-size: 30px;
+    white-space: nowrap;
+}
+
+.scoreRow > .game.tot{
+    background-color: var(--primaryColor);
+    margin: 0;
+}
+
+.scoreRow > .team{
+    background-color: var(--primaryColor);
+    margin: 0;
+    white-space: nowrap;
+}
+
+.scoreRow.heading > .game{
+    background-color: var(--primaryColor);
+}
+
+.scoreRow.heading > .team{
+    background-color: var(--primaryColor);
+}
+
+#scoreboard > .scoreRow > .place{
+    align-self: start;
+}
+
+#scoreboard > .scoreRow > .score{
+    align-self: end;
+}
+
+.scoreRow > .team{
+    margin-left: 3px;
+    margin-right: 3px;
+    background-color: var(--secondaryColor);
+    height: 100%;
+    width: 100%;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#leaderboard{
+    --height: 492px;
+    --width: 900px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: var(--height);
+    width: var(--width);
+    animation: opening 1.5s;
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+#leaderboard.closing{
+    height: 0;
+    width: 0;
+    padding: 0;
+    animation: closing 1s;
+    opacity: 0;
+}
+
+@keyframes opening {
+    0% {
+        height: 0;
+        width: 0;
+        padding: 0;
+    }
+    50% {
+        height: var(--height);
+        width: 0;
+        padding: 3px 0 3px 0;
+    }
+    50.00000000001% {
+        height: var(--height);
+        width: 0;
+        padding: 3px 0 3px 3px;
+
+    }
+    100% {
+        height: var(--height);
+        width: var(--width);
+        padding: 3px;
+    }
+}
+
+@keyframes closing {
+    0% {
+        height: var(--height);
+        width: var(--width);
+        padding: 3px;
+        opacity: 1;
+    }
+    49.99999999999% {
+        height: var(--height);
+        width: 0;
+        padding: 3px 0 3px 3px;
+        opacity: 1;
+    }
+    50% {
+        height: var(--height);
+        width: 0;
+        padding: 3px 0 3px 0;
+        opacity: 1;
+    }
+    80% {
+        height: 0;
+        width: 0;
+        padding: 0;
+        opacity: 1;
+    }
+    100% {
+        height: 0;
+        width: 0;
+        padding: 0;
+        opacity: 0;
+    }
+}

@@ -16,9 +16,6 @@
         case "overview":
             require(ModeratorPageView."games.php");
         break;
-        case "scene":
-        case "camera":
-        case "poll":
         case "start":
         case "stop":
         case "schemes":
