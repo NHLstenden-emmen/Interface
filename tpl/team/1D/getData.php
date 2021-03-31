@@ -71,7 +71,7 @@
     }
     
     // Ophalen van aankomende spellen
-    $wedstrijden = $DB->Select("SELECT spel_naam, robot_1, robot_2 FROM speelschema WHERE robot_1 = 'BOT4' OR robot_2 = 'BOT4'");
+    $wedstrijden = $DB->Select("SELECT spel_naam, robot_1, robot_2 FROM speelschema WHERE robot_1 = 'Wall-D' OR robot_2 = 'Wall-D'");
 
     // Ophalen van uitslagen
     $uitslagen = $DB->Select("SELECT * FROM resultaat");
@@ -117,6 +117,7 @@
                     </thead>
                     <tbody>
                         <?php
+                            // Het weergeven van de wedstrijden die nog gespeeld moeten worden
                             if(count($wedstrijden) > 0)
                             {   
                                 foreach($wedstrijden as $wedstrijd)
