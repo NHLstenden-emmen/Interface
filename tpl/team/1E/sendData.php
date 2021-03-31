@@ -50,6 +50,23 @@ if(isset($_GET['action'])){
         $command = "4";
     }
 
+    if($action == "DOOLHOF"){
+        $command = "3";
+    }
+
+    if($action == "RACE"){
+        $command = "1";
+    }
+
+    if($action == "TEKENING"){
+        $command = "2";
+    }
+
+    // Ready
+    if($action == "Ready"){
+        print_r($socket->sendStartToBot($bot));
+        die();
+    }
 
     // Send Data
     print_r($socket->sendToBot($bot, $command));

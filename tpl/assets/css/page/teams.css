@@ -35,7 +35,7 @@
 }
 
 #more{
-    position: absolute;
+    position: fixed;
     font-size: 1.2em;
     margin: 0px 0;
     width: 100%;
@@ -47,13 +47,13 @@
 
 @keyframes seeMore{
     0%{
-        bottom: 0px;
+        bottom: 5px;
     } 
     50%{
-        bottom: 5px;
+        bottom: 10px;
     }
     100%{
-        bottom: 0px;
+        bottom: 5px;
     }
 }
 
