@@ -54,5 +54,6 @@ $this->lang['SCHEME_TIMELIMIT'] = 'Tijdslimiet';
 $this->lang['SCHEME_HISTORY'] = 'Historie';
 $this->lang['RULES_TITLE'] = 'Spelregels';
 $this->lang['STATS_TITLE'] = 'Statistieken';
+$this->lang['START_COUNTDOWN'] = 'Volgende toernooi over: ';
 
 ?>

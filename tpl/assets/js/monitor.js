@@ -62,10 +62,17 @@ function monitorAction() {
         "x" +
         window.screen.height * window.devicePixelRatio;
 
-      var clickTag = $(event.target).prev().prop("nodeName");
+        jQuery.fn.tagName = function() {
+          return this.prop("tagName");
+        };
+
+      var clickTag = $(event.target).tagName();
       var clickID = $(event.target).attr("id");
       var clickClass = $(event.target).attr("class");
       var clickText = $(event.target).text();
+      var clickSrc = $(event.target).attr("src");
+
+      console.log(clickSrc);
 
       // Tag
       if (clickTag == undefined || clickTag == "NaN") {
@@ -75,25 +82,33 @@ function monitorAction() {
       }
 
       // ID
-      if (clickID == undefined || clickID == "NaN") {
-        clickID = "";
+      if (clickID == undefined || clickID == "NaN" || clickID == "") {
+        clickID = "No ID";
       } else {
         clickID = clickID.trim();
       }
 
       // Class
-      if (clickClass == undefined || clickClass == "NaN") {
-        clickClass = "";
+      if (clickClass == undefined || clickClass == "NaN" || clickClass == "") {
+        clickClass = "No class";
       } else {
         clickClass = clickClass.trim();
       }
 
       // Text
-      if (clickText == undefined || clickText == "NaN") {
-        clickText = "";
+      if (clickText == undefined || clickText == "NaN" || clickText == "" ) {
+        clickText = "{NO-TEXT}";
       } else {
-        clickText = clickText.trim();
+        clickText = "{" + clickText.trim() + "}";
       }
+
+      // Src
+      if (clickSrc == undefined || clickSrc == "NaN" || clickSrc == "") {
+        clickSrc = "No src";
+      } else {
+        clickSrc = clickSrc.trim();
+      }
+      
 
       // Value voor DB
       var clickValue =
@@ -104,7 +119,9 @@ function monitorAction() {
         "\n#" +
         clickID +
         "\n" +
-        clickText;
+        clickText +
+        "\n" + 
+        clickSrc;
 
       $(document).ready(function () {
         $.post("/tpl/includes/monitorActions.php", {
