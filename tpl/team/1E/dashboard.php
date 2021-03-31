@@ -344,15 +344,9 @@
 </script>
 
 <?php
-
-
-if(isset($_GET['command']))
-{
-    $command = $_GET['command'];
-    echo "<script>sendData('" . $command . "');</script>";
-}
-
-
-error_log("Hoi sausje <3");
-
+    if(isset($_GET['command']))
+    {
+        $command = $_GET['command'];
+        echo "<script>sendData('" . $command . "');</script>";
+    }
 ?>

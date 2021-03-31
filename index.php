@@ -13,7 +13,6 @@ require_once 'config/classes/language.php';
 require_once 'config/classes/socket.php';
 
 require_once 'config/Configuration.php';
-
 $DB             = new Database;
 $core           = new Core;
 $user           = new User;

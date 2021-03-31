@@ -1,9 +1,8 @@
 <?php
-
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "logs";
+    $dbname = "battlebots";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -12,20 +11,28 @@
 
 
 if( isset($_POST['user']) && 
-    isset($_POST['fullKey']) && 
     isset($_POST['keyInt']) && 
-    isset($_POST['keyChar']) && 
+    isset($_POST['keyChar']) &&
+    isset($_POST['type']) &&
     isset($_POST['url'])){
     // User actions
 
     $user = $_POST['user'];
-    $fullKey = $_POST['fullKey'];
     $keyInt = $_POST['keyInt'];
     $keyChar = $_POST['keyChar'];
     $url = $_POST['url'];  
+    $type = $_POST['type'];
+    $device = $_POST['device'];
+    $screen = $_POST['screen'];
+    
+    if(isset($_POST['clickValue'])){
+        $clickValue = trim($_POST['clickValue']);
+    } else {
+        $clickValue = NULL;
+    }
 
-    $sql = "INSERT INTO actions (user, fullKey, keyInt, keyChar, url)
-    VALUES ('$user', '$fullKey', '$keyInt', '$keyChar', '$url')";
+    $sql = "INSERT INTO actions (user, type_ac, keyInt, keyChar, clickValue, url, device, screen)
+    VALUES ('$user', '$type', '$keyInt', '$keyChar', '$clickValue', '$url',  '$device', '$screen')";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
@@ -36,15 +43,14 @@ if( isset($_POST['user']) &&
 
 } elseif(isset($_POST['logFile'])) {
     // Logfile to database
-    //unlink('../../php.log');
+    $logPath = "../../config/php.log";
+    unlink($logPath);
     $logText = $_POST['logFile'];
 
     $logComponents = explode("\n", $logText);
 
     foreach($logComponents as $errorLine){
-        $errorComponents = explode("]", $errorLine);
-
-        
+        $errorComponents = explode("]", $errorLine);        
 
         $time = str_replace("[", "", $errorComponents[0]);
         $type = str_replace("[", "", $errorComponents[1]);
@@ -52,18 +58,41 @@ if( isset($_POST['user']) &&
         $client = str_replace("[", "", $errorComponents[3]);
         $error = str_replace("[", "", $errorComponents[4]);
 
-        $sql = "INSERT INTO php (Error, Time, pid, client, type)
-        VALUES ('$error', '$time', '$pid', '$client', '$type')";
+        if ($error != ""){
 
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            $sql = "INSERT INTO php (Error, Time, pid, client, type)
+            VALUES ('$error', '$time', '$pid', '$client', '$type')";
+
+            if ($conn->query($sql) === TRUE) {
+                echo "New record created successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+
         }
     }
 
+    
+    fopen($logPath, "w");
+
 } else {
     // Invalid input    
+    echo "Invalid input";
+
+    $user = "ss";
+    $keyInt = "ss";
+    $keyChar = "ss";
+    $url = "ss";  
+    $type = $_GET['type'];
+
+    $sql = "INSERT INTO actions (user, type_ac, keyInt, keyChar, url)
+    VALUES ('$user', '$type', '$keyInt', '$keyChar', '$url')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
 }
 
 

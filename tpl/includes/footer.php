@@ -21,38 +21,9 @@
     }
 
     ?>
-
-    <?php 
-    $exeptionMonitor = array('login', 'register');
-    $currentURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $monitorEnable = false;
-    foreach($exeptionMonitor as $exeption){
-        if(strpos($currentURL, $exeption) !== true)
-        {
-            $monitorEnable = true;
-        }
-    }
-
-    if ($monitorEnable == true){
-        ?>
-            <script>
-                setUser('<?php echo $monitor; ?>');
-                monitorAction();
-                console.log('Monitor On');
-            </script>
-        <?php
-    } else {
-        ?>
-            <script>
-                console.log('Monitor Off');
-            </script>
-        <?php
-    }
-    ?>
-
-	
-
-
-    <script> AOS.init(); </script>
+    <script> 
+        setUser('<?php echo $monitor; ?>');
+        AOS.init(); 
+    </script>
 </body>
 </html>

@@ -184,3 +184,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	menuLinks();
 	burgerMenu();
 });
+
+// Zorgt voor volledige grijze achtergrond voor scrollen body
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+	document.body.style.backgroundColor = "#0f0f0f";
+}
