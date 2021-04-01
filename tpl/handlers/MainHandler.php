@@ -7,8 +7,7 @@ $this->Set("extraCSS", '<link rel="stylesheet" href="'.$this->Get("assetsFolder"
 if(isset($_GET['lang'])) {
 	if($_GET['lang'] == "change"){
 		$lang->changeLanguage();
-		$langURL = $_SERVER['REQUEST_SCHEME'] .'://'. $_SERVER['HTTP_HOST'] 
-		. explode('?', $_SERVER['REQUEST_URI'], 2)[0];
+		$langURL = "http://". $_SERVER['HTTP_HOST'] . explode('?', $_SERVER['REQUEST_URI'], 2)[0];
 	///	header("Location: " . $langURL);
 		$core->Redirect($langURL);
 	}

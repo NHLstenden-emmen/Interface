@@ -11,7 +11,7 @@ window.onresize = function(event) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-	const source = 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8';
+	const source = '/streams/dome.m3u8';
 	const video = document.querySelector('video');
 	
 	// For more options see: https://github.com/sampotts/plyr/#options

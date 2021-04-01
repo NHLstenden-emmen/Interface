@@ -20,7 +20,6 @@ $TPL            = new Template;
 $filter         = new Filter;
 $lang           = new Language;
 $socket         = new ServerConnection(Config::$serverPort, Config::$serverIP);
-
 $TPL->Route($_SERVER['PATH_INFO']);
 $TPL->GetHandlers();
 
