@@ -14,10 +14,10 @@
 ?>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-<button class="botReady" onclick="readyBot();playAudio('/tpl/team/1E/quoteJetten.mp3');playAudio('/tpl/team/1E/backgroundMusicJetten.mp3')">Ready</button>
+<button class="botReady" onclick="sendData('Ready');readyBot();playAudio('/tpl/team/1E/quoteJetten.mp3');">Ready</button>
+<div id="terrorRob" class=""></div>
 
 <div class="container" id="block">
-    <button class="button">Test</button>
     <div class="pageBar">
         <div>
             <h2 id="titel">Dashboard</h2>
@@ -36,12 +36,12 @@
                         <!-- Hiertussen komen de WASD knoppen -->
                         <div class="container">
                             <div class="row-one">
-                                <button onclick="sendData('W')">W</button>
+                                <button class="button" onclick="sendData('W')">W</button>
                             </div>
                             <div class="row-two">
-                                <button onclick="sendData('A')">A</button>
-                                <button onclick="sendData('S')">S</button>
-                                <button onclick="sendData('D')">D</button>
+                                <button class="button" onclick="sendData('A')">A</button>
+                                <button class="button" onclick="sendData('S')">S</button>
+                                <button class="button" onclick="sendData('D')">D</button>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,11 @@
         <div data-aos="fade-down" class="col-lg-3 block" id="block2">
             <div class="neonBlock content">
                 <h5 class="blockTitle">Commands</h5>
-                <button type="button" onclick="sendData('Stop')" name="button">Stop</button>
+                <button type="button" class="button" onclick="sendData('Stop')" name="button">Stop</button><br><br>
+                <button type="button" class="button" onclick="sendData('SPS')" name="button">Start SPS</button><br><br>
+                <button type="button" class="button" onclick="sendData('DOOLHOF')" name="button">Start Doolhof</button><br><br>
+                <button type="button" class="button" onclick="sendData('RACE')" name="button">Start Race</button><br><br>
+                <button type="button" class="button" onclick="sendData('TEKENING')" name="button">Start Tekening</button>
             </div>
         </div>
         <div data-aos="fade-left" class="col-lg-3 block" id="block3">
@@ -236,10 +240,6 @@
         </div>
     </div>
 </div>
-
-<div id="terrorRob" class=""></div>
-<button class="button">Knop</button>
-
 <script>
 
     function playAudio(url) {
@@ -274,8 +274,6 @@
     $(function() {
         $('#keyboardListen').focus();
     });
-
-
 
     var lastKeyboard;
 

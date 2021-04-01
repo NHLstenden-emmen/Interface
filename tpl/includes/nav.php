@@ -25,7 +25,7 @@
               <span class="dropdownLink">{NAV_GAMES} <i class="fas fa-caret-down"></i></span>
               <div class="dropdown-content">
                 <!-- <i class="fas fa-caret-right"></i> -->
-                <a href="/stats">{NAV_STATS}</a>
+                <a href="/bracket">{NAV_STATS}</a>
                 <a href="/scheme">{NAV_SCHEME}</a>
                 <a href="/rules">{NAV_RULES}</a>
               </div>

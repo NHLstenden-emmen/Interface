@@ -39,12 +39,10 @@ function showMessage(message, id, username, level = null, team = null) {
         messageUsername.appendChild(messageUserIcon);
         messageUsername.appendChild(document.createTextNode(username));
 
-    } else if(username == 'Server') {
-        messageUserIcon.src = "/tpl/assets/images/server.png";
-        messageUsername.appendChild(messageUserIcon);
-        messageUsername.appendChild(document.createTextNode(username));
-    } else if(level != null && level == 2) {
+    }  else if(level != null && level == 2) {
+
         if(team != null && team != 'undefined'){
+
             messageUserIcon.src = "/tpl/assets/images/team/" + team + "/logoResize.png";
 
             var usernameWrapper = document.createElement("span");
@@ -59,7 +57,8 @@ function showMessage(message, id, username, level = null, team = null) {
             messageUsername.appendChild(messageUserIcon);
             messageUsername.appendChild(usernameWrapper);
         } else {
-            messageUsername.appendChild(document.createTextNode(usernameMod));        }
+            messageUsername.appendChild(document.createTextNode(username));       
+		}
     }
      else {
         messageUsername.innerHTML = '<i class="avatar fas fa-user-circle"></i>&nbsp&nbsp' + username;
@@ -157,7 +156,7 @@ function launchLiveChat(user_idInput)
     if ("WebSocket" in window)
     {
         user_id = user_idInput;
-       livechatWebSocket = new WebSocket("ws://77.162.30.112:49152");
+       livechatWebSocket = new WebSocket("ws://194.171.181.139:49152");
         
         livechatWebSocket.onopen = function() {
             console.log("Connection to server with url : " + livechatWebSocket.url);
@@ -188,6 +187,9 @@ function launchLiveChat(user_idInput)
                     break;
                     case "disablepollbutton":
                         disableButton(messageData.id);
+                    break;
+                    case "readysignal":
+                        toastShow('default', 0, 'Server | Ready', "[" + messageData.match + "] " + messageData.team + " zet jullie robot klaar!", null, 10);
                     break;
                     default:
                         showMessage(messageData.message, messageData.id, messageData.username, messageData.level, messageData.team);

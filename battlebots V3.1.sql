@@ -201,7 +201,8 @@ CREATE TABLE `teams` (
 
 INSERT INTO `teams` (`TeamID`, `TeamDesc`, `RobotName`) VALUES
 ('1A', ' test test test', 'Test'),
-('1B', 'Test', 'Test'),
+('1B', "Lennart the 14th used to be Vladimir Putin's pet, because Putin was allergic to dog hair, he had his servants program a robot that would look like a dog. The programmers blew a bit, making it more of a human-like beast than a dog. Lennart helped Putin with sports, eating, sleeping and all kinds of other things that Putin could’nt do himself. Lennart also had some time off, in his spare time he played golf at his 12-hectare garden with a glass of wine and a Ralph Lauren polo with a vest sloping over his upper body. While playing golf, Lennart needed a good jam to vibe on, so he listened to the Dutch super talent Famke Louise. When Putin caught him listening to “Vroom”, he went completely crazy. Putin himself was not really into foreign music, especially this style. He preferred to listen to Tri Poloski, or EZ4ENCE himself. Because Putin got so angry, Lennart decided to leave. He picked up 1 of Putin's tanks and set course to the airfield, where he left for the Netherlands with an F16 Jet. His goal was to find a way into Famke's heart, but wanted to do it in a good way. To get her attention, he participates in Project Battlebots. He's here with the aim of beating anything and everything at any cost.
+", 'Lennart'),
 ('1C', 'Test', 'BrokkoBot'),
 ('1D', 'Test', 'Test'),
 ('1E', 'Saus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus SausSaus Saus Saus Saus', 'FiekehUTZ');
@@ -228,13 +229,15 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
+
 INSERT INTO `users` (`user_id`, `email`, `password`, `voornaam`, `achternaam`, `team`, `level`, `lang`, `deleted_at`) VALUES
+(2, 'remco.hassing1@student.nhlstenden.com', '$2y$10$lUz7vTpMxGRwi6O.slyD.OVKAtV9AW4uRYIFWtTjjrCid2zufAu7O', 'Remco', 'Hassing', '1D', 2, 'nl', NULL),
 (5, 'feike', '$2y$10$7XxAsFhhxo5eQFnyFmRThO6pOLZCIPy/KJs7Qbrx.jEr2VklCdajm', 'Feike', 'Falkena', '1E', 2, 'nl', NULL),
-(6, 'moderator1', '$2y$10$Q7eh1Wfs4oYdeZvnYNxKvOu1Ghbw/bi2I4NzeG5HvvQE3yxrXOuy6', 'Moderator', '1', NULL, 2, 'nl', NULL),
-(7, 'moderator2', '$2y$10$YqXOCGfwZE19V0uplaswsuNBjBC9vyDcrPtNTEh5a2qB.cQRICCGq', 'Moderator', '1', NULL, 2, 'nl', NULL),
+(6, 'Kevin', '$2y$10$ymkwV39h8adBsp9vxRaLDesOoEaaNiFj8VE3XOH5vTCbpQ9L/6U4e', 'Kevin', 'Smulders', '1B', 2, 'nl', NULL),
+(7, 'moderator2', '$2y$10$YqXOCGfwZE19V0uplaswsuNBjBC9vyDcrPtNTEh5a2qB.cQRICCGq', 'Moderator', '2', NULL, 2, 'nl', NULL),
 (8, 'moderator3', '$2y$10$xkyxTojp2J.czTS.EEvOuu3GOhe8NMEbv070IILR3pKIMtsD7ww4.', 'Moderator', '3', NULL, 2, 'nl', NULL),
 (9, 'teama@student.nhlstenden.com', '$2y$10$ueBrdjFSGbeUVgLSLVw/auMbGgAJczwEW/ybKQ6sgQYb75yN8hK7q', 'Team', 'A', '1A', 1, 'nl', NULL),
-(10, 'teamb@student.nhlstenden.com', '$2y$10$uhhRvDrROg4q0EAH5RfTPO9cASo27SDZz4M5uuasqjAfbU0XWSpt.', 'Team', 'B', '1B', 1, 'nl', NULL),
+(10, 'Kevin@student.nhlstenden.com', '$2y$10$ymkwV39h8adBsp9vxRaLDesOoEaaNiFj8VE3XOH5vTCbpQ9L/6U4e', 'Team', 'B', '1B', 1, 'nl', NULL),
 (11, 'teamc@student.nhlstenden.com', '$2y$10$0FxUwpnZrR68/JcWnZNgre5KIm38Z7mJtHlg.UJbeNtlOccDM7FOu', 'Team', 'C', '1C', 1, 'nl', NULL),
 (12, 'teamd@student.nhlstenden.com', '$2y$10$cbBZ87O3v9OiYcWO.ff09upnpNwkmzmTIUXtt1/1M8Arp2e8hMdMK', 'Team', 'D', '1D', 1, 'nl', NULL),
 (13, 'teame@student.nhlstenden.com', '$2y$10$ZFPyM6donmCy/pgJFbUgbOL9kUV8MfWiErdD5uV8glQ/g7Wve6KWG', 'Team', 'E', '1E', 1, 'nl', NULL);

@@ -9,7 +9,7 @@
 		</div>
 		
 		<div class="col-md-12 col-lg-9 main">
-			<div>
+			<div class="countdowncontainer">
 				<h4>{START_COUNTDOWN}</h4>
 				<ul class="countdown">
 					<li class="countdownli" id="countdowndays">&nbsp;</li>
@@ -19,7 +19,7 @@
 				</ul>
 			</div>
 
-			<img onmouseover="hover(this);" onmouseout="unhover(this);" id="ESP" class="img zoom" src="{assetsFolder}/images/arduino_0.png" alt="Arduino/ESP32 schematische weergave">
+			<img id="ESP" class="img" src="{assetsFolder}/images/arduino_0.png" alt="Arduino/ESP32 schematische weergave">
 		</div>
 	</div>
 </div>
