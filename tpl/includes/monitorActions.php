@@ -1,7 +1,7 @@
 <?php
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "Welkom10!";
     $dbname = "battlebots";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -77,22 +77,7 @@ if( isset($_POST['user']) &&
 
 } else {
     // Invalid input    
-    echo "Invalid input";
 
-    $user = "ss";
-    $keyInt = "ss";
-    $keyChar = "ss";
-    $url = "ss";  
-    $type = $_GET['type'];
-
-    $sql = "INSERT INTO actions (user, type_ac, keyInt, keyChar, url)
-    VALUES ('$user', '$type', '$keyInt', '$keyChar', '$url')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
 }
 
 

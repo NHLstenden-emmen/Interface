@@ -39,12 +39,10 @@ function showMessage(message, id, username, level = null, team = null) {
         messageUsername.appendChild(messageUserIcon);
         messageUsername.appendChild(document.createTextNode(username));
 
-    } else if(username == 'Server') {
-        messageUserIcon.src = "/tpl/assets/images/server.png";
-        messageUsername.appendChild(messageUserIcon);
-        messageUsername.appendChild(document.createTextNode(username));
-    } else if(level != null && level == 2) {
+    }  else if(level != null && level == 2) {
+
         if(team != null && team != 'undefined'){
+
             messageUserIcon.src = "/tpl/assets/images/team/" + team + "/logoResize.png";
 
             var usernameWrapper = document.createElement("span");
@@ -59,7 +57,8 @@ function showMessage(message, id, username, level = null, team = null) {
             messageUsername.appendChild(messageUserIcon);
             messageUsername.appendChild(usernameWrapper);
         } else {
-            messageUsername.appendChild(document.createTextNode(usernameMod));        }
+            messageUsername.appendChild(document.createTextNode(username));       
+		}
     }
      else {
         messageUsername.innerHTML = '<i class="avatar fas fa-user-circle"></i>&nbsp&nbsp' + username;

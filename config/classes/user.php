@@ -97,7 +97,7 @@ class User
 		$regEmail 		= $filter->sanatizeInput($regEmail, 'email');
 		$regPass1 		= $filter->sanatizeInput($regPass1, 'string');
 		$regPass2 		= $filter->sanatizeInput($regPass2, 'string');
-		$teamSelect 	= $filter->sanatizeInput($teamSelect, 'string');
+		$team 			= $filter->sanatizeInput($team, 'string');
 
 		$emailLijst = array(
 			'student.nhlstenden.com',
