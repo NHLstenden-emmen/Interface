@@ -12,6 +12,8 @@
                 <div id="liveChat"></div>
             </div>
         </div>
+        <button onclick="camera1();">Camera 1</button>
+        <button onclick="camera2();">Camera 2</button>
 		<div class="row">
 			<div class="col-md-4 noPadding"></div>
 			<div class="col-md-4"></div>
