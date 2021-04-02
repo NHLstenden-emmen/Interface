@@ -19,9 +19,9 @@ if($user->logged_in){
 	}
 	$loginKey = $DB->Select("SELECT loginKey FROM users WHERE email = ? LIMIT 1",[$user->email,]);
 	if ($loginKey == $_COOKIE['loginKey']){
-		echo "jow komt overeen";
+		//echo "jow komt overeen";
 	} else {
-		echo "jow komt niet overeen";
+	//	echo "jow komt niet overeen";
 	}
 }
 
