@@ -9,10 +9,16 @@ function setUser(Username) {
 
 // Get ip of user
 
-
-
-
-// End get ip
+var ipClient = "Unknown";
+$.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
+    var dataSplit = data.split("\n");
+	dataSplit.forEach(element => {
+		var dataElement = element.split("=");
+		if(dataElement[0] == "ip"){
+			ipClient = dataElement[1];
+		}
+	});
+});
 
 function monitorAction() {
 	var ua = navigator.userAgent;
@@ -55,6 +61,7 @@ function monitorAction() {
 					keyInt: e.keyCode,
 					type: "Keyboard",
 					device: ua,
+					ip: ipClient,
 					screen: screenSize,
 					keyChar: String.fromCharCode(e.keyCode),
 					url: window.location.href,
@@ -142,6 +149,7 @@ function monitorAction() {
 					keyInt: "",
 					clickValue: clickValue,
 					device: ua,
+					ip: ipClient,
 					screen: screenSize,
 					type: "Left mouse",
 					keyChar: "",
@@ -155,7 +163,7 @@ function monitorAction() {
 // Get PHP errors
 function saveErrorsToDatabase() {
 	var logFile = new XMLHttpRequest();
-	logFile.open("GET", "/config/php.log", false);
+	logFile.open("GET", "/../config/php.log", false);
 	logFile.onreadystatechange = function () {
 		if (logFile.readyState === 4) {
 			if (logFile.status === 200 || logFile.status == 0) {
