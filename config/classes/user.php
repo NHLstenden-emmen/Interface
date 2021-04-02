@@ -2,7 +2,7 @@
 class User
 {
 	public $logged_in = false;
-	public $email, $naam, $id = 0, $team = "", $level = 0;
+	public $email, $naam, $id = 0, $team = "", $level = 0, $lastIp = "Unknown";
 
 	private $data;
 
@@ -25,6 +25,14 @@ class User
 			if ($this->data === false)
 			{
 				$this->Logout();
+			}
+
+			// Last known IP
+			if ($this->data('lastIp') == "")
+			{
+				$this->lastIp = "Unknown";
+			} else {
+				$this->lastIp = $this->data('lastIp');
 			}
 
 			$this->id = intval($this->data('user_id'));
@@ -141,9 +149,15 @@ class User
 		$gebruikerResult = $DB->Select("SELECT level, team FROM users WHERE user_id = ? LIMIT 1", [$id])[0];
 
 		return $this->userLevelName($gebruikerResult['level'], $gebruikerResult['team']);
-		
 	}
 
+	function lastUserIP($id) {
+		global $DB;
+
+		$gebruikerResult = $DB->Select("SELECT lastIp FROM users WHERE user_id = ? LIMIT 1", [$id])[0];
+
+		return $this->lastUserIP($gebruikerResult['lastIp']);
+	}
 
 	function Redirect($if_logged_in)
 	{

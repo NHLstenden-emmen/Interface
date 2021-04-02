@@ -13,6 +13,16 @@ if(isset($_GET['lang'])) {
 	}
 }
 
+/* Check if is logged in on other ip*/
+if($user->logged_in){
+	if ($core->getUserIP() == $user->lastIp){
+		echo "Komt overeen";
+	} else {
+		echo "Komt niet overeen";
+		echo $core->getUserIP();
+	}
+}
+
 /* Navigatie menu */
 if ($user->logged_in)
 {
