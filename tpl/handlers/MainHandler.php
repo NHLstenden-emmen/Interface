@@ -17,6 +17,12 @@ if($user->logged_in){
 	if ($core->getUserIP() != $user->lastIp){
 		$user->Logout();
 	}
+	$loginKey = $DB->Select("SELECT loginKey FROM users WHERE email = ? LIMIT 1",[$user->email,]);
+	if ($loginKey == $_COOKIE['loginKey']){
+		echo "jow komt overeen";
+	} else {
+		echo "jow komt niet overeen";
+	}
 }
 
 /* Navigatie menu */
