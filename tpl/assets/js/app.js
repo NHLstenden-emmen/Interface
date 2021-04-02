@@ -1,69 +1,84 @@
 /* Burger Menu Controller */
 const burgerMenu = () => {
-	const burger = document.querySelector(".mobileBurger");
-	const navbar = document.querySelector(".nav");
-	const nav = document.querySelector("#navbar");
+    const burger = document.querySelector('.mobileBurger');
+    const navbar = document.querySelector('.nav');
+    const nav = document.querySelector('#navbar');
 
-	const navLinks = document.querySelectorAll(
-		"ul > li, .dropdown-content > a"
-	);
-	const body = document.querySelector("body");
+    const navLinks = document.querySelectorAll('ul > li, .dropdown-content > a');
+    const body = document.querySelector('body');
 
-	burger.addEventListener("click", () => {
-		nav.classList.toggle("active");
-		navbar.classList.toggle("active");
-		body.classList.toggle("active");
+    burger.addEventListener('click', ()=> {
 
-		document.querySelector("#menu").classList.toggle("active");
+        nav.classList.toggle('active');
+        navbar.classList.toggle('active');
+        body.classList.toggle('active');
 
-		navLinks.forEach((link, index) => {
-			link.style.opacity = "0";
-			if (link.style.animation) {
-				link.style.animation = "";
-			} else {
-				link.style.animation = `navLinkFade 0.5s ease forwards ${
-					index / 7 + 0.5
-				}s`;
-			}
-		});
+        document.querySelector("#menu").classList.toggle("active");
 
-		window.addEventListener("resize", () => {
-			navLinks.forEach((link, index) => {
-				link.style.opacity = "1";
-			});
-		});
+        navLinks.forEach((link, index) =>{
+            link.style.opacity = '0';
 
-		burger.classList.toggle("active");
-	});
-};
+            if(link.style.animation) {
+                link.style.animation = '';
+            }
+            else 
+            {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+            }
+        });
+
+        burger.classList.toggle('active');
+    });
+
+    window.addEventListener("resize", () => {
+        navLinks.forEach((link, index) =>{ 
+            link.style.opacity = '1';
+        });
+    });
+
+    window.addEventListener('scroll', (e) => {
+        console.log("hoi");
+        e.preventDefault();
+        window.scrollTo(0, 0);
+
+    });
+
+
+}
 
 const menuLinks = () => {
-	const menuLink = document.querySelectorAll(".link");
-	menuLink.forEach((link, index) => {
-		link.addEventListener("click", () => {
-			window.location.href = menuLink[index].dataset.link;
-		});
-	});
-};
+    const menuLink = document.querySelectorAll(".link");
+    menuLink.forEach((link, index) => {
+        link.addEventListener('click', () => {
+            window.location.href = menuLink[index].dataset.link;
+        });
+    });
+}
+
 
 const sortByValue = (jsObj) => {
 	return Object.entries(jsObj).sort((a, b) => {
 		if (a[1] < b[1]) {
 			// Numeric value from a is smaller than from b
+			console.log(b[0], "is before" , a[0], "because", b[1], ">", a[1]);
 			return 1; // -> b before a
 		}
 		if (a[1] < b[1]) {
 			// Numeric value from a is bigger than from b
+			console.log(b[0], "is after" , a[0], "because", b[1], "<", a[1]);
 			return -1; // -> a before b
 		}
 		if (a[0] > b[0]) {
 			// Name from b comes alphabetically before name from a
+			console.log(b[0], "is before" , a[0], "because of alphabetical order");
 			return 1; // -> b before a
 		}
 		if (a[0] < b[0]) {
 			// Name from b comes alphabetically after name from a
+			console.log(b[0], "is after" , a[0], "because of alphabetical order");
 			return -1; // ->  a before b
 		}
+		console.log(b[0], "==" , a[0], "no difference"); // probeer nu nog is te versutrne (eerst refresh)
 		return 0; // No difference found
 	});
 };
@@ -142,7 +157,7 @@ const toastShow = (type, id, title, message, buttons = null, length = null) => {
 
 		for (var option in buttons) {
 			var buttonElement = document.createElement("button");
-			buttonElement.classList.add("B" + id, "button");
+			buttonElement.classList.add("button");
 			buttonElement.innerHTML = buttons[option];
 			buttonElement.setAttribute(
 				"onclick",
@@ -150,7 +165,20 @@ const toastShow = (type, id, title, message, buttons = null, length = null) => {
 			);
 			ToastBody.appendChild(buttonElement);
 		}
+
+		Toast.classList.add("regularpoll");
 	} else if (type == "drawing") {
+		ToastBody.appendChild(document.createTextNode(message));
+
+		for(var option in buttons.options) {
+			var buttonElement = document.createElement("button");
+			buttonElement.innerHTML = buttons.options[option];
+			buttonElement.setAttribute("onclick", "javascript:sendDrawingPoll('"+option+"', '"+buttons.bot+"', '"+buttons.id+"')");
+			buttonElement.classList.add("button");
+
+			ToastBody.appendChild(buttonElement);
+		}
+		Toast.classList.add("drawingpoll");
 	} else {
 		ToastBody.appendChild(document.createTextNode(message));
 	}
@@ -183,7 +211,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	burgerMenu();
 });
 
-// Zorgt voor volledige grijze achtergrond voor scrollen body
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-	document.body.style.backgroundColor = "#0f0f0f";
+
+/* Dashboard logo changer */
+var currentURL = window.location.href;
+var teams = ["1A", "1B", "1C", "1D", "1E"];
+var teamsLength = teams.length;
+const logoTeam = document.getElementById("logo");
+for (var i = 0; i < teamsLength; i++) {
+    var searchURL = currentURL.toUpperCase()
+    var n = searchURL.search(teams[i]);
+    if(n > 0){
+        logoTeam.src = "/tpl/assets/images/team/" + teams[i] + "/logoResize.png";
+    }
 }

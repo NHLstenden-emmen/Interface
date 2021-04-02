@@ -1,6 +1,6 @@
 var bracketsHolder = document.querySelector("#bracketsHolder");
 
-class Brackets { //kan je btw deze volgorde doen: SPS, maze, race, draw
+class Brackets {
     phase = -1;
 
     #clear() {
@@ -324,26 +324,20 @@ class Brackets { //kan je btw deze volgorde doen: SPS, maze, race, draw
     }
 }
 
-var brackets = new Brackets();
-var ws;
+var brackets        = new Brackets();
+var webSocketData   = new WebSocket("ws://77.162.30.112:49151");
+var staticData      = new XMLHttpRequest();
 
-ws = new WebSocket("ws://77.162.30.112:49151");
+staticData.open("GET", "/livedata", true);
+staticData.setRequestHeader("battlebots", "leaderboard");
+staticData.send();
 
-ws.onmessage = function (evt) 
-{ 
-        console.log(JSON.parse(evt.data));
-        brackets.parseJSON(evt.data);
-};
+webSocketData.addEventListener("message", (evt) => {
+    brackets.parseJSON(evt.data);
+});
 
-var xmlhttp = new XMLHttpRequest();
-
-xmlhttp.open("GET", "/livedata?type=SPS", true);
-xmlhttp.setRequestHeader("battlebots", "leaderboard");
-
-xmlhttp.send();
-
-xmlhttp.onreadystatechange = function() {
+xmlhttp.addEventListener("readystatechange", () => {
     if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
         brackets.parseJSON(JSON.parse(this.getResponseHeader("livedata")).json);
     }
-};
+});

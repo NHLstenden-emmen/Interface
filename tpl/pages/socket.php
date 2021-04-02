@@ -114,17 +114,18 @@ class Socket
 }
 
 $socket = new Socket(49153, "77.162.30.112");
-$bot = "BOT1";
+
 if(isset($_POST['sendButton']))
 {
         var_dump($socket->startSPS());
 }
 else if(isset($_POST['readyButton']))
 {
-        if($socket->sendStartToBot($bot) == "not_your_turn")
-        {
-                var_dump($socket->sendStartToBot("BOT2"));  
-        }
+        $socket->sendStartToBot("BrokkoBot");
+        $socket->sendStartToBot("Lennart");
+        $socket->sendStartToBot("Wall-D");
+        $socket->sendStartToBot("RoBOT Jetten");
+        $socket->sendStartToBot("BumbleBert");
 }
 else if(isset($_POST['generateSchemes']))
 {
