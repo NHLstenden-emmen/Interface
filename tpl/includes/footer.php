@@ -12,12 +12,14 @@
     {extraJS}
 
     <!-- Monitor acties [TESTDAG] --> 
+	
     <?php 
 
+
     if ($user->logged_in){
-        $monitor = $user->email;	
+        $monitor = base64_encode(base64_encode($user->email));	
     } else {
-        $monitor = "Guest";
+        $monitor = base64_encode(base64_encode("Guest"));
     }
 
     ?>
@@ -26,4 +28,4 @@
         AOS.init(); 
     </script>
 </body>
-</html>
+</html>	

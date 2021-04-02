@@ -42,7 +42,7 @@ if( isset($_POST['user']) &&
 
 
 } elseif(isset($_POST['logFile'])) {
-    // Logfile to database
+   // Logfile to database
     $logPath = "../../config/php.log";
     unlink($logPath);
     $logText = $_POST['logFile'];
