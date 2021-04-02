@@ -4,23 +4,45 @@ button {
 	color: white;
 	font-weight: bold;
 	background: var(--gradientButton);
-    margin-bottom: 10px;
-    outline: 0;
-	border: 0;
+    margin: 10px 0;
+	outline: 0 !important;
+	border: 0 !important;
 }
 
 button:hover {
 	cursor: pointer;
 	animation: buttonHover 0.3s ease-in-out forwards;
+	outline: 0 !important;
+	border: 0 !important;
 }
+
+select { 
+	width: 80%;
+}
+
+.details {
+	margin-right: 20px;
+}
+
+.arrow {
+	pointer-events: none;
+}
+
+.hover:hover {
+	fill: var(--buttonColor) !important;
+	transition: 0.3s ease-in-out;
+}
+
 /* Algemeen */
 .neonBlock{
+	margin: 0;
 	background: #0f0f0fa3;
 }
 
 .title{
 	font-weight: bold;
 }
+
 
 /* Start.php */
 

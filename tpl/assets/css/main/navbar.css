@@ -208,7 +208,7 @@
 	/* REPSONSIVE NAVBAR */
 	#navbar {
 		padding: 0px;
-		position: absolute !important;
+		position: relative !important;
 		z-index: 1 !important;
 	}
 

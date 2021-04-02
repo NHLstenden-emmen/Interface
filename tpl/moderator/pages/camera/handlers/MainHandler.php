@@ -16,7 +16,7 @@
         default:
             require(ModeratorPageView."overview.php");
         break;
-        case 'scene':
+        case 'overlays':
         case 'control':
             require(ModeratorPageView.ModeratorPageRoute.".php");
         break;

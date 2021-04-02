@@ -55,5 +55,7 @@ $this->lang['SCHEME_HISTORY'] = 'Historie';
 $this->lang['RULES_TITLE'] = 'Spelregels';
 $this->lang['STATS_TITLE'] = 'Statistieken';
 $this->lang['START_COUNTDOWN'] = 'Volgende toernooi over: ';
+$this->lang['TERUG'] = 'Terug';
+$this->lang['GEBRUIKERS'] = 'Gebruikers';
 
 ?>
