@@ -11,7 +11,7 @@ if(isset($_POST['loginSubmit']))
      {
          if(isset($_POST['loginPassword']))
          {
-            /*
+            
             if (isset($_POST['g-recaptcha-response'])) {
                 $captcha = $_POST['g-recaptcha-response'];
             } else {
@@ -29,10 +29,11 @@ if(isset($_POST['loginSubmit']))
             }
             if ($response->success==true && $response->score <= 0.5) {
                 // Dit is een bot
-                die();
-            }*/
+				echo "<script>alert('Het vermoeden gaat dat je een robot bent, ben je het hier niet mee eens? Probeer het opnieuw!');</script>";
+				header('Location: login');
+            }
 
-            $loginEmail     =  $filter->sanatizeInput($_POST['loginEmail'], "string");
+            $loginEmail     =  strtolower($filter->sanatizeInput($_POST['loginEmail'], "string"));
             $loginPassword  =  $filter->sanatizeInput($_POST['loginPassword'], "string");;
 
             switch ($user->Login($loginEmail, $loginPassword)) 
@@ -47,7 +48,10 @@ if(isset($_POST['loginSubmit']))
                     $this->Set("loginError", $this->Get("LOGIN_GEBAND"));
                 break; 
                 case 4:
-                     $core->Redirect("/");
+					$loginKey = base64_encode(time());
+					$core->setCookie("loginKey", $loginKey);
+					$DB->Update("UPDATE users SET loginKey = ?, lastIp = ? WHERE email = ?", [$loginKey, $core->getUserIP(), $loginEmail]);
+                    $core->Redirect("/");
                 break;
             }
          }

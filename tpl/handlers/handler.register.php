@@ -20,7 +20,7 @@ if(isset($_POST['regSubmit']))
                     {
                         $voorNaam = $_POST['voorNaam'];
                         $achterNaam = $_POST['achterNaam'];
-                        $regEmail = $_POST['regEmail'];
+                        $regEmail = strtolower($_POST['regEmail']);
                         $regPass1 = $_POST['regPass1'];
                         $regPass2 = $_POST['regPass2'];
 

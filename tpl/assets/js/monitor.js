@@ -16,6 +16,7 @@ $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
 		var dataElement = element.split("=");
 		if(dataElement[0] == "ip"){
 			ipClient = dataElement[1];
+			console.log(ipClient);
 		}
 	});
 });

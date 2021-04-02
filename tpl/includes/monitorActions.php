@@ -1,7 +1,6 @@
 <?php
     $servername = "localhost";
     $username = "root";
-    // $password = "";
     $password = "Welkom10!";
     $dbname = "battlebots";
 

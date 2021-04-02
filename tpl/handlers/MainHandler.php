@@ -8,18 +8,14 @@ if(isset($_GET['lang'])) {
 	if($_GET['lang'] == "change"){
 		$lang->changeLanguage();
 		$langURL = "http://". $_SERVER['HTTP_HOST'] . explode('?', $_SERVER['REQUEST_URI'], 2)[0];
-	///	header("Location: " . $langURL);
 		$core->Redirect($langURL);
 	}
 }
 
 /* Check if is logged in on other ip*/
 if($user->logged_in){
-	if ($core->getUserIP() == $user->lastIp){
-		echo "Komt overeen";
-	} else {
-		echo "Komt niet overeen";
-		echo $core->getUserIP();
+	if ($core->getUserIP() != $user->lastIp){
+		$user->Logout();
 	}
 }
 
