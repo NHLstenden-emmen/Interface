@@ -1,9 +1,3 @@
-<style>
-html, body {
-	margin: 0; height: 100%; overflow: hidden !important
-}
-
-</style>
 <div class="container">
 
 	<div class="row">
@@ -15,7 +9,30 @@ html, body {
 		</div>
 		
 		<div class="col-md-12 col-lg-9 main">
-		<img class="img" src="{assetsFolder}/images/arduino.png" alt="Arduino schematische weergave">
+			<div class="countdowncontainer">
+				<h4>{START_COUNTDOWN}</h4>
+				<ul class="countdown">
+					<li class="countdownli" id="countdowndays">&nbsp;</li>
+					<li class="countdownli" id="countdownhours">&nbsp;</li>
+					<li class="countdownli" id="countdownminutes">&nbsp;</li>
+					<li class="countdownli" id="countdownseconds">&nbsp;</li>
+				</ul>
+			</div>
+
+			<img id="ESP" class="img" src="{assetsFolder}/images/arduino_0.png" alt="Arduino/ESP32 schematische weergave">
 		</div>
 	</div>
 </div>
+
+
+<script>
+
+function hover(element) {
+	element.setAttribute('src', '{assetsFolder}/images/arduino_1.png');
+}
+
+function unhover(element) {
+  element.setAttribute('src', '{assetsFolder}/images/arduino_0.png');
+}
+
+</script>

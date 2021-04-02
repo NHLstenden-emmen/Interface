@@ -1,37 +1,27 @@
 * {
 	--primaryColor: #d92626;
 	--secondaryColor: #e56969;
-	
-	--logoBodyColor:  #c0202e;
-	--logoWingsColor: #7a020d;
-	--logoEyesColor:  #64020c;
-
-	--dark: #151515;
-	--white: #ffffff;
 
 	/* Button colors */
-	--buttonColor: #550de8;
-	--buttonHoverColor: #37167e;	
+	--buttonColor: red;
+	--buttonHoverColor: red;
 	--gradientButton: radial-gradient(circle, var(--primaryColor) 0%, var(--secondaryColor) 100%);
-	--gradientButtonHover: radial-gradient(circle, #d92626 0%, #331475 100%);
+	--gradientButtonHover: radial-gradient(circle, var(--primaryColor) 0%, var(--secondaryColor) 100%);
 
 	/* Send colors */
-	--sendColor: #6d6d6d;
-	--sendHoverColor: #9c9c9c;
-
-	/* Input colors */
-	--placeholder: rgb(180, 180, 180);
-	--inputColor: rgb(61, 61, 61);
-	--inputText: white;
-
+	--sendColor: green;
+	--sendHoverColor: green;
+	
 	/* Glow */
 	--glowColor: #d92626;
-	--glowLightColor: rgb(207, 207, 207);
-
-	/* Line width */
-	--animatedLines: 5px;	
+	--glowLightColor: rgb(207, 207, 207);	
 }
 
+
+.button {
+	width: 50% !important;
+	height: 400px !important; 
+}
 p {
 	font-weight: bold;
 }
@@ -127,6 +117,13 @@ h3 {
 	margin-left: 2%;
 }
 
+.brokkobot {
+	height: 500px;
+}
+
+.brokkobottekst {
+	height: 150px;
+}
 @media screen and (max-width: 900px) {
 
 	.container3delen {
@@ -178,5 +175,13 @@ h3 {
 		grid-column: span 1 / -2;
 		margin-bottom: 5%;
 		margin-left: 5%;
+	}
+	
+	.brokkobot {
+		height:8%;
+	}
+
+	.brokkobottekst {
+		height: 150px;
 	}
 }

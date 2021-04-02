@@ -10,4 +10,13 @@ $this->Set("extraJS", '<script src="'.$this->Get("assetsFolder").'/js/page/lives
                         <script src= ""></script>
                         <script>launchLiveChat('.$user->id.')</script>');
 
+
+if ($user->logged_in)
+{
+    $this->Set("bericht", "Typ een bericht...");
+}
+else {
+    $this->Set("bericht", "Log in om mee te chatten!");
+}
+
 ?>

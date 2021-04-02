@@ -1,112 +1,90 @@
-<div id="panicButton">
-	<div class="bigStop">
-		<button onclick="stop()">STOP THE BOT</button>
-		<div class="icon">
-			<!-- <i class="fas fa-times"></i> -->
-			<i class="fas fa-skull-crossbones"></i>
-		</div>
-	</div>
-</div>
 <div id="dashboard">
-	<div class="liveFeed neonBlock1B">
+	<div class="liveFeed neonBlock1B" data-aos="zoom-in-down">
 		<h1>liveFeed</h1>
 	</div>
-	<div class="startGame neonBlock1B">
+	<div class="startGame neonBlock1B" data-aos="zoom-in-down">
 		<h1>start the games</h1>
-		<table id="startGameBlock">
-			<tr class="top-line">
-				<th>game name</th>
-				<th>score</th>
-				<th>start</th>
-				<th>Stop</th>
-			</tr>
-			<tr class="side-line">
-				<th>Race:</th>
-				<td>0</td>
-				<td><i class="fas fa-play"></i></td>
-				<td><i class="fas fa-stop"></i></td>
-			</tr>
-			<tr class="side-line">
-				<th>Doolhof:</th>
-				<td>0</td>
-				<td><i class="fas fa-play"></i></td>
-				<td><i class="fas fa-stop"></i></td>
-			</tr>
-			<tr class="side-line">
-				<th>sps:</th>
-				<td>0</td>
-				<td><i class="fas fa-play"></i></td>
-				<td><i class="fas fa-stop"></i></td>
-			</tr>
-			<tr class="side-line">
-				<th>Tekening:</th>
-				<td>0</td>
-				<td><i class="fas fa-play"></i></td>
-				<td><i class="fas fa-stop"></i></td>
-			</tr>
-		</table>
+		<div id="startButton" data-aos="zoom-in-left">
+			<div class="bigStart">
+				<button onclick="Startup()">Start The Robot</button>
+				<div class="icon"><i class="fas fa-play"></i>
+				</div>
+			</div>
+		</div>
+		
+		<audio id="audio" src="{assetsFolder}/sound/Lenards_Team_Song.mpeg" style="display:none;"></audio>
+		<div id="panicButton" data-aos="zoom-in-left">
+			<div class="bigStop">
+				<button onclick="stop()">PANIC BUTTON</button>
+				<div class="icon">
+					<i class="fas fa-skull-crossbones"></i>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="liveChat neonBlock1B">
-		<h1>liveChat</h1>
-	</div>
-	<div class="console neonBlock1B">
+	<div class="console neonBlock1B" data-aos="zoom-in-down">
 		<h1>console</h1>
 	</div>
-	<div class="robotControl neonBlock1B">
-		<h1>Robot control</h1>
-		
-		<div class="row-one">
-			<button onclick="joystickW()">W</button>
-		</div>
-		<div class="row-two">
-			<button onclick="joystickA()">A</button>
-			<button onclick="joystickS()">S</button>
-			<button onclick="joystickD()">D</button>
-		</div>
+	<div class="credits neonBlock1B" data-aos="zoom-in-down">
+		<div data-aos="zoom-in-left">
+		<h1>En nu wat woorden van Lennart hemzelf</h1>
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-xs-12 col-sm-6 col-md-4">
+				<i class="far fa-grin-hearts"></i>
+					<p>Dankzij <span>Kevin Smulders</span> ziet mijn dashboard er zo grandioos uit. </p>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4">
+				<i class="fas fa-brain"></i>
+					<p>Dankzij <span>Julian Jager</span> en zijn hulpje <span>Niels Stevens</span> Werkt mijn brein perfect via het internet</p>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4">
+				<i class="fas fa-robot"></i>
+					<p>Dankzij het krachtige leiderschap van mijn hoofd professor <span>Tom de Groot</span> Sta ik er helemaal klaar voor om alle spellen te winnen. </p>
+					<p>Maar dit was nooit mogelijk geweest zonder de hulpjes die een luier bij mij hebben gemaakt om mijn stift in te steken:</p>
+					<span>Cecile Richetti |</span>
+					<span>Arjan Loof |</span>
+					<span>Ömer Avci</span>
+				</div>
+			</div>
+		</div> 
 	</div>
 </div>
 
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-	function stop() {
-		$(document).ready(function() {
-			$.post("pages/team/1B/botControls/sendData.php",{'action':'Stop'});
-			var timestamp = '[' + Date.now() + '] ';
-			console.log(timestamp + 'Stop');
-		});
-	}
 
-	function joystickW() {
-		$(document).ready(function() {
-			$.post("pages/team/1B/botControls/sendData.php",{'action':'W'});
-			var timestamp = '[' + Date.now() + '] ';
-			console.log(timestamp + 'W');
+function playSound(isPlaying){
+	var audio = document.getElementById("audio");
+    if (isPlaying){
+        isPlaying = true
+        audio.play()
+    } 
+    else{
+        isPlaying = false
+        audio.pause()
+        audio.currentTime = 0
+    }
+}
+function Startup() {
+	var isPlaying = true;
+	playSound(isPlaying);
+	$(document).ready(function() {
+		$.post("/tpl/team/1B/sendData.php", {
+			'action': 'Startup'
 		});
-	}
-
-	function joystickA() {
-		$(document).ready(function() {
-			$.post("pages/team/1B/botControls/sendData.php",{'action':'A'});
-			var timestamp = '[' + Date.now() + '] ';
-			console.log(timestamp + 'A');
+		var timestamp = '[' + Date.now() + '] ';
+		console.log(timestamp + 'Startup');
+	});
+}
+function stop() {
+	var isPlaying = false;
+	playSound(isPlaying);
+	$(document).ready(function() {
+		$.post("/tpl/team/1B/sendData.php", {
+			'action': 'STOP'
 		});
-	}
-
-	function joystickS() {
-		$(document).ready(function() {
-			$.post("pages/team/1B/botControls/sendData.php",{'action':'S'});
-			var timestamp = '[' + Date.now() + '] ';
-			console.log(timestamp + 'S');
-		});
-	}
-
-	function joystickD() {
-		$(document).ready(function() {
-			$.post("pages/team/1B/botControls/sendData.php",{'action':'D'});
-			var timestamp = '[' + Date.now() + '] ';
-			console.log(timestamp + 'D');
-		});
-	}
+		var timestamp = '[' + Date.now() + '] ';
+		console.log(timestamp + 'STOP');
+	});
+}
 </script>

@@ -14,11 +14,8 @@
     {
         default:
         case "overview":
-            require(ModeratorPageView."dashboard.php");
+            require(ModeratorPageView."games.php");
         break;
-        case "scene":
-        case "camera":
-        case "poll":
         case "start":
         case "stop":
         case "schemes":

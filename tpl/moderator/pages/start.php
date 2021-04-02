@@ -16,6 +16,11 @@
                     <i class="fas fa-gamepad"></i>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="neonBlock zoom" onclick="location.href='/moderator/dashboards';">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+            </div>
         </div>
     </div>
 </div>

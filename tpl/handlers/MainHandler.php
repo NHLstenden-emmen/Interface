@@ -7,8 +7,7 @@ $this->Set("extraCSS", '<link rel="stylesheet" href="'.$this->Get("assetsFolder"
 if(isset($_GET['lang'])) {
 	if($_GET['lang'] == "change"){
 		$lang->changeLanguage();
-		$langURL = $_SERVER['REQUEST_SCHEME'] .'://'. $_SERVER['HTTP_HOST'] 
-		. explode('?', $_SERVER['REQUEST_URI'], 2)[0];
+		$langURL = "http://". $_SERVER['HTTP_HOST'] . explode('?', $_SERVER['REQUEST_URI'], 2)[0];
 	///	header("Location: " . $langURL);
 		$core->Redirect($langURL);
 	}
@@ -22,6 +21,7 @@ if ($user->logged_in)
 	$this->Set('username', $user->naam);
 	$this->Set('login', '<a class="alternative-button" id="logout" href="/logout"><span><i class="fas fa-user"></i>&nbsp&nbsp' . $user->naam . '</span><span></span></a>');
 	$this->Set("team", $user->team);
+	$this->Set("disabled", "");
 
 	if(!empty($user->team)) {
 		$this->Set('dashboard', '<li><a href="/dashboard/' . $user->team . '">' . $this->Get("NAV_DASHBOARD") . '</a></li>');
@@ -32,11 +32,13 @@ if ($user->logged_in)
 	if($user->level == 2) {
 		$this->Set('dashboard', '<li><a href="/moderator/">Moderator</a></li>');
 	}
-
 }
 else 
 {
 	$this->Set('login', '<a class="alternative-button" href="/login">' . $this->Get("NAV_LOGIN") . '&nbsp<i class="fas fa-sign-in-alt"></i></a>');
 	$this->Set('dashboard', '');
+	$this->Set("disabled", "disabled");
+
+	$monitor = "Guest";
 }
 ?>

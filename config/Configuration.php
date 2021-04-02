@@ -11,7 +11,7 @@ class Config {
 	static $DB = Array(
 		'hostname'		=> 'localhost',
 		'username'		=> 'root',
-		'password'		=> '',
+		'password'		=> 'Welkom10!',
 		'database'		=> 'battlebots'
 	);
 

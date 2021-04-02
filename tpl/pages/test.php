@@ -25,7 +25,7 @@
 	
         <!-- stylesheets -->
 		<link rel="stylesheet" href="/tpl/assets/css/main/main.css">
-		<link rel="stylesheet" href="/tpl/assets/css/main/main-mobile.css" media="screen and (max-width: 960px)">
+		<!-- <link rel="stylesheet" href="/tpl/assets/css/main/main-mobile.css" media="screen and (max-width: 960px)"> -->
 		<link rel="stylesheet" href="/tpl/assets/css/main/navbar.css">
 		<link rel="stylesheet" href="/tpl/assets/css/main/footer.css">
 		<link rel="stylesheet" href="/tpl/assets/css/page/404.css">

@@ -1,5 +1,4 @@
 <?php 
-
     $gebruikerResult = $DB->Select("SELECT * FROM users WHERE user_id = ? LIMIT 1 ", [ModeratorPageAction])[0]; 
 
     foreach ($gebruikerResult as $key => $value) $this->Set($key, $value);
@@ -44,7 +43,6 @@
 									$gebruikerID = $filter->sanatizeInput($_POST['gebruikerID'], 'int');
 
 									$regAntwoord = $user->Edit($teamSelect, $voorNaam, $achterNaam, $Email, $Pass1, $Pass2, $levelSelect, $gebruikerID);
-							
 									if($regAntwoord == 2)
 									{
 										$this->Set("updateError", $this->Get("GEBRUIKERBEHEER_WACHTWOORDEN_OVEREEN"));
@@ -64,5 +62,5 @@
 				}
 			}
 		}
-    }
+    } 
 ?>

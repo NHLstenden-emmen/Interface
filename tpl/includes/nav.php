@@ -1,6 +1,6 @@
   <div id="navbar" class="container-fluid" data-aos="fade-bottom">
     <div class="container nav">
-      <svg width="160" height="100" version="1.1" viewBox="0 5 26.458 20" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <svg class="link" data-link="/start" width="160" height="100" version="1.1" viewBox="0 5 26.458 20" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
           <g id="logo" transform="translate(0 -268.54)">
           <g stroke-linecap="round">
             <g stroke-linejoin="round">
@@ -24,15 +24,16 @@
             <div class="dropdown">
               <span class="dropdownLink">{NAV_GAMES} <i class="fas fa-caret-down"></i></span>
               <div class="dropdown-content">
-                <a href="/stats"><i class="fas fa-caret-right"></i> {NAV_STATS}</a>
-                <a href="/scheme"><i class="fas fa-caret-right"></i> {NAV_SCHEME}</a>
-                <a href="/rules"><i class="fas fa-caret-right"></i> {NAV_RULES}</a>
+                <!-- <i class="fas fa-caret-right"></i> -->
+                <a href="/bracket">{NAV_STATS}</a>
+                <a href="/scheme">{NAV_SCHEME}</a>
+                <a href="/rules">{NAV_RULES}</a>
               </div>
             </div>
         </li>
-        <li>
-          <a href="?lang=change"><i class="language fas fa-language"></i></a>
-        </li>
+          <li>
+            <a href="?lang=change" class="langChange" ><i class="language fas fa-language"></i> <span>&nbsp; {chosenLanguage}</span></a>
+          </li>
         <li>
           {login}
         </li>
