@@ -4,9 +4,11 @@
         <br>
         <div class="contentLivestream row">
             <div class="col-md-8">
-                <video id="livestreamVideo">
+                <video id="livestreamVideo" data-plyr-config='{"autoplay": true}'>
                     Je browser ondersteunt geen HTML5 video's.
                 </video>
+                <button class="button" onclick="cameraChange('dome')">Camera 1</button>
+				<button class="button" onclick="cameraChange('2')">Camera 2</button>
             </div>
             <div class="col-md-4 chatStyle">
                 <div id="liveChat"></div>
