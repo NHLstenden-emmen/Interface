@@ -49,7 +49,7 @@ class User
 
 		$_SESSION['email'] = $email;
 
-		return false;
+		return 4;
 	}
 
 	function Register($voorNaam, $achterNaam, $regEmail, $regPass1, $regPass2, $level = 0)
@@ -85,7 +85,7 @@ class User
 							VALUES (?, ?, ?, ?, ?)", 
 							[$regEmail, $voorNaam, $achterNaam, $regPass2, $level]);
 
-		return false;
+		return 4;
 	}
 
 	function Edit($team, $voorNaam, $achterNaam, $regEmail, $regPass1, $regPass2, $level, $userID)
@@ -116,7 +116,7 @@ class User
 						WHERE user_id = ?", 
 							[$regEmail, $team, $voorNaam, $achterNaam, $regPass2, $level, $userID]);
 
-		return false;
+		return 4;
 	}
 
 	function userLevelName($type, $team = "") 

@@ -11,7 +11,7 @@ if(isset($_POST['loginSubmit']))
      {
          if(isset($_POST['loginPassword']))
          {
-
+            /*
             if (isset($_POST['g-recaptcha-response'])) {
                 $captcha = $_POST['g-recaptcha-response'];
             } else {
@@ -30,7 +30,7 @@ if(isset($_POST['loginSubmit']))
             if ($response->success==true && $response->score <= 0.5) {
                 // Dit is een bot
                 die();
-            }
+            }*/
 
             $loginEmail     =  $filter->sanatizeInput($_POST['loginEmail'], "string");
             $loginPassword  =  $filter->sanatizeInput($_POST['loginPassword'], "string");;
@@ -46,8 +46,8 @@ if(isset($_POST['loginSubmit']))
                 case 3:
                     $this->Set("loginError", $this->Get("LOGIN_GEBAND"));
                 break; 
-                default:
-                     $core->Refresh();
+                case 4:
+                     $core->Redirect("/");
                 break;
             }
          }

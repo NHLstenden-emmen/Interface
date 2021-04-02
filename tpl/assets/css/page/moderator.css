@@ -1,3 +1,18 @@
+button {
+	padding: 5px 30px;
+	border: none;
+	color: white;
+	font-weight: bold;
+	background: var(--gradientButton);
+    margin-bottom: 10px;
+    outline: 0;
+	border: 0;
+}
+
+button:hover {
+	cursor: pointer;
+	animation: buttonHover 0.3s ease-in-out forwards;
+}
 /* Algemeen */
 .neonBlock{
 	background: #0f0f0fa3;

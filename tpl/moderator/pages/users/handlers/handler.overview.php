@@ -16,5 +16,6 @@
     }
     
     $this->Set("usersOverview", $gebuikerResultView);
+    $this->Set("extraCSS", $this->Get("extraCSS").'<link rel="stylesheet" href="'.$this->Get("assetsFolderMOD").'/overview.css">');
 
 ?>

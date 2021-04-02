@@ -6,7 +6,7 @@ const video = document.querySelector('video');
 const videoHeight = document.querySelector('#livestreamVideo').offsetHeight;
 const source = 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8';
 
-chatBox.style.height = videoHeight + "px";
+//chatBox.style.height = videoHeight + "px";
 
 var hls;
 

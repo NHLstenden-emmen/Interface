@@ -1,7 +1,7 @@
 <?php 
-    $this->Set("pageTitle", $this->Get("ADMIN_GEBRUIKERBEHEER")); 
+    $this->Set("pageTitle", "Users"); 
     $this->Set("updateError", "");
-
+    
     ob_start();
 
     if(file_exists(ModeratorPageHandlers.'handler.overview.php') && empty($page)) {

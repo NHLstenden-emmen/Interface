@@ -142,17 +142,13 @@ button.button {
 	color: white;
 	font-weight: bold;
 	background: var(--gradientButton);
-	-webkit-backface-visibility: hidden;
-	-webkit-transform: translateZ(0) scale(1, 1);
-	transform: translateZ(0);
-	animation: button 0.2s ease-in-out forwards;
+	outline: 0;
+	border: 0;
 }
 
 button.button:hover {
 	cursor: pointer;
-	animation: buttonHover 0.2s ease-in-out forwards;
-	outline: 0;
-	border: 0;
+	animation: buttonHover 0.3s ease-in-out forwards;
 }
 
 a.button {
@@ -161,14 +157,13 @@ a.button {
 	color: white;
 	font-weight: bold;
 	background: var(--gradientButton);
-	animation: button 0.2s ease-in-out forwards;
 	text-decoration: none;
 	font-size: 0.8em;
 }
 
-.button:hover {
-	outline: 0;
-	border: 0;
+a.button:hover {
+	cursor: pointer;
+	animation: buttonHover 0.3s ease-in-out forwards;
 }
 
 a.alternative-button {
@@ -182,13 +177,6 @@ a.alternative-button {
 	padding: 10px 20px !important;
 	margin: 0 20px;
 	background-color: #0f0f0fad;
-}
-
-a.button:hover {
-	animation-name: buttonHover;
-	animation-duration: 0.2s;
-	animation-timing-function: ease-in-out;
-	animation: buttonHover 0.2s ease-in-out forwards;
 }
 
 a#send {

@@ -12,12 +12,17 @@
 }
 .img {
 	position: absolute;
-	max-width: 90%;
+	max-width: 87%;
+	margin-left: 3rem;
 	animation: move 2s ease-in-out infinite;
 }
+
 .countdowncontainer {
 	margin-top: -50px;
+	opacity: 0;
+	transition: 0.3s ease-in-out;
 }
+
 .countdown {
 	display: flex;
 	flex-direction: row;

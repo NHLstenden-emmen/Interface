@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-aos="zoom-in-down">
     <div class="selectMenu">
         <div class="row">
             <div class="col-md-4">

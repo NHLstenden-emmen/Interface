@@ -1,13 +1,13 @@
 /* Livestream */
 
-#livestream {
-	margin: 100px 0 0 0;
+.livestream {
+	margin-top: 6rem;
 	color: white;
 	min-height: 60vh;
 	z-index: -9;
 }
 
-#livestream > .title {
+.livestream > .title {
 	font-weight: bold;
 }
 

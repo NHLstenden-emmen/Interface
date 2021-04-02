@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container landing">
     <div id="landing">
-        <h1 class="title">{TEAMS_TITLE}</h1>
-        <p class="desc">{TEAMS_DESC}</p>
+        <h1 class="title" data-aos="fade-down">{TEAMS_TITLE}</h1>
+        <p class="desc" data-aos="fade-down">{TEAMS_DESC}</p>
         <br>
-        <a class="button" href="livestream  ">Livestream</a>
-        <div class="row" id="teams">
+        <a data-aos="fade-down" data-aos-duration="1000" class="button" href="/livestream">Livestream</a>
+        <div class="row" id="teams" data-aos="fade-down" data-aos-duration="1500">
             <div class="col-sm-2">
                 <img src="{assetsFolder}/images/team/1A/logo.png" title="Team A" alt="Team A">
                 <p class="teamDesc">Team A</p>

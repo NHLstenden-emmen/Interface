@@ -2,7 +2,7 @@
 
 	<div class="row">
 	
-		<div class="col-md-12 col-lg-3 main">
+		<div class="col-md-12 col-lg-3 main" data-aos="fade-down">
 		<h1 class="title">{HOME_TITLE}</h1>
 		<p class="intro">{HOME_INTRO}</p>
 		<a href="teams" class="button">{HOME_BUTTON}</a>
@@ -19,20 +19,7 @@
 				</ul>
 			</div>
 
-			<img id="ESP" class="img" src="{assetsFolder}/images/arduino_0.png" alt="Arduino/ESP32 schematische weergave">
+			<img id="ESP" class="img" src="{assetsFolder}/images/arduino_0.png" alt="Arduino/ESP32 schematische weergave" data-aos="zoom-in-down">
 		</div>
 	</div>
 </div>
-
-
-<script>
-
-function hover(element) {
-	element.setAttribute('src', '{assetsFolder}/images/arduino_1.png');
-}
-
-function unhover(element) {
-  element.setAttribute('src', '{assetsFolder}/images/arduino_0.png');
-}
-
-</script>

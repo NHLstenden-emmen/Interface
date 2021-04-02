@@ -17,7 +17,7 @@ define("ModeratorPageRoute", $page);
 define("ModeratorPageView", ModeratorPages.$route."/views/");
 define("ModeratorPageAction", $action);
 
-$this->Set("ModeratorPageAssets", "/".ModeratorPages.$route."/assets");
+$this->Set("assetsFolderMOD", "/".ModeratorPages.$route."/assets");
 
 ob_start();
 
@@ -26,9 +26,6 @@ if ($user->level < 2) $core->Redirect('/');
 if(empty($route)) require(ModeratorPages.'start.php');
 else if(file_exists(ModeratorPages.$route.'/'.$route.'.php'))
 {
-	if(file_exists(ModeratorMainHandlers.'MainHandler.php')) {
-		require(ModeratorMainHandlers.'MainHandler.php');
-	}
 
 	if(file_exists(ModeratorPageHandlers.'MainHandler.php')) {
 		require(ModeratorPageHandlers.'MainHandler.php');
@@ -37,7 +34,6 @@ else if(file_exists(ModeratorPages.$route.'/'.$route.'.php'))
 	if(file_exists(ModeratorPageHandlers.'/'.$route.'.php')) {
 		require(ModeratorPageHandlers.'/'.$route.'.php');
 	}
-
 
 	require(ModeratorPages.$route.'/'.$route.'.php');
 }

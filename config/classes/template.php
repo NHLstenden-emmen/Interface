@@ -2,12 +2,12 @@
 class Template
 {
 	private $content = '', 
-			$vars = Array(), 
+			$vars = [], 
 			$path;
 
 	function __construct()
 	{
-		global $site;
+		global $core;
 
 		define('enter', chr(10));
 		define('tab', chr(9));
@@ -22,19 +22,13 @@ class Template
 		$this->path = strtolower($explodeslash[0]);
 
 		$countexplode = count($explodeslash);
-		for ($i = 1; $i < $countexplode; $i++)
-		{
-			$_GET['Path_'.$i] = $explodeslash[$i];
-		}
 
-		if ($this->path == '')
-		{
-			$this->path = 'start';
-		}
-		if (!is_file('tpl/pages/'.$this->path.'.php'))
-		{
-			$this->path = Config::$errorfile;
-		}
+		for ($i = 1; $i < $countexplode; $i++) $_GET['Path_'.$i] = $explodeslash[$i];
+
+		if ($this->path == '') $this->path = 'start';
+
+		if (!is_file('tpl/pages/'.$this->path.'.php')) $this->path = Config::$errorfile;
+
 		define('Page', $this->path.'.php');
 	}
 
