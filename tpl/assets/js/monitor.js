@@ -2,9 +2,17 @@ initializeMonitor();
 
 // Set user
 var user = "Guest";
+
 function setUser(Username) {
-	user = Username;
+	user = atob(atob(Username));
 }
+
+// Get ip of user
+
+
+
+
+// End get ip
 
 function monitorAction() {
 	var ua = navigator.userAgent;
