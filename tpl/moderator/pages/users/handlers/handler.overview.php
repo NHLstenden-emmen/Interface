@@ -1,5 +1,6 @@
 <?php 
     $gebuikerResult = $DB->Select("SELECT * FROM users WHERE user_id != ? ORDER BY level ASC ", [2]);
+    $this->Set("pageTitle", $this->Get("GEBRUIKERS"));
 
     $gebuikerResultView = "";
     foreach($gebuikerResult as $key => $value)  {

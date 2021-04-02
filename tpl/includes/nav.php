@@ -1,4 +1,4 @@
-  <div id="navbar" class="container-fluid" data-aos="fade-bottom" data-aos-duration="2000">
+  <div id="navbar" class="container-fluid" data-aos="fade-bottom" data-aos-duration="1800">
     <div class="container nav">
       <svg class="link" data-link="/start" width="160" height="100" version="1.1" viewBox="0 5 26.458 20" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
           <g id="logo" transform="translate(0 -268.54)">
@@ -14,7 +14,6 @@
           <circle id="eyes" cx="16.177" cy="283.81" r=".7269" />
           </g>
         </svg>
-      <!--<img id="logo" class="zoom" title="RoboTV" src="{assetsFolder}/images/logo.png">-->
       <ul id="menu">
         <li><a href="/start">{NAV_HOME}</a></li>
         {dashboard}
@@ -24,7 +23,6 @@
             <div class="dropdown">
               <span class="dropdownLink">{NAV_GAMES} <i class="fas fa-caret-down"></i></span>
               <div class="dropdown-content">
-                <!-- <i class="fas fa-caret-right"></i> -->
                 <a href="/bracket">{NAV_STATS}</a>
                 <a href="/scheme">{NAV_SCHEME}</a>
                 <a href="/rules">{NAV_RULES}</a>

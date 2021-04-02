@@ -1,8 +1,8 @@
-<div class="container livestream" >
+<div class="container livestream" data-aos="zoom-in-down">
     <div id="livestream">
         <h1 class="title">Livestream</h1>
         <br>
-        <div class="contentLivestream row" data-aos="zoom-in-down">
+        <div class="contentLivestream row">
             <div class="col-md-8">
                 <video id="livestreamVideo" data-plyr-config='{"autoplay": true}'>
                     Je browser ondersteunt geen HTML5 video's.

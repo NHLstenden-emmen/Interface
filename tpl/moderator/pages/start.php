@@ -3,22 +3,22 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="neonBlock zoom" onclick="location.href='/moderator/users';">
-                    <i class="fas fa-users"></i>
+                    <span class="details">{GEBRUIKERS}</span><i class="fas fa-users"></i>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="neonBlock zoom" onclick="location.href='/moderator/camera';">
-                    <i class="fas fa-video"></i>
+                    <span class="details">Stream</span><i class="fas fa-video"></i>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="neonBlock zoom" onclick="location.href='/moderator/games';">
-                    <i class="fas fa-gamepad"></i>
+                <span class="details">Games</span><i class="fas fa-gamepad"></i>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="neonBlock zoom" onclick="location.href='/moderator/dashboards';">
-                    <i class="fas fa-tachometer-alt"></i>
+                <span class="details">Dashboards</span><i class="fas fa-tachometer-alt"></i>
                 </div>
             </div>
         </div>

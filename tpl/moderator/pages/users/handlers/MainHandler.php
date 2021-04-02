@@ -1,5 +1,4 @@
 <?php 
-    $this->Set("pageTitle", "Users"); 
     $this->Set("updateError", "");
     
     ob_start();
