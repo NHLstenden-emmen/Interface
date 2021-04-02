@@ -48,7 +48,7 @@ if(isset($_POST['loginSubmit']))
                     $this->Set("loginError", $this->Get("LOGIN_GEBAND"));
                 break; 
                 case 4:
-					$loginKey = base64_encode(time());
+					$loginKey = time();
 					$core->setCookie("loginKey", $loginKey);
 					$DB->Update("UPDATE users SET loginKey = ?, lastIp = ? WHERE email = ?", [$loginKey, $core->getUserIP(), $loginEmail]);
                     $core->Redirect("/");

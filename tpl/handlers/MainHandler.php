@@ -12,16 +12,13 @@ if(isset($_GET['lang'])) {
 	}
 }
 
-/* Check if is logged in on other ip*/
-if($user->logged_in){
+/* Check if is logged in on other ip or device or browser*/
+if($user->logged_in){	
+	$loginKey = $DB->Select("SELECT loginKey FROM users WHERE email = ? LIMIT 1",[$user->email]);
 	if ($core->getUserIP() != $user->lastIp){
 		$user->Logout();
-	}
-	$loginKey = $DB->Select("SELECT loginKey FROM users WHERE email = ? LIMIT 1",[$user->email,]);
-	if ($loginKey == $_COOKIE['loginKey']){
-		echo "jow komt overeen";
-	} else {
-		echo "jow komt niet overeen";
+	} else if ($loginKey[0]['loginKey'] != $_COOKIE['loginKey']){
+		$user->Logout();
 	}
 }
 

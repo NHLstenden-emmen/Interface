@@ -41,6 +41,10 @@ if(isset($_POST['regSubmit']))
                         }
                         else 
                         {
+							
+							// Send mail
+													
+							
                             $loginAntwoord = $user->Login($regEmail, $regPass2);
                             $core->Redirect(Config::$loginStartpage);
                         }
