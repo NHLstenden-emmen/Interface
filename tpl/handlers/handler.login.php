@@ -53,7 +53,7 @@ if(isset($_POST['loginSubmit']))
             $loginEmail     =  strtolower($filter->sanatizeInput($_POST['loginEmail'], "string"));
             $loginPassword  =  $filter->sanatizeInput($_POST['loginPassword'], "string");
 			
-			$ban_ip = $DB->Select("SELECT * FROM security WHERE Type = ?", ["ban_ip"]);
+			$ban_ip = $DB->Select("SELECT * FROM security WHERE Type = ? AND Value = ?", ["ban_ip", $core->getUserIP()]);
 			foreach($ban_ip as $bannedIp){
 				$core->Redirect("/?check=banned");
 			}
