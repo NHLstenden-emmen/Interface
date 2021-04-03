@@ -14,14 +14,19 @@
     <!-- Monitor acties [TESTDAG] --> 
 	
     <?php 
-
-
     if ($user->logged_in){
         $monitor = base64_encode(base64_encode($user->email));	
     } else {
         $monitor = base64_encode(base64_encode("Guest"));
     }
-
+	
+	if(isset($_GET['check'])){
+		if($_GET['check'] == 'verifyaccount'){
+			?>
+				<script>alert('{VERIFYACCOUNT}');</script>
+			<?php
+		}
+	}
     ?>
     <script> 
         setUser('<?php echo $monitor; ?>');

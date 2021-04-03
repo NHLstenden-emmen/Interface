@@ -23,7 +23,7 @@ class Config {
 		'port'			=> 587,
 		'username'		=> 'projecten@feikefalkena.nl',
 		'password'		=> 'T2q!u19h',
-		'displayemail'	=> 'noreply@robotv.serverict.nl',
+		'displayemail'	=> 'projecten@feikefalkena.nl',
 		'displayname'	=> 'RoboTV Moderator'
 	);
 	

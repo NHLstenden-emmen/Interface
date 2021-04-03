@@ -49,7 +49,7 @@ class User
 		$email 		= strtolower($filter->sanatizeInput($email, 'email'));
 		$password 	= $filter->sanatizeInput($password, 'string');
 
-		$userInfo 	= $DB->Select("SELECT * FROM users WHERE email = ? LIMIT 1",[$email]);
+		$userInfo 	= $DB->Select("SELECT * FROM users WHERE email = ? AND verificationKey = '' LIMIT 1",[$email]);
 
 		if (empty($userInfo)) return 1;
 

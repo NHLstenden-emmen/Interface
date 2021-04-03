@@ -13,6 +13,8 @@
 .img {
 	position: absolute;
 	max-width: 87%;
+	padding-bottom: 5rem;
+	padding-right: 3rem;
 	margin-left: 3rem;
 	animation: move 2s ease-in-out infinite;
 }

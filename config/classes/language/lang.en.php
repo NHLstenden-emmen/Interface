@@ -59,4 +59,6 @@ $this->lang['STATS_TITLE'] = 'Statistics';
 $this->lang['START_COUNTDOWN'] = 'Next tournament in: ';
 $this->lang['TERUG'] = 'Back';
 $this->lang['GEBRUIKERS'] = 'Users';
+$this->lang['VERIFYACCOUNT'] = 'Check your email to verify the account!';
+
 ?>

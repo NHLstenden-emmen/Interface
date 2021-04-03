@@ -1,4 +1,21 @@
 <?php 
+
+if(isset($_GET['verificationKey'])){
+	$verificationKey = $filter->sanatizeInput($_GET['verificationKey'], "string");
+	$getUser = $DB->Select("SELECT user_id FROM users WHERE verificationKey = ? LIMIT 1", [$verificationKey]);
+	$var_check = false;
+	foreach($getUser as $details){
+		$userID = $details['user_id'];
+		$DB->Update("Update users SET verificationKey = '' WHERE user_id = ?", [$userID]);
+		$var_check = true;
+	}
+	if($var_check){
+		echo "<script>alert('Verified!');</script>";
+	} else {
+		echo "<script>alert('Error!');</script>";
+	}
+}
+
 $user->Redirect(true);
 
 $this->Set("extraCSS", '<link rel="stylesheet" href="'.$this->Get("assetsFolder").'/css/page/login.css">');
@@ -34,7 +51,7 @@ if(isset($_POST['loginSubmit']))
             }
 
             $loginEmail     =  strtolower($filter->sanatizeInput($_POST['loginEmail'], "string"));
-            $loginPassword  =  $filter->sanatizeInput($_POST['loginPassword'], "string");;
+            $loginPassword  =  $filter->sanatizeInput($_POST['loginPassword'], "string");
 
             switch ($user->Login($loginEmail, $loginPassword)) 
             {

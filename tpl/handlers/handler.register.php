@@ -24,7 +24,6 @@ if(isset($_POST['regSubmit']))
                         $regPass1 = $_POST['regPass1'];
                         $regPass2 = $_POST['regPass2'];
 						$verificationKey = $user->generateVerificationKey();
-						// verificationKey
 
                         $regAntwoord = $user->Register($voorNaam, $achterNaam, $regEmail, $regPass1, $regPass2, $verificationKey);
                                                 
@@ -42,7 +41,15 @@ if(isset($_POST['regSubmit']))
                         }
                         else if($regAntwoord == 4)
                         {
-                            $core->Redirect("/");
+							$verificationLink = "http://robotv.serverict.nl/login?verificationKey=".$verificationKey;
+							$message = 'Hello '.$voorNaam.' '.$achterNaam.',<br><br>';
+							$message .= 'Please activate your account by pressing this link: <a href="'.$verificationLink.'">Verify me!</a><br><br>';
+							$message .= 'Greetings from the <br><a style="color: black;" href="https://youtu.be/dQw4w9WgXcQ">RoboTV Team</a>';
+							if($mailer->send($regEmail, 'Verification RoboTV', $message, $username = '')){
+								$core->Redirect("/?check=verifyaccount");
+							} else {
+								$core->Redirect("register");
+							}
                         }
                     }
                 }
