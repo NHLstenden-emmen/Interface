@@ -26,6 +26,11 @@
 				<script>alert('{VERIFYACCOUNT}');</script>
 			<?php
 		}
+		if($_GET['check'] == 'banned'){
+			?>
+				<script>alert('{BANNEDACCOUNT}');</script>
+			<?php
+		}
 	}
     ?>
     <script> 
