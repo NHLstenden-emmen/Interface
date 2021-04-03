@@ -1,4 +1,4 @@
-<div class="container livestream" data-aos="zoom-in-down">
+<div class="container" data-aos="zoom-in-down">
     <div id="livestream">
         <h1 class="title">Livestream</h1>
         <br>

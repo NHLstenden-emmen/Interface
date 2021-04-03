@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-aos="zoom-in-right">
     <div id="login">
         <h1 class="title">Login</h1>
     </div>
