@@ -5,7 +5,8 @@
             <th>Naam</th>
             <th>Email</th>
             <th>Aanpassen</th>
-            <th>Ban</th>
+            <th>Ban account</th>			
+			<th>Ban IP</th>
         </tr>
     </thead>
     <tbody>

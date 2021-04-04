@@ -49,7 +49,7 @@ class User
 		$email 		= strtolower($filter->sanatizeInput($email, 'email'));
 		$password 	= $filter->sanatizeInput($password, 'string');
 
-		$userInfo 	= $DB->Select("SELECT * FROM users WHERE email = ? LIMIT 1",[$email]);
+		$userInfo 	= $DB->Select("SELECT * FROM users WHERE email = ? AND verificationKey = '' LIMIT 1",[$email]);
 
 		if (empty($userInfo)) return 1;
 
@@ -59,16 +59,30 @@ class User
 
 		return 4;
 	}
+	
+	function generateVerificationKey($randomString = '')
+	{			
+		$length = 64;
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}		
 
-	function Register($voorNaam, $achterNaam, $regEmail, $regPass1, $regPass2, $level = 0)
+		return $randomString;
+	}
+	
+	function Register($voorNaam, $achterNaam, $regEmail, $regPass1, $regPass2, $verificationKey, $level = 0)
 	{
 		global $DB, $filter;
 
-		$voorNaam 		= $filter->sanatizeInput($voorNaam, 'string');
-		$achterNaam 	= $filter->sanatizeInput($achterNaam, 'string');
-		$regEmail 		= $filter->sanatizeInput($regEmail, 'email');
-		$regPass1 		= $filter->sanatizeInput($regPass1, 'string');
-		$regPass2 		= $filter->sanatizeInput($regPass2, 'string');
+		$voorNaam 			= $filter->sanatizeInput($voorNaam, 'string');
+		$achterNaam 		= $filter->sanatizeInput($achterNaam, 'string');
+		$regEmail 			= $filter->sanatizeInput($regEmail, 'email');
+		$regPass1 			= $filter->sanatizeInput($regPass1, 'string');
+		$regPass2 			= $filter->sanatizeInput($regPass2, 'string');
+		$verificationKey 	= $filter->sanatizeInput($verificationKey, 'string');
 
 		$emailLijst = [
 			'student.nhlstenden.com',
@@ -89,9 +103,9 @@ class User
 
 		$regPass2 = password_hash($regPass2, PASSWORD_DEFAULT);
 
-		$DB->Insert("INSERT INTO users (email, voornaam, achternaam, password, level) 
-							VALUES (?, ?, ?, ?, ?)", 
-							[$regEmail, $voorNaam, $achterNaam, $regPass2, $level]);
+		$DB->Insert("INSERT INTO users (email, voornaam, achternaam, password, level, verificationKey) 
+							VALUES (?, ?, ?, ?, ?, ?)", 
+							[$regEmail, $voorNaam, $achterNaam, $regPass2, $level, $verificationKey]);
 
 		return 4;
 	}
@@ -123,10 +137,9 @@ class User
 		$DB->Update("UPDATE users SET email = ?, team = ?, voornaam = ?, achternaam = ?, password = ?, level = ?
 						WHERE user_id = ?", 
 							[$regEmail, $team, $voorNaam, $achterNaam, $regPass2, $level, $userID]);
-
 		return 4;
 	}
-
+	
 	function userLevelName($type, $team = "") 
 	{
 		switch ($type) 
@@ -178,6 +191,8 @@ class User
 			$core->Redirect('/start');
 		}
 	}
+	
+
 
 	function Logout()
 	{

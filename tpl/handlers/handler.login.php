@@ -1,4 +1,21 @@
 <?php 
+
+if(isset($_GET['verificationKey'])){
+	$verificationKey = $filter->sanatizeInput($_GET['verificationKey'], "string");
+	$getUser = $DB->Select("SELECT user_id FROM users WHERE verificationKey = ? LIMIT 1", [$verificationKey]);
+	$var_check = false;
+	foreach($getUser as $details){
+		$userID = $details['user_id'];
+		$DB->Update("Update users SET verificationKey = '' WHERE user_id = ?", [$userID]);
+		$var_check = true;
+	}
+	if($var_check){
+		echo "<script>alert('Verified!');</script>";
+	} else {
+		echo "<script>alert('Error!');</script>";
+	}
+}
+
 $user->Redirect(true);
 
 $this->Set("extraCSS", '<link rel="stylesheet" href="'.$this->Get("assetsFolder").'/css/page/login.css">');
@@ -34,7 +51,12 @@ if(isset($_POST['loginSubmit']))
             }
 
             $loginEmail     =  strtolower($filter->sanatizeInput($_POST['loginEmail'], "string"));
-            $loginPassword  =  $filter->sanatizeInput($_POST['loginPassword'], "string");;
+            $loginPassword  =  $filter->sanatizeInput($_POST['loginPassword'], "string");
+			
+			$ban_ip = $DB->Select("SELECT * FROM security WHERE Type = ? AND Value = ?", ["ban_ip", $core->getUserIP()]);
+			foreach($ban_ip as $bannedIp){
+				$core->Redirect("/?check=banned");
+			}
 
             switch ($user->Login($loginEmail, $loginPassword)) 
             {

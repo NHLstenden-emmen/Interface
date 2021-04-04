@@ -203,6 +203,14 @@
 
 	body.active {
 		overflow: hidden;
+		height: 100vh;
+	}
+	.dropdown {
+		padding: 0;
+		text-align: center;
+	}
+	.dropdown-content > a  {
+		text-align: center;
 	}
 
 	/* REPSONSIVE NAVBAR */
@@ -232,7 +240,7 @@
 	.nav ul {
 		position: absolute;
 		top: 100px;
-		height: calc(100vh - 100px);
+		height: calc(100vh - 100px) !important;
 		margin: 0;
 		width: 100%;
 		background-color: var(--primaryColor);
@@ -356,9 +364,3 @@
 }
 
 /* Disable scoll */
-
-body.active{
-	overflow: hidden;
-    height: 100vh;
-}
-

@@ -5,14 +5,36 @@ const chatBox = document.querySelector('#liveChat');
 const video = document.querySelector('video');
 const videoHeight = document.querySelector('#livestreamVideo').offsetHeight;
 const source = 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8';
-
-chatBox.style.height = videoHeight + "px";
+	
+const playerOptions = {
+	fullscreen: {
+	  iosNative: true
+	},
+	controls: [
+		"play-large",
+		"play",
+		"mute",
+		"volume",
+		'pip', 
+		'airplay', 
+		"fullscreen"
+	],
+	muted: true,
+	autoplay: true
+};
+//chatBox.style.height = videoHeight + "px";
 
 var hls;
-
+var videoplayer;
 const cameraChange = (camera) => {
-	hls.loadSource("/streams/" + camera);
-	hls.attachMedia(video);
+	if (!Hls.isSupported()) {
+		video.src = "/streams" + camera;
+	} else {
+		hls.loadSource("/streams" + camera);
+		hls.attachMedia(video);
+	}
+
+	videoplayer.play();
 }
 
 window.onresize = function(event) {
@@ -23,31 +45,12 @@ window.onresize = function(event) {
 document.addEventListener('DOMContentLoaded', () => {
 	hls = new Hls();
 
-	const playerOptions = {
-		fullscreen: {
-		  iosNative: true
-		},
-		controls: [
-			"play-large",
-			"play",
-			"progress",
-			"duration",
-			"mute",
-			"volume",
-			'pip', 
-			'airplay', 
-			"fullscreen"
-		],
-		muted: true,
-		autoplay: true
-	  };
-
-	new Plyr(video, playerOptions);
-	
+	videoplayer = new Plyr(video, playerOptions);
+		
 	if (!Hls.isSupported()) {
-		video.src = source;
+		video.src = "/streams/dome.m3u8";
 	} else {
-		hls.loadSource("https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8");
+		hls.loadSource("/streams/dome.m3u8");
 		hls.attachMedia(video);
 	} 	
 });

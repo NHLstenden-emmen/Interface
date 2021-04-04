@@ -161,31 +161,6 @@ function monitorAction() {
 	});
 }
 
-// Get PHP errors
-function saveErrorsToDatabase() {
-	var logFile = new XMLHttpRequest();
-	logFile.open("GET", "/../config/php.log", false);
-	logFile.onreadystatechange = function () {
-		if (logFile.readyState === 4) {
-			if (logFile.status === 200 || logFile.status == 0) {
-				var allLogs = logFile.responseText;
-				if (allLogs != "") {
-					$(document).ready(function () {
-						$.post("/tpl/includes/monitorActions.php", {
-							logFile: allLogs,
-						});
-					});
-				}
-			}
-		}
-	};
-	logFile.send(null);
-}
-
-var intervalId = window.setInterval(function () {
-	saveErrorsToDatabase();
-}, 5000);
-
 function initializeMonitor() {
 	var url = window.location.href;
 	if (!url.includes("login")) {

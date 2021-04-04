@@ -34,7 +34,7 @@ class Template
 
 	function GetHandlers()
 	{
-		global $DB, $site, $user, $filter, $lang, $core, $socket;
+		global $DB, $site, $user, $filter, $lang, $core, $socket, $mailer;
 
 		$this->Set('sitename', Config::$siteName);
 		$this->Set('url', URL);
@@ -60,7 +60,7 @@ class Template
 
 	function GetContent()
 	{
-		global $DB, $site, $user, $filter, $lang, $core, $socket;
+		global $DB, $site, $user, $filter, $lang, $core, $socket, $mailer;
 
 		ob_start();
 		require('tpl/pages/'.Page);
@@ -69,7 +69,7 @@ class Template
 
 	function GetHeader()
 	{
-		global $DB, $site, $user, $filter, $lang, $core, $socket;
+		global $DB, $site, $user, $filter, $lang, $core, $socket, $mailer;
 
 		ob_start();
 		require('tpl/includes/header.php');
@@ -78,7 +78,7 @@ class Template
 
 	function GetNavigation()
 	{
-		global $DB, $site, $user, $filter, $lang, $core, $socket;
+		global $DB, $site, $user, $filter, $lang, $core, $socket, $mailer;
 		ob_start();
 		require('tpl/includes/nav.php');
 		$this->AddLine(ob_get_clean());
@@ -86,7 +86,7 @@ class Template
 
 	function GetBackground()
 	{
-		global $DB, $site, $user, $filter, $lang, $core, $socket;
+		global $DB, $site, $user, $filter, $lang, $core, $socket, $mailer;
 		ob_start();
 		require('tpl/includes/background.php');
 		$this->AddLine(ob_get_clean());
@@ -94,7 +94,7 @@ class Template
 
 	function GetFooter()
 	{
-		global $DB, $site, $user, $filter, $lang, $core, $socket;
+		global $DB, $site, $user, $filter, $lang, $core, $socket, $mailer;
 		ob_start();
 		require('tpl/includes/footer.php');
 		$this->AddLine(ob_get_clean()); 

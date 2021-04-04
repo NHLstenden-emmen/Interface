@@ -19,7 +19,7 @@
 				</ul>
 			</div>
 
-			<img id="ESP" class="img" src="{assetsFolder}/images/arduino_0.png" alt="Arduino/ESP32 schematische weergave" data-aos="zoom-in-down">
+			<img id="ESP" class="img" src="{assetsFolder}/images/arduino_0.png" alt="Arduino/ESP32 schematische weergave">
 		</div>
 	</div>
 </div>

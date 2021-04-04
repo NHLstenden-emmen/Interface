@@ -1,5 +1,6 @@
 <?php 
     $gebuikerResult = $DB->Select("SELECT * FROM users WHERE user_id != ? ORDER BY level ASC ", [2]);
+	$securityResult = $DB->Select("SELECT * FROM security WHERE Type = 'ban_ip'");
     $this->Set("pageTitle", $this->Get("GEBRUIKERS"));
 
     $gebuikerResultView = "";
@@ -13,7 +14,21 @@
                 </td>";
             if(empty($value['deleted_at'])) $gebuikerResultView .= "<td data-label='ban' class='link' data-link='/moderator/users/ban/".$value['user_id']."'>Ban <i class='far fa-caret-square-right'></i></td>";
             else $gebuikerResultView .= "<td data-label='un-ban' class='link' data-link='/moderator/users/unban/".$value['user_id']."'>Unban <i class='far fa-caret-square-right' aria-hidden='true'></i></td>"; 
-            $gebuikerResultView .= "</tr>";
+			
+			if(!empty($value['lastIp'])){
+				$isBanned = false;
+				foreach($securityResult as $key => $valueSecurity){
+					if ($valueSecurity['Value'] == $value['lastIp']){
+						$isBanned = true;
+						$gebuikerResultView .= "<td data-label='banIp'>".$valueSecurity['Value']."  is banned</td>";
+					}
+				}
+			}			
+			if(!empty($value['lastIp']) && $isBanned == false) $gebuikerResultView .= "<td data-label='banIp' class='link' data-link='/moderator/users/ban/".$value['user_id']."?var=ip'>".$value['lastIp']." <i class='far fa-caret-square-right'></i></td>";
+            
+			
+			$gebuikerResultView .= "</tr>";
+			
     }
     
     $this->Set("usersOverview", $gebuikerResultView);

@@ -20,6 +20,12 @@ if($user->logged_in){
 	} else if ($loginKey[0]['loginKey'] != $_COOKIE['loginKey']){
 		$user->Logout();
 	}
+	
+	// Check if ip is banned
+	$bannedIPList = $DB->Select("SELECT * FROM security WHERE type = 'ban_ip' AND Value = ? LIMIT 1",[$core->getUserIP()]);
+	if(!empty($bannedIPList)){
+		$user->Logout();
+	}
 }
 
 /* Navigatie menu */
