@@ -360,3 +360,5 @@ pages/.DS_Store
 gebruikersBestanden/profilePictures/
 gebruikersBestanden/uploads/
 config/Configuration.php
+*.ts
+*.m3u8

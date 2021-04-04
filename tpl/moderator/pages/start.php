@@ -15,10 +15,17 @@
                 <div class="neonBlock zoom" onclick="location.href='/moderator/games';">
                 <span class="details">Games</span><i class="fas fa-gamepad"></i>
                 </div>
-            </div>
+            </div>            
+        </div>
+		<div class="row">
             <div class="col-md-4">
                 <div class="neonBlock zoom" onclick="location.href='/moderator/dashboards';">
                 <span class="details">Dashboards</span><i class="fas fa-tachometer-alt"></i>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="neonBlock zoom" onclick="location.href='/moderator/chat';">
+                    <span class="details">Chat</span><i class="far fa-comments"></i>
                 </div>
             </div>
         </div>
