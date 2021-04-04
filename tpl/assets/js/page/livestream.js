@@ -22,7 +22,7 @@ const playerOptions = {
 	muted: true,
 	autoplay: true
 };
-chatBox.style.height = videoHeight + "px";
+chatBox.style.height = (videoHeight - 10) + "px";
 
 var hls;
 var videoplayer;
@@ -39,7 +39,7 @@ const cameraChange = (camera) => {
 
 window.onresize = function(event) {
     var videoHeight = document.querySelector('#livestreamVideo').offsetHeight;
-    chatBox.style.height = videoHeight + "px";
+	chatBox.style.height = (videoHeight - 10) + "px";
 };
 
 document.addEventListener('DOMContentLoaded', () => {
