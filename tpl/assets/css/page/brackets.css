@@ -90,8 +90,6 @@
     --height: 492px;
     --width: 428px;
     position: relative;
-    top: 0px;
-    left: 450px;
     height: var(--height);
     width: var(--width);
     animation: opening 1.5s;
@@ -113,6 +111,8 @@
     height: 100%;
     margin: 0;
     display: flex;
+
+    transition: ease opacity 1s;
 }
 
 .scoreRow:not(:first-child){
@@ -135,6 +135,22 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+}
+
+.scoreRow > .time{
+    min-width: 75px;
+    max-width: 75px;
+    font-size: 18px;
+}
+
+.scoreRow > .time:not(:last-child){
+    margin-right: 3px;
+}
+
+.scoreRow.heading > .time{
+    min-width: 75px;
+    max-width: 75px;
+    font-size: 30px;
 }
 
 .scoreRow > .game{
@@ -191,6 +207,19 @@
     overflow: hidden;
 }
 
+.scoreRow > .team:first-child{
+    margin-left: 0;
+    background-color: var(--primaryColor);
+}
+
+.scoreRow:not(.heading) > .num:not(:first-child).time:not(:last-child){
+    background-color: var(--secondaryColor);
+}
+
+.lapdisplay > .scoreRow:not(.selected):not(.heading) {
+    opacity: 0.5;
+}
+
 #leaderboard{
     --height: 492px;
     --width: 900px;
@@ -205,7 +234,29 @@
     flex-direction: column;
     overflow: hidden;
 }
+
 #leaderboard.closing{
+    height: 0;
+    width: 0;
+    padding: 0;
+    animation: closing 1s;
+    opacity: 0;
+}
+
+.lapdisplay{
+    --height: 492px;
+    --width: 730px;
+    height: var(--height);
+    width: var(--width);
+    position: absolute;
+    padding: 3px;
+    animation: opening 1.5s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.lapdisplay.closing{
     height: 0;
     width: 0;
     padding: 0;

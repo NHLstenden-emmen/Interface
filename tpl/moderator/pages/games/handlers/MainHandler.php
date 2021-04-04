@@ -16,12 +16,11 @@
         case "overview":
             require(ModeratorPageView."games.php");
         break;
+        case "restart":
         case "start":
         case "stop":
-        case "schemes":
             require(ModeratorPageView.ModeratorPageRoute.".php");
         break;
-
     }
 
     define('ModeratorPageViewContent', ob_get_clean());

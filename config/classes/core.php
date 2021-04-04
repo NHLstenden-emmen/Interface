@@ -22,6 +22,10 @@ class Core
 		exit;
 	}
 
+	function cleanServerResponse($str) {
+		return ucwords(str_replace("_", " ", $str));
+	}
+
 	function listArray($input)
 	{
 		return array_map('trim', explode(',', $input));

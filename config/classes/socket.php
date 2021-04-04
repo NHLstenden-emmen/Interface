@@ -85,6 +85,16 @@ class ServerConnection
                 if($response = $this->write(json_encode(["CMD" => $command]))) return $response;
         }
 
+        function musicControl($action)
+        {
+                if($response = $this->write(json_encode(["CMD" => "MUSIC_CONTROL", "ACTION" => $action]))) return $response;
+        }
+
+        function customMusic($url)
+        {
+                if($response = $this->write(json_encode(["CMD" => "CUSTOM_MUSIC", "URL" => $url]))) return $response;
+        }
+
         function write($message)
         {
                 if($this->create())

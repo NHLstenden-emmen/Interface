@@ -1,3 +1,5 @@
+const countDownDateText = "Apr 4, 2021 19:30:30";
+
 /* Burger Menu Controller */
 const burgerMenu = () => {
 	const burger = document.querySelector(".mobileBurger");
@@ -122,7 +124,7 @@ const toastShow = (type, id, title, message, buttons = null, length = null) => {
 	ToastSmall.innerHTML = current.toLocaleTimeString("nl-NL");
 
 	// button
-	let closeButton = document.createElement("button");
+	let closeButton = document.createElement("span");
 	closeButton.classList.add("ml-2", "mb-1", "close");
 	closeButton.setAttribute("data-dismiss", "toast");
 	closeButton.setAttribute("aria-label", "Close");
@@ -187,7 +189,7 @@ const toastShow = (type, id, title, message, buttons = null, length = null) => {
 
 	// show the toast with the settings
 	$("#" + Toast.id).toast("show");
-	$("#" + Toast.id).on("hidden.bs.toast", function (e) {
+	$("#" + Toast.id).on("hidden.bs.toast", (e) => {
 		deleteToast(e.currentTarget.id);
 	});
 };
@@ -196,7 +198,7 @@ const deleteToast = (id) => {
 	document.getElementById(id).remove();
 };
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 	menuLinks();
 	burgerMenu();
 });

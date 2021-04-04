@@ -1,5 +1,7 @@
-<div class="container topPadding aos-init aos-animate"  data-aos="fade-up">
-	<div class="neonBlock ">
+<div class="neonBlock ">
+        <form method="POST">
+            <button type="submit" name="schemesButton"><i class="far fa-calendar"></i> Maak schema</button>
+        </form>
         <table>
             <thead>
                 <tr>
@@ -34,5 +36,4 @@
                 </tr>
             </tbody>
         </table>
-	</div>                
 </div>

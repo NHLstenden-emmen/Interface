@@ -11,7 +11,7 @@ class Brackets {
         setTimeout(() => {bracketsHolder.innerHTML = null}, 1500);
     }
 
-    #setupPhase0(jsonObject) {
+    #setupPhase0(jsonObject) {  // Leaderboard (1x leaderboard)
         bracketsHolder.innerHTML = `
         <div id="leaderboard" class="neonBorder">
             <div class="scoreRow heading">
@@ -75,7 +75,7 @@ class Brackets {
         this.#updateLeaderboard(jsonObject.leaderboard);
     }
 
-    #setupPhase1(jsonObject) {
+    #setupPhase1(jsonObject) {  // Starting matches SPS (10x match, 1x scoreboard)
         bracketsHolder.innerHTML = `
         <div id="match1" class="match neonBorder" style="left: 0px; top: 0px;">
             <div class="matchId">1</div>
@@ -128,7 +128,7 @@ class Brackets {
             <div class="teamLabel bottom"></div>
         </div>
 
-        <div id="scoreboard" class="neonBorder">
+        <div id="scoreboard" class="neonBorder" style="left: 450px; top: 0px;">
             <div class="scoreRow heading">Scoreboard</div>
             <div id="place1" class="scoreRow">
                 <div class="place num">1</div>
@@ -160,10 +160,10 @@ class Brackets {
         bracketsHolder.style = "height: 510px";
 
         this.#updateMatches(jsonObject.matches);
-        this.#updateScoreboard(jsonObject.scoreboard);
+        this.#updateScoreboard(this.#sortScoreboard(jsonObject.scoreboard));
     }
 
-    #setupPhase2(jsonObject) {
+    #setupPhase2(jsonObject) {  // Brackets SPS (8x match)
         bracketsHolder.innerHTML = `
         <div id="match1" class="match neonBorder" style="left: 0px; top: 0px;">
             <div class="matchId">1</div>
@@ -211,6 +211,99 @@ class Brackets {
         this.#updateMatches(jsonObject.matches);
     }
 
+    #setupPhase3(jsonObject) {  // Laps Race (1x lapdisplay, 1x scoreboard)
+        bracketsHolder.innerHTML = `
+        <div id="lapdisplay1" class="lapdisplay neonBorder">
+            <div class="scoreRow heading">
+                <div class="team">Laptime</div>
+                <div id="lap1" class="num time">1</div>
+                <div id="lap2" class="num time">2</div>
+                <div id="lap3" class="num time">3</div>
+                <div id="lap4" class="num time">4</div>
+                <div id="lap5" class="num time">5</div>
+                <div id="avg" class="num time avg">AVG</div>
+            </div>
+            <div id="team1" class="scoreRow">
+                <div class="team"></div>
+                <div id="lap1" class="num time"></div>
+                <div id="lap2" class="num time"></div>
+                <div id="lap3" class="num time"></div>
+                <div id="lap4" class="num time"></div>
+                <div id="lap5" class="num time"></div>
+                <div id="avg" class="num time avg"></div>
+            </div>
+            <div id="team2" class="scoreRow">
+                <div class="team"></div>
+                <div id="lap1" class="num time"></div>
+                <div id="lap2" class="num time"></div>
+                <div id="lap3" class="num time"></div>
+                <div id="lap4" class="num time"></div>
+                <div id="lap5" class="num time"></div>
+                <div id="avg" class="num time avg"></div>
+            </div>
+            <div id="team3" class="scoreRow">
+                <div class="team"></div>
+                <div id="lap1" class="num time"></div>
+                <div id="lap2" class="num time"></div>
+                <div id="lap3" class="num time"></div>
+                <div id="lap4" class="num time"></div>
+                <div id="lap5" class="num time"></div>
+                <div id="avg" class="num time avg"></div>
+            </div>
+            <div id="team4" class="scoreRow">
+                <div class="team"></div>
+                <div id="lap1" class="num time"></div>
+                <div id="lap2" class="num time"></div>
+                <div id="lap3" class="num time"></div>
+                <div id="lap4" class="num time"></div>
+                <div id="lap5" class="num time"></div>
+                <div id="avg" class="num time avg"></div>
+            </div>
+            <div id="team5" class="scoreRow">
+                <div class="team"></div>
+                <div id="lap1" class="num time"></div>
+                <div id="lap2" class="num time"></div>
+                <div id="lap3" class="num time"></div>
+                <div id="lap4" class="num time"></div>
+                <div id="lap5" class="num time"></div>
+                <div id="avg" class="num time avg"></div>
+            </div>
+        </div>
+
+        <div id="scoreboard" class="neonBorder" style="left: 750px; top: 0px;">
+            <div class="scoreRow heading">Leaderboard</div>
+            <div id="place1" class="scoreRow">
+                <div class="place num">1</div>
+                <div class="team"></div>
+                <div class="score num time"></div>
+            </div>
+            <div id="place2" class="scoreRow">
+                <div class="place num">2</div>
+                <div class="team"></div>
+                <div class="score num time"></div>
+            </div>
+            <div id="place3" class="scoreRow">
+                <div class="place num">3</div>
+                <div class="team"></div>
+                <div class="score num time"></div>
+            </div>
+            <div id="place4" class="scoreRow">
+                <div class="place num">4</div>
+                <div class="team"></div>
+                <div class="score num time"></div>
+            </div>
+            <div id="place5" class="scoreRow">
+                <div class="place num">5</div>
+                <div class="team"></div>
+                <div class="score num time"></div>
+            </div>
+        </div>
+        `
+        bracketsHolder.style = "height: 510px";
+
+        this.#updateScoreboard(this.#updateLapDisplay(jsonObject.times, jsonObject.curPos));
+    }
+
     #updateMatches(matches) {
         for(var i = 0; i < matches.length; i++) {
             var match = bracketsHolder.querySelector("#match" + matches[i].id);
@@ -237,7 +330,6 @@ class Brackets {
     }
 
     #updateScoreboard(scoreboard) {
-        scoreboard = this.#sortScoreboard(scoreboard);
         for(var i = 1; i <= scoreboard.length; i++) {
             var placement = bracketsHolder.querySelector("#place" + i);
             placement.querySelector(".team").innerHTML = scoreboard[i-1][0];
@@ -252,7 +344,7 @@ class Brackets {
     #updateLeaderboard(leaderboard) {
         console.log(leaderboard);
         this.#sortLeaderboard(leaderboard);
-
+    
         for(var i = 1; i <= leaderboard.length; i++) {
             var placement = bracketsHolder.querySelector("#place" + i);
             placement.querySelector(".team").innerHTML = leaderboard[i-1].name;
@@ -263,12 +355,80 @@ class Brackets {
             placement.querySelector(".tot").innerHTML = parseInt(leaderboard[i-1].MAZE) + parseInt(leaderboard[i-1].RACE) + parseInt(leaderboard[i-1].DRAW) + parseInt(leaderboard[i-1].SPS);
         };
     }
-
+    
     #sortLeaderboard(leaderboard) {
         return leaderboard.sort((a,b) => {
             var aTot = parseInt(a.MAZE) + parseInt(a.RACE) + parseInt(a.DRAW) + parseInt(a.SPS);
             var bTot = parseInt(b.MAZE) + parseInt(b.RACE) + parseInt(b.DRAW) + parseInt(b.SPS);
             return (aTot < bTot) ? 1 : ((bTot < aTot) ? -1 : a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
+        });
+    }
+
+    #millisToTimestamp(millis) {
+        millis = Math.round(parseInt(millis)*1000)/1000;
+        var min = Math.floor(millis/60000);
+        var sec = (millis%60000)/1000
+        if(min > 0) {
+            if(min >= 5) {
+                return "WTF";
+            }
+            return String(min) + ":" + (sec < 10 ? "0" : "") + sec.toFixed(3);
+        }
+        return String(sec.toFixed(3));
+    }
+
+    #updateLapDisplay(times, curPos) {
+        var scoreboard = new Map();
+
+        times = this.#sortTimes(times);
+
+        for(var i = 0; i < times.length; i++) {
+            // Update display
+            var team = bracketsHolder.querySelector("#team" + String(parseInt(i) + 1));
+            team.querySelector(".team").innerHTML = times[i].name;
+
+            if(times[i].pos == curPos) {
+                team.classList.add("selected");
+            } else {
+                team.classList.remove("selected");
+            }
+
+            // Calc avg
+            var count = 0;
+            var avg = 0;
+            for(var j = 1; j <= 5; j++) {
+                if('lap' + String(j) in times[i]) {
+                    var time = times[i]['lap' + String(j)]
+                    team.querySelector("#lap" + j).innerHTML = this.#millisToTimestamp(time);
+                    avg += time;
+                    if(time != 0) {
+                        count++;
+                    }
+                }
+            }
+
+            if(count > 0) {
+                avg /= count;
+            }
+
+            team.querySelector("#avg").innerHTML = this.#millisToTimestamp(avg);
+
+            // Add avg to scoreboard
+            scoreboard[times[i].name] = avg;
+        }
+
+        scoreboard = this.#sortScoreboard(scoreboard);
+
+        for(var i = 0; i < scoreboard.length; i++) {
+            scoreboard[i][1] = this.#millisToTimestamp(scoreboard[i][1]);
+        }
+
+        return scoreboard;
+    }
+
+    #sortTimes(times) {
+        return times.sort((a,b) => {
+            return a.pos - b.pos;
         });
     }
 
@@ -294,9 +454,12 @@ class Brackets {
                             case 2:
                                 this.#setupPhase2(jsonObject);
                                 break;
+                            case 3:
+                                this.#setupPhase3(jsonObject);
+                                break;
                             default:
                                 bracketsHolder.style = null;
-                                console.log("Unknown phase for brackets");
+                                console.error("Unknown phase for brackets");
                                 break;
                         }
                     }, timeout);
@@ -312,8 +475,10 @@ class Brackets {
                         case 2:
                             this.#updateMatches(jsonObject.matches);
                             break;
+                        case 3:
+                            this.#updateScoreboard(this.#updateLapDisplay(jsonObject.times, jsonObject.curPos));
                         default:
-                            console.log("Unknown phase for brackets");
+                            console.error("Unknown phase for brackets");
                             break;
                     }
                 }
@@ -336,8 +501,8 @@ webSocketData.addEventListener("message", (evt) => {
     brackets.parseJSON(evt.data);
 });
 
-xmlhttp.addEventListener("readystatechange", () => {
-    if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
-        brackets.parseJSON(JSON.parse(this.getResponseHeader("livedata")).json);
+staticData.addEventListener("readystatechange", () => {
+    if (staticData.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+        brackets.parseJSON(JSON.parse(staticData.getResponseHeader("livedata")).json);
     }
 });
