@@ -22,7 +22,7 @@ const playerOptions = {
 	muted: true,
 	autoplay: true
 };
-//chatBox.style.height = videoHeight + "px";
+chatBox.style.height = videoHeight + "px";
 
 var hls;
 var videoplayer;

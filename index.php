@@ -1,7 +1,5 @@
 ﻿<?php
 
-include 'config/logs.php';
-
 define('Start', microtime(true));
 define('styleFolder', 'tpl/');
 define('Handlers', styleFolder.'handlers/');

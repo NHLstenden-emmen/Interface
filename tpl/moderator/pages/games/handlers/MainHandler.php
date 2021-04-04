@@ -16,10 +16,15 @@
         case "overview":
             require(ModeratorPageView."games.php");
         break;
-        case "restart":
-        case "start":
-        case "stop":
+        case "control":
             require(ModeratorPageView.ModeratorPageRoute.".php");
+        break;
+        case "restart":
+            if($user->level == 2) {
+                require(ModeratorPageView.ModeratorPageRoute.".php");
+            } else {
+                $core->Redirect("/moderator/games");
+            }
         break;
     }
 

@@ -1,3 +1,5 @@
+<h1 class="title">{GEBRUIKERS}</h1>
+<br />
 <table>
     <thead>
         <tr>
