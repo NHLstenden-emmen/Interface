@@ -15,33 +15,20 @@
 	/* Glow */
 	--glowColor: #d92626;
 	--glowLightColor: rgb(207, 207, 207);	
+
+	--logoBodyColor:  #c0202e;
+	--logoWingsColor: #7a020d;
+	--logoEyesColor:  #64020c;
 }
 
-
-.button {
-	width: 50% !important;
-	height: 400px !important; 
+h2 {
+	color: whitesmoke;
+	margin-bottom: 0;
+	font-weight: bold;
 }
 p {
-	font-weight: bold;
+	margin-bottom: 0;
 }
-
-p, pre {                
-	color: white;
-	margin: 10px 0;
-	font-size: 0.8em;
-}
-
-pre {
-	color: rgb(167, 167, 167);
-	font-style:italic;
-}
-
-h3 {
-	color: #d92626;
-	font-weight: bold;
-}
-
 .Ctitels {
 	font-size:120% ;
 }
@@ -49,139 +36,94 @@ h3 {
 	padding-left: 50px;
 }
 
-#titleinf1c {
+.madeby {
 	color: #d92626;
 }
+.neonBlock {
+	background-color: black;
+	margin: 25px 0;
+}
 
-.container2delen {
+.neonBlock.header {
+	border: none;
+    width: max-content;
+    height: max-content;
+	background-color: #ef181873;
+}
+
+input, textarea {
+	padding: 0 13px;
+	width: 100%;
+	border: none;
+	resize: none;
+
+}
+
+
+.container_3d {
+	height: 100%;
+	perspective: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  transform-style: preserve-3d;
+  width: 100%;
+  padding: 0rem 5rem;
+  background-color: black;
+}
+
+.brokko {
+  min-height: 35vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.brokko img {
+  width: 20rem;
+  z-index: 2;
+  transition: all 0.75s ease-out;
+}
+.circle {
+  width: 15rem;
+  height: 15rem;
+  background: radial-gradient(circle, var(--primaryColor) 0%, var(--secondaryColor) 100%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.info h1 {
+  font-size: 3rem;
+  transition: all 0.75s ease-out;
 	text-align: center;
-	padding-top: 10px;
-	padding-right: 40px;
-	padding-left: 40px;
-	display: grid;
-	grid-template-columns: 50% 50%;
 }
-
-.container3delen {
-	padding-top: 20px;
-	padding-right: 40px;
-	padding-left: 40px;
+.info h3 {
 	text-align: center;
-	display: grid;
-	grid-template-columns: 50% 25% 25%;
+
+  font-size: 1.3rem;
+  padding: 2rem 0rem;
+  color: whitesmoke;
+  font-weight: lighter;
+  transition: all 0.75s ease-out;
 }
 
-.container2delen .vaklinks {
-	background-color: black;
-	height: 100%;
-	width: 98%;
-	grid-column: span 1 / -2;
-	margin-bottom: 2%;
-	margin-left: 2%;
-
+.ready {
+  margin: 2rem;
+  transition: all 0.75s ease-out;
+}
+.ready button {
+  width: 100%;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 30px;
+  font-weight: bolder;
 }
 
-.container2delen .vakrechts {
-	background-color: black;
-	height: 100%;
-	width: 98%;
-	grid-column: span 1 / -1;
-	margin-bottom: 2%;
-	margin-left: 1%;
-}
-
-.container3delen .blocklinks {
-	background-color: black;
-	height: 100%;
-	width: 98%;
-	grid-column: span 1 / -3;
-	margin-left: 2%;
-	margin-bottom: 2%;
-}
-
-.container3delen .blockmidden {
-	background-color: black;
-	height: 100%;
-	width: 98%;
-	grid-column: span 1 / -2;
-	margin-left: 2%;
-	margin-bottom: 2%;
-}
-
-.container3delen .blockrechts {
-	background-color: black;
-	height: 100%;
-	width: 98%;
-	grid-column: span 1 / -1;
-	margin-bottom: 2%;
-	margin-left: 2%;
-}
-
-.brokkobot {
-	height: 500px;
-}
-
-.brokkobottekst {
-	height: 150px;
-}
-@media screen and (max-width: 900px) {
-
-	.container3delen {
-		padding: 20px;
-		text-align: center;
-		display: grid;
-		grid-template-columns: 5% 90% 5%;
-	}
-	
-	.container4delen {
-		padding: 20px;
-		text-align: center;
-		display: grid;
-		grid-template-columns: 5% 90% 5%;
-	}
-
-	
-	.container3delen .blockrechts {
-		background-color: black;
-		height: 100%;
-		width: 90%;
-		grid-column: span 1 / -2;
-		margin-bottom: 5%;
-		margin-left: 5%;
-	}
-
-	.container3delen .blocklinks {
-		background-color: black;
-		height: 100%;
-		width: 90%;
-		grid-column: span 1 / -2;
-		margin-left: 5%;
-		margin-bottom: 5%;
-	}
-	
-	.container4delen .vaklinks {
-		background-color: black;
-		height: 100%;
-		width: 90%;
-		grid-column: span 1 / -2;
-		margin-bottom: 5%;
-		margin-left: 5%;
-	}
-
-	.container4delen .vakrechts {
-		background-color: black;
-		height: 100%;
-		width: 90%;
-		grid-column: span 1 / -2;
-		margin-bottom: 5%;
-		margin-left: 5%;
-	}
-	
-	.brokkobot {
-		height:8%;
-	}
-
-	.brokkobottekst {
-		height: 150px;
-	}
+label { 
+	width: 100%;
 }

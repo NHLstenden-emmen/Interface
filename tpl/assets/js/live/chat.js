@@ -1,4 +1,4 @@
-var livechatWebSocket, fullname, level, email, team, user_id;
+var livechatWebSocket, user_id;
 
 const liveChat = document.getElementById("liveChat");        
 const chatInput = document.getElementById("liveChatInput");
@@ -15,6 +15,7 @@ const sendDelete = (id) =>  livechatWebSocket.send(JSON.stringify({"type": "dele
 const sendPoll = (option, id) => livechatWebSocket.send(JSON.stringify({"type": "poll", "option": option, "id": id}));
 const sendDrawingPoll = (stars, bot, id) => livechatWebSocket.send(JSON.stringify({"type": "drawingpoll", "bot": bot, "stars":parseInt(stars)+1, "id": id}));
 const sendMessage = () => { 
+        document.querySelector('#emojiCheckbox').checked = false;
         if(chatInput.value.trim() != "") {
             livechatWebSocket.send(JSON.stringify({"type": "send", "message": chatInput.value}));
         }
@@ -57,9 +58,20 @@ const onJoin = (messageData) => {
 
 function showMessage(type, message, id, username, userId, level = null, team = null) {
     var messageElement = document.createElement("div"); 
-    messageElement.classList.add("messageBlock"); // anders herken ik hem nie in css
+    messageElement.classList.add("messageBlock"); 
     messageElement.setAttribute("id", id);
     messageElement.dataset.userId = userId;
+
+
+    var foundEmojis = message.match(/\p{Emoji_Presentation}/gu);
+    
+    if(foundEmojis) {
+        var foundEmojis = foundEmojis.filter((v, i, a) => a.indexOf(v) === i);
+        for(var i = 0; i < foundEmojis.length; i++) {
+            console.log(foundEmojis[i], message.search(foundEmojis[i]));
+            message = message.replaceAll(foundEmojis[i], '<label class="emojiLabel">' + foundEmojis[i] + '</label>');
+        }
+    }
 
     var userHTML = "";
     if(!liveChat.hasChildNodes() || (liveChat.hasChildNodes() && userId != liveChat.lastChild.dataset.userId)) {
@@ -191,7 +203,7 @@ function launchLiveChat(user_idInput)
         livechatWebSocket.addEventListener("open", () =>  livechatWebSocket.send(JSON.stringify({"user_id": user_id, "type": "join"})));
         livechatWebSocket.addEventListener("message", (chatData) => messageListener(chatData));
         livechatWebSocket.addEventListener("close", () => {
-            showMessage("Connection has been closed", 0, "Server", -1);
+            //showMessage("Connection has been closed", 0, "Server", -1);
             console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
             setTimeout(() => launchLiveChat(user_id), 1000);
         });

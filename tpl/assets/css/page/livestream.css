@@ -140,9 +140,17 @@ i.far.fa-trash-alt:hover {
 	background-color: rgba(7, 7, 7, 0.65);
     box-shadow: -0.5vw 0.3vw 18px 0.03vw rgba(0, 0, 0, 0.33);
     display: grid;
-    grid-template-columns: 14px auto 1fr auto 20px;
-    grid-template-rows: auto fit-content(40%);
+    grid-template-columns: 14px auto 1fr auto 300px;
+    grid-template-rows: 1fr 1fr 1fr;
     height: 70px;
+}
+
+.videoCamera {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    grid-column: 5; 
+    grid-row: 2;
 }
 
 .videoUpload {
@@ -183,7 +191,7 @@ p.message {
 	align-items: center;
 	text-align: right;
 	justify-content: flex-start;
-	font-size: 0.95rem;
+	/* font-size: 0.95rem; */
 	text-align: left;
 	/* flex-wrap: wrap; */
 	width: 100%;
@@ -201,12 +209,126 @@ p.message.join, p.message.leave {
     overflow: unset !important;
 }
 
+.live {
+    position: absolute;
+    left: 50px;
+}
+
+@keyframes controls_animation {
+	0%, 55% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+.plyr--video.plyr--hide-controls .plyr__controls {
+    transform: translateY(0) !important;
+	animation-duration: 0.5s;
+    animation-timing-function: ease;
+	animation-name: controls_animation;
+}
+
+
 #viewerCounter {
 	transition: all 1s;
 }
 
 #viewerCounter.pre-animation {
 	animation: navLinkFade 1s ease-in-out forwards;
+}
+
+
+#emojiPopUp {
+    padding: 0 12px;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background-color: rgb(50, 50, 50);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+    overflow-y: scroll;
+    max-height: 0;
+    transition: 0.3s all ease;
+    align-self: end;
+}
+
+#emojiCheckbox {
+    display: none;
+}
+
+.checker {
+    align-self: center;
+    grid-row: 3;
+    grid-column: 1;
+    background-repeat: no-repeat;
+    margin: 0 0 0 6.5px;
+    transition: all 1s ease;
+}
+
+.checker::before {
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f118";
+    filter: grayscale(100%);
+    transition: all 0.3s ease-out;
+}
+.checker:hover::before {
+    filter: grayscale(0%);
+    color: hsl(43deg 100% 65%);
+}
+
+#emojiCheckbox:checked + .checker::before {
+    filter: grayscale(0%);
+    color: hsl(43deg 100% 65%);
+}
+
+#emojiCheckbox:checked ~ #emojiPopUp {
+    padding: 12px;
+    display:block;
+    max-height: 1000px;
+    background-color: rgb(50, 50, 50);
+}
+
+.catoContent {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    max-height: 0;
+    transition: max-height 1s ease;
+    overflow: hidden;
+}
+
+.emojiCato.open > .catoContent {
+    max-height: 2000px;
+    transition: max-height 2s ease;
+}
+
+.emoji {
+    min-width: 36px;
+    text-align: center;
+    font-size: 24px;
+}
+
+#liveChatInput {
+    padding: 0 38px 0 36px;
+}
+
+label.emojiLabel {
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 20px;
 }
 
 @media (max-width: 950px) {
