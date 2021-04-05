@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['action'])){
-    $bot = "Lennart";
+    $bot = "Dimitri";
     $action = $_POST['action'];
 
     
