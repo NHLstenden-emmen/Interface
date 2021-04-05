@@ -490,7 +490,7 @@ class Brackets {
 }
 
 var brackets        = new Brackets();
-var webSocketData   = new WebSocket("ws://77.162.30.112:49151");
+var webSocketData   = new WebSocket("ws://194.171.181.139:49151");
 var staticData      = new XMLHttpRequest();
 
 staticData.open("GET", "/livedata", true);

@@ -35,9 +35,9 @@ const playerOptions = {
 
 const cameraChange = (camera) => {
 	if (!Hls.isSupported()) {
-		video.src = source;
+		video.src = "/streams/" + camera + ".m3u8";
 	} else {
-		hls.loadSource(source);
+		hls.loadSource("/streams/" + camera + ".m3u8");
 		hls.attachMedia(video);
 		videoplayer.play();
 	}
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (!Hls.isSupported()) {
 		video.src = source;
 	} else {
-		hls.loadSource(source);
+		hls.loadSource("/streams/dome.m3u8");
 		hls.attachMedia(video);
 	} 	
 });

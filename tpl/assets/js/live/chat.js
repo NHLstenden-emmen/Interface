@@ -198,7 +198,7 @@ function launchLiveChat(user_idInput)
     if ("WebSocket" in window)
     {
         user_id = user_idInput;
-        livechatWebSocket = new WebSocket("ws://77.162.30.112:49152");
+        livechatWebSocket = new WebSocket("ws://194.171.181.139:49152");
 
         livechatWebSocket.addEventListener("open", () =>  livechatWebSocket.send(JSON.stringify({"user_id": user_id, "type": "join"})));
         livechatWebSocket.addEventListener("message", (chatData) => messageListener(chatData));
