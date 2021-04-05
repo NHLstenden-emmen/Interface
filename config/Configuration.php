@@ -4,25 +4,25 @@ if(!defined('Start')) exit('403');
 class Config {
 	static $siteName 		= 'Robo TV';
 
-	static $serverIP 		= '77.162.30.112';
+	static $serverIP 		= '194.171.181.139';
 	static $serverPort 		=  49153;
 
 	## MySQL Connect Settings
 	static $DB = Array(
 		'hostname'		=> 'localhost',
 		'username'		=> 'root',
-		'password'		=> '',
-		//	'password'		=> 'Welkom10!',
+		//'password'		=> '',
+		'password'		=> 'Welkom10!',
 		'database'		=> 'battlebots'
 	);
 	
 	## Mail Connect Settings
 	static $mail = Array(
-		'hostname'		=> 'mail.feikefalkena.nl',
+		'hostname'		=> 'smtp.gmail.com',
 		'port'			=> 587,
-		'username'		=> 'projecten@feikefalkena.nl',
+		'username'		=> 'robotv.serverict@gmail.com',
 		'password'		=> 'T2q!u19h',
-		'displayemail'	=> 'projecten@feikefalkena.nl',
+		'displayemail'	=> 'robotv.serverict@gmail.com',
 		'displayname'	=> 'RoboTV Moderator'
 	);
 	

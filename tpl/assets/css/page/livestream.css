@@ -47,10 +47,6 @@ video#livestreamVideo {
 	font-size: 1.1em;
 }
 
-.messageContent {
-	/* display: grid; */
-	/* grid-template-rows: 30px; */
-}
 
 #sendMessage {
 	width: 100%;
@@ -191,7 +187,7 @@ p.message {
 	align-items: center;
 	text-align: right;
 	justify-content: flex-start;
-	/* font-size: 0.95rem; */
+	font-size: 0.97rem; 
 	text-align: left;
 	/* flex-wrap: wrap; */
 	width: 100%;

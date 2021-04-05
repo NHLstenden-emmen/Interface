@@ -6,7 +6,7 @@ if(isset($_GET['verificationKey'])){
 	$var_check = false;
 	foreach($getUser as $details){
 		$userID = $details['user_id'];
-		$DB->Update("Update users SET verificationKey = '' WHERE user_id = ?", [$userID]);
+		$DB->Update("Update users SET verificationKey = NULL WHERE user_id = ?", [$userID]);
 		$var_check = true;
 	}
 	if($var_check){
@@ -64,16 +64,19 @@ if(isset($_POST['loginSubmit']))
                     $this->Set("loginError", $this->Get("LOGIN_VERKEERDE_EMAIL"));
                  break;
                 case 2:
-                    $this->Set("loginError", $this->Get("LOGIN_VERKEERDE_WACHTWOORD"));
+					$core->Redirect("?check=verifyaccount");
                 break; 
                 case 3:
                     $this->Set("loginError", $this->Get("LOGIN_GEBAND"));
                 break; 
-                case 4:
+				case 4:
+                    $this->Set("loginError", $this->Get("LOGIN_GEBAND"));
+                break; 
+                case 5:
 					$loginKey = time();
 					$core->setCookie("loginKey", $loginKey);
 					$DB->Update("UPDATE users SET loginKey = ?, lastIp = ? WHERE email = ?", [$loginKey, $core->getUserIP(), $loginEmail]);
-                    $core->Redirect("/");
+                   $core->Redirect("/");
                 break;
             }
          }

@@ -160,6 +160,23 @@ function monitorAction() {
 	});
 }
 
+/* Block banned words from inputs */
+var blockedWords;
+var banInput = false;
+$.getJSON('http://robotv.serverict.nl/api?data=bannedWords', function(data) {
+    blockedWords = data;
+	$('input[type="text"]').on('input', function(e) {
+		var value = $('input[type="text"]').val();
+		if (!banInput && blockedWords.includes(value)){
+			banInput = true;
+			$('button[type="submit"]').attr('disabled', 'disabled');
+		} else {
+			banInput = false;
+			$('button[type="submit"]').removeAttr('disabled');
+		}
+	});
+});
+
 function initializeMonitor() {
 	var url = window.location.href;
 	if (!url.includes("login")) {

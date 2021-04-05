@@ -16,7 +16,7 @@ class Mailer {
 		
 		$this->PHPMailer = new PHPMailer;
 		$this->PHPMailer->isSMTP(); 
-		$this->PHPMailer->SMTPDebug = 0; //set 2 for debug
+		//$this->PHPMailer->SMTPDebug = 2; //set 2 for debug
 		$this->PHPMailer->Host = $s['hostname']; 
 		$this->PHPMailer->Port = $s['port'];
 		$this->PHPMailer->SMTPSecure = 'STARTTLS';
@@ -28,14 +28,15 @@ class Mailer {
 	
 	function send($email, $subject, $message, $username = '')
 	{
+
 		$this->PHPMailer->addAddress($email, $username);
 		$this->PHPMailer->Subject = $subject;
 		$this->PHPMailer->msgHTML($message);
 		$this->PHPMailer->AltBody = 'HTML messaging not supported';
 		
-		if(!$this->PHPMailer->send()) return $this->PHPMailer->errorInfo;
+		if(!$this->PHPMailer->send()) return $this->PHPMailer->ErrorInfo;
 		else return true;
-	}
+	}	
 }
 
 ?>

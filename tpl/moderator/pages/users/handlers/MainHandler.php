@@ -15,6 +15,7 @@
         default:
             require(ModeratorPageView."overview.php");
         break;
+		case 'activate':
         case 'ban':
         case 'unban':
         case 'edit':

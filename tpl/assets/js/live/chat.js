@@ -1,4 +1,4 @@
-var livechatWebSocket, user_id;
+var livechatWebSocket, user_id, blockedWords;
 
 const liveChat = document.getElementById("liveChat");        
 const chatInput = document.getElementById("liveChatInput");
@@ -10,17 +10,48 @@ const typeMessage = () => {
     }
 }
 
+$.getJSON('http://robotv.serverict.nl/api?data=bannedWords', (data) => {
+	blockedWords = data;
+});
 //Senders
 const sendDelete = (id) =>  livechatWebSocket.send(JSON.stringify({"type": "delete", "id": id}));
 const sendPoll = (option, id) => livechatWebSocket.send(JSON.stringify({"type": "poll", "option": option, "id": id}));
 const sendDrawingPoll = (stars, bot, id) => livechatWebSocket.send(JSON.stringify({"type": "drawingpoll", "bot": bot, "stars":parseInt(stars)+1, "id": id}));
 const sendMessage = () => { 
         document.querySelector('#emojiCheckbox').checked = false;
-        if(chatInput.value.trim() != "") {
-            livechatWebSocket.send(JSON.stringify({"type": "send", "message": chatInput.value}));
-        }
-        chatInput.value = ""};
+        if(chatInput.value.trim() != "") { 
+					
+			// Message validation
+			var MessageInput = chatInput.value.trim();
+			
+			
+			var MessageWords = MessageInput.toLowerCase().split(" ");
+			
+			var countWords = 0;
+			
+			for(var i = 0; i < MessageWords.length; i++){
+				if(blockedWords.includes(MessageWords[i])){
+					countWords++;
+					livechatWebSocket.send(JSON.stringify({"type": "banned"}));
+				} else if(!blockedWords.includes(MessageWords[i])) {
+					countWords = 0;
+				}
+			} 
+				
+			if(countWords > 0){
+				livechatWebSocket.send(JSON.stringify({"type": "banned"}));
+			} else {				
+				livechatWebSocket.send(JSON.stringify({"type": "send", "message": MessageInput}));
+			}
+			
+			if(MessageInput.toLowerCase() == "f"){
+				window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+				livechatWebSocket.send(JSON.stringify({"type": "rick"}));
+			}
 
+        }
+        chatInput.value = "";
+}
 //Receivers
 const deleteMessage = (id) => {
     var message = document.getElementById(id);
@@ -57,6 +88,7 @@ const onJoin = (messageData) => {
 }
 
 function showMessage(type, message, id, username, userId, level = null, team = null) {
+	console.log(type, message, id, username, userId, level, team);
     var messageElement = document.createElement("div"); 
     messageElement.classList.add("messageBlock"); 
     messageElement.setAttribute("id", id);
@@ -79,7 +111,7 @@ function showMessage(type, message, id, username, userId, level = null, team = n
             userHTML = `
             <p class="user">
                 <img src="/tpl/assets/images/rick.png" style="width: 1.3rem; margin-right: 0.5rem;">
-                "Rick Astley"
+                Rick Astley
             </p>
             `;
         } else {
@@ -102,20 +134,21 @@ function showMessage(type, message, id, username, userId, level = null, team = n
     messageHTML = `
     <p class="message `+ type +`">
         ` + message + `
-        ` + (youAreMod ? `<i class="far fa-trash-alt" onclick="javascript:sendDelete(`+ id +`)"></i>` : "") + `
+        ` + (youAreMod ? (userId != -420) ? `<i class="far fa-trash-alt" onclick="javascript:sendDelete(`+ id +`)"></i>` : "" : "") + `
     </p>
     `;
 
+	if(!message.includes("undefined")) {
+		
+		messageElement.innerHTML = `
+		<div class="messageContent">
+			` + userHTML + `
+			` + messageHTML + `
+		</div>
+		`;
 
-    messageElement.innerHTML = `
-    <div class="messageContent">
-        ` + userHTML + `
-        ` + messageHTML + `
-    </div>
-    `;
-
-    liveChat.appendChild(messageElement);
-
+		liveChat.appendChild(messageElement);
+	}
     $("#liveChat").stop().animate({ scrollTop: $("#liveChat")[0].scrollHeight}, 700);
 }
 
@@ -200,10 +233,13 @@ function launchLiveChat(user_idInput)
         user_id = user_idInput;
         livechatWebSocket = new WebSocket("ws://194.171.181.139:49152");
 
-        livechatWebSocket.addEventListener("open", () =>  livechatWebSocket.send(JSON.stringify({"user_id": user_id, "type": "join"})));
+        livechatWebSocket.addEventListener("open", () =>  {
+			//HOUD HET NETJES BERICHTJE
+			showMessage("server", "Deze livechat wordt gemodereerd! Schelden in de chat kan resulteren in een automatische ban. Tevens kunnen indiviuele berichten worden verwijderd door een moderator.", "0", "Server", -420);
+			livechatWebSocket.send(JSON.stringify({"user_id": user_id, "type": "join"}));
+		});
         livechatWebSocket.addEventListener("message", (chatData) => messageListener(chatData));
         livechatWebSocket.addEventListener("close", () => {
-            //showMessage("Connection has been closed", 0, "Server", -1);
             console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
             setTimeout(() => launchLiveChat(user_id), 1000);
         });
