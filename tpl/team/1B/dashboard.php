@@ -27,7 +27,7 @@
 	</div>
 	<div class="credits neonBlock1B" data-aos="zoom-in-down">
 		<div data-aos="zoom-in-left">
-		<h1>En nu wat woorden van Lennart hemzelf</h1>
+		<h1>En nu wat woorden van Dimitri hemzelf</h1>
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-xs-12 col-sm-6 col-md-4">
