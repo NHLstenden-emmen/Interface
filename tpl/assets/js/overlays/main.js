@@ -288,7 +288,7 @@ const launchOverlayStream = () =>
 {
     if ("WebSocket" in window)
     {
-        var overlaysWebsocket = new WebSocket("ws:/77.162.30.112:49151");
+        var overlaysWebsocket = new WebSocket("ws:/194.171.181.139:49151");
 
           overlaysWebsocket.addEventListener('open', () => {
           document.querySelector("#word1").innerHTML = "connected to ";
