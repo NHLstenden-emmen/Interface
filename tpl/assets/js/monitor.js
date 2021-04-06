@@ -8,7 +8,6 @@ function setUser(Username) {
 }
 
 // Get ip of user
-
 var ipClient = "Unknown";
 $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
     var dataSplit = data.split("\n");
@@ -199,6 +198,20 @@ document.addEventListener('visibilitychange', function() {
 	}
 });
 
+function sendMessageSecond(){
+	const titlePage = document.title;
+	document.addEventListener('visibilitychange', function() {
+		if(document.hidden) {
+			if(readCookie('lang') == 'nl'){
+				document.title = "Haha getrolled!!?!";
+			} else {
+				document.title = "Haha Rick pulled a funny one!?!!";
+			}
+		} else {
+			document.title = titlePage;
+		}
+	});
+}
 
 function readCookie(name) {
     var nameEQ = name + "=";

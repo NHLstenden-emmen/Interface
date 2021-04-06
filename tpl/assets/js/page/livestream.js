@@ -75,7 +75,6 @@ window.addEventListener('resize', () => {
 
 function resizeEmojiPopUp() {
     var newHeight = "calc(" + document.querySelector('#liveChat').style.height +")";
-    console.log(newHeight);
     emojiContainer.style.setProperty('height', newHeight);
 }
 

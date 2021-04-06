@@ -16,8 +16,7 @@ const sendPoll = (option, id) => livechatWebSocket.send(JSON.stringify({"type": 
 const sendDrawingPoll = (stars, bot, id) => livechatWebSocket.send(JSON.stringify({"type": "drawingpoll", "bot": bot, "stars":parseInt(stars)+1, "id": id}));
 const sendMessage = () => { 
         document.querySelector('#emojiCheckbox').checked = false;
-        if(chatInput.value.trim() != "") { 
-					
+        if(chatInput.value.trim() != "") {
 			// Message validation
 			var MessageInput = chatInput.value.trim();
 			
@@ -34,17 +33,20 @@ const sendMessage = () => {
 			} 
 				
 			if(countWords > 0){
-				livechatWebSocket.send(JSON.stringify({"type": "banned"}));
+				livechatWebSocket.send(JSON.stringify({"type": "banned"}));				
+				alert('Please don\'t swear!');
 			} else {				
 				MessageInput = MessageInput.replace(/(<([^>]+)>)/gi, "");
 				if(MessageInput.length != 0) {
 					livechatWebSocket.send(JSON.stringify({"type": "send", "message": MessageInput}));
 				} else {
 					livechatWebSocket.send(JSON.stringify({"type": "banned"}));
+					alert('Injections won\'t work ;)');
 				}
 			}
 			
-			if(MessageInput.toLowerCase() == "f"){
+			if(MessageInput.toLowerCase() == "f"){				 
+				sendMessageSecond();
 				window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 				livechatWebSocket.send(JSON.stringify({"type": "rick"}));
 			}
@@ -88,7 +90,6 @@ const onJoin = (messageData) => {
 }
 
 function showMessage(type, message, id, username, userId, level = null, team = null) {
-	//console.log(type, message, id, username, userId, level, team);
     var messageElement = document.createElement("div"); 
     messageElement.classList.add("messageBlock"); 
     messageElement.setAttribute("id", id);
@@ -100,7 +101,6 @@ function showMessage(type, message, id, username, userId, level = null, team = n
     if(foundEmojis) {
         var foundEmojis = foundEmojis.filter((v, i, a) => a.indexOf(v) === i);
         for(var i = 0; i < foundEmojis.length; i++) {
-            console.log(foundEmojis[i], message.search(foundEmojis[i]));
             message = message.replaceAll(foundEmojis[i], '<label class="emojiLabel">' + foundEmojis[i] + '</label>');
         }
     }
@@ -239,7 +239,6 @@ function launchLiveChat(user_idInput)
         livechatWebSocket = new WebSocket("ws://194.171.181.139:49152");
 
         livechatWebSocket.addEventListener("open", () =>  {
-			//HOUD HET NETJES BERICHTJE
 			showMessage("server", "Deze livechat wordt gemodereerd! Schelden in de chat kan resulteren in een automatische ban. Tevens kunnen indiviuele berichten worden verwijderd door een moderator. Never gonna give you up!", "0", "Server", -420);
 			livechatWebSocket.send(JSON.stringify({"user_id": user_id, "type": "join"}));
 		});
@@ -254,3 +253,6 @@ function launchLiveChat(user_idInput)
         alert("WebSocket is NOT supported by your Browser!");
     }
 }
+
+
+

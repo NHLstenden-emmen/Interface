@@ -1,7 +1,6 @@
 <?php 
 
-$this->Set("extraCSS", '<link rel="stylesheet" href="'.$this->Get("assetsFolder").'/css/page/livestream.css">
-                        <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">');
+$this->Set("extraCSS", '<link rel="stylesheet" href="'.$this->Get("assetsFolder").'/css/page/livestream.css">');
 $this->Set("extraJS", '<script src="'.$this->Get("assetsFolder").'/js/page/livestream.js"></script>
                         <script src="'.$this->Get("assetsFolder").'/js/live/chat.js"></script>
                         <script src="https://unpkg.com/plyr@3.6.4/dist/plyr.min.js"></script>
