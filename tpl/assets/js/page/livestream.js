@@ -133,3 +133,21 @@ function setupEmojis(emojis) {
     });
 }
 
+/* Toggle information */
+$(document).ready(function () {
+	$(".infoBox").click(function(){
+		$(".infoModalBox").toggleClass("showInformation");
+		$(".infoModalBox").toggleClass("hideInformation");			
+		var newHeightInfo = $(".gamesInfo").height();	
+		$(".showInformation").height(newHeightInfo+200);
+  	});
+	$(".closeInfo").click(function(){		
+		$(".infoModalBox").toggleClass("hideInformation");
+		$(".infoModalBox").toggleClass("showInformation");
+  	});
+	$(window).on('resize', function(){
+		var newHeightInfo = $(".gamesInfo").height();
+		$(".showInformation").height(newHeightInfo+200);
+	});
+});
+
