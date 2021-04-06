@@ -10,9 +10,6 @@ const typeMessage = () => {
     }
 }
 
-$.getJSON('http://robotv.serverict.nl/api?data=bannedWords', (data) => {
-	blockedWords = data;
-});
 //Senders
 const sendDelete = (id) =>  livechatWebSocket.send(JSON.stringify({"type": "delete", "id": id}));
 const sendPoll = (option, id) => livechatWebSocket.send(JSON.stringify({"type": "poll", "option": option, "id": id}));
@@ -33,15 +30,18 @@ const sendMessage = () => {
 				if(blockedWords.includes(MessageWords[i])){
 					countWords++;
 					livechatWebSocket.send(JSON.stringify({"type": "banned"}));
-				} else if(!blockedWords.includes(MessageWords[i])) {
-					countWords = 0;
 				}
 			} 
 				
 			if(countWords > 0){
 				livechatWebSocket.send(JSON.stringify({"type": "banned"}));
 			} else {				
-				livechatWebSocket.send(JSON.stringify({"type": "send", "message": MessageInput}));
+				MessageInput = MessageInput.replace(/(<([^>]+)>)/gi, "");
+				if(MessageInput.length != 0) {
+					livechatWebSocket.send(JSON.stringify({"type": "send", "message": MessageInput}));
+				} else {
+					livechatWebSocket.send(JSON.stringify({"type": "banned"}));
+				}
 			}
 			
 			if(MessageInput.toLowerCase() == "f"){
@@ -88,7 +88,7 @@ const onJoin = (messageData) => {
 }
 
 function showMessage(type, message, id, username, userId, level = null, team = null) {
-	console.log(type, message, id, username, userId, level, team);
+	//console.log(type, message, id, username, userId, level, team);
     var messageElement = document.createElement("div"); 
     messageElement.classList.add("messageBlock"); 
     messageElement.setAttribute("id", id);
@@ -131,9 +131,10 @@ function showMessage(type, message, id, username, userId, level = null, team = n
     }
     
     var youAreMod = (localStorage.getItem("level") == 2);
+
     messageHTML = `
     <p class="message `+ type +`">
-        ` + message + `
+        ` + document.createTextNode(message).nodeValue + `
         ` + (youAreMod ? (userId != -420) ? `<i class="far fa-trash-alt" onclick="javascript:sendDelete(`+ id +`)"></i>` : "" : "") + `
     </p>
     `;
@@ -228,6 +229,10 @@ function messageListener(chatData) {
 
 function launchLiveChat(user_idInput)
 {
+	$.getJSON('http://robotv.serverict.nl/api?data=bannedWords', (data) => {
+		blockedWords = data;
+	});
+	
     if ("WebSocket" in window)
     {
         user_id = user_idInput;
@@ -235,7 +240,7 @@ function launchLiveChat(user_idInput)
 
         livechatWebSocket.addEventListener("open", () =>  {
 			//HOUD HET NETJES BERICHTJE
-			showMessage("server", "Deze livechat wordt gemodereerd! Schelden in de chat kan resulteren in een automatische ban. Tevens kunnen indiviuele berichten worden verwijderd door een moderator.", "0", "Server", -420);
+			showMessage("server", "Deze livechat wordt gemodereerd! Schelden in de chat kan resulteren in een automatische ban. Tevens kunnen indiviuele berichten worden verwijderd door een moderator. Never gonna give you up!", "0", "Server", -420);
 			livechatWebSocket.send(JSON.stringify({"user_id": user_id, "type": "join"}));
 		});
         livechatWebSocket.addEventListener("message", (chatData) => messageListener(chatData));
