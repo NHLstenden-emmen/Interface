@@ -68,10 +68,11 @@ if(isset($_POST['regSubmit']))
                         else if($regAntwoord == 4)
                         {
 							$verificationLink = "http://robotv.serverict.nl/login?verificationKey=".$verificationKey;
-							$message = 'Hello '.$voorNaam.' '.$achterNaam.',<br><br>';
+							$message = "<html bgcolor='#0F0F0F'><body bgcolor='#0F0F0F'><style>*{font-family: sans-serif; color: white; font-weight: bold;} body{padding: 25px;} a{color: white !important;}</style>";
+							$message .= 'Hello '.$voorNaam.' '.$achterNaam.',<br><br>';
 							$message .= 'Please activate your account by pressing this link: <a href="'.$verificationLink.'">Verify me!</a><br><br>';
 							$message .= 'Greetings from the <br><a style="color: black;" href="https://youtu.be/dQw4w9WgXcQ">RoboTV Team</a>';
-							
+							$message .= "</body></html>";
  							if($mailer->send($regEmail, 'Verification RoboTV', $message, $username = '')){
 								$core->Redirect("/?check=verifyaccount");
 							} else {

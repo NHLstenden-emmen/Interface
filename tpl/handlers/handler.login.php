@@ -76,7 +76,7 @@ if(isset($_POST['loginSubmit']))
 					$loginKey = time();
 					$core->setCookie("loginKey", $loginKey);
 					$DB->Update("UPDATE users SET loginKey = ?, lastIp = ? WHERE email = ?", [$loginKey, $core->getUserIP(), $loginEmail]);
-                   $core->Redirect("/");
+					$core->Redirect("/");
                 break;
             }
          }
