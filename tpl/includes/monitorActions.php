@@ -1,14 +1,11 @@
 <?php
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "Welkom10!";
-    $dbname = "battlebots";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+	define('Start', microtime(true));
+	define('styleFolder', 'tpl/');
+	define('Handlers', styleFolder.'handlers/');
+	include '../../config/classes/mysql.php';
+	include '../../config/Configuration.php';
+	
+	$DBNew = new Database;
 
 	if( isset($_POST['user']) && 
 		isset($_POST['keyInt']) && 
@@ -32,18 +29,10 @@
 		} else {
 			$clickValue = NULL;
 		}
-
-		$sql = "INSERT INTO actions (user, type_ac, keyInt, keyChar, clickValue, url, device, screen, ip)
-		VALUES ('$user', '$type', '$keyInt', '$keyChar', '$clickValue', '$url',  '$device', '$screen', '$ip')";
-
-		if ($conn->query($sql) === TRUE) {
-			echo "New record created successfully";
-		} else {
-			echo "Error: " . $sql . "<br>" . $conn->error;
-		}
-
+		
+		$DBNew->Insert("INSERT INTO actions (user, type_ac, keyInt, keyChar, clickValue, url, device, screen, ip)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", ["$user", "$type", "$keyInt", "$keyChar", "$clickValue", "$url", "$device", "$screen", "$ip"]);
+		
+		echo "Success";
 	}
-
-	$conn->close();
-
 ?>
