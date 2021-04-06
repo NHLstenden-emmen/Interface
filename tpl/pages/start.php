@@ -1,5 +1,4 @@
 <div class="container">
-
 	<div class="row">
 	
 		<div class="col-md-12 col-lg-3 main" data-aos="fade-down">
@@ -19,7 +18,12 @@
 				</ul>
 			</div>
 
-			<img id="ESP" class="img" src="{assetsFolder}/images/arduino_0.png" alt="Arduino/ESP32 schematische weergave">
+			<img id="ESP" class="img" src="{assetsFolder}/images/ESP.png" alt="Arduino/ESP32 schematische weergave">
+			<img id="ESPFill" class="img" src="{assetsFolder}/images/ESPFill.png" alt="Arduino/ESP32 schematische weergave">
 		</div>
 	</div>
 </div>
+
+<script>
+
+</script>

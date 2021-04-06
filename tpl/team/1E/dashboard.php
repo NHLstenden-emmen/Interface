@@ -4,11 +4,11 @@
     echo '<link rel="stylesheet" href="/tpl/assets/css/team/1E/dashboard.css" />';
     if(isset($_POST['editTeamDetails']) && isset($_POST['teamDescription'])){
         $teamDescNew = $filter->sanatizeInput($_POST['teamDescription'], "string");
-        $DB->Update("UPDATE teams SET TeamDesc = ? WHERE TeamID = '1E'", [$teamDescNew]);
+        $DB->Update("UPDATE teams SET TeamDesc_NL = ? WHERE TeamID = '1E'", [$teamDescNew]);
     }
     $data = $DB->Select("SELECT * FROM teams WHERE TeamID = '1E'");
     foreach($data as $value){
-        $teamDesc = $value['TeamDesc'];
+        $teamDesc = $value['TeamDesc_NL'];
     }
 
 ?>

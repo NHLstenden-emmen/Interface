@@ -18,13 +18,13 @@
 							$robotNameNew = $filter->sanatizeInput($_POST['robotName'], "string");
 							$teamDescNew = $filter->sanatizeInput($_POST['teamDescription'], "string");
 							//update
-							$DB->Update("UPDATE teams SET RobotName = ?, TeamDesc = ? WHERE TeamId = '1A'", [$robotNameNew, $teamDescNew]);
+							$DB->Update("UPDATE teams SET RobotName = ?, TeamDesc_NL = ? WHERE TeamId = '1A'", [$robotNameNew, $teamDescNew]);
 						}
 						//Data ophalen
 						$data = $DB->Select("SELECT * FROM teams WHERE teamID = '1A'");
 						foreach($data as $value)
 						{
-							$teamDesc = $value['TeamDesc'];
+							$teamDesc = $value['TeamDesc_NL'];
 							$robotName = $value['RobotName'];
 						}
 						echo $robotName; 
