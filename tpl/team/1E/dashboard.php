@@ -10,6 +10,11 @@
     foreach($data as $value){
         $teamDesc = $value['TeamDesc_NL'];
     }
+	
+	if (isset($_GET['ready'])) {
+		var_dump($socket->sendStartToBot("ROBot Jetten"));
+	}
+
 
 ?>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
