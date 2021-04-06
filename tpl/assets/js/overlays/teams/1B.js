@@ -5,19 +5,11 @@ const hideDimitri = () => {
 		$("#Dimitrivideo").addClass("hideDimitri");
 		DimitriDance.pause();
 		DimitriDance.currentTime = 0;
-		removeDimitri();
-	}, 5000);
-};
-
-const removeDimitri = () => {
-	setTimeout(function () {
-		$("#Dimitrivideo").removeClass("hideDimitri");
-		DimitriDance.pause();
-		DimitriDance.currentTime = 0;
-	}, 1000);
+	}, 9000);
 };
 
 const readyBot1B = () => {
+	$("#Dimitrivideo").removeClass("hideDimitri");
 	$("#Dimitrivideo").addClass("showDimitri");
 	DimitriDance.play();
 	hideDimitri();
