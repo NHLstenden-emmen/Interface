@@ -16,6 +16,13 @@
 		<!-- Google -->
 		<script src="https://www.google.com/recaptcha/api.js?render=6Lf47ZUaAAAAACWNEMMuL7uheIoWYWdKoJv93Re9"></script>
 		<meta name="google-site-verification" content="ykgB0fd2VeVX-3ckIWfv4TFRFXroGcX8h7zfEd-bnj0" />
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-G6M87EXP59"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-G6M87EXP59');
+		</script>
 
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="{assetsFolder}/css/main/bootstrap.min.css">
