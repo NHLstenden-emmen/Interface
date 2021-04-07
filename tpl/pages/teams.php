@@ -37,12 +37,15 @@
 	
             <!-- Team A -->
             <?php
-				if(isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' || $_COOKIE['lang'] == 'nl'){
-					$langTeamDesc = "TeamDesc_" . strtoupper($_COOKIE['lang']);
-				} else {
-					$langTeamDesc = "TeamDesc_NL";
-				}
-			
+                if(isset($_COOKIE['lang'])){
+                    if($_COOKIE['lang'] == 'en' || $_COOKIE['lang'] == 'nl'){
+                        $langTeamDesc = "TeamDesc_" . strtoupper($_COOKIE['lang']);
+                    } else {
+                        $langTeamDesc = "TeamDesc_NL";
+                    }
+                } else {
+                    $langTeamDesc = "TeamDesc_NL";
+                }
                 // Load description team A
                 $A_TeamInfo = $DB->Select("SELECT * FROM teams WHERE TeamID = '1A' LIMIT 1", "");
                 foreach($A_TeamInfo as $row){
@@ -165,9 +168,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </div>
