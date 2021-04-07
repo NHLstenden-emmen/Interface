@@ -136,6 +136,14 @@ iframe {
 }
 
 #contentPages{
+	position: relative;
+}
+
+@media only screen and (max-width: 740px) {
+	#contentPages{
+		padding-bottom: 150px;
+	}
+
 }
 
 /* Button styling */
