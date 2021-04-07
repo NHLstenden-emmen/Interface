@@ -1,6 +1,6 @@
-    <footer>
-        <a href="disclaimer">Disclaimer</a>
-        <a href="privacypolicy">Privacy Policy</a>
+    <footer class="mt-auto">
+        <a href="disclaimer">Disclaimer</a> |
+        <a href="privacypolicy">Privacy Policy</a> |
         <a href="termsofuse">Terms of use</a>
     </footer>
 
