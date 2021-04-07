@@ -2232,7 +2232,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `voornaam`, `achternaam`, `team`, `level`, `lang`, `lastIp`, `loginKey`, `verificationKey`, `deleted_at`) VALUES
 (1, 'feike', '$2y$10$W.WN38E.s7H9Mnd.6/Ycou38cnweFtc04FCmB3GW9PZMlR8IH8Tdq', 'Feike', ' Falkena', '1E', 2, 'nl', '141.0.29.254', '1617743711', '', NULL),
-(2, 'remco', '$2y$10$W.WN38E.s7H9Mnd.6/Ycou38cnweFtc04FCmB3GW9PZMlR8IH8Tdq', 'Remco', 'Hassing', '1C', 2, 'nl', '192.168.2.254', '1617608945', '', NULL);
+(2, 'remco', '$2y$10$W.WN38E.s7H9Mnd.6/Ycou38cnweFtc04FCmB3GW9PZMlR8IH8Tdq', 'Remco', 'Hassing', '1C', 2, 'nl', '192.168.2.254', '1617608945', '', NULL),
 (3, 'kevin.smulders@student.nhlstenden.com', '$2y$10$cujvh9UZ.NmPIj6rdFY5veYhuzEhVM9fvrXhgV35sbiCm6C/0urVi', 'Kevin', 'Smulders', '1B', 2, 'nl', '127.0.0.1', '1617786140', '', NULL);
 
 --
