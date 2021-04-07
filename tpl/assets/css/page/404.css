@@ -1,0 +1,102 @@
+#errorPage {
+	height: calc(100vh - 210px);
+}
+.numbers {
+	text-align: center;
+}
+
+.number {
+	position: relative;
+	display: inline-block;
+	width: 150px;
+	transform: translateX(60%);
+}
+
+.four {
+	position: relative;
+	width: 30px;
+	height: 200px;
+	border: 1px solid var(--buttonColor);
+	box-shadow: 0 0 10px var(--buttonColor);
+}
+.four::before,
+.four::after {
+	content: "";
+	position: absolute;
+	border: 1px solid var(--buttonColor);
+	box-shadow: 0 0 10px var(--buttonColor);
+}
+.four::before {
+	top: 40%;
+	right: -1rem;
+	width: 120px;
+	height: 30px;
+}
+.four::after {
+	top: 0;
+	left: -60px;
+	width: 30px;
+	height: 130px;
+}
+
+.zero {
+	position: relative;
+	width: 30px;
+	height: 200px;
+	border: 1px solid var(--buttonColor);
+	box-shadow: 0 0 10px var(--buttonColor);
+}
+.zero span {
+	position: absolute;
+	top: 0;
+	left: -60px;
+	width: 30px;
+	height: 200px;
+	border: 1px solid var(--buttonColor);
+	box-shadow: 0 0 10px var(--buttonColor);
+}
+.zero::before,
+.zero::after {
+	content: "";
+	position: absolute;
+	border: 1px solid var(--buttonColor);
+	box-shadow: 0 0 10px var(--buttonColor);
+}
+.zero::before {
+	top: 1rem;
+	right: -1rem;
+	width: 120px;
+	height: 30px;
+}
+.zero::after {
+	bottom: 1rem;
+	right: -1rem;
+	width: 120px;
+	height: 30px;
+}
+
+.text {
+	position: relative;
+	padding-top: 6rem;
+	text-align: center;
+	font-size: 1.125em;
+}
+.text a {
+	color: var(--buttonColor);
+}
+.text::before {
+	content: "";
+	position: absolute;
+	top: 4rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 6rem;
+	height: 1px;
+	background-image: repeating-linear-gradient(
+		to left,
+		rgba(0, 0, 0, 0.35) 0,
+		rgba(0, 0, 0, 0.35) 0.5rem,
+		transparent 0.5rem,
+		transparent 1rem
+	);
+}
