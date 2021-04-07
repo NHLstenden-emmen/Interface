@@ -40,7 +40,7 @@ DiffCamEngine.init({
 	captureCallback: capture
 });
 
-DiffCamEngine.setScoreThreshold(1000);
+DiffCamEngine.setScoreThreshold(700);
 
 const websocketConnect = (() => { 
 	websocket = new WebSocket("ws://194.171.181.139:49151");
