@@ -67,7 +67,7 @@
 	font-family: 'Lexend', sans-serif;
 	font-weight: normal;
 	color: white;
-	
+
 	--primaryColor: #e0e0e0;
 	--secondaryColor: #818181;
 	--dark: rgb(15, 15, 15);
@@ -553,18 +553,34 @@ p.blink {
   border: 0;
 }
 
-/* Teaminfo blok */
+/* Aanpassen beschrijving */
 
-#block8 textarea {
-  color: red;
+.editDescription textarea {
+  width: 100% !important;
+  height: 300px;
 }
 
-#block8 #robotName {
-  color: red;
+/* Commmands */
+
+.buttonLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
 }
 
-#block8 input[type="submit"] {
-  color: red;
+.buttonLayout > div{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+
+}
+
+#block2 .button {
+  width: 175px;
+
 }
 
 /* Ultra Jetten Cyborg */
