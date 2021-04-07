@@ -1,3 +1,4 @@
+<div class="container">
 <h2>Website Terms of Use</h2>
 
 <p>Version 1.0</p>
@@ -136,3 +137,5 @@ Dispute Resolution. Please read this Arbitration Agreement carefully. It is part
 <h2>Contact Information</h2>
 
 <p>Address: NHLstenden Emmen</p>
+<br><br><br><br>
+</div>

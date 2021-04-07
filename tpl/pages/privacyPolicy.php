@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Privacy Policy for BattleBots</h1>
 
 <p>At RoboTV, accessible from http://robotv.serverict.nl/, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by RoboTV and how we use it.</p>
@@ -56,3 +57,6 @@
 <h2>Consent</h2>
 
 <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.</p>
+<br><br>
+<br><br>
+</div>

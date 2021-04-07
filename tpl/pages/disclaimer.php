@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Disclaimer for BattleBots</h1>
 
 <h2>Disclaimers for RoboTV</h2>
@@ -15,3 +16,5 @@
 <h2>Update</h2>
 
 <p>Should we update, amend or make any changes to this document, those changes will be prominently posted here.</p>
+<br><br><br><br>
+</div>
