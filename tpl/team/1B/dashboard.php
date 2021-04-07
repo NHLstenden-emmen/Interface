@@ -1,6 +1,22 @@
 <div id="dashboard">
 	<div class="liveFeed neonBlock1B" data-aos="zoom-in-down">
-		<h1>liveFeed</h1>
+		<div class="videoBlock">
+			<video id="livestreamVideo" poster="{assetsFolder}/images/poster.png">
+				Je browser ondersteunt geen HTML5 video's.
+			</video>
+			<div class="videoDetails">
+				<div class="videoUpload">
+					<span class="videoTitle">Race</span>
+					<span><i class="far fa-eye"></i>&nbsp;<span id="viewerCounter">0</span></span>
+				</div>
+				<div class="videoCamera">
+					<button class="button small" onclick="cameraChange('dome')"><i
+							class="fas fa-video"></i>&nbsp;&nbsp;1</button>
+					<button class="button small" onclick="cameraChange('stream')"><i
+							class="fas fa-video"></i>&nbsp;&nbsp;2</button>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="startGame neonBlock1B" data-aos="zoom-in-down">
 		<h1>start the games</h1>
