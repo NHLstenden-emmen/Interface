@@ -3,6 +3,7 @@
 <table>
     <thead>
         <tr>
+			<th><i class="fas fa-user-check"></i></th>
             <th>Level</th>
             <th>Naam</th>
             <th>Email</th>

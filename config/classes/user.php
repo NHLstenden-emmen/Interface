@@ -49,15 +49,17 @@ class User
 		$email 		= strtolower($filter->sanatizeInput($email, 'email'));
 		$password 	= $filter->sanatizeInput($password, 'string');
 
-		$userInfo 	= $DB->Select("SELECT * FROM users WHERE email = ? AND verificationKey = '' LIMIT 1",[$email]);
-
+		$userInfo 	= $DB->Select("SELECT * FROM users WHERE email = ? LIMIT 1",[$email]);
+		
 		if (empty($userInfo)) return 1;
+		
+		if (!empty($userInfo[0]['verificationKey'])) return 2;
 
-		if (!password_verify($password, $userInfo[0]['password'])) return 2;
+		if (!password_verify($password, $userInfo[0]['password'])) return 3;
 
 		$_SESSION['email'] = $email;
 
-		return 4;
+		return 5;
 	}
 	
 	function generateVerificationKey($randomString = '')
@@ -86,7 +88,8 @@ class User
 
 		$emailLijst = [
 			'student.nhlstenden.com',
-			'nhlstenden.com'
+			'nhlstenden.com',
+			'srv1.mail-tester.com'
 		];
 		
 		$emailDomein = explode("@", $regEmail)[1];

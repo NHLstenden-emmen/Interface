@@ -75,7 +75,6 @@ window.addEventListener('resize', () => {
 
 function resizeEmojiPopUp() {
     var newHeight = "calc(" + document.querySelector('#liveChat').style.height +")";
-    console.log(newHeight);
     emojiContainer.style.setProperty('height', newHeight);
 }
 
@@ -133,4 +132,22 @@ function setupEmojis(emojis) {
         emojiContainer.appendChild(cato);
     });
 }
+
+/* Toggle information */
+$(document).ready(function () {
+	$(".infoBox").click(function(){
+		$(".infoModalBox").toggleClass("showInformation");
+		$(".infoModalBox").toggleClass("hideInformation");			
+		var newHeightInfo = $(".gamesInfo").height();	
+		$(".showInformation").height(newHeightInfo+200);
+  	});
+	$(".closeInfo").click(function(){		
+		$(".infoModalBox").toggleClass("hideInformation");
+		$(".infoModalBox").toggleClass("showInformation");
+  	});
+	$(window).on('resize', function(){
+		var newHeightInfo = $(".gamesInfo").height();
+		$(".showInformation").height(newHeightInfo+200);
+	});
+});
 

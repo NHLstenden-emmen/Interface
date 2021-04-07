@@ -1,10 +1,20 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+/*
+require '../../../config/classes/socket.php';
+$socket = new ServerConnection(49153, "194.171.181.139");
+*/
+
+
+define('Start', microtime(true));
+define('styleFolder', 'tpl/');
+define('Handlers', styleFolder.'handlers/');
 
 include '../../../config/classes/socket.php';
-$socket = new ServerConnection(49153, "194.171.181.139");
+include '../../../config/Configuration.php';
+
+if($socket = new ServerConnection(Config::$serverPort, Config::$serverIP)){
+	echo "Yus > Nieuwe socket werkt i guess <br>";
+}
 
 if(isset($_GET['action'])){
 
@@ -71,5 +81,16 @@ if(isset($_GET['action'])){
     // Send Data
     print_r($socket->sendToBot($bot, $command));
 }
+
+
+    // Ready
+	
+	//PROBLEEM (PAGINA BLIJFT LADEN) BIJ VERSTUREN VAR_DUMP regel 94, dus zonder post etc.
+	//http://robotv.serverict.nl/tpl/team/1E/sendData.php 
+	
+	
+	// TESTCASE - SEND START TO BOT (connectie werkt en al maar blijft laden)
+	$bot = "ROBot Jetten";
+	var_dump($socket->sendStartToBot($bot))
 
 ?>

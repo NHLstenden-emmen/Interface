@@ -5,7 +5,12 @@
 
     $gebuikerResultView = "";
     foreach($gebuikerResult as $key => $value)  {
-        $gebuikerResultView .= "<tr>
+        $gebuikerResultView .= "<tr>";
+		if(!empty($value['verificationKey'])) {
+			$gebuikerResultView .= "<td data-label='level' class='link' data-link='/moderator/users/activate/{$value["user_id"]}'><i class='fas fa-check'></i></td>";
+		} else $gebuikerResultView .= "<td data-label='level'></td>";
+ 
+			$gebuikerResultView .= "
                 <td data-label='level'>{$user->userLevel($value['user_id'])}</td>
                 <td data-label='naam'>".$value['voornaam']." ".$value['achternaam']. "</td>
                 <td data-label='email'>".$value['email']."</td>

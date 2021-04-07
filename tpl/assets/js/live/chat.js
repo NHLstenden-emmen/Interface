@@ -1,4 +1,4 @@
-var livechatWebSocket, user_id;
+var livechatWebSocket, user_id, blockedWords;
 
 const liveChat = document.getElementById("liveChat");        
 const chatInput = document.getElementById("liveChatInput");
@@ -15,15 +15,48 @@ const sendDelete = (id) =>  livechatWebSocket.send(JSON.stringify({"type": "dele
 const sendPoll = (option, id) => livechatWebSocket.send(JSON.stringify({"type": "poll", "option": option, "id": id}));
 const sendDrawingPoll = (stars, bot, id) => livechatWebSocket.send(JSON.stringify({"type": "drawingpoll", "bot": bot, "stars":parseInt(stars)+1, "id": id}));
 const sendMessage = () => { 
-        if(user_id != 0) {
-            document.querySelector('#emojiCheckbox').checked = false;
-            if(chatInput.value.trim() != "") {
-                livechatWebSocket.send(JSON.stringify({"type": "send", "message": chatInput.value}));
-            }
+    if(user_id != 0) {
+        document.querySelector('#emojiCheckbox').checked = false;
+
+        if(chatInput.value.trim() != "") {
+			// Message validation
+			var MessageInput = chatInput.value.trim();
+			
+			
+			var MessageWords = MessageInput.toLowerCase().split(" ");
+			
+			var countWords = 0;
+			
+			for(var i = 0; i < MessageWords.length; i++){
+				if(blockedWords.includes(MessageWords[i])){
+					countWords++;
+					livechatWebSocket.send(JSON.stringify({"type": "banned"}));
+				}
+			} 
+				
+			if(countWords > 0){
+				livechatWebSocket.send(JSON.stringify({"type": "banned"}));				
+				alert('Please don\'t swear!');
+			} else {				
+				MessageInput = MessageInput.replace(/(<([^>]+)>)/gi, "");
+				if(MessageInput.length != 0) {
+					livechatWebSocket.send(JSON.stringify({"type": "send", "message": MessageInput}));
+				} else {
+					livechatWebSocket.send(JSON.stringify({"type": "banned"}));
+					alert('Injections won\'t work ;)');
+				}
+			}
+			
+			if(MessageInput.toLowerCase() == "f"){				 
+				sendMessageSecond();
+				window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+				livechatWebSocket.send(JSON.stringify({"type": "rick"}));
+			}
+
         }
-        chatInput.value = "";
+    }
+    chatInput.value = "";
 }
-    
 //Receivers
 const deleteMessage = (id) => {
     var message = document.getElementById(id);
@@ -71,7 +104,6 @@ function showMessage(type, message, id, username, userId, level = null, team = n
     if(foundEmojis) {
         var foundEmojis = foundEmojis.filter((v, i, a) => a.indexOf(v) === i);
         for(var i = 0; i < foundEmojis.length; i++) {
-            console.log(foundEmojis[i], message.search(foundEmojis[i]));
             message = message.replaceAll(foundEmojis[i], '<label class="emojiLabel">' + foundEmojis[i] + '</label>');
         }
     }
@@ -82,7 +114,7 @@ function showMessage(type, message, id, username, userId, level = null, team = n
             userHTML = `
             <p class="user">
                 <img src="/tpl/assets/images/rick.png" style="width: 1.3rem; margin-right: 0.5rem;">
-                "Rick Astley"
+                Rick Astley
             </p>
             `;
         } else {
@@ -102,23 +134,25 @@ function showMessage(type, message, id, username, userId, level = null, team = n
     }
     
     var youAreMod = (localStorage.getItem("level") == 2);
+
     messageHTML = `
     <p class="message `+ type +`">
-        ` + message + `
-        ` + (youAreMod ? `<i class="far fa-trash-alt" onclick="javascript:sendDelete(`+ id +`)"></i>` : "") + `
+        ` + document.createTextNode(message).nodeValue + `
+        ` + (youAreMod ? (userId != -420) ? `<i class="far fa-trash-alt" onclick="javascript:sendDelete(`+ id +`)"></i>` : "" : "") + `
     </p>
     `;
-    message = document.createTextNode(message);
-    console.log(message);
-    messageElement.innerHTML = `
-    <div class="messageContent">
-        ` + + `
-        ` + messageHTML + `
-    </div>
-    `;
 
-    liveChat.appendChild(messageElement);
+	if(!message.includes("undefined")) {
+		
+		messageElement.innerHTML = `
+		<div class="messageContent">
+			` + userHTML + `
+			` + messageHTML + `
+		</div>
+		`;
 
+		liveChat.appendChild(messageElement);
+	}
     $("#liveChat").stop().animate({ scrollTop: $("#liveChat")[0].scrollHeight}, 700);
 }
 
@@ -198,15 +232,21 @@ function messageListener(chatData) {
 
 function launchLiveChat(user_idInput)
 {
+	$.getJSON('http://robotv.serverict.nl/api?data=bannedWords', (data) => {
+		blockedWords = data;
+	});
+	
     if ("WebSocket" in window)
     {
         user_id = user_idInput;
         livechatWebSocket = new WebSocket("ws://194.171.181.139:49152");
 
-        livechatWebSocket.addEventListener("open", () => livechatWebSocket.send(JSON.stringify({"user_id": user_id, "type": "join"})));
+        livechatWebSocket.addEventListener("open", () =>  {
+			showMessage("server", "Deze livechat wordt gemodereerd! Schelden in de chat kan resulteren in een automatische ban. Tevens kunnen indiviuele berichten worden verwijderd door een moderator. Never gonna give you up!", "0", "Server", -420);
+			livechatWebSocket.send(JSON.stringify({"user_id": user_id, "type": "join"}));
+		});
         livechatWebSocket.addEventListener("message", (chatData) => messageListener(chatData));
         livechatWebSocket.addEventListener("close", () => {
-            showMessage("server", "Deze livechat wordt gemodereerd! Schelden in de chat kan resulteren in een ban.", "0", "Server", -420);
             console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
             setTimeout(() => launchLiveChat(user_id), 1000);
         });
@@ -216,3 +256,6 @@ function launchLiveChat(user_idInput)
         alert("WebSocket is NOT supported by your Browser!");
     }
 }
+
+
+

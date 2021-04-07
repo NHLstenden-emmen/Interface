@@ -40,7 +40,7 @@ p {
 	color: #d92626;
 }
 .neonBlock {
-	background-color: black;
+	background-color: rgba(15, 15, 15, 0.7);
 	margin: 25px 0;
 }
 
@@ -73,7 +73,7 @@ input, textarea {
   transform-style: preserve-3d;
   width: 100%;
   padding: 0rem 5rem;
-  background-color: black;
+  background-color: rgba(15, 15, 15, 0.7);
 }
 
 .brokko {

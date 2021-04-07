@@ -11,7 +11,20 @@
             <input type="email" name="regEmail" placeholder="{EMAIL}" required><br />
             <input type="password" name="regPass1" placeholder="{WACHTWOORD}" required><br />
             <input type="password" name="regPass2" placeholder="{HERHAAL_WACHTWOORD}" required><br />
+			<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
             <button class="button" name="regSubmit" type="submit">{REGISTER}</button>
         </form>
     </div>
 </div>
+
+<script>
+    grecaptcha.ready(function() {
+    // do request for recaptcha token
+    // response is promise with passed token
+        grecaptcha.execute('6Lf47ZUaAAAAACWNEMMuL7uheIoWYWdKoJv93Re9', {action:'register'})
+                  .then(function(token) {
+            // add token value to form
+            document.getElementById('g-recaptcha-response').value = token;
+        });
+    });
+</script>

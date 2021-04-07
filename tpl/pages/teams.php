@@ -34,14 +34,23 @@
         <h3>{TEAMS_INTRODUCING}</h3>
 
         <div class="row">
-
+	
             <!-- Team A -->
             <?php
+                if(isset($_COOKIE['lang'])){
+                    if($_COOKIE['lang'] == 'en' || $_COOKIE['lang'] == 'nl'){
+                        $langTeamDesc = "TeamDesc_" . strtoupper($_COOKIE['lang']);
+                    } else {
+                        $langTeamDesc = "TeamDesc_NL";
+                    }
+                } else {
+                    $langTeamDesc = "TeamDesc_NL";
+                }
                 // Load description team A
                 $A_TeamInfo = $DB->Select("SELECT * FROM teams WHERE TeamID = '1A' LIMIT 1", "");
                 foreach($A_TeamInfo as $row){
                     $A_RobotName = $row['RobotName'];
-                    $A_TeamDesc = $row['TeamDesc'];
+                    $A_TeamDesc = $row[$langTeamDesc];
                 }
             ?>
             <div class="col-sm-12 teamBlock" id="teamA" data-aos="fade-up">
@@ -66,7 +75,7 @@
                 $B_TeamInfo = $DB->Select("SELECT * FROM teams WHERE TeamID = '1B' LIMIT 1", "");
                 foreach($B_TeamInfo as $row){
                     $B_RobotName = $row['RobotName'];
-                    $B_TeamDesc = $row['TeamDesc'];
+                    $B_TeamDesc = $row[$langTeamDesc];
                 }
             ?>
             <div class="col-sm-12 teamBlock" id="teamB" data-aos="fade-up">
@@ -91,7 +100,7 @@
                 $C_TeamInfo = $DB->Select("SELECT * FROM teams WHERE TeamID = '1C' LIMIT 1", "");
                 foreach($C_TeamInfo as $row){
                     $C_RobotName = $row['RobotName'];
-                    $C_TeamDesc = $row['TeamDesc'];
+                    $C_TeamDesc = $row[$langTeamDesc];
                 }
             ?>
             <div class="col-sm-12 teamBlock" id="teamC" data-aos="fade-up">
@@ -116,7 +125,7 @@
                 $D_TeamInfo = $DB->Select("SELECT * FROM teams WHERE TeamID = '1D' LIMIT 1", "");
                 foreach($D_TeamInfo as $row){
                     $D_RobotName = $row['RobotName'];
-                    $D_TeamDesc = $row['TeamDesc'];
+                    $D_TeamDesc = $row[$langTeamDesc];
                 }
             ?>
             <div class="col-sm-12 teamBlock" id="teamD" data-aos="fade-up">
@@ -141,7 +150,7 @@
                 $E_TeamInfo = $DB->Select("SELECT * FROM teams WHERE TeamID = '1E' LIMIT 1", "");
                 foreach($E_TeamInfo as $row){
                     $E_RobotName = $row['RobotName'];
-                    $E_TeamDesc = $row['TeamDesc'];
+                    $E_TeamDesc = $row[$langTeamDesc];
                 }
             ?>
             <div class="col-sm-12 teamBlock" id="teamE" data-aos="fade-up">
@@ -159,11 +168,6 @@
                     </div>
                 </div>
             </div>
-
-
-
         </div>
-
     </div>
-
 </div>

@@ -12,4 +12,8 @@
 
 	$this->Set("wordList", $bannedWords); 
 	
+	if(isset($_POST['ban_word'])){
+		$DB->Insert("INSERT INTO security (Type, Value) VALUES ('ban_word', ?)", [$_POST['ban_word']]);
+	}
+	
 ?>

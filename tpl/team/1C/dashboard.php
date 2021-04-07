@@ -16,14 +16,14 @@
 				$brokkoBot = $filter->sanatizeInput($_POST['brokkoBot'], "string");
 				$teamDescNew = $filter->sanatizeInput($_POST['teamDescription'], "string");
 
-				$DB->Update("UPDATE teams SET RobotName = ?, TeamDesc = ? WHERE TeamId = '1C'", [$robotNameNew, $teamDescNew]);
+				$DB->Update("UPDATE teams SET RobotName = ?, TeamDesc_NL = ? WHERE TeamId = '1C'", [$robotNameNew, $teamDescNew]);
 			}
 		}
 	}
 
 	$data = $DB->Select("SELECT * FROM teams WHERE teamID = '1C'")[0];
 	$this->Set("robotnaam" , $data['RobotName']);
-	$this->Set("TeamDesc" , $data['TeamDesc']);
+	$this->Set("TeamDesc" , $data['TeamDesc_NL']);
 
 ?>
 <div class="container">

@@ -2,14 +2,24 @@
 <?php
 
     echo '<link rel="stylesheet" href="/tpl/assets/css/team/1E/dashboard.css" />';
-    if(isset($_POST['editTeamDetails']) && isset($_POST['teamDescription'])){
-        $teamDescNew = $filter->sanatizeInput($_POST['teamDescription'], "string");
-        $DB->Update("UPDATE teams SET TeamDesc = ? WHERE TeamID = '1E'", [$teamDescNew]);
+    if(isset($_POST['teamDescription_NL'])){
+        $teamDescNew = $filter->sanatizeInput($_POST['teamDescription_NL'], "string");
+        $DB->Update("UPDATE teams SET TeamDesc_NL = ? WHERE TeamID = '1E'", [$teamDescNew]);
     }
+    if(isset($_POST['teamDescription_EN'])){
+          $teamDescNew = $filter->sanatizeInput($_POST['teamDescription_EN'], "string");
+          $DB->Update("UPDATE teams SET TeamDesc_EN = ? WHERE TeamID = '1E'", [$teamDescNew]);
+      }
     $data = $DB->Select("SELECT * FROM teams WHERE TeamID = '1E'");
     foreach($data as $value){
-        $teamDesc = $value['TeamDesc'];
+        $teamDesc_NL = $value['TeamDesc_NL'];
+          $teamDesc_EN = $value['TeamDesc_EN'];
     }
+
+	if (isset($_GET['ready'])) {
+		var_dump($socket->sendStartToBot("ROBot Jetten"));
+	}
+
 
 ?>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -23,7 +33,7 @@
             <h2 id="titel">Dashboard</h2>
             <p id="desc">Groep INF1E</p>
         </div>
-    </div>    
+    </div>
     <div class="row">
         <div data-aos="fade-right" class="col-lg-6 block" id="block1">
             <div class="neonBlock content" id="keyboardListen" tabindex="0">
@@ -48,193 +58,44 @@
                 </div>
             </div>
         </div>
-        <div data-aos="fade-down" class="col-lg-3 block" id="block2">
+        <div data-aos="fade-down" class="col-lg-6 block" id="block2">
             <div class="neonBlock content">
-                <h5 class="blockTitle">Commands</h5>
-                <button type="button" class="button" onclick="sendData('Stop')" name="button">Stop</button><br><br>
-                <button type="button" class="button" onclick="sendData('SPS')" name="button">Start SPS</button><br><br>
-                <button type="button" class="button" onclick="sendData('DOOLHOF')" name="button">Start Doolhof</button><br><br>
-                <button type="button" class="button" onclick="sendData('RACE')" name="button">Start Race</button><br><br>
-                <button type="button" class="button" onclick="sendData('TEKENING')" name="button">Start Tekening</button>
-            </div>
-        </div>
-        <div data-aos="fade-left" class="col-lg-3 block" id="block3">
-            <div class="neonBlock content">
-                <h5 class="blockTitle">Stand</h5>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div data-aos="fade-right" class="col-lg-6 block" id="block4">
-            <div class="neonBlock content">
-                <h5 class="blockTitle">Huidige game</h5>
-            </div>
-        </div>
-        <div data-aos="fade-left" class="col-lg-6 block" id="block5">
-            <div class="neonBlock content">
-                <h5 class="blockTitle">Speelschema</h5>
-                <!-- Display afhankelijk van spel -->
-                <table id="schemaSPS">
-                    <tr>
-                        <th>Spel</th>
-                        <th>Spelers</th>
-                        <th>Tijd</th>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                    <tr>
-                        <td>SPS</td>
-                        <td>Robot A vs Robot E</td>
-                        <td>13:05</td>
-                    </tr>
-                </table>
+                <h5 class="blockTitle">Commands</h5> <br>
+                <div class="buttonLayout">
+                  <div class="">
+                  <button type="button" class="button" onclick="sendData('Stop')" name="button">Stop</button>
+                  <button type="button" class="button" onclick="sendData('SPS')" name="button">Start SPS</button>
+                </div> <br>
+                  <div class="">
+                  <button type="button" class="button" onclick="sendData('DOOLHOF')" name="button">Start Doolhof</button>
+                  <button type="button" class="button" onclick="sendData('RACE')" name="button">Start Race</button>
+                </div> <br>
+                  <div class="">
+                  <button type="button" class="button" onclick="sendData('TEKENING')" name="button">Start Tekening</button>
+                  <button type="button" class="button" onclick="sendData('Ready')" name="button">Ready</button>
+                </div> <br>
+              </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div data-aos="fade-right" class="col-lg-6 block" id="block6">
+        <div data-aos="fade-left" class="col-lg-6 block" id="block8">
             <div class="neonBlock content">
-                <h5 class="blockTitle">Historie</h5>
-            </div>
-        </div>
-        <div data-aos="fade-left" class="col-lg-6 block" id="block7">
-            <div class="neonBlock content">
-                <h5 class="blockTitle">Console</h5>
-                <div id="console">
-                    <p class="blink">></p>
-                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
-                    <p>> Excecute function followLine();</p>
-                    <p class="correct">> Connected to server as ROBOT#1323</p>
-                    <p>> Connecting to server</p>
-                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
-                    <p>> Excecute function followLine();</p>
-                    <p class="correct">> Connected to server as ROBOT#1323</p>
-                    <p>> Connecting to server</p>
-                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
-                    <p>> Excecute function followLine();</p>
-                    <p class="correct">> Connected to server as ROBOT#1323</p>
-                    <p>> Connecting to server</p>
-                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
-                    <p>> Excecute function followLine();</p>
-                    <p class="correct">> Connected to server as ROBOT#1323</p>
-                    <p>> Connecting to server</p>
-                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
-                    <p>> Excecute function followLine();</p>
-                    <p class="correct">> Connected to server as ROBOT#1323</p>
-                    <p>> Connecting to server</p>
-                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
-                    <p>> Excecute function followLine();</p>
-                    <p class="correct">> Connected to server as ROBOT#1323</p>
-                    <p>> Connecting to server</p>
-                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
-                    <p>> Excecute function followLine();</p>
-                    <p class="correct">> Connected to server as ROBOT#1323</p>
-                    <p>> Connecting to server</p>
-                    <p class="error">> Error excecuting function; line 34 invalid syntax</p>
-                    <p>> Excecute function followLine();</p>
-                    <p class="correct">> Connected to server as ROBOT#1323</p>
-                    <p>> Connecting to server</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div data-aos="fade-left" class="col-lg-12 block" id="block8">
-            <div class="neonBlock content">
-                <h5 class="blockTitle">Teaminformatie</h5>
-                <form method="POST">
+                <h5 class="blockTitle">Teaminformatie Nederlands</h5>
+                <form class="editDescription" method="POST">
                         <textarea rows="4" cols="50" id="teamDescription"
-                        name="teamDescription"><?php echo $teamDesc; ?></textarea>
-                    <input type="submit" name="editTeamDetails" value="Submit">
+                        name="teamDescription_NL"><?php echo $teamDesc_NL; ?></textarea>
+                  <button type="submit" name="editTeamdetails" class="button">Aanpassen</button>
+                </form>
+            </div>
+        </div>
+        <div data-aos="fade-left" class="col-lg-6 block" id="block8">
+            <div class="neonBlock content">
+                <h5 class="blockTitle">Teaminformatie Engels</h5>
+                <form class="editDescription" method="POST">
+                        <textarea rows="4" cols="50" id="teamDescription"
+                        name="teamDescription_EN"><?php echo $teamDesc_EN; ?></textarea>
+                        <button type="submit" name="editTeamdetails" class="button">Change</button>
                 </form>
             </div>
         </div>
@@ -257,7 +118,7 @@
 
     function hideRob() {
     setTimeout(
-        function() {            
+        function() {
             $("#terrorRob").removeClass("showRob");
             $("#terrorRob").addClass("hideRob");
             removeRob();

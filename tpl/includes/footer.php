@@ -1,5 +1,7 @@
-    <footer>
-        
+    <footer class="mt-auto">
+        <a href="disclaimer">Disclaimer</a> |
+        <a href="privacypolicy">Privacy Policy</a> |
+        <a href="termsofuse">Terms of use</a>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

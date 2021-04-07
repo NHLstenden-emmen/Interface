@@ -17,7 +17,24 @@
 	padding-right: 3rem;
 	margin-left: 3rem;
 	animation: move 2s ease-in-out infinite;
+	border-radius: 30%;
 }
+
+
+.img:last-child{
+	opacity: 0;
+	transition: .8s;
+}
+
+.img:last-child:hover{
+	opacity: 1;
+}
+
+.img:hover #ESP{
+	opacity: 0;
+}
+
+
 
 .countdowncontainer {
 	margin-top: -50px;

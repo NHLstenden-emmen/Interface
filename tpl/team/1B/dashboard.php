@@ -1,6 +1,10 @@
 <div id="dashboard">
 	<div class="liveFeed neonBlock1B" data-aos="zoom-in-down">
-		<h1>liveFeed</h1>
+		<div class="videoBlock">
+			<video id="livestreamVideo" poster="{assetsFolder}/images/poster.png">
+				Je browser ondersteunt geen HTML5 video's.
+			</video>
+		</div>
 	</div>
 	<div class="startGame neonBlock1B" data-aos="zoom-in-down">
 		<h1>start the games</h1>
@@ -27,7 +31,7 @@
 	</div>
 	<div class="credits neonBlock1B" data-aos="zoom-in-down">
 		<div data-aos="zoom-in-left">
-		<h1>En nu wat woorden van Lennart hemzelf</h1>
+		<h1>En nu wat woorden van Dimitri hemzelf</h1>
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-xs-12 col-sm-6 col-md-4">
@@ -50,7 +54,7 @@
 		</div> 
 	</div>
 </div>
-
+</div>
 <script>
 
 function playSound(isPlaying){
