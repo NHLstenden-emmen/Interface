@@ -31,6 +31,9 @@
 .credits {
 	grid-area: credits;
 }
+.liveFeed video {
+	width: 100%;
+}
 /* border block design */
 .neonBlock1B {
 	padding: 15px;
