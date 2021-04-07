@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 06, 2021 at 11:20 PM
+-- Generation Time: Apr 08, 2021 at 12:04 AM
 -- Server version: 8.0.23
 -- PHP Version: 7.4.16
 
@@ -40,14 +40,6 @@ CREATE TABLE `actions` (
   `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ip` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `actions`
---
-
-INSERT INTO `actions` (`ActionID`, `type_ac`, `user`, `keyInt`, `keyChar`, `clickValue`, `url`, `device`, `screen`, `time`, `ip`) VALUES
-(1, 'Left mouse', 'feike', '', '', '<A>\n.No class\n#No ID\n{Teams}\nNo src', 'http://robotv.serverict.nl/', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36', '1920x1080', '2021-04-06 23:18:32', '141.0.29.254'),
-(2, 'Left mouse', 'feike', '', '', '<A>\n.No class\n#No ID\n{Moderator}\nNo src', 'http://robotv.serverict.nl/teams', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36', '1920x1080', '2021-04-06 23:18:32', '141.0.29.254');
 
 -- --------------------------------------------------------
 
@@ -106,7 +98,8 @@ CREATE TABLE `resultaat` (
 
 INSERT INTO `resultaat` (`game`, `robot`, `score`) VALUES
 ('doolhof', 'BOT1', '00:00.700'),
-('doolhof', 'BOT2', '00:00.557');
+('doolhof', 'BOT2', '00:00.557'),
+('RACE1', 'BrokkoBot', '01:06.826');
 
 -- --------------------------------------------------------
 
@@ -2198,12 +2191,11 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`TeamID`, `TeamDesc_NL`, `TeamDesc_EN`, `RobotName`) VALUES
-('1A', ' test test test', '', 'Bumble Bert'),
-('1B', "Dimitri de 14e was vroeger het huisdier van Vladimir Putin, omdat Putin allergisch was voor hondenharen, liet hij zijn knechten een robot programmeren, die zou lijken op een hond. De programmeurs sloegen een beetje door, waardoor het meer een mensachtig beest werd, dan een hond. Dimitri hielp Putin met sporten, eten, slapen en allerlei andere dingen wat Putin zelf niet kon. Dimitri had soms ook vrij, in zijn vrije tijd ging hij golfen in zijn tuin van 12 hectare met een wijntje en een Ralph Lauren polo aan met een vest schuin over zijn bovenlichaam. Tijdens het golfen had Dimitri wel een goeie jam nodig om op te viben, dus luisterde hij naar het Nederlandse supertalent Famke Louise. Toen Putin hem betrapte tijdens het luisteren naar “Vroom”, sloeg hij helemaal door. Putin was zelf niet echt van buitenlandse muziek, en vooral niet deze stijl. Hij luisterde zelf liever naar Tri Poloski, of EZ4ENCE. Omdat Putin zo boos werd, besloot Dimitri te vertrekken. Hij pakte 1 van Putins tanks, en zette koers richting het vliegveld, waarin hij met een F16 naar Nederland vertrok. Hij kwam er als doel om het hart van Famke te veroveren, maar wilde dit op een goede manier doen. Om haar aandacht te krijgen, doet hij mee aan Project Battlebots. Hij is hier met het doel om alles en iedereen te verslaan, kosten wat het kost.", "Dimitri the 14th used to be Vladimir Putin's pet, because Putin was allergic to dog hair, he had his servants program a robot that would look like a dog. The programmers blew a bit, making it more of a human-like beast than a dog. Dimitri helped Putin with sports, eating, sleeping and all kinds of other things that Putin could’nt do himself. Dimitri also had some time off, in his spare time he played golf at his 12-hectare garden with a glass of wine and a Ralph Lauren polo with a vest sloping over his upper body. While playing golf, Dimitri needed a good jam to vibe on, so he listened to the Dutch super talent Famke Louise. When Putin caught him listening to “Vroom”, he went completely crazy. Putin himself was not really into foreign music, especially this style. He preferred to listen to Tri Poloski, or EZ4ENCE himself. Because Putin got so angry, Dimitri decided to leave. He picked up 1 of Putin's tanks and set course to the airfield, where he left for the Netherlands with an F16 Jet. His goal was to find a way into Famke's heart, but wanted to do it in a good way. To get her attention, he participates in Project Battlebots. He's here with the aim of beating anything and everything at any cost.
-", 'Dimitri'),
-('1C', 'Test', '', 'BrokkoBot'),
-('1D', 'Waste Allocation Load Lifter D-class, voor vrienden Wall-D, is de relatief onbekende broer van de wereldberoemde Wall-E. Hoewel beide gemaakt zijn om afval samen te persen en op te ruimen, schopte Wall-D het nog niet zover als Wall-E, die inmiddels voor een zakenreis op het ruimteschip Axiom verblijft.&#13;&#10;Wall-D overleeft, net als Wall-E voor zijn skyrocketing carrière, door zichzelf te repareren met onderdelen van andere robots. Daarvoor doet hij regelmatig mee met robot contests, om andere robots te CRUSHEN en zo hun onderdelen mee te nemen, zodat hij weer een tijdje door kan.&#13;&#10;Wall-D heeft een team professionals ingehuurd om hem hierbij te helpen. Van manager tot planner: dit team laat Wall-D reiken tot ongekende hoogte. Hij wordt door hen dagelijks voorzien van updates en rapportages. Er worden ook prognoses en kansen opgesteld, die teruggekoppeld worden naar het hoofdkwartier.&#13;&#10;Maak dan ook plaats voor Wall-D, die ongekend gemotiveerd is om iedereen en alles op zijn pad te slopen om door te gaan met zijn roeping: afval opruimen.', '', 'Wall-D'),
-('1E', 'ROBot Jetten, onze prachtige cyborg en de beste robot die er is. De andere A.I. zijn er absoluut niets bij. Zo snel, dat je hem gewoon niet kan volgen. De tekeningen zo precies, zoals je nog nooit hebt gekend. Steen, papier, schaar? Geen verliezen aan! Zo snel door de doolhof heen, dat je denkt dat er wordt valsgespeeld. Onderschat de kracht van ROBot Jetten niet! Zo is deze robot niet alleen een winnaar, maar ook een leider. Stem voor een nieuwe leider!\r\n<br><br>\r\nDeze beste en prachtige robot ooit is geprogrammeerd door: Erik Jan Zandberg, Feike Falkena, John Horstman, Peter Bos, Daisy Bruggeman, Tamme Tuncil en Simchaja Schonewille.\r\n', '', 'ROBot Jetten');
+('1A', ' ', '', 'Bumble Bert'),
+('1B', 'Dimitri de 14e was vroeger het huisdier van Vladimir Putin, omdat Putin allergisch was voor hondenharen, liet hij zijn knechten een robot programmeren, die zou lijken op een hond. De programmeurs sloegen een beetje door, waardoor het meer een mensachtig beest werd, dan een hond. Dimitri hielp Putin met sporten, eten, slapen en allerlei andere dingen wat Putin zelf niet kon. Dimitri had soms ook vrij, in zijn vrije tijd ging hij golfen in zijn tuin van 12 hectare met een wijntje en een Ralph Lauren polo aan met een vest schuin over zijn bovenlichaam. Tijdens het golfen had Dimitri wel een goeie jam nodig om op te viben, dus luisterde hij naar het Nederlandse supertalent Famke Louise. Toen Putin hem betrapte tijdens het luisteren naar “Vroom”, sloeg hij helemaal door. Putin was zelf niet echt van buitenlandse muziek, en vooral niet deze stijl. Hij luisterde zelf liever naar Tri Poloski, of EZ4ENCE. Omdat Putin zo boos werd, besloot Dimitri te vertrekken. Hij pakte 1 van Putins tanks, en zette koers richting het vliegveld, waarin hij met een F16 naar Nederland vertrok. Hij kwam er als doel om het hart van Famke te veroveren, maar wilde dit op een goede manier doen. Om haar aandacht te krijgen, doet hij mee aan Project Battlebots. Hij is hier met het doel om alles en iedereen te verslaan, kosten wat het kost.', 'Dimitri the 14th used to be Vladimir Putin\'s pet, because Putin was allergic to dog hair, he had his servants program a robot that would look like a dog. The programmers blew a bit, making it more of a human-like beast than a dog. Dimitri helped Putin with sports, eating, sleeping and all kinds of other things that Putin could’nt do himself. Dimitri also had some time off, in his spare time he played golf at his 12-hectare garden with a glass of wine and a Ralph Lauren polo with a vest sloping over his upper body. While playing golf, Dimitri needed a good jam to vibe on, so he listened to the Dutch super talent Famke Louise. When Putin caught him listening to “Vroom”, he went completely crazy. Putin himself was not really into foreign music, especially this style. He preferred to listen to Tri Poloski, or EZ4ENCE himself. Because Putin got so angry, Dimitri decided to leave. He picked up 1 of Putin\'s tanks and set course to the airfield, where he left for the Netherlands with an F16 Jet. His goal was to find a way into Famke\'s heart, but wanted to do it in a good way. To get her attention, he participates in Project Battlebots. He\'s here with the aim of beating anything and everything at any cost.\r\n', 'Dimitri'),
+('1C', '', '', 'BrokkoBot'),
+('1D', 'Waste Allocation Load Lifter D-class, voor vrienden Wall-D, is de relatief onbekende broer van de wereldberoemde Wall-E. Hoewel beide gemaakt zijn om afval samen te persen en op te ruimen, schopte Wall-D het nog niet zover als Wall-E, die inmiddels voor een zakenreis op het ruimteschip Axiom verblijft.&#13;&#10;Wall-D overleeft, net als Wall-E voor zijn skyrocketing carrière, door zichzelf te repareren met onderdelen van andere robots. Daarvoor doet hij regelmatig mee met robot contests, om andere robots te CRUSHEN en zo hun onderdelen mee te nemen, zodat hij weer een tijdje door kan.&#13;&#10;Wall-D heeft een team professionals ingehuurd om hem hierbij te helpen. Van manager tot planner: dit team laat Wall-D reiken tot ongekende hoogte. Hij wordt door hen dagelijks voorzien van updates en rapportages. Er worden ook prognoses en kansen opgesteld, die teruggekoppeld worden naar het hoofdkwartier.&#13;&#10;Maak dan ook plaats voor Wall-D, die ongekend gemotiveerd is om iedereen en alles op zijn pad te slopen om door te gaan met zijn roeping: afval opruimen.', 'Waste Allocation Load Lifter D-class, voor vrienden Wall-D, is de relatief onbekende broer van de wereldberoemde Wall-E. Hoewel beide gemaakt zijn om afval samen te persen en op te ruimen, schopte Wall-D het nog niet zover als Wall-E, die inmiddels voor een zakenreis op het ruimteschip Axiom verblijft.&#13;&#10;Wall-D overleeft, net als Wall-E voor zijn skyrocketing carrière, door zichzelf te repareren met onderdelen van andere robots. Daarvoor doet hij regelmatig mee met robot contests, om andere robots te CRUSHEN en zo hun onderdelen mee te nemen, zodat hij weer een tijdje door kan.&#13;&#10;Wall-D heeft een team professionals ingehuurd om hem hierbij te helpen. Van manager tot planner: dit team laat Wall-D reiken tot ongekende hoogte. Hij wordt door hen dagelijks voorzien van updates en rapportages. Er worden ook prognoses en kansen opgesteld, die teruggekoppeld worden naar het hoofdkwartier.&#13;&#10;Maak dan ook plaats voor Wall-D, die ongekend gemotiveerd is om iedereen en alles op zijn pad te slopen om door te gaan met zijn roeping: afval opruimen.', 'Wall-D'),
+('1E', 'ROBot Jetten, onze prachtige cyborg en de beste robot die er is. De andere A.I. zijn er absoluut niets bij. Zo snel, dat je hem gewoon niet kan volgen. De tekeningen zo precies, zoals je nog nooit hebt gekend. Steen, papier, schaar? Geen verliezen aan! Zo snel door de doolhof heen, dat je denkt dat er wordt valsgespeeld. Onderschat de kracht van ROBot Jetten niet! Zo is deze robot niet alleen een winnaar, maar ook een leider. Stem voor een nieuwe leider!\r\n<br><br>\r\nDeze beste en prachtige robot ooit is geprogrammeerd door: Erik Jan Zandberg, Feike Falkena, John Horstman, Peter Bos, Daisy Bruggeman, Tamme Tuncil en Simchaja Schonewille.\r\n', 'ROBot Jetten, onze prachtige cyborg en de beste robot die er is. De andere A.I. zijn er absoluut niets bij. Zo snel, dat je hem gewoon niet kan volgen. De tekeningen zo precies, zoals je nog nooit hebt gekend. Steen, papier, schaar? Geen verliezen aan! Zo snel door de doolhof heen, dat je denkt dat er wordt valsgespeeld. Onderschat de kracht van ROBot Jetten niet! Zo is deze robot niet alleen een winnaar, maar ook een leider. Stem voor een nieuwe leider!', 'ROBot Jetten');
 
 -- --------------------------------------------------------
 
@@ -2231,9 +2223,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `voornaam`, `achternaam`, `team`, `level`, `lang`, `lastIp`, `loginKey`, `verificationKey`, `deleted_at`) VALUES
-(1, 'feike', '$2y$10$W.WN38E.s7H9Mnd.6/Ycou38cnweFtc04FCmB3GW9PZMlR8IH8Tdq', 'Feike', ' Falkena', '1E', 2, 'nl', '141.0.29.254', '1617743711', '', NULL),
-(2, 'remco', '$2y$10$W.WN38E.s7H9Mnd.6/Ycou38cnweFtc04FCmB3GW9PZMlR8IH8Tdq', 'Remco', 'Hassing', '1C', 2, 'nl', '192.168.2.254', '1617608945', '', NULL),
-(3, 'kevin.smulders@student.nhlstenden.com', '$2y$10$cujvh9UZ.NmPIj6rdFY5veYhuzEhVM9fvrXhgV35sbiCm6C/0urVi', 'Kevin', 'Smulders', '1B', 2, 'nl', '127.0.0.1', '1617786140', '', NULL);
+(1, 'feike', '$2y$10$83eUKedBVSOexTQpvMPMXOEndhy5kqwRC1ZZTgNQAAUE77rHFhZdO', 'Feike', ' Falkena', '1E', 2, 'nl', '141.0.29.254', '1617832618', NULL, NULL),
+(2, 'remco', '$2y$10$u3OHfev1oU8c4ojXAkWS9udKWOtYefXpkvzKFsYAhSNgcXWPHz2Jq', 'Remco', 'Hassing', '1C', 2, 'nl', '141.0.29.254', '1617832411', NULL, NULL),
+(3, 'kevin.smulders@student.nhlstenden.com', '$2y$10$cujvh9UZ.NmPIj6rdFY5veYhuzEhVM9fvrXhgV35sbiCm6C/0urVi', 'Kevin', 'Smulders', '1B', 2, 'nl', NULL, NULL, NULL, NULL),
+(6, 'moderator1', '$2y$10$VYG2bjjOfibHXE4ON2.B1emnJ/Fbq.GnoSav5XfuNDG43qIRldU16', 'Moderator', '1', NULL, 2, 'nl', NULL, NULL, NULL, NULL),
+(7, 'moderator2', '$2y$10$mBnuyj.YwhoY/4jHD/gDyezdoYhSrDPLKl/gUtWKr/4dOaMwLG5Fm', 'moderator', '2', NULL, 2, 'nl', NULL, NULL, NULL, NULL),
+(8, 'moderator3', '$2y$10$v/5Bd03fxHZ.1fM3m.SU6ew6A5rLQO9iGNhTWFST0qkwp0x9KRNdW', 'moderator', '3', NULL, 2, 'nl', NULL, NULL, NULL, NULL),
+(9, 'teama@student.nhlstenden.com', '$2y$10$YzHcNiVD3sH/g3PPxEoVwuoKDbXl8k0Kasp6sa8gy1PQ/TBB4QMh2', 'Team', 'A', '1A', 1, 'nl', NULL, NULL, NULL, NULL),
+(10, 'teamb@student.nhlstenden.com', '$2y$10$PxbQBjg8qYI4wE/ypk1.8OCQWwXWgLdvtKdFzA4F/D2fugMcn1fNu', 'Team', 'B', '1B', 1, 'nl', NULL, NULL, NULL, NULL),
+(11, 'teamc@student.nhlstenden.com', '$2y$10$syvecCQOWWX3mVdqBbJs/ufncbh9PUzZvd07d3tBI/BFvOeF5YW2C', 'Team', 'C', '1C', 1, 'nl', NULL, NULL, NULL, NULL),
+(12, 'teamd@student.nhlstenden.com', '$2y$10$wL3VNLTwoWcLNSzXNiD4COF.Zgbw8Z6s5JPY9JGsvvQ/MlzTy5Bq2', 'Team', 'D', '1D', 1, 'nl', NULL, NULL, NULL, NULL),
+(13, 'teame@student.nhlstenden.com', '$2y$10$VEGSaNnBKOAgjc634yDEXO0HyZR.rth5JNMBU8JIgZ6T8UpEDHYoC', 'Team', 'E', '1E', 1, 'nl', NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -2297,7 +2297,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `actions`
 --
 ALTER TABLE `actions`
-  MODIFY `ActionID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ActionID` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `security`
@@ -2309,7 +2309,7 @@ ALTER TABLE `security`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
