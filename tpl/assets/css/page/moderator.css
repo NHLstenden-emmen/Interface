@@ -154,3 +154,9 @@ p {
 	display: block;
 	overflow: scroll;
 }
+
+/* Footer */
+
+footer{
+	display: none;
+}
