@@ -28,6 +28,11 @@
                     <span class="details">Chat</span><i class="far fa-comments"></i>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="neonBlock zoom" onclick="location.href='/moderator/lapcounter';">
+                    <span class="details">Lapcounter</span><i class="fas fa-stopwatch-20"></i>
+                </div>
+            </div>
         </div>
     </div>
 </div>

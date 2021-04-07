@@ -1,4 +1,4 @@
-const countDownDateText = "Apr 5, 2021 21:30:30";
+const countDownDateText = "Apr 8, 2021 21:30:30";
 
 /* Burger Menu Controller */
 const burgerMenu = () => {

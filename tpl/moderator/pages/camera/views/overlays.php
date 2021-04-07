@@ -28,17 +28,23 @@
         </tbody>
     </table>
     <br />
-
+    <?php if($user->id == 1 || $user->id == 2) { ?>
+        <style>
+            form {
+                margin: 10px;
+            }
+        </style>
     <h5 class="title">Countdown <i class="fas fa-music"></i></h5>
+    <div class="row">
     <form method="POST">
         <button type="submit" name="prevTrack"><i class="fas fa-backward"></i></button>
     </form>
     <form method="POST">
         <button type="submit" name="nextTrack"><i class="fas fa-forward"></i></button>
+    </form></div>
+    <form method="POST" style="margin: 0;">
+    <input type="url" name="urlInput" placeholder="http://xxx/xx.mp3" required>
+        <br /><button type="submit" name="urlSubmit">Add</button>
     </form>
-    <form method="POST">
-        <label>Custom URL:<br /><input type="url" name="urlInput" placeholder="http://xxx/xx.mp3" required></label>
-        <button type="submit" name="urlSubmit">Add</button>
-    </form>
-
+    <?php } ?>
 </div>        

@@ -15,12 +15,15 @@ const sendDelete = (id) =>  livechatWebSocket.send(JSON.stringify({"type": "dele
 const sendPoll = (option, id) => livechatWebSocket.send(JSON.stringify({"type": "poll", "option": option, "id": id}));
 const sendDrawingPoll = (stars, bot, id) => livechatWebSocket.send(JSON.stringify({"type": "drawingpoll", "bot": bot, "stars":parseInt(stars)+1, "id": id}));
 const sendMessage = () => { 
-        document.querySelector('#emojiCheckbox').checked = false;
-        if(chatInput.value.trim() != "") {
-            livechatWebSocket.send(JSON.stringify({"type": "send", "message": chatInput.value}));
+        if(user_id != 0) {
+            document.querySelector('#emojiCheckbox').checked = false;
+            if(chatInput.value.trim() != "") {
+                livechatWebSocket.send(JSON.stringify({"type": "send", "message": chatInput.value}));
+            }
         }
-        chatInput.value = ""};
-
+        chatInput.value = "";
+}
+    
 //Receivers
 const deleteMessage = (id) => {
     var message = document.getElementById(id);
@@ -34,11 +37,11 @@ const deleteMessage = (id) => {
         message.remove();
     }
 }
+
 const onLeave = (messageData) => showMessage(messageData.type,messageData.message,messageData.id, messageData.username, messageData.userid, messageData.level, messageData.team);
 const showDrawingPoll = (messageData) =>  toastShow('drawing', messageData.id, 'Server | Tekening', messageData.question, messageData, messageData.length);
 const showPoll = (messageData) => toastShow('default', messageData.id, 'Server | Poll', messageData.question, messageData.options, messageData.length);
 const closePolls = () => { document.querySelectorAll(".drawingpoll").forEach(element => element.remove()); document.querySelectorAll(".regularpoll").forEach(element => element.remove());}
-
 
 const onJoin = (messageData) => {
     if(messageData.user_id == user_id)
@@ -53,7 +56,7 @@ const onJoin = (messageData) => {
     else 
     {
         showMessage(messageData.type,messageData.message, messageData.id, messageData.username, messageData.user_id, messageData.level, messageData.team);
-   }
+    }
 }
 
 function showMessage(type, message, id, username, userId, level = null, team = null) {
@@ -105,11 +108,11 @@ function showMessage(type, message, id, username, userId, level = null, team = n
         ` + (youAreMod ? `<i class="far fa-trash-alt" onclick="javascript:sendDelete(`+ id +`)"></i>` : "") + `
     </p>
     `;
-
-
+    message = document.createTextNode(message);
+    console.log(message);
     messageElement.innerHTML = `
     <div class="messageContent">
-        ` + userHTML + `
+        ` + + `
         ` + messageHTML + `
     </div>
     `;
@@ -200,10 +203,10 @@ function launchLiveChat(user_idInput)
         user_id = user_idInput;
         livechatWebSocket = new WebSocket("ws://194.171.181.139:49152");
 
-        livechatWebSocket.addEventListener("open", () =>  livechatWebSocket.send(JSON.stringify({"user_id": user_id, "type": "join"})));
+        livechatWebSocket.addEventListener("open", () => livechatWebSocket.send(JSON.stringify({"user_id": user_id, "type": "join"})));
         livechatWebSocket.addEventListener("message", (chatData) => messageListener(chatData));
         livechatWebSocket.addEventListener("close", () => {
-            //showMessage("Connection has been closed", 0, "Server", -1);
+            showMessage("server", "Deze livechat wordt gemodereerd! Schelden in de chat kan resulteren in een ban.", "0", "Server", -420);
             console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
             setTimeout(() => launchLiveChat(user_id), 1000);
         });

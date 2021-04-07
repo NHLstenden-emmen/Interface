@@ -1,7 +1,12 @@
 <?php
 
 	if (isset($_POST['ready'])) {
+		var_dump($socket->sendStartToBot("BrokkoBot"));
+		var_dump($socket->sendStartToBot("RoBOT Jetten"));
 		var_dump($socket->sendStartToBot("BumbleBert"));
+		var_dump($socket->sendStartToBot("Wall-D"));
+		var_dump($socket->sendStartToBot("Lennart"));
+
 	}
 
 	if(isset($_POST['edit'])) 

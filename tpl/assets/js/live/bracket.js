@@ -1,4 +1,5 @@
 var bracketsHolder = document.querySelector("#bracketsHolder");
+var bracketsTitle = document.querySelector("#brackets > h1")
 
 class Brackets {
     phase = -1;
@@ -12,6 +13,7 @@ class Brackets {
     }
 
     #setupPhase0(jsonObject) {  // Leaderboard (1x leaderboard)
+        bracketsTitle.innerHTML = 'Leaderboard';
         bracketsHolder.innerHTML = `
         <div id="leaderboard" class="neonBorder">
             <div class="scoreRow heading">
@@ -76,6 +78,7 @@ class Brackets {
     }
 
     #setupPhase1(jsonObject) {  // Starting matches SPS (10x match, 1x scoreboard)
+        bracketsTitle.innerHTML = 'SPS - First round';
         bracketsHolder.innerHTML = `
         <div id="match1" class="match neonBorder" style="left: 0px; top: 0px;">
             <div class="matchId">1</div>
@@ -164,6 +167,7 @@ class Brackets {
     }
 
     #setupPhase2(jsonObject) {  // Brackets SPS (8x match)
+        bracketsTitle.innerHTML = 'SPS - Knockout';
         bracketsHolder.innerHTML = `
         <div id="match1" class="match neonBorder" style="left: 0px; top: 0px;">
             <div class="matchId">1</div>
@@ -212,6 +216,7 @@ class Brackets {
     }
 
     #setupPhase3(jsonObject) {  // Laps Race (1x lapdisplay, 1x scoreboard)
+        bracketsTitle.innerHTML = 'Race';
         bracketsHolder.innerHTML = `
         <div id="lapdisplay1" class="lapdisplay neonBorder">
             <div class="scoreRow heading">
@@ -304,6 +309,50 @@ class Brackets {
         this.#updateScoreboard(this.#updateLapDisplay(jsonObject.times, jsonObject.curPos));
     }
 
+    #setupPhase4(jsonObject) {  // Times maze (1x scoreboard)
+        bracketsTitle.innerHTML = 'Maze';
+        bracketsHolder.innerHTML = `
+        <div id="scoreboard" class="neonBorder" style="left: 0px; top: 0px;">
+            <div class="scoreRow heading">Leaderboard</div>
+            <div id="place1" class="scoreRow">
+                <div class="place num">1</div>
+                <div class="team"></div>
+                <div class="score num time"></div>
+            </div>
+            <div id="place2" class="scoreRow">
+                <div class="place num">2</div>
+                <div class="team"></div>
+                <div class="score num time"></div>
+            </div>
+            <div id="place3" class="scoreRow">
+                <div class="place num">3</div>
+                <div class="team"></div>
+                <div class="score num time"></div>
+            </div>
+            <div id="place4" class="scoreRow">
+                <div class="place num">4</div>
+                <div class="team"></div>
+                <div class="score num time"></div>
+            </div>
+            <div id="place5" class="scoreRow">
+                <div class="place num">5</div>
+                <div class="team"></div>
+                <div class="score num time"></div>
+            </div>
+        </div>
+        `
+        bracketsHolder.style = "height: 510px";
+
+        
+        var scoreboard = this.#reverseSortScoreboard(jsonObject.scoreboard);
+
+        for(var i = 0; i < scoreboard.length; i++) {
+            scoreboard[i][1] = this.#millisToTimestamp(scoreboard[i][1]);
+        }
+
+        this.#updateScoreboard(scoreboard);
+    }
+
     #updateMatches(matches) {
         for(var i = 0; i < matches.length; i++) {
             var match = bracketsHolder.querySelector("#match" + matches[i].id);
@@ -339,6 +388,10 @@ class Brackets {
 
     #sortScoreboard(scoreboard) {
         return Object.entries(scoreboard).sort((a,b) => (a[1] < b[1]) ? 1 : ((b[1] < a[1]) ? -1 : a[0] > b[0] ? 1 : b[0] > a[0] ? -1 : 0));
+    }
+
+    #reverseSortScoreboard(scoreboard) {
+        return Object.entries(scoreboard).sort((a,b) => (a[1] == 0 && b[1] == 0) ? 0 : (a[1] == 0) ? 1 : (b[1] == 0) ? -1 : (a[1] < b[1]) ? -1 : ((b[1] < a[1]) ? 1 : a[0] > b[0] ? -1 : b[0] > a[0] ? 1 : 0));
     }
 
     #updateLeaderboard(leaderboard) {
@@ -417,7 +470,7 @@ class Brackets {
             scoreboard[times[i].name] = avg;
         }
 
-        scoreboard = this.#sortScoreboard(scoreboard);
+        scoreboard = this.#reverseSortScoreboard(scoreboard);
 
         for(var i = 0; i < scoreboard.length; i++) {
             scoreboard[i][1] = this.#millisToTimestamp(scoreboard[i][1]);
@@ -457,6 +510,9 @@ class Brackets {
                             case 3:
                                 this.#setupPhase3(jsonObject);
                                 break;
+                            case 4:
+                                this.#setupPhase4(jsonObject); // should do it
+                                break;
                             default:
                                 bracketsHolder.style = null;
                                 console.error("Unknown phase for brackets");
@@ -477,6 +533,16 @@ class Brackets {
                             break;
                         case 3:
                             this.#updateScoreboard(this.#updateLapDisplay(jsonObject.times, jsonObject.curPos));
+                            break;
+                        case 4:
+                            var scoreboard = this.#reverseSortScoreboard(jsonObject.scoreboard);
+
+                            for(var i = 0; i < scoreboard.length; i++) {
+                                scoreboard[i][1] = this.#millisToTimestamp(scoreboard[i][1]);
+                            }
+
+                            this.#updateScoreboard(scoreboard);
+                            break;
                         default:
                             console.error("Unknown phase for brackets");
                             break;
@@ -490,7 +556,7 @@ class Brackets {
 }
 
 var brackets        = new Brackets();
-var webSocketData   = new WebSocket("ws://194.171.181.139:49151");
+var webSocketData   = new WebSocket("ws://77.162.30.112:49151");
 var staticData      = new XMLHttpRequest();
 
 staticData.open("GET", "/livedata", true);
@@ -506,3 +572,4 @@ staticData.addEventListener("readystatechange", () => {
         brackets.parseJSON(JSON.parse(staticData.getResponseHeader("livedata")).json);
     }
 });
+//brackets.parseJSON('{"phase":4,"scoreboard":{"BOT5":252,"BOT4":2152,"BOT3":1564,"BOT2":420,"BOT1":69}}');
