@@ -1,4 +1,4 @@
-    <footer class="mt-auto">
+    <footer>
 		<div id="itemsFooter">
 			<a href="disclaimer">Disclaimer</a> |
 			<a href="privacypolicy">Privacy Policy</a> |

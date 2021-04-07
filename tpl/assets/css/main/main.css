@@ -72,6 +72,7 @@ body {
 	width: 100vw;
 	min-height: 100vh;
 	overflow-x: hidden;
+	position: relative;
 }
 
 hr {
@@ -132,6 +133,9 @@ iframe {
 
 .grecaptcha-badge { 
     visibility: hidden;
+}
+
+#contentPages{
 }
 
 /* Button styling */

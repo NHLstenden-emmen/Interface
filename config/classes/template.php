@@ -63,7 +63,9 @@ class Template
 		global $DB, $site, $user, $filter, $lang, $core, $socket, $mailer;
 
 		ob_start();
+		echo "<div id=\"contentPages\">";
 		require('tpl/pages/'.Page);
+		echo "</div>";
 		$this->AddLine(ob_get_clean());
 	}
 

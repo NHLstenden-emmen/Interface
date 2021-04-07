@@ -29,9 +29,9 @@ $TPL->GetHandlers();
 
 $TPL->GetHeader();
 $TPL->GetNavigation();
-$TPL->GetBackground();
 $TPL->GetContent();
 $TPL->GetFooter();
+$TPL->GetBackground();
 
 $TPL->Output();
 ?>
