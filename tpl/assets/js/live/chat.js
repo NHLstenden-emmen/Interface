@@ -120,8 +120,13 @@ function showMessage(type, message, id, username, userId, level = null, team = n
         } else {
             var isTeam = team;
             var isMod = (level == 2); 
+			
+			if(team != 'undefined'){				
+				username += isTeam ? " [" + team + "]" : "" + isMod ? "[MOD]" : "";
+			} else {
+				username += isTeam ? "" : "" + isMod ? "[MOD]" : "";
+			}
 
-            username += isTeam ? " [" + team + "]" : "" + isMod ? "[MOD]" : "";
             
 
             userHTML = `
