@@ -54,9 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	playElement.parentNode.insertBefore(liveElement, playElement.nextSibling);
 
 	if (!Hls.isSupported()) {
-		video.src = source;
+		video.src = "/streams/stream.m3u8";
 	} else {
-		hls.loadSource("/streams/dome.m3u8");
+		hls.loadSource("/streams/stream.m3u8");
 		hls.attachMedia(video);
 	} 	
 });

@@ -23,9 +23,9 @@
                 <span><i class="far fa-eye"></i>&nbsp;<span id="viewerCounter">0</span></span>
             </div>
             <div class="videoCamera">
-                <button class="button small" onclick="cameraChange('dome')"><i
-                        class="fas fa-video"></i>&nbsp;&nbsp;1</button>
                 <button class="button small" onclick="cameraChange('stream')"><i
+                        class="fas fa-video"></i>&nbsp;&nbsp;1</button>
+                <button class="button small" onclick="cameraChange('dome')"><i
                         class="fas fa-video"></i>&nbsp;&nbsp;2</button>
             </div>
         </div>

@@ -192,7 +192,7 @@
 
     function sendData(data) {
         $(document).ready(function() {
-            $.post("", {
+            $.post("/../tpl/team/1E/sendData.php", {
                 'action': data
             });
             var timestamp = '[' + Date.now() + '] ';

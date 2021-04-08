@@ -146,6 +146,11 @@ iframe {
 
 }
 
+
+footer{
+	display: none !important;
+}
+
 /* Button styling */
 
 button.button {

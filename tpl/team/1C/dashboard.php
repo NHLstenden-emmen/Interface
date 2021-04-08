@@ -5,7 +5,7 @@
 		var_dump($socket->sendStartToBot("RoBOT Jetten"));
 		var_dump($socket->sendStartToBot("BumbleBert"));
 		var_dump($socket->sendStartToBot("Wall-D"));
-		var_dump($socket->sendStartToBot("Lennart"));
+		var_dump($socket->sendStartToBot("Dimitri"));
 
 	}
 

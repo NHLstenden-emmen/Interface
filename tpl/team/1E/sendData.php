@@ -16,10 +16,10 @@ if($socket = new ServerConnection(Config::$serverPort, Config::$serverIP)){
 	echo "Yus > Nieuwe socket werkt i guess <br>";
 }
 
-if(isset($_GET['action'])){
+if(isset($_POST['action'])){
 
     $bot = "ROBot Jetten";
-    $action = $_GET['action'];
+    $action = $_POST['action'];
 
     if($action == "Stop"){
         $command = "a";
@@ -27,17 +27,21 @@ if(isset($_GET['action'])){
 
     // Straight angles
 
+	// voor
     if($action == "W"){
         $command = "b";
     }
+	// links
     if($action == "A"){
-        $command = "d";
+        $command = "e";
     }
+	// achter
     if($action == "S"){
         $command = "c";
     }
+	// rechts
     if($action == "D"){
-        $command = "e";
+        $command = "d";
     }
 
     // Custom angles
@@ -80,7 +84,7 @@ if(isset($_GET['action'])){
 
     // Send Data
     print_r($socket->sendToBot($bot, $command));
-}
+} else {
 
 
     // Ready
@@ -91,6 +95,9 @@ if(isset($_GET['action'])){
 	
 	// TESTCASE - SEND START TO BOT (connectie werkt en al maar blijft laden)
 	$bot = "ROBot Jetten";
-	var_dump($socket->sendStartToBot($bot))
-
+	var_dump($socket->sendStartToBot($bot));
+	
+    //$command = "a";
+    //var_dump($socket->sendToBot($bot, $command));
+}
 ?>

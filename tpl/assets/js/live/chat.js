@@ -124,7 +124,7 @@ function showMessage(type, message, id, username, userId, level = null, team = n
 			if(team != 'undefined'){				
 				username += isTeam ? " [" + team + "]" : "" + isMod ? "[MOD]" : "";
 			} else {
-				username += isTeam ? "" : "" + isMod ? "[MOD]" : "";
+				username += isTeam ? "" : "" + isMod ? "" : "";
 			}
 
             

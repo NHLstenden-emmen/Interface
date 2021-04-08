@@ -34,5 +34,12 @@
                 </div>
             </div>
         </div>
+		<div class="row">
+            <div class="col-md-4">
+                <div class="neonBlock zoom" onclick="location.href='/moderator/sendData';">
+                <span class="details">Send Data</span><i class="fas fa-file-import"></i>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
