@@ -16,7 +16,7 @@ class Mailer {
 		
 		$this->PHPMailer = new PHPMailer;
 		$this->PHPMailer->isSMTP(); 
-		//$this->PHPMailer->SMTPDebug = 2; //set 2 for debug
+		$this->PHPMailer->SMTPDebug = 0; //set 2 for debug
 		$this->PHPMailer->Host = $s['hostname']; 
 		$this->PHPMailer->Port = $s['port'];
 		$this->PHPMailer->SMTPSecure = 'STARTTLS';

@@ -1,4 +1,6 @@
 var livechatWebSocket, user_id, blockedWords;
+var current = new Date();
+var cooldownChat = 1.0;
 
 const liveChat = document.getElementById("liveChat");        
 const chatInput = document.getElementById("liveChatInput");
@@ -40,7 +42,15 @@ const sendMessage = () => {
 			} else {				
 				MessageInput = MessageInput.replace(/(<([^>]+)>)/gi, "");
 				if(MessageInput.length != 0) {
-					livechatWebSocket.send(JSON.stringify({"type": "send", "message": MessageInput}));
+					
+					last = new Date();
+					if((last.getTime() - current.getTime()) / 1000 < cooldownChat){
+						alert('Try not to spam!');
+					} else {
+						livechatWebSocket.send(JSON.stringify({"type": "send", "message": MessageInput}));
+						current = new Date();
+					}
+					
 				} else {
 					livechatWebSocket.send(JSON.stringify({"type": "banned"}));
 					alert('Injections won\'t work ;)');

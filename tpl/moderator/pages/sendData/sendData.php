@@ -5,4 +5,5 @@
 		<br>
 		<?= ModeratorPageViewContent ?>
 	</div>
+	<br><br>
 </div>

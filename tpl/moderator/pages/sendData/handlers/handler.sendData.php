@@ -9,5 +9,5 @@
 	}
 	
 	$botList = $socket->getBotList();
-	print_r($botList);
+	
 ?>
