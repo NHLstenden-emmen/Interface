@@ -29,9 +29,11 @@
 		} else {
 			$clickValue = NULL;
 		}
+
+		$UserID = $DBNew->Select("SELECT user_id FROM users WHERE email = ? LIMIT 1", [$user])[0]['user_id'];
 		
-		$DBNew->Insert("INSERT INTO actions (user, type_ac, keyInt, keyChar, clickValue, url, device, screen, ip)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", ["$user", "$type", "$keyInt", "$keyChar", "$clickValue", "$url", "$device", "$screen", "$ip"]);
+		$DBNew->Insert("INSERT INTO actions (UserID, ActionType, keyInt, keyChar, Value, url, device, screen, ip)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", ["$UserID", "$type", "$keyInt", "$keyChar", "$clickValue", "$url", "$device", "$screen", "$ip"]);
 		
 		echo "Success";
 	}

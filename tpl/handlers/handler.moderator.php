@@ -21,7 +21,7 @@ $this->Set("assetsFolderMOD", "/".ModeratorPages.$route."/assets");
 
 ob_start();
 
-if ($user->level < 2) $core->Redirect('/');
+if ($user->level < 3) $core->Redirect('/');
 
 if(empty($route)) require(ModeratorPages.'start.php');
 else if(file_exists(ModeratorPages.$route.'/'.$route.'.php'))

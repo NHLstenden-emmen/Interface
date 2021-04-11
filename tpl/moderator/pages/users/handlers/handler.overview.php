@@ -1,5 +1,5 @@
 <?php 
-    $gebuikerResult = $DB->Select("SELECT * FROM users WHERE user_id != ? ORDER BY level ASC ", [2]);
+    $gebuikerResult = $DB->Select("SELECT * FROM users WHERE UserID != ? ORDER BY level ASC ", [2]);
 	$securityResult = $DB->Select("SELECT * FROM security WHERE Type = 'ban_ip'");
     $this->Set("pageTitle", $this->Get("GEBRUIKERS"));
 
@@ -11,14 +11,14 @@
 		} else $gebuikerResultView .= "<td data-label='level'></td>";
  
 			$gebuikerResultView .= "
-                <td data-label='level'>{$user->userLevel($value['user_id'])}</td>
-                <td data-label='naam'>".$value['voornaam']." ".$value['achternaam']. "</td>
-                <td data-label='email'>".$value['email']."</td>
-                <td data-label='aanpassen' class='link' data-link='/moderator/users/edit/".$value['user_id']."'>
+                <td data-label='level'>{$user->userLevel($value['UserID'])}</td>
+                <td data-label='naam'>".$value['firstName']." ".$value['lastName']. "</td>
+                <td data-label='email'>".$value['Email']."</td>
+                <td data-label='aanpassen' class='link' data-link='/moderator/users/edit/".$value['UserID']."'>
                     <i class='far fa-edit'></i>
                 </td>";
-            if(empty($value['deleted_at'])) $gebuikerResultView .= "<td data-label='ban' class='link' data-link='/moderator/users/ban/".$value['user_id']."'>Ban <i class='far fa-caret-square-right'></i></td>";
-            else $gebuikerResultView .= "<td data-label='un-ban' class='link' data-link='/moderator/users/unban/".$value['user_id']."'>Unban <i class='far fa-caret-square-right' aria-hidden='true'></i></td>"; 
+            if(empty($value['deleted_at'])) $gebuikerResultView .= "<td data-label='ban' class='link' data-link='/moderator/users/ban/".$value['UserID']."'>Ban <i class='far fa-caret-square-right'></i></td>";
+            else $gebuikerResultView .= "<td data-label='un-ban' class='link' data-link='/moderator/users/unban/".$value['UserID']."'>Unban <i class='far fa-caret-square-right' aria-hidden='true'></i></td>";
 			
 			if(!empty($value['lastIp'])){
 				$isBanned = false;
@@ -29,7 +29,7 @@
 					}
 				}
 			}			
-			if(!empty($value['lastIp']) && $isBanned == false) $gebuikerResultView .= "<td data-label='banIp' class='link' data-link='/moderator/users/ban/".$value['user_id']."?var=ip'>".$value['lastIp']." <i class='far fa-caret-square-right'></i></td>";
+			if(!empty($value['lastIp']) && $isBanned == false) $gebuikerResultView .= "<td data-label='banIp' class='link' data-link='/moderator/users/ban/".$value['UserID']."?var=ip'>".$value['lastIp']." <i class='far fa-caret-square-right'></i></td>";
             
 			
 			$gebuikerResultView .= "</tr>";

@@ -9,6 +9,7 @@
  /* Custom params */
  $TeamID = "1E";
  $RobotName = "ROBot Jetten";
+ $GroupID = "13";
 
  /* Send Data to Robot */
  if(isset($_POST['action'])){
@@ -111,7 +112,7 @@
  /* Data from database */
  $robotData = $DB->Select("SELECT * FROM teams WHERE TeamID = ?",[$TeamID]);
  $userData = $DB->Select("SELECT * FROM users WHERE team = ?",[$TeamID]);
- $robotAction = $DB->Select("SELECT * FROM actions WHERE user = ? ORDER BY time DESC",[$RobotName]);
+ $robotAction = $DB->Select("SELECT * FROM actions WHERE UserID = ? ORDER BY time DESC",[$GroupID]);
 
  /* Data from socket */
  if($botList = $socket->getBotList()){
@@ -164,11 +165,11 @@
                 <?php
                     if (count($userData) < 4){
                         for($x = 0; $x < count($userData); $x++){
-                            echo $userData[$x]['voornaam'] . ' ' . $userData[$x]['achternaam'] . '<br>';
+                            echo $userData[$x]['firstName'] . ' ' . $userData[$x]['lastName'] . '<br>';
                         }
                     } else {
                         for($x = 0; $x < 4; $x++){
-                            echo $userData[$x]['voornaam'] . ' ' . $userData[$x]['achternaam'] . '<br>';
+                            echo $userData[$x]['firstName'] . ' ' . $userData[$x]['lastName'] . '<br>';
                         }
                     }
                 ?>
