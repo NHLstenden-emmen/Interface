@@ -239,6 +239,8 @@ $( document ).ready(function() {
                 self.value = { x: 0, y: 0 };
                 self.touchId = null;
                 self.active = false;
+
+                sendData('Stop');
             }
 
             stick.addEventListener('mousedown', handleDown);

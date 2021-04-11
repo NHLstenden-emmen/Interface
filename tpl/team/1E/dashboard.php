@@ -19,6 +19,10 @@
         $command = "a";
     }
 
+    if($action == "CLEAR"){
+        $command = "0";
+    }
+
     // Straight angles
 
 	// voor
@@ -81,10 +85,13 @@
     if($sendData == "bot_not_online"){
         $DB->Insert("INSERT INTO actions (type_ac, user, keyChar, clickValue, url) VALUES ('SENDTOBOT', ?, ?, 'bot_not_online', 'http://robotv.serverict.nl/dashboard/1E')", [$RobotName, $command]);
     } else if ($sendData == "success"){
-        $DB->Insert("INSERT INTO actions (type_ac, user, keyChar, clickValue, url) VALUES ('SENDTOBOT', ?, ?, ?, 'http://robotv.serverict.nl/dashboard/1E')", [$RobotName, command, $sendData]);
+        $DB->Insert("INSERT INTO actions (type_ac, user, keyChar, clickValue, url) VALUES ('SENDTOBOT', ?, ?, ?, 'http://robotv.serverict.nl/dashboard/1E')", [$RobotName, command, 'Success']);
     } else {
-        $DB->Insert("INSERT INTO actions (type_ac, user, keyChar, clickValue, url) VALUES ('SENDTOBOT', ?, ?, ?, 'http://robotv.serverict.nl/dashboard/1E')", [$RobotName, $command, $sendData]);
+        $DB->Insert("INSERT INTO actions (type_ac, user, keyChar, clickValue, url) VALUES ('SENDTOBOT', ?, ?, ?, 'http://robotv.serverict.nl/dashboard/1E')", [$RobotName, $command, 'Error']);
     }
+
+    echo $sendData;
+
     die();
  }
 
@@ -104,17 +111,17 @@
  /* Data from database */
  $robotData = $DB->Select("SELECT * FROM teams WHERE TeamID = ?",[$TeamID]);
  $userData = $DB->Select("SELECT * FROM users WHERE team = ?",[$TeamID]);
- $robotResult = $DB->Select("SELECT * FROM resultaat WHERE robot = ?",[$RobotName]);
- $scoreResult = $DB->Select("SELECT * FROM punten WHERE robot = ?",[$RobotName]);
  $robotAction = $DB->Select("SELECT * FROM actions WHERE user = ? ORDER BY time DESC",[$RobotName]);
 
  /* Data from socket */
  if($botList = $socket->getBotList()){
-     if(in_array($RobotName, json_decode(json_encode($botList), true))){
-        $botStatus = "Online";
-     } else {         
-        $botStatus = "Offline";
+     $botStatus = "Offline";
+     foreach (json_decode(json_encode($botList),true) as $key => $botInArray){
+         if (strpos($botInArray, $RobotName) !== false) {
+             $botStatus = "Online";
+         }
      }
+
  } else {
     $botStatus = "Offline";
  }
@@ -176,17 +183,6 @@
             <div class="cardContent">
                 <h5>Scoreboard</h5>
 
-                <!-- Details -->
-                <?php
-                    foreach ($scoreResult as $score){
-                        $tableRow =     "<p>";
-                        $tableRow .=    $score['game'];
-                        $tableRow .=    " - ";
-                        $tableRow .=    $score['score'] . 'punten';                        
-                        $tableRow .=    "</p>";
-                        echo $tableRow;
-                    }
-                ?>
             </div>
         </div>
     </div>
@@ -209,6 +205,7 @@
                 <button class="button" onclick="sendData('DOOLHOF');">Doolhof</button><br><br>
                 <button class="button" onclick="sendData('RACE');">Race</button><br><br>
                 <button class="button" onclick="sendData('TEKENING');">Tekening</button><br><br>
+                <button class="button" onclick="sendData('CLEAR');">Stop</button><br><br>
                 <button class="button" onclick="sendData('Ready');">Ready</button>
             </div>
         </div>
@@ -370,29 +367,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                            $totalScore = 0;
-                            $totalGames = 0;
-                            foreach ($scoreResult as $score){
-                                $totalScore = $totalScore + $score['score'];
-                                $totalGames++;
-                                $tableRow =     "<tr>";
-                                $tableRow .=    "<td>";
-                                $tableRow .=    $score['game'];
-                                $tableRow .=    "</td>";
-                                $tableRow .=    "<td>";
-                                $tableRow .=    $score['score'];
-                                $tableRow .=    "</td>";
-                                $tableRow .=    "</tr>";
-                                echo $tableRow;
-                            }
-                        ?>
+
                     </tbody>
                 </table>
                 <br><br>
-                <?php
-                    echo 'Gemiddelde aantal punten: ' . ($totalScore / $totalGames) . ' punten!';    
-                ?>
             </div>
         </div>
     </div>
