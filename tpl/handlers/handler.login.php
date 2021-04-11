@@ -6,20 +6,27 @@ if(isset($_GET['verificationKey'])){
         $getUser = $DB->Select("SELECT UserID FROM users WHERE verificationKey = ? LIMIT 1", [$verificationKey]);
     } catch (Exception $e) {
     }
-    $var_check = false;
-	foreach($getUser as $details){
-		$userID = $details['UserID'];
-        try {
-            $DB->Update("UPDATE users SET verificationKey = NULL WHERE UserID = ?", [$userID]);
-        } catch (Exception $e) {
+    if(isset($_GET['type'])){
+        if($_GET['type'] == 'pwreset'){
+            
         }
-        $var_check = true;
-	}
-	if($var_check){
-		echo "<script>alert('Verified!');</script>";
-	} else {
-		echo "<script>alert('Error!');</script>";
-	}
+    } else {
+        // verify account
+        $var_check = false;
+        foreach ($getUser as $details) {
+            $userID = $details['UserID'];
+            try {
+                $DB->Update("UPDATE users SET verificationKey = NULL WHERE UserID = ?", [$userID]);
+            } catch (Exception $e) {
+            }
+            $var_check = true;
+        }
+        if ($var_check) {
+            echo "<script>alert('Verified!');</script>";
+        } else {
+            echo "<script>alert('Error!');</script>";
+        }
+    }
 }
 
 $user->Redirect(true);
