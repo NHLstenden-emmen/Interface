@@ -3,14 +3,14 @@
 if(isset($_GET['verificationKey'])){
 	$verificationKey = $filter->sanatizeInput($_GET['verificationKey'], "string");
     try {
-        $getUser = $DB->Select("SELECT user_id FROM users WHERE verificationKey = ? LIMIT 1", [$verificationKey]);
+        $getUser = $DB->Select("SELECT UserID FROM users WHERE verificationKey = ? LIMIT 1", [$verificationKey]);
     } catch (Exception $e) {
     }
     $var_check = false;
 	foreach($getUser as $details){
-		$userID = $details['user_id'];
+		$userID = $details['UserID'];
         try {
-            $DB->Update("UPDATE users SET verificationKey = NULL WHERE user_id = ?", [$userID]);
+            $DB->Update("UPDATE users SET verificationKey = NULL WHERE UserID = ?", [$userID]);
         } catch (Exception $e) {
         }
         $var_check = true;

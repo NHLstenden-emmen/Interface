@@ -11,17 +11,15 @@
             <input type="hidden" name="action" value="login">
             <button class="button" name="loginSubmit" type="submit">Login</button>
             <a class="register" href="/register">{NO_ACCOUNT}</a>
+            <a class="register" href="/resetpassword">{PASSWORD_RESET}</a>
         </form>
     </div>
 </div>
 
 <script>
     grecaptcha.ready(function() {
-    // do request for recaptcha token
-    // response is promise with passed token
         grecaptcha.execute('6Lf47ZUaAAAAACWNEMMuL7uheIoWYWdKoJv93Re9', {action:'login'})
                   .then(function(token) {
-            // add token value to form
             document.getElementById('g-recaptcha-response').value = token;
         });
     });

@@ -140,7 +140,6 @@ class User
             return 2;
         }
 
-
 	}
 	
 	function userLevelName($type, $team = "") 
