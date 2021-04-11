@@ -164,7 +164,7 @@
                         </p>
                     </div>
                     <div class="col-sm-6 teamPhoto">
-                        <img class="neonBorder" src="{assetsFolder}/images/team/1E/logo.png" title="Team E" alt="Team E"> 
+                        <img class="" src="{assetsFolder}/images/team/1E/botPhoto.jpg" title="Team E" alt="Team E">
                     </div>
                 </div>
             </div>

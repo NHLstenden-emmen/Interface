@@ -1,3 +1,5 @@
+/* Dashboard INF1E */
+
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400&display=swap");
 
 * {
@@ -7,10 +9,23 @@
   font-weight: normal;
   color: white;
 
-  --primaryColor: #e0e0e0;
-  --secondaryColor: #818181;
+  --primaryColor: #ffffff;
+  --secondaryColor: #cacaca;
   --dark: rgb(15, 15, 15);
   --white: #ffffff;
+  --primaryTransparant: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.036) 0%,
+    rgba(255, 255, 255, 0.035) 100%
+  );
+  --secondaryTransparant: radial-gradient(
+    circle,
+    rgba(244, 210, 225, 0.157) 0%,
+    rgba(201, 179, 215, 0.157) 62%,
+    rgba(207, 223, 242, 0.157) 100%
+  );
+
+  --blurAmount: 40px;
 
   /* Team colors */
   --team1A: #f9c901;
@@ -20,18 +35,14 @@
   --team1E: #e0e0e0;
 
   /* Button colors */
-  --buttonColor: #e0e0e0;
-  --buttonHoverColor: #bebebe;
+  --buttonColor: #ffffff;
+  --buttonHoverColor: #e7e7e7;
   --gradientButton: radial-gradient(
     circle,
     var(--primaryColor) 0%,
     var(--secondaryColor) 100%
   );
-  --gradientButtonHover: radial-gradient(
-    circle,
-    #a3a3a3 0%,
-    rgb(58, 58, 58) 100%
-  );
+  --gradientButtonHover: radial-gradient(circle, #ffffff 0%, #ebebeb 100%);
 
   /* Send colors */
   --sendColor: #6d6d6d;
@@ -43,7 +54,7 @@
   --inputText: white;
 
   /* Glow */
-  --glowColor: #b3b3b3;
+  --glowColor: #e0e0e0;
   --glowLightColor: rgb(207, 207, 207);
 
   /* Line width */
@@ -55,71 +66,18 @@
   --scollbarHoverColor: #d1d1d1;
 
   /* Tables */
-  --tableEven: #b8b8b815;
-  --tableOdd: #72727215;
-  --tableHead: #ddddddb9;
+  --tableEven: #d3d3d315;
+  --tableOdd: #dfdfdf15;
+  --tableHead: #c0c0c0b9;
 
-  /* Lasers */
-  --laserHeight: 10px;
-=======
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Lexend', sans-serif;
-	font-weight: normal;
-	color: white;
+  /* Videoplayer */
+  --plyr-color-main: var(--primaryColor);
 
-	--primaryColor: #e0e0e0;
-	--secondaryColor: #818181;
-	--dark: rgb(15, 15, 15);
-	--white: #ffffff;
-
-	/* Team colors */
-	--team1A: #f9c901;
-	--team1B: #28478f;
-	--team1C: #d92626;
-	--team1D: #57c511;
-	--team1E: #e0e0e0;
-
-	/* Button colors */
-	--buttonColor: #e0e0e0;
-	--buttonHoverColor: #bebebe;
-	--gradientButton: radial-gradient(
-		circle,
-		var(--primaryColor) 0%,
-		var(--secondaryColor) 100%
-	);
-	--gradientButtonHover: radial-gradient(circle, #a3a3a3 0%, rgb(58, 58, 58) 100%);
-
-	/* Send colors */
-	--sendColor: #6d6d6d;
-	--sendHoverColor: #9c9c9c;
-
-	/* Input colors */
-	--placeholder: rgb(180, 180, 180);
-	--inputColor: rgb(61, 61, 61);
-	--inputText: white;
-
-	/* Glow */
-	--glowColor: #b3b3b3;
-	--glowLightColor: rgb(207, 207, 207);
-
-	/* Line width */
-	--animatedLines: 5px;
-
-	/* Scrollbar */
-	--scollbarColor: #ffc40000;
-	--scollbarHoldColor: #7c7c7c;
-	--scollbarHoverColor: #d1d1d1;
-
-	/* Tables */
-	--tableEven: #b8b8b815;
-	--tableOdd: #72727215;
-	--tableHead: #ddddddb9;
-
-	--logoBodyColor:  #fff;
-	--logoWingsColor: #9a9a9a;
-	--logoEyesColor:  #4f4f4f;
-	--logoBackdropColor: #dbdbdb;
+  /* Logo */
+  --logoBodyColor: #ffffff;
+  --logoWingsColor: #a7a7a7;
+  --logoEyesColor: #353535;
+  --logoBackdropColor: rgb(218, 218, 218);
 }
 
 /* Algemene items */
@@ -128,8 +86,12 @@ html,
 body {
   width: 100vw;
   min-height: 100vh;
-  /* background-color: rgb(22, 22, 22); */
   overflow-x: hidden;
+  position: relative;
+}
+
+p{
+    margin: 0;
 }
 
 hr {
@@ -159,11 +121,15 @@ hr {
 }
 ::selection {
   background: var(--glowColor);
-  color: rgb(66, 66, 66);
+  color: white;
 }
 
 .noPadding {
   padding: 0;
+}
+
+.topPadding {
+  padding-top: 80px;
 }
 
 iframe {
@@ -171,25 +137,60 @@ iframe {
   border: 0;
 }
 
+.zoom {
+  transition: 0.2s;
+}
+.zoom:hover {
+  transform: scale(1.05);
+}
+.langChange {
+  display: flex;
+  align-items: center;
+  padding: 0 !important;
+  margin: 0 20px !important;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+#contentPages {
+  position: relative;
+}
+.blockTitle {
+  margin: 15px;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+@media only screen and (max-width: 740px) {
+  #contentPages {
+    padding-bottom: 150px;
+  }
+}
+
+footer {
+  display: none !important;
+}
+
 /* Button styling */
 
 button.button {
-  /* padding: 25px 60px; */
+  padding: 10px 30px;
   border: none;
-  color: rgb(0, 0, 0);
+  color: black;
   font-weight: bold;
   background: var(--gradientButton);
-  -webkit-backface-visibility: hidden;
-  -webkit-transform: translateZ(0) scale(1, 1);
-  transform: translateZ(0);
-  animation: button 0.2s ease-in-out forwards;
-}
-
-button.button:hover {
-  cursor: pointer;
-  animation: buttonHover 0.2s ease-in-out forwards;
   outline: 0;
   border: 0;
+}
+button.button.small {
+  padding: 5px 25px;
+  margin-right: 10px;
+}
+button.button:hover {
+  cursor: pointer;
+  animation: buttonHover 0.3s ease-in-out forwards;
 }
 
 a.button {
@@ -198,14 +199,13 @@ a.button {
   color: white;
   font-weight: bold;
   background: var(--gradientButton);
-  animation: button 0.2s ease-in-out forwards;
   text-decoration: none;
   font-size: 0.8em;
 }
 
-.button:hover {
-  outline: 0;
-  border: 0;
+a.button:hover {
+  cursor: pointer;
+  animation: buttonHover 0.3s ease-in-out forwards;
 }
 
 a.alternative-button {
@@ -219,13 +219,6 @@ a.alternative-button {
   padding: 10px 20px !important;
   margin: 0 20px;
   background-color: #0f0f0fad;
-}
-
-a.button:hover {
-  animation-name: buttonHover;
-  animation-duration: 0.2s;
-  animation-timing-function: ease-in-out;
-  animation: buttonHover 0.2s ease-in-out forwards;
 }
 
 a#send {
@@ -365,6 +358,15 @@ tr:nth-child(odd) {
   }
 }
 
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes send {
   from {
     background-color: var(--sendHoverColor);
@@ -399,290 +401,1293 @@ tr:nth-child(odd) {
   }
 }
 
-@keyframes blink {
+/* Background website */
+
+#background {
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark);
+  overflow: hidden;
+  position: fixed;
+  z-index: -10;
+}
+
+.lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Animation 1 */
+
+.line1 {
+  position: absolute;
+  background-color: var(--primaryColor);
+  box-shadow: 0 0 10px var(--glowColor);
+
+  animation-name: line1;
+  animation-duration: 9s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: 1.5s;
+}
+
+@-moz-keyframes line1 {
   0% {
-    opacity: 0;
+    width: var(--animatedLines);
+    height: 0px;
+    left: 40%;
+    top: 0px;
+  }
+  10% {
+    width: var(--animatedLines);
+    left: 40%;
+    height: calc(100vh / 15);
+    top: 0px;
+    background-color: var(--glowColor);
+  }
+  25% {
+    height: var(--animatedLines);
+    top: calc(calc(100vh / 15) - var(--animatedLines));
+    left: 40%;
+    width: var(--animatedLines);
   }
   50% {
-    opacity: 1;
+    top: calc(calc(100vh / 15) - var(--animatedLines));
+    width: 40%;
+    left: 0px;
+    height: var(--animatedLines);
+    background-color: var(--primaryColor);
   }
   100% {
-    opacity: 0;
+    top: calc(calc(100vh / 15) - var(--animatedLines));
+    left: 0px;
+    width: 0px;
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
   }
 }
 
-/* Blocks dashboard */
-
-#block {
-  margin: 3vh auto;
-  min-height: 94vh;
+@-o-keyframes line1 {
+  0% {
+    width: var(--animatedLines);
+    height: 0px;
+    left: 40%;
+    top: 0px;
+  }
+  10% {
+    width: var(--animatedLines);
+    left: 40%;
+    height: calc(100vh / 15);
+    top: 0px;
+    background-color: var(--glowColor);
+  }
+  25% {
+    height: var(--animatedLines);
+    top: calc(calc(100vh / 15) - var(--animatedLines));
+    left: 40%;
+    width: var(--animatedLines);
+  }
+  50% {
+    top: calc(calc(100vh / 15) - var(--animatedLines));
+    width: 40%;
+    left: 0px;
+    height: var(--animatedLines);
+    background-color: var(--primaryColor);
+  }
+  100% {
+    top: calc(calc(100vh / 15) - var(--animatedLines));
+    left: 0px;
+    width: 0px;
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
 }
 
-.block {
-  margin: 15px 0;
+@keyframes line1 {
+  0% {
+    width: var(--animatedLines);
+    height: 0px;
+    left: 40%;
+    top: 0px;
+  }
+  10% {
+    width: var(--animatedLines);
+    left: 40%;
+    height: calc(100vh / 15);
+    top: 0px;
+    background-color: var(--glowColor);
+  }
+  25% {
+    height: var(--animatedLines);
+    top: calc(calc(100vh / 15) - var(--animatedLines));
+    left: 40%;
+    width: var(--animatedLines);
+  }
+  50% {
+    top: calc(calc(100vh / 15) - var(--animatedLines));
+    width: 40%;
+    left: 0px;
+    height: var(--animatedLines);
+    background-color: var(--primaryColor);
+  }
+  100% {
+    top: calc(calc(100vh / 15) - var(--animatedLines));
+    left: 0px;
+    width: 0px;
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
 }
 
-.pageBar {
-  width: 100%;
+/* Animation 2 */
+
+.line2 {
+  position: absolute;
+  background-color: var(--primaryColor);
+  box-shadow: 0 0 10px var(--glowColor);
+
+  animation-name: line2;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes line2 {
+  0% {
+    width: 0px;
+    height: var(--animatedLines);
+    right: 0px;
+    top: 50vh;
+  }
+  15% {
+    width: 20%;
+    right: 0px;
+    background-color: var(--glowColor);
+  }
+  25% {
+    top: 50vh;
+    width: var(--animatedLines);
+    right: calc(20% - var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  50% {
+    height: calc(50vh);
+    top: 0px;
+    width: var(--animatedLines);
+    right: calc(20% - var(--animatedLines));
+    background-color: var(--primaryColor);
+  }
+  100% {
+    height: 0px;
+    right: calc(20% - var(--animatedLines));
+    top: 0px;
+    width: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+}
+
+@-moz-keyframes line2 {
+  0% {
+    width: 0px;
+    height: var(--animatedLines);
+    right: 0px;
+    top: 50vh;
+  }
+  15% {
+    width: 20%;
+    right: 0px;
+    background-color: var(--glowColor);
+  }
+  25% {
+    top: 50vh;
+    width: var(--animatedLines);
+    right: calc(20% - var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  50% {
+    height: calc(50vh);
+    top: 0px;
+    width: var(--animatedLines);
+    right: calc(20% - var(--animatedLines));
+    background-color: var(--primaryColor);
+  }
+  100% {
+    height: 0px;
+    right: calc(20% - var(--animatedLines));
+    top: 0px;
+    width: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+}
+
+@-o-keyframes line2 {
+  0% {
+    width: 0px;
+    height: var(--animatedLines);
+    right: 0px;
+    top: 50vh;
+  }
+  15% {
+    width: 20%;
+    right: 0px;
+    background-color: var(--glowColor);
+  }
+  25% {
+    top: 50vh;
+    width: var(--animatedLines);
+    right: calc(20% - var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  50% {
+    height: calc(50vh);
+    top: 0px;
+    width: var(--animatedLines);
+    right: calc(20% - var(--animatedLines));
+    background-color: var(--primaryColor);
+  }
+  100% {
+    height: 0px;
+    right: calc(20% - var(--animatedLines));
+    top: 0px;
+    width: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+}
+
+@keyframes line2 {
+  0% {
+    width: 0px;
+    height: var(--animatedLines);
+    right: 0px;
+    top: 50vh;
+  }
+  15% {
+    width: 20%;
+    right: 0px;
+    background-color: var(--glowColor);
+  }
+  25% {
+    top: 50vh;
+    width: var(--animatedLines);
+    right: calc(20% - var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  50% {
+    height: calc(50vh);
+    top: 0px;
+    width: var(--animatedLines);
+    right: calc(20% - var(--animatedLines));
+    background-color: var(--primaryColor);
+  }
+  100% {
+    height: 0px;
+    right: calc(20% - var(--animatedLines));
+    top: 0px;
+    width: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+}
+
+/* Animation 3 */
+
+.line3 {
+  position: absolute;
+  background-color: var(--primaryColor);
+  box-shadow: 0 0 10px var(--glowColor);
+
+  animation-name: line3;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: 2s;
+}
+
+@-webkit-keyframes line3 {
+  0% {
+    right: 0px;
+    top: 15%;
+    width: 0%;
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+  10% {
+    right: 0px;
+    top: 15%;
+    width: 0%;
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+  55% {
+    right: 0px;
+    background-color: var(--primaryColor);
+  }
+  60% {
+    top: 15%;
+    width: 10%;
+    height: var(--animatedLines);
+  }
+  100% {
+    background-color: var(--glowColor);
+    right: calc(10% - var(--animatedLines));
+    top: 15%;
+    width: 0%;
+    height: var(--animatedLines);
+  }
+}
+
+@-moz-keyframes line3 {
+  0% {
+    right: 0px;
+    top: 15%;
+    width: 0%;
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+  10% {
+    right: 0px;
+    top: 15%;
+    width: 0%;
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+  55% {
+    right: 0px;
+    background-color: var(--primaryColor);
+  }
+  60% {
+    top: 15%;
+    width: 10%;
+    height: var(--animatedLines);
+  }
+  100% {
+    background-color: var(--glowColor);
+    right: calc(10% - var(--animatedLines));
+    top: 15%;
+    width: 0%;
+    height: var(--animatedLines);
+  }
+}
+
+@-o-keyframes line3 {
+  0% {
+    right: 0px;
+    top: 15%;
+    width: 0%;
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+  10% {
+    right: 0px;
+    top: 15%;
+    width: 0%;
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+  55% {
+    right: 0px;
+    background-color: var(--primaryColor);
+  }
+  60% {
+    top: 15%;
+    width: 10%;
+    height: var(--animatedLines);
+  }
+  100% {
+    background-color: var(--glowColor);
+    right: calc(10% - var(--animatedLines));
+    top: 15%;
+    width: 0%;
+    height: var(--animatedLines);
+  }
+}
+
+@keyframes line3 {
+  0% {
+    right: 0px;
+    top: 15%;
+    width: 0%;
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+  10% {
+    right: 0px;
+    top: 15%;
+    width: 0%;
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+  55% {
+    right: 0px;
+    background-color: var(--primaryColor);
+  }
+  60% {
+    top: 15%;
+    width: 10%;
+    height: var(--animatedLines);
+  }
+  100% {
+    background-color: var(--glowColor);
+    right: calc(10% - var(--animatedLines));
+    top: 15%;
+    width: 0%;
+    height: var(--animatedLines);
+  }
+}
+
+/* Animation 4 */
+
+.line4 {
+  position: absolute;
+  background-color: var(--primaryColor);
+  box-shadow: 0 0 10px var(--glowColor);
+
+  animation-name: line4;
+  animation-duration: 7s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: 3s;
+}
+
+@-webkit-keyframes line4 {
+  0% {
+    width: var(--animatedLines);
+    height: 0px;
+    top: 0;
+    left: 60%;
+    background-color: var(--glowColor);
+  }
+  15% {
+    width: var(--animatedLines);
+    height: 25%;
+    top: 0;
+    left: 60%;
+  }
+  30% {
+    width: var(--animatedLines);
+    height: var(--animatedLines);
+    top: calc(25% - var(--animatedLines));
+    left: 60%;
+  }
+  45% {
+    background-color: var(--primaryColor);
+    width: 30%;
+    left: 30%;
+    top: calc(25% - var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  60% {
+    width: var(--animatedLines);
+    left: 30%;
+    top: calc(25% - var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  75% {
+    width: var(--animatedLines);
+    left: 30%;
+    top: calc(25% - var(--animatedLines));
+    height: 75%;
+  }
+  100% {
+    width: var(--animatedLines);
+    left: 30%;
+    top: 100%;
+    height: 0%;
+    background-color: var(--glowColor);
+  }
+}
+
+@-moz-keyframes line4 {
+  0% {
+    width: var(--animatedLines);
+    height: 0px;
+    top: 0;
+    left: 60%;
+    background-color: var(--glowColor);
+  }
+  15% {
+    width: var(--animatedLines);
+    height: 25%;
+    top: 0;
+    left: 60%;
+  }
+  30% {
+    width: var(--animatedLines);
+    height: var(--animatedLines);
+    top: calc(25% - var(--animatedLines));
+    left: 60%;
+  }
+  45% {
+    background-color: var(--primaryColor);
+    width: 30%;
+    left: 30%;
+    top: calc(25% - var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  60% {
+    width: var(--animatedLines);
+    left: 30%;
+    top: calc(25% - var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  75% {
+    width: var(--animatedLines);
+    left: 30%;
+    top: calc(25% - var(--animatedLines));
+    height: 75%;
+  }
+  100% {
+    width: var(--animatedLines);
+    left: 30%;
+    top: 100%;
+    height: 0%;
+    background-color: var(--glowColor);
+  }
+}
+
+@-o-keyframes line4 {
+  0% {
+    width: var(--animatedLines);
+    height: 0px;
+    top: 0;
+    left: 60%;
+    background-color: var(--glowColor);
+  }
+  15% {
+    width: var(--animatedLines);
+    height: 25%;
+    top: 0;
+    left: 60%;
+  }
+  30% {
+    width: var(--animatedLines);
+    height: var(--animatedLines);
+    top: calc(25% - var(--animatedLines));
+    left: 60%;
+  }
+  45% {
+    background-color: var(--primaryColor);
+    width: 30%;
+    left: 30%;
+    top: calc(25% - var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  60% {
+    width: var(--animatedLines);
+    left: 30%;
+    top: calc(25% - var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  75% {
+    width: var(--animatedLines);
+    left: 30%;
+    top: calc(25% - var(--animatedLines));
+    height: 75%;
+  }
+  100% {
+    width: var(--animatedLines);
+    left: 30%;
+    top: 100%;
+    height: 0%;
+    background-color: var(--glowColor);
+  }
+}
+
+@keyframes line4 {
+  0% {
+    width: var(--animatedLines);
+    height: 0px;
+    top: 0;
+    left: 60%;
+    background-color: var(--glowColor);
+  }
+  15% {
+    width: var(--animatedLines);
+    height: 25%;
+    top: 0;
+    left: 60%;
+  }
+  30% {
+    width: var(--animatedLines);
+    height: var(--animatedLines);
+    top: calc(25% - var(--animatedLines));
+    left: 60%;
+  }
+  45% {
+    background-color: var(--primaryColor);
+    width: 30%;
+    left: 30%;
+    top: calc(25% - var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  60% {
+    width: var(--animatedLines);
+    left: 30%;
+    top: calc(25% - var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  75% {
+    width: var(--animatedLines);
+    left: 30%;
+    top: calc(25% - var(--animatedLines));
+    height: 75%;
+  }
+  100% {
+    width: var(--animatedLines);
+    left: 30%;
+    top: 100%;
+    height: 0%;
+    background-color: var(--glowColor);
+  }
+}
+
+/* Animation 5 */
+
+.line5 {
+  position: absolute;
+  background-color: var(--primaryColor);
+  box-shadow: 0 0 10px var(--glowColor);
+
+  animation-name: line5;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: 3.5s;
+}
+
+@-webkit-keyframes line5 {
+  0% {
+    bottom: 0;
+    right: 35%;
+    width: var(--animatedLines);
+    height: 0px;
+    background-color: var(--glowColor);
+  }
+  25% {
+    bottom: 0px;
+    width: var(--animatedLines);
+    height: 18%;
+    right: 35%;
+  }
+  50% {
+    bottom: calc(18% - var(--animatedLines));
+    width: var(--animatedLines);
+    height: var(--animatedLines);
+    right: 35%;
+    background-color: var(--primaryColor);
+  }
+  75% {
+    bottom: calc(18% - 10px + var(--animatedLines));
+    width: 35%;
+    right: calc(-1 * var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  100% {
+    bottom: calc(18% - var(--animatedLines));
+    width: 0%;
+    right: calc(-1 * var(--animatedLines));
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+}
+
+@-moz-keyframes line5 {
+  0% {
+    bottom: 0;
+    right: 35%;
+    width: var(--animatedLines);
+    height: 0px;
+    background-color: var(--glowColor);
+  }
+  25% {
+    bottom: 0px;
+    width: var(--animatedLines);
+    height: 18%;
+    right: 35%;
+  }
+  50% {
+    bottom: calc(18% - var(--animatedLines));
+    width: var(--animatedLines);
+    height: var(--animatedLines);
+    right: 35%;
+    background-color: var(--primaryColor);
+  }
+  75% {
+    bottom: calc(18% - 10px - var(--animatedLines));
+    width: 35%;
+    right: calc(-1 * var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  100% {
+    bottom: calc(18% - var(--animatedLines));
+    width: 0%;
+    right: calc(-1 * var(--animatedLines));
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+}
+
+@-o-keyframes line5 {
+  0% {
+    bottom: 0;
+    right: 35%;
+    width: var(--animatedLines);
+    height: 0px;
+    background-color: var(--glowColor);
+  }
+  25% {
+    bottom: 0px;
+    width: var(--animatedLines);
+    height: 18%;
+    right: 35%;
+  }
+  50% {
+    bottom: calc(18% - var(--animatedLines));
+    width: var(--animatedLines);
+    height: var(--animatedLines);
+    right: 35%;
+    background-color: var(--primaryColor);
+  }
+  75% {
+    bottom: calc(18% - 10px - var(--animatedLines));
+    width: 35%;
+    right: calc(-1 * var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  100% {
+    bottom: calc(18% - var(--animatedLines));
+    width: 0%;
+    right: calc(-1 * var(--animatedLines));
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+}
+
+@keyframes line5 {
+  0% {
+    bottom: 0;
+    right: 35%;
+    width: var(--animatedLines);
+    height: 0px;
+    background-color: var(--glowColor);
+  }
+  25% {
+    bottom: 0px;
+    width: var(--animatedLines);
+    height: 18%;
+    right: 35%;
+  }
+  50% {
+    bottom: calc(18% - var(--animatedLines));
+    width: var(--animatedLines);
+    height: var(--animatedLines);
+    right: 35%;
+    background-color: var(--primaryColor);
+  }
+  75% {
+    bottom: calc(18% - 10px - var(--animatedLines));
+    width: 35%;
+    right: calc(-1 * var(--animatedLines));
+    height: var(--animatedLines);
+  }
+  100% {
+    bottom: calc(18% - var(--animatedLines));
+    width: 0%;
+    right: calc(-1 * var(--animatedLines));
+    height: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+}
+
+/* Animation 6 */
+
+.line6 {
+  position: absolute;
+  background-color: var(--primaryColor);
+  box-shadow: 0 0 10px var(--glowColor);
+
+  animation-name: line6;
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: 0.2s;
+}
+
+@-webkit-keyframes line6 {
+  0% {
+    bottom: 0;
+    left: 10%;
+    height: 0px;
+
+    width: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+  20% {
+    bottom: 0;
+    left: 10%;
+    height: 75%;
+  }
+  40% {
+    bottom: calc(75% - var(--animatedLines));
+    left: 10%;
+    height: var(--animatedLines);
+    width: var(--animatedLines);
+  }
+  60% {
+    left: 0%;
+    width: 10%;
+  }
+  80% {
+    width: 0%;
+  }
+  100% {
+    bottom: calc(75% - var(--animatedLines));
+    left: 0;
+    height: var(--animatedLines);
+    width: 0;
+    background-color: var(--glowColor);
+  }
+}
+
+@-moz-keyframes line6 {
+  0% {
+    bottom: 0;
+    left: 10%;
+    height: 0px;
+
+    width: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+  20% {
+    bottom: 0;
+    left: 10%;
+    height: 75%;
+  }
+  40% {
+    bottom: calc(75% - var(--animatedLines));
+    left: 10%;
+    height: var(--animatedLines);
+    width: var(--animatedLines);
+  }
+  60% {
+    left: 0%;
+    width: 10%;
+  }
+  80% {
+    width: 0%;
+  }
+  100% {
+    bottom: calc(75% - var(--animatedLines));
+    left: 0;
+    height: var(--animatedLines);
+    width: 0;
+    background-color: var(--glowColor);
+  }
+}
+
+@-o-keyframes line6 {
+  0% {
+    bottom: 0;
+    left: 10%;
+    height: 0px;
+
+    width: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+  20% {
+    bottom: 0;
+    left: 10%;
+    height: 75%;
+  }
+  40% {
+    bottom: calc(75% - var(--animatedLines));
+    left: 10%;
+    height: var(--animatedLines);
+    width: var(--animatedLines);
+  }
+  60% {
+    left: 0%;
+    width: 10%;
+  }
+  80% {
+    width: 0%;
+  }
+  100% {
+    bottom: calc(75% - var(--animatedLines));
+    left: 0;
+    height: var(--animatedLines);
+    width: 0;
+    background-color: var(--glowColor);
+  }
+}
+
+@keyframes line6 {
+  0% {
+    bottom: 0;
+    left: 10%;
+    height: 0px;
+
+    width: var(--animatedLines);
+    background-color: var(--glowColor);
+  }
+  20% {
+    bottom: 0;
+    left: 10%;
+    height: 75%;
+  }
+  40% {
+    bottom: calc(75% - var(--animatedLines));
+    left: 10%;
+    height: var(--animatedLines);
+    width: var(--animatedLines);
+  }
+  60% {
+    left: 0%;
+    width: 10%;
+  }
+  80% {
+    width: 0%;
+  }
+  100% {
+    bottom: calc(75% - var(--animatedLines));
+    left: 0;
+    height: var(--animatedLines);
+    width: 0;
+    background-color: var(--glowColor);
+  }
+}
+
+/* Custom INF1E Dashboard Styling */
+
+
+/* Top Cards */
+
+
+.topCard > .cardContent {
+  margin: 15px;
+  padding: 35px;
+  backdrop-filter: blur(var(--blurAmount));
+  background: var(--primaryTransparant);
+  border-radius: 15px;
+  min-height: 200px;  
+  position: relative;
+  transition: .5s;
+  top: 0;
+}
+
+.topCard > .cardContent:hover{    
+    top: 30px;
+}
+
+.cardContent > h5{
+    font-weight: bold;
+}
+
+.cardContent > h5 > i{
+    font-size: 0.7em;
+}
+.cardContent > h5 > i:hover{
+    cursor: pointer;
+}
+
+/* first card */
+
+#robot:hover{
+    cursor: pointer;
+}
+
+#robotStatus{
+    position: absolute;
+    bottom: 10px;
+    right: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Offline{
+    background: rgb(226, 46, 46);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+}
+
+#Online{
+    background: rgb(74, 230, 74);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+}
+
+/* second card */
+
+#members:hover{
+    cursor: pointer;
+}
+
+#moreMembers{
+    position: absolute;
+    bottom: 10px;
+    right: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#EditDesc_NL,
+#EditDesc_EN{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.226);
+    border: 0;
+    padding: 15px;
+    min-height: 400px;
+    max-height: 400px;
+}
+
+
+form > .button{
+    margin-top: 10px;
+}
+
+
+/* CardBoxes */
+
+.cardBox{
+    width: 100vw;
+    min-height: 100vh;
+    backdrop-filter: blur(var(--blurAmount));
+    position: absolute;
+}
+
+.cardBox > .container > .row > .col-lg-12 > h3{
+    font-weight: bold;
+}
+
+.cardBox > .container > .row > .col-lg-12 > h3 > i:hover{
+    cursor: pointer;
+}
+
+/* Controller */
+
+#sendButtons{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
 
-.pageBar > div {
-  background-color: #0f0f0f;
-  padding: 15px;
-  border-left: 5px solid var(--glowColor);
+#sendButtons div{
+  margin: 15px;
 }
 
-#block1 > .content,
-#block2 > .content,
-#block3 > .content,
-#block4 > .content,
-#block5 > .content,
-#block6 > .content,
-#block7 > .content,
-#block8 > .content,
-#block9 > .content {
-  min-height: 250px;
-  max-height: 600px;
-  overflow: auto;
-  background-color: rgba(15, 15, 15, 0.7);
+#sendButtons .button{
+  backdrop-filter: blur(var(--blurAmount));
+  background: var(--primaryTransparant);
+  color: var(--primaryColor);
+  width: 200px;
 }
 
-#block1 > .content,
-#block2 > .content,
-#block3 > .content,
-#block8 > .content {
-  min-height: 400px;
+#sendButtons .button:hover{
+  background: var(--primaryTransparant) !important;
+  color: var(--primaryColor);
+  transition: none !important;
 }
 
-#block4 > .content,
-#block5 > .content,
-#block6 > .content,
-#block7 > .content,
-#block9 > .content {
-  min-height: 600px;
+/* Console */
+
+#console ul{
+  margin: 0 15px;
+  padding: 35px;
+  border-radius: 15px;
+  backdrop-filter: blur(var(--blurAmount));
+  background: var(--primaryTransparant);
+  height: 400px;
+  overflow: scroll;
 }
 
-h2#titel,
-p#desc {
-  font-weight: bold;
+#console ul li{
+  list-style-type: none;
 }
 
-h5.blockTitle {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* Speelschema */
-
-#block5 > .content > table#schemaSPS {
-  width: 100%;
-  border: 0;
-}
-
-#block5 > .content > table#schemaSPS th,
-#block5 > .content > table#schemaSPS td {
-  font-size: 0.8em;
-  color: white;
-}
-
-#block5 > .content > table#schemaSPS tr:nth-child(odd) {
-  background-color: var(--tableOdd);
-}
-
-#block5 > .content > table#schemaSPS tr:nth-child(even) {
-  background-color: var(--tableEven);
-}
-
-#block5 > .content > table#schemaSPS th {
-  font-weight: bold;
-  padding: 7px;
-}
-
-#block5 > .content > table#schemaSPS td {
-  padding: 5px 7px;
-}
-
-/* Consoleblock */
-
-#block7 > .content > #console > p {
-  color: white;
-  font-size: 0.8em;
-}
-
-#block7 > .content > #console > p.error {
-  color: red;
-}
-
-#block7 > .content > #console > p.correct {
-  color: green;
-}
-
-p.blink {
-  animation: blink 0.8s ease-in-out infinite;
-}
-
-#WASD button {
+.consoleLog p{
   display: inline-block;
 }
 
-#WASD {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* Take control */
 
-#WASD > .container {
-  padding-bottom: 90px;
-}
-
-#WASD > .container > .row-one,
-#WASD > .container > .row-two {
-  width: 100%;
-  text-align: center;
-}
-
-#WASD > .container > .row-one > button,
-#WASD > .container > .row-two > button {
-  padding: 10px;
-  min-width: 50px;
-  margin: 5px;
-  text-align: center;
-  border: 0;
-}
-
-/* Aanpassen beschrijving */
-
-.editDescription textarea {
-  width: 100% !important;
-  height: 300px;
-}
-
-/* Commmands */
-
-.buttonLayout {
+#takeControl{
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+}
+
+/* Launch */
+
+.launch {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/tpl/team/1E/img/grass.png");
+  background-size: cover;
+  background-position: bottom;
+  position: fixed;
+  top: 0px;
+  z-index: 999999999;
+  backdrop-filter: blur(var(--blurAmount));
+  background-color: rgba(60, 189, 245, 0.68);
+}
+
+#launchController{
+  margin-left: 15vw;
+  margin-top: 10vh;
+  width: 40vw;
+  height: 35vh;
+  border-radius: 35vh;
+  position: relative;
+  color: black;
+}
+
+#exitLaunch{
+  position: absolute;
+  right: 15vw;
+  top: 10vh;
+}
+
+#exitLaunch > i{
+  font-size: 2em;
+}
+
+#exitLaunch > i:hover{
+  cursor: pointer;
+}
+
+#launchController > h4{
+  position: absolute;
   width: 100%;
-}
-
-.buttonLayout > div{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-
-}
-
-#block2 .button {
-  width: 175px;
-
-}
-
-/* Ultra Jetten Cyborg */
-
-#block9 > .content {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: column;
-}
-
-.botReady {
-  padding: 30px 60px;
-  color: rgba(255, 255, 255, 0);
-  outline: 0;
+  text-align: center;
   font-weight: bold;
-  border: 0;
-  background-image: url("/tpl/team/1E/D69Color.png");
-  background-size: 100%;
-  background-position: center;
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
-  z-index: 2;
+  top: 10px;
 }
 
-.botReady:focus {
-  outline: 0;
-  border: 0;
+.launchRow3{
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
 }
 
-.botReady:hover {
-  animation: fadeIn ease-in-out 1s 1 normal forwards;
+.launchRow3 > div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.epicRob {
-  color: white;
+.launchRow3 > div > p {
+  margin-top: 15px;
+  color: black;
 }
 
-.epicRob p {
-  text-align: center;
+.power{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 
-@keyframes fadeIn {
-  0% {
-    background-image: url("/tpl/team/1E/D69Color.png");
-    background-size: 100%;
-  }
-  100% {
-    background-image: url("/tpl/team/1E/D69.png");
-    background-size: 100%;
-  }
+.arm{
+  width: 40px;
+  height: 65px;
+  border-radius: 5px;
+  background: #e2e443;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-.showRob {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  z-index: 1;
-  pointer-events: none;
-  bottom: 0;
-  animation: showRob ease-in-out 1s forwards;
-  background-position: bottom;
+.stripe{
+  margin: 5px 0;
+  width: 90%;
+  height: 5px;
+  background: #0f0f0fb0;
+  border-radius: 10px;
 }
 
-@keyframes showRob {
-  0% {
-    background-image: url("/tpl/team/1E/robbie.png");
-    background-size: 0%;
-    background-repeat: no-repeat;
-    opacity: 0;
-  }
-  100% {
-    background-image: url("/tpl/team/1E/robbie.png");
-    background-size: 50%;
-    background-repeat: no-repeat;
-    opacity: 1;
-  }
+.fire{
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #ff3f3f;
+  border: 2px solid #e2e443;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
 }
 
-.hideRob {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  z-index: 2;
-  pointer-events: none;
-  bottom: 0;
-  animation: hideRob ease-in-out 1s forwards;
-  background-position: bottom;
+.fire:hover{
+  background: #cd2020;
+  cursor: pointer;
 }
 
-@keyframes hideRob {
-  0% {
-    background-image: url("/tpl/team/1E/robbie.png");
-    background-size: 50%;
-    background-repeat: no-repeat;
-    opacity: 1;
-  }
-  100% {
-    background-image: url("/tpl/team/1E/robbie.png");
-    background-size: 0%;
-    background-repeat: no-repeat;
-    opacity: 0;
-  }
+#centerJoystick{
+  width: auto;
+  height: auto;
+  margin-left: 50%;
+  margin-top: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 }
+
+#joystick{
+position: absolute;
+}
+
+.topZ{
+position: absolute;
+z-index: 99999999999;
+}
+
+.cloud{
+position: absolute;
+font-size: 25em;
+color: white;
+cursor: pointer;
+  transition: 0.3s;
+}
+
+.cloud:hover{
+  color: #f7f7f7;
+}
+
+#cloud1{
+top: -35px;
+}
+
+#cloud2{
+top: -35px;
+left: 15vw;
+}
+
+#cloud3{
+top: -75px;
+left: 7vw;
+}
+
+#grass{
+position: absolute;
+bottom: 0;
+width: 100vw;
+z-index: 4;
+pointer-events: none;
+}
+
+#baudet{
+position: absolute;
+bottom: 0;
+width: 100vw;
+pointer-events: none;
+}
+
