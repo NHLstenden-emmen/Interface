@@ -28,6 +28,8 @@
 									$levelSelect = $filter->sanatizeInput($_POST['levelSelect'], 'int');
 									$teamSelect = $filter->sanatizeInput($_POST['teamSelect'], 'string');
 
+                                    $regPass2 = password_hash($Pass2, PASSWORD_DEFAULT);
+
 									$gebruikerID = $filter->sanatizeInput($_POST['gebruikerID'], 'int');
 
 									$regAntwoord = $user->Edit($teamSelect, $voorNaam, $achterNaam, $Email, $Pass1, $Pass2, $levelSelect, $gebruikerID);
@@ -41,7 +43,8 @@
 									}
 									else 
 									{
-										$core->Refresh();
+									    echo $regAntwoord;
+                                        //$core->Refresh();
 									}
 								}
 							}

@@ -59,5 +59,6 @@ $this->lang['TERUG'] = 'Terug';
 $this->lang['GEBRUIKERS'] = 'Gebruikers';
 $this->lang['VERIFYACCOUNT'] = 'Check je email om je account te verifiëren!';
 $this->lang['BANNEDACCOUNT'] = 'Dit IP Adres is gebanned, je kunt de livestream nog wel bekijken!';
+$this->lang['NAME'] = 'Naam';
 
 ?>

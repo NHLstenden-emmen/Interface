@@ -14,7 +14,7 @@ if(isset($_GET['lang'])) {
 
 /* Check if is logged in on other ip or device or browser*/
 if($user->logged_in){	
-	$loginKey = $DB->Select("SELECT loginKey FROM users WHERE email = ? LIMIT 1",[$user->email]);
+	$loginKey = $DB->Select("SELECT loginKey FROM users WHERE Email = ? LIMIT 1",[$user->email]);
 	if ($core->getUserIP() != $user->lastIp){
 		$user->Logout();
 	} else if ($loginKey[0]['loginKey'] != $_COOKIE['loginKey']){
@@ -45,8 +45,16 @@ if ($user->logged_in)
 		$this->Set('dashboard', '');
 	}
 	if($user->level == 2) {
-		$this->Set('dashboard', '<li><a href="/moderator/">Moderator</a></li>');
+		$this->Set('dashboard', '');
 	}
+
+    if($user->level == 3) {
+        $this->Set('dashboard', '<li><a href="/moderator/">Moderator</a></li>');
+    }
+
+    if($user->level == 4) {
+        $this->Set('dashboard', '<li><a href="/moderator/">Administrator</a></li>');
+    }
 }
 else 
 {
