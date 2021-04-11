@@ -4,113 +4,108 @@ class ServerConnection
         private $port;
         private $host;
         private $socketHost;
-        private $error = [];
 
-        function __construct($port, $host)
-        {
-                $this->port = $port;
-                $this->host = $host;
+        function __construct($port, $host) {
+            $this->port = $port;
+            $this->host = $host;
         }
 
-        function create() {
-                if($this->socketHost = socket_create(AF_INET, SOCK_STREAM, 6))
-                {
+        function create(): bool
+        {
+                if($this->socketHost = socket_create(AF_INET, SOCK_STREAM, 6)) {
+                    if (!socket_set_option($this->socketHost , SOL_SOCKET, SO_REUSEADDR, 1)) {
+                        echo 'Unable to set option on socket: '. socket_strerror(socket_last_error()) . PHP_EOL;
+                    }
                         $this->connect();
                         return true;
-                }
-                else 
-                {
-                        $this->error .= "Could not create socket \n";
-                        return false;
-                }
+                } else return false;
         }
 
-        function connect() 
+        function connect(): bool
         {
-                if(!$this->socketClient = socket_connect($this->socketHost, $this->host, $this->port))  $this->error .= "Could not connect to socket \n";  
+                if(socket_connect($this->socketHost, $this->host, $this->port)) return true;
+                else return false;
         }
 
-        function sendToBot($bot, $command) 
-        {
+        function sendToBot($bot, $command) {
                 if($response = $this->write(json_encode(["BOT" => $bot, "CMD" => $command]))) return $response->server;
+                else return false;
         }
 
-        function sendStartToBot($bot) 
-        {
+        function sendStartToBot($bot) {
                 if($response = $this->write(json_encode(["BOT" => $bot, "CMD" => "START"]))) return $response->server;
+                else return false;
         }
 
-        function sendStoptoBot($bot) 
-        {
+        function sendStoptoBot($bot) {
                 if($response = $this->write(json_encode(["BOT" => $bot, "CMD" => "STOP"]))) return $response->server;
+                else return false;
         }
 
-        function sendToAll($command)
-        {
+        function sendToAll($command) {
                 if($response = $this->write(json_encode(["BOT" => "ALL", "CMD" => $command]))) return $response->server;
+                else return false;
         }
 
-        function getBotList()
-        {
+        function getBotList() {
                 if($response = $this->write(json_encode(["CMD" => "BOTLIST"]))) return $response;
+                else return false;
         }
 
-        function startSPS()
-        {
+        function startGame($game) {
+            if($response = $this->write(json_encode(["CMD" => "START_GAME", "GAME" => $game]))) return $response;
+            else return false;
+        }
+
+        function startSPS() {
                 if($response = $this->write(json_encode(["CMD" => "START_SPS"]))) return $response;
+                else return false;
         }
 
-        function startMaze()
-        {
+        function startMaze() {
                 if($response = $this->write(json_encode(["CMD" => "START_MAZE"]))) return $response;
+                else return false;
         }
 
-        function startDrawing()
-        {
+        function startDrawing() {
                 if($response = $this->write(json_encode(["CMD" => "START_DRAW"]))) return $response;
+                else return false;
         }
 
-        function startRace()
-        {
+        function startRace() {
                 if($response = $this->write(json_encode(["CMD" => "START_RACE"]))) return $response;
+                else return false;
         }
 
-        function generateSchemes()
-        {
-                if($response = $this->write(json_encode(["CMD" => "GENERATE_SCHEME"]))) return $response;
+        function retryMatch() {
+                if($response = $this->write(json_encode(["CMD" => "RETRY_MATCH"]))) return $response;
+                else return false;
         }
 
-        function customCommand($command)
-        {
+        function customCommand($command) {
                 if($response = $this->write(json_encode(["CMD" => $command]))) return $response;
+                else return false;
         }
 
-        function musicControl($action)
-        {
+        function musicControl($action) {
                 if($response = $this->write(json_encode(["CMD" => "MUSIC_CONTROL", "ACTION" => $action]))) return $response;
+                else return false;
         }
 
-        function customMusic($url)
-        {
+        function customMusic($url) {
                 if($response = $this->write(json_encode(["CMD" => "CUSTOM_MUSIC", "URL" => $url]))) return $response;
+                else return false;
         }
 
-        function write($message)
-        {
-                if($this->create())
-                {
-                        if(socket_write($this->socketHost, $message . "\n", strlen($message) + 1))
-                        {
-                                if($response = socket_read($this->socketHost, 10000, PHP_NORMAL_READ))
-                                {
-                                        return json_decode($response);
-                                }
-                        }
+        function write($message) {
+                if($this->create()) {
+                    if(socket_write($this->socketHost, $message . "\n", strlen($message) + 1)) {
+                        if($response = socket_read($this->socketHost, 10000, PHP_NORMAL_READ)) return json_decode($response);
+                    }
                 }
 
                 return false;
         }
-
 }
 
 ?>

@@ -37,11 +37,10 @@
 #more{
     position: fixed;
     font-size: 1.2em;
-    margin: 0px 0;
+    margin: 0 0;
     width: 100%;
     left: 0;
     text-align: center;
-    left: 0;
     animation: seeMore 2s ease-in-out infinite backwards;
 }
 
@@ -68,7 +67,7 @@
 }
 
 
-/* Introducting */
+/* Introducing */
 
 #introduce{
     margin: 70px 0 0 0;

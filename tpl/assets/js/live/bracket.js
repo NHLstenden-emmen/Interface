@@ -1,12 +1,12 @@
-var bracketsHolder = document.querySelector("#bracketsHolder");
-var bracketsTitle = document.querySelector("#brackets > h1")
+const bracketsHolder = document.querySelector("#bracketsHolder");
+const bracketsTitle = document.querySelector("#brackets > h1");
 
 class Brackets {
     phase = -1;
 
     #clear() {
-        var children = bracketsHolder.children;
-        for(var i = 0; i < children.length; i++) {
+        const children = bracketsHolder.children;
+        for(let i = 0; i < children.length; i++) {
             children[i].classList.add("closing");
         }
         setTimeout(() => {bracketsHolder.innerHTML = null}, 1500);
@@ -80,32 +80,32 @@ class Brackets {
     #setupPhase1(jsonObject) {  // Starting matches SPS (10x match, 1x scoreboard)
         bracketsTitle.innerHTML = 'SPS - First round';
         bracketsHolder.innerHTML = `
-        <div id="match1" class="match neonBorder" style="left: 0px; top: 0px;">
+        <div id="match1" class="match neonBorder" style="left: 0; top: 0;">
             <div class="matchId">1</div>
             <div class="teamLabel top"></div>
             <div class="teamLabel bottom"></div>
         </div>
-        <div id="match2" class="match neonBorder" style="left: 0px; top: 100px;">
+        <div id="match2" class="match neonBorder" style="left: 0; top: 100px;">
             <div class="matchId">2</div>
             <div class="teamLabel top"></div>
             <div class="teamLabel bottom"></div>
         </div>
-        <div id="match3" class="match neonBorder" style="left: 0px; top: 200px;">
+        <div id="match3" class="match neonBorder" style="left: 0; top: 200px;">
             <div class="matchId">3</div>
             <div class="teamLabel top"></div>
             <div class="teamLabel bottom"></div>
         </div>
-        <div id="match4" class="match neonBorder" style="left: 0px; top: 300px;">
+        <div id="match4" class="match neonBorder" style="left: 0; top: 300px;">
             <div class="matchId">4</div>
             <div class="teamLabel top"></div>
             <div class="teamLabel bottom"></div>
         </div>
-        <div id="match5" class="match neonBorder" style="left: 0px; top: 400px;">
+        <div id="match5" class="match neonBorder" style="left: 0; top: 400px;">
             <div class="matchId">5</div>
             <div class="teamLabel top"></div>
             <div class="teamLabel bottom"></div>
         </div>
-        <div id="match6" class="match neonBorder" style="left: 220px; top: 0px;">
+        <div id="match6" class="match neonBorder" style="left: 220px; top: 0;">
             <div class="matchId">6</div>
             <div class="teamLabel top"></div>
             <div class="teamLabel bottom"></div>
@@ -131,7 +131,7 @@ class Brackets {
             <div class="teamLabel bottom"></div>
         </div>
 
-        <div id="scoreboard" class="neonBorder" style="left: 450px; top: 0px;">
+        <div id="scoreboard" class="neonBorder" style="left: 450px; top: 0;">
             <div class="scoreRow heading">Scoreboard</div>
             <div id="place1" class="scoreRow">
                 <div class="place num">1</div>
@@ -169,7 +169,7 @@ class Brackets {
     #setupPhase2(jsonObject) {  // Brackets SPS (8x match)
         bracketsTitle.innerHTML = 'SPS - Knockout';
         bracketsHolder.innerHTML = `
-        <div id="match1" class="match neonBorder" style="left: 0px; top: 0px;">
+        <div id="match1" class="match neonBorder" style="left: 0; top: 0;">
             <div class="matchId">1</div>
             <div class="teamLabel top"></div>
             <div class="teamLabel bottom"></div>
@@ -179,12 +179,12 @@ class Brackets {
             <div class="teamLabel top"></div>
             <div class="teamLabel bottom"></div>
         </div>
-        <div id="match3" class="match neonBorder" style="left: 250px; top: 0px;">
+        <div id="match3" class="match neonBorder" style="left: 250px; top: 0;">
             <div class="matchId">3</div>
             <div class="teamLabel top"></div>
             <div class="teamLabel bottom"></div>
         </div>
-        <div id="match4" class="match neonBorder" style="left: 0px; top: 300px;">
+        <div id="match4" class="match neonBorder" style="left: 0; top: 300px;">
             <div class="matchId">4</div>
             <div class="teamLabel top"></div>
             <div class="teamLabel bottom"></div>
@@ -343,21 +343,364 @@ class Brackets {
         `
         bracketsHolder.style = "height: 510px";
 
-        
-        var scoreboard = this.#reverseSortScoreboard(jsonObject.scoreboard);
 
-        for(var i = 0; i < scoreboard.length; i++) {
+        const scoreboard = this.#reverseSortScoreboard(jsonObject.scoreboard);
+
+        for(let i = 0; i < scoreboard.length; i++) {
             scoreboard[i][1] = this.#millisToTimestamp(scoreboard[i][1]);
         }
 
         this.#updateScoreboard(scoreboard);
     }
 
+    #setupPhase5(jsonObject) {  // Voteresults (1x stars)
+        bracketsTitle.innerHTML = 'Draw';
+
+        bracketsHolder.innerHTML = `
+        <div class="starDisplay neonBorder" style="background-color: #280f5f55; padding: 10px; width: 790px;" >
+            <svg class="svg-def" style="display: none;">
+                <defs>
+                    <filter id="strokeGlow" y="-10" x="-10" width="250" height="150">
+                        <feOffset in="StrokePaint" dx="0" dy="0" result="centeredOffset"></feOffset>
+                        <feGaussianBlur in="centeredOffset" stdDeviation="2" result="blur1"></feGaussianBlur>
+                        <feGaussianBlur in="centeredOffset" stdDeviation="5" result="blur2"></feGaussianBlur>
+                        <feGaussianBlur in="centeredOffset" stdDeviation="2" result="blur3"></feGaussianBlur>
+                        <feMerge>
+                            <feMergeNode in="blur3"></feMergeNode>
+                            <feMergeNode in="blur2"></feMergeNode>
+                            <feMergeNode in="blur1"></feMergeNode>
+                            <feMergeNode in="SourceGraphic"></feMergeNode>
+                        </feMerge>
+                    </filter>
+                </defs>
+            </svg>
+            <div class="starColumn">
+                <div id="starName-0" class="starName"></div>
+                <div class="stars">
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-0-4" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-0-4);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-0-3" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-0-3);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-0-2" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-0-2);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-0-1" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-0-1);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-0-0" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-0-0);"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="starColumn">
+                <div id="starName-1" class="starName"></div>
+                <div class="stars">
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-1-4" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-1-4);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-1-3" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-1-3);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-1-2" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-1-2);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-1-1" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-1-1);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-1-0" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-1-0);"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="starColumn">
+                <div id="starName-2" class="starName"></div>
+                <div class="stars">
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-2-4" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-2-4);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-2-3" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-2-3);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-2-2" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-2-2);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-2-1" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-2-1);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-2-0" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-2-0);"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="starColumn">
+                <div id="starName-3" class="starName"></div>
+                <div class="stars">
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-3-4" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-3-4);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-3-3" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-3-3);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-3-2" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-3-2);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-3-1" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-3-1);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-3-0" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-3-0);"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="starColumn">
+                <div id="starName-4" class="starName"></div>
+                <div class="stars">
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-4-4" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-4-4);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-4-3" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-4-3);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-4-2" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-4-2);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-4-1" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-4-1);"/>
+                    </svg>
+                    <svg viewBox="0 0 50 47.552826" height="20mm" width="20mm">
+                        <defs>
+                            <linearGradient id="gradient-4-0" x1="0" x2="0" y1="100%" y2="0">
+                                <stop class="fill" stop-color="var(--primaryColor)" offset="0%"></stop>
+                                <stop stop-color="#00000000" offset="0%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="starBorder" d="m 25,1.25 7.29057,14.77231 16.302213,2.36885 -11.796393,11.49864 2.784751,16.23634 -14.581142,-7.66576 -14.581143,7.66576 2.784752,-16.23634 -11.7963926,-11.49864 16.3022126,-2.36885 z"/>
+                        <path class="starFill" d="m 25,6 5.871322,11.8966 13.128676,1.90771 -9.499999,9.26021 2.242645,13.07563 -11.742645,-6.17348 -11.742646,6.17348 2.242647,-13.07563 -9.4999998,-9.26021 13.1286758,-1.90771 z" style="fill: url(#gradient-4-0);"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        `
+        bracketsHolder.style = "height: 420px";
+
+        this.#fillStars(jsonObject.results);
+    }
+
+    #sortResults(results) {
+        return Object.entries(results).sort((a,b) => a[0] > b[0] ? 1 : a[0] < b[0] ? -1 : 0);
+    }
+
+    #fillStars(results) {
+        results = this.#sortResults(results);
+        let finished = false;
+        let star = 0;
+        let fill = 0;
+        console.log(results)
+
+        for(let i = 0; i < results.length; i++) {
+            bracketsHolder.querySelector("#starName-" + i).innerHTML = results[i][0];
+            results[i][1] -= 0.01;
+        }
+
+        let animation = setInterval(() => {
+            fill++;
+            finished = true;
+            for(let i = 0; i < results.length; i++) {
+                if(results[i][1] > 0) {
+                    results[i][1] -= 0.01;
+                    finished = false;
+                    bracketsHolder.querySelector("#gradient-" + i + "-" + star + " > .fill").setAttribute('offset', fill + "%");
+                }
+            }
+
+            if(fill == 100) {
+                fill = 0;
+                const audio = new Audio("Robo TV -_files/320655__rhodesmas__level-up-01.wav");
+                audio.play();
+                star++;
+            }
+            console.log(star);
+            if(finished || star >= 5) {
+                clearInterval(animation);
+            }
+        }, 10);
+    }
+
     #updateMatches(matches) {
-        for(var i = 0; i < matches.length; i++) {
-            var match = bracketsHolder.querySelector("#match" + matches[i].id);
-            var top = match.querySelector(".top");
-            var bottom = match.querySelector(".bottom");
+        for(let i = 0; i < matches.length; i++) {
+            const match = bracketsHolder.querySelector("#match" + matches[i].id);
+            const top = match.querySelector(".top");
+            const bottom = match.querySelector(".bottom");
             if(!matches[i].team1.startsWith("<")) {
                 top.innerHTML = matches[i].team1;
             } else {
@@ -379,8 +722,8 @@ class Brackets {
     }
 
     #updateScoreboard(scoreboard) {
-        for(var i = 1; i <= scoreboard.length; i++) {
-            var placement = bracketsHolder.querySelector("#place" + i);
+        for(let i = 1; i <= scoreboard.length; i++) {
+            const placement = bracketsHolder.querySelector("#place" + i);
             placement.querySelector(".team").innerHTML = scoreboard[i-1][0];
             placement.querySelector(".score").innerHTML = scoreboard[i-1][1];
         }
@@ -397,9 +740,9 @@ class Brackets {
     #updateLeaderboard(leaderboard) {
         console.log(leaderboard);
         this.#sortLeaderboard(leaderboard);
-    
-        for(var i = 1; i <= leaderboard.length; i++) {
-            var placement = bracketsHolder.querySelector("#place" + i);
+
+        for(let i = 1; i <= leaderboard.length; i++) {
+            const placement = bracketsHolder.querySelector("#place" + i);
             placement.querySelector(".team").innerHTML = leaderboard[i-1].name;
             placement.querySelector(".maze").innerHTML = leaderboard[i-1].MAZE;
             placement.querySelector(".race").innerHTML = leaderboard[i-1].RACE;
@@ -408,19 +751,19 @@ class Brackets {
             placement.querySelector(".tot").innerHTML = parseInt(leaderboard[i-1].MAZE) + parseInt(leaderboard[i-1].RACE) + parseInt(leaderboard[i-1].DRAW) + parseInt(leaderboard[i-1].SPS);
         };
     }
-    
+
     #sortLeaderboard(leaderboard) {
         return leaderboard.sort((a,b) => {
-            var aTot = parseInt(a.MAZE) + parseInt(a.RACE) + parseInt(a.DRAW) + parseInt(a.SPS);
-            var bTot = parseInt(b.MAZE) + parseInt(b.RACE) + parseInt(b.DRAW) + parseInt(b.SPS);
+            const aTot = parseInt(a.MAZE) + parseInt(a.RACE) + parseInt(a.DRAW) + parseInt(a.SPS);
+            const bTot = parseInt(b.MAZE) + parseInt(b.RACE) + parseInt(b.DRAW) + parseInt(b.SPS);
             return (aTot < bTot) ? 1 : ((bTot < aTot) ? -1 : a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
         });
     }
 
     #millisToTimestamp(millis) {
         millis = Math.round(parseInt(millis)*1000)/1000;
-        var min = Math.floor(millis/60000);
-        var sec = (millis%60000)/1000
+        const min = Math.floor(millis / 60000);
+        const sec = (millis % 60000) / 1000;
         if(min > 0) {
             if(min >= 5) {
                 return "WTF";
@@ -431,13 +774,13 @@ class Brackets {
     }
 
     #updateLapDisplay(times, curPos) {
-        var scoreboard = new Map();
+        let scoreboard = new Map();
 
         times = this.#sortTimes(times);
 
         for(var i = 0; i < times.length; i++) {
             // Update display
-            var team = bracketsHolder.querySelector("#team" + String(parseInt(i) + 1));
+            const team = bracketsHolder.querySelector("#team" + String(parseInt(i) + 1));
             team.querySelector(".team").innerHTML = times[i].name;
 
             if(times[i].pos == curPos) {
@@ -447,11 +790,11 @@ class Brackets {
             }
 
             // Calc avg
-            var count = 0;
-            var avg = 0;
-            for(var j = 1; j <= 5; j++) {
+            let count = 0;
+            let avg = 0;
+            for(let j = 1; j <= 5; j++) {
                 if('lap' + String(j) in times[i]) {
-                    var time = times[i]['lap' + String(j)]
+                    const time = times[i]['lap' + String(j)];
                     team.querySelector("#lap" + j).innerHTML = this.#millisToTimestamp(time);
                     avg += time;
                     if(time != 0) {
@@ -487,11 +830,11 @@ class Brackets {
 
     parseJSON(json) {
         try {
-            var jsonObject = JSON.parse(json);
+            const jsonObject = JSON.parse(json);
             if(jsonObject && 'phase' in jsonObject) {
                 if(this.phase != jsonObject.phase) {
                     this.phase = jsonObject.phase;
-                    var timeout = 0;
+                    let timeout = 0;
                     if(bracketsHolder.hasChildNodes) {
                         this.#clear();
                         timeout = 1500;
@@ -501,7 +844,7 @@ class Brackets {
                             case 0:
                                 this.#setupPhase0(jsonObject);
                                 break;
-                            case 1: 
+                            case 1:
                                 this.#setupPhase1(jsonObject);
                                 break;
                             case 2:
@@ -512,6 +855,9 @@ class Brackets {
                                 break;
                             case 4:
                                 this.#setupPhase4(jsonObject); // should do it
+                                break;
+                            case 5:
+                                this.#setupPhase5(jsonObject);
                                 break;
                             default:
                                 bracketsHolder.style = null;
@@ -524,7 +870,7 @@ class Brackets {
                         case 0:
                             this.#updateLeaderboard(jsonObject.leaderboard);
                             break;
-                        case 1: 
+                        case 1:
                             this.#updateMatches(jsonObject.matches);
                             this.#updateScoreboard(jsonObject.scoreboard);
                             break;
@@ -535,13 +881,16 @@ class Brackets {
                             this.#updateScoreboard(this.#updateLapDisplay(jsonObject.times, jsonObject.curPos));
                             break;
                         case 4:
-                            var scoreboard = this.#reverseSortScoreboard(jsonObject.scoreboard);
+                            const scoreboard = this.#reverseSortScoreboard(jsonObject.scoreboard);
 
-                            for(var i = 0; i < scoreboard.length; i++) {
+                            for(let i = 0; i < scoreboard.length; i++) {
                                 scoreboard[i][1] = this.#millisToTimestamp(scoreboard[i][1]);
                             }
 
                             this.#updateScoreboard(scoreboard);
+                            break;
+                        case 5:
+                            this.#fillStars(jsonObject.results);
                             break;
                         default:
                             console.error("Unknown phase for brackets");
@@ -555,21 +904,37 @@ class Brackets {
     }
 }
 
-var brackets        = new Brackets();
-var webSocketData   = new WebSocket("ws://194.171.181.139:49151");
-var staticData      = new XMLHttpRequest();
+let webSocketData;
+
+const openWebSockets = () => {
+    webSocketData = new WebSocket("ws://77.162.30.112:49151");
+
+    webSocketData.addEventListener("message", (evt) => {
+        brackets.parseJSON(evt.data);
+    });
+
+    webSocketData.addEventListener("close", (e) => {
+        console.log("Connection closed due to: " + e + ", trying to reconnect in 1 second.");
+        setTimeout(() => openWebSockets(), 1000);
+    });
+}
+
+const brackets = new Brackets();
+const staticData = new XMLHttpRequest();
+
+document.addEventListener("DOMContentLoaded", () => {
+    openWebSockets();
+});
 
 staticData.open("GET", "/livedata?type=leaderboard", true);
 //staticData.setRequestHeader("battlebots", "leaderboard");
 staticData.send();
 
-webSocketData.addEventListener("message", (evt) => {
-    brackets.parseJSON(evt.data);
-});
 
 staticData.addEventListener("readystatechange", () => {
-    if (staticData.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+    if (staticData.readyState === XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
         brackets.parseJSON(JSON.parse(staticData.getResponseHeader("livedata")).json);
     }
 });
-//brackets.parseJSON('{"phase":4,"scoreboard":{"BOT5":252,"BOT4":2152,"BOT3":1564,"BOT2":420,"BOT1":69}}');
+// brackets.parseJSON('{"phase":5,"results":{"BrokkoBot":0,"ROBot Jetten":0,"Wall-D":0,"BumbleBert":0,"Dimitri":0}}')
+// setTimeout(() => { brackets.parseJSON('{"phase":5,"results":{"BrokkoBot":2.5,"ROBot Jetten":1.67,"Wall-D":5,"BumbleBert":3.15,"Dimitri":4}}') }, 3000);

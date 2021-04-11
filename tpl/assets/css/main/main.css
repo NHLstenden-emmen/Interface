@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400&display=swap");
 
 * {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	font-family: "Lexend", sans-serif;
 	font-weight: normal;
 	color: white;
@@ -173,7 +173,7 @@ button.button:hover {
 }
 
 a.button {
-	padding: 12.5px 30px;
+	padding: 13px 30px;
 	border: none;
 	color: white;
 	font-weight: bold;
@@ -188,8 +188,6 @@ a.button:hover {
 }
 
 a.alternative-button {
-	padding: 12.5px 30px;
-	border: none;
 	color: white;
 	font-weight: bold;
 	border: 3px solid var(--buttonColor);
@@ -211,7 +209,6 @@ a#send {
 	animation-duration: 0.2s;
 	animation-timing-function: ease-in-out;
 	animation-fill-mode: forwards;
-	text-decoration: none;
 }
 
 a#send:hover {
@@ -228,7 +225,7 @@ input:focus,
 input:active {
 	border: 0;
 	-webkit-appearance: none;
-	outline: -webkit-focus-ring-color auto 0px;
+	outline: -webkit-focus-ring-color auto 0;
 }
 
 ::placeholder {
@@ -297,7 +294,7 @@ th {
 
 td,
 th {
-	border: 0px;
+	border: 0;
 	text-align: left;
 	padding: 8px;
 }
@@ -358,7 +355,7 @@ tr:nth-child(odd) {
 @keyframes sendHover {
 	to {
 		background-color: var(--sendHoverColor);
-		box-shadow: 0 0px 10px var(--glowLightColor);
+		box-shadow: 0 0 10px var(--glowLightColor);
 	}
 }
 
@@ -375,7 +372,7 @@ tr:nth-child(odd) {
 @keyframes buttonHover {
 	to {
 		background: var(--gradientButtonHover);
-		box-shadow: 0 0px 10px var(--glowColor);
+		box-shadow: 0 0 10px var(--glowColor);
 		transform: scale(1.05);
 	}
 }
@@ -413,90 +410,18 @@ tr:nth-child(odd) {
 	animation-delay: 1.5s;
 }
 
-@-moz-keyframes line1 {
-	0% {
-		width: var(--animatedLines);
-		height: 0px;
-		left: 40%;
-		top: 0px;
-	}
-	10% {
-		width: var(--animatedLines);
-		left: 40%;
-		height: calc(100vh / 15);
-		top: 0px;
-		background-color: var(--glowColor);
-	}
-	25% {
-		height: var(--animatedLines);
-		top: calc(calc(100vh / 15) - var(--animatedLines));
-		left: 40%;
-		width: var(--animatedLines);
-	}
-	50% {
-		top: calc(calc(100vh / 15) - var(--animatedLines));
-		width: 40%;
-		left: 0px;
-		height: var(--animatedLines);
-		background-color: var(--primaryColor);
-	}
-	100% {
-		top: calc(calc(100vh / 15) - var(--animatedLines));
-		left: 0px;
-		width: 0px;
-		height: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-}
-
-@-o-keyframes line1 {
-	0% {
-		width: var(--animatedLines);
-		height: 0px;
-		left: 40%;
-		top: 0px;
-	}
-	10% {
-		width: var(--animatedLines);
-		left: 40%;
-		height: calc(100vh / 15);
-		top: 0px;
-		background-color: var(--glowColor);
-	}
-	25% {
-		height: var(--animatedLines);
-		top: calc(calc(100vh / 15) - var(--animatedLines));
-		left: 40%;
-		width: var(--animatedLines);
-	}
-	50% {
-		top: calc(calc(100vh / 15) - var(--animatedLines));
-		width: 40%;
-		left: 0px;
-		height: var(--animatedLines);
-		background-color: var(--primaryColor);
-	}
-	100% {
-		top: calc(calc(100vh / 15) - var(--animatedLines));
-		left: 0px;
-		width: 0px;
-		height: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-}
-
 @keyframes line1 {
 	0% {
 		width: var(--animatedLines);
-		height: 0px;
+		height: 0;
 		left: 40%;
-		top: 0px;
+		top: 0;
 	}
 	10% {
 		width: var(--animatedLines);
 		left: 40%;
 		height: calc(100vh / 15);
-		top: 0px;
+		top: 0;
 		background-color: var(--glowColor);
 	}
 	25% {
@@ -508,14 +433,14 @@ tr:nth-child(odd) {
 	50% {
 		top: calc(calc(100vh / 15) - var(--animatedLines));
 		width: 40%;
-		left: 0px;
+		left: 0;
 		height: var(--animatedLines);
 		background-color: var(--primaryColor);
 	}
 	100% {
 		top: calc(calc(100vh / 15) - var(--animatedLines));
-		left: 0px;
-		width: 0px;
+		left: 0;
+		width: 0;
 		height: var(--animatedLines);
 		background-color: var(--glowColor);
 	}
@@ -534,118 +459,16 @@ tr:nth-child(odd) {
 	animation-iteration-count: infinite;
 }
 
-@-webkit-keyframes line2 {
-	0% {
-		width: 0px;
-		height: var(--animatedLines);
-		right: 0px;
-		top: 50vh;
-	}
-	15% {
-		width: 20%;
-		right: 0px;
-		background-color: var(--glowColor);
-	}
-	25% {
-		top: 50vh;
-		width: var(--animatedLines);
-		right: calc(20% - var(--animatedLines));
-		height: var(--animatedLines);
-	}
-	50% {
-		height: calc(50vh);
-		top: 0px;
-		width: var(--animatedLines);
-		right: calc(20% - var(--animatedLines));
-		background-color: var(--primaryColor);
-	}
-	100% {
-		height: 0px;
-		right: calc(20% - var(--animatedLines));
-		top: 0px;
-		width: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-}
-
-@-moz-keyframes line2 {
-	0% {
-		width: 0px;
-		height: var(--animatedLines);
-		right: 0px;
-		top: 50vh;
-	}
-	15% {
-		width: 20%;
-		right: 0px;
-		background-color: var(--glowColor);
-	}
-	25% {
-		top: 50vh;
-		width: var(--animatedLines);
-		right: calc(20% - var(--animatedLines));
-		height: var(--animatedLines);
-	}
-	50% {
-		height: calc(50vh);
-		top: 0px;
-		width: var(--animatedLines);
-		right: calc(20% - var(--animatedLines));
-		background-color: var(--primaryColor);
-	}
-	100% {
-		height: 0px;
-		right: calc(20% - var(--animatedLines));
-		top: 0px;
-		width: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-}
-
-@-o-keyframes line2 {
-	0% {
-		width: 0px;
-		height: var(--animatedLines);
-		right: 0px;
-		top: 50vh;
-	}
-	15% {
-		width: 20%;
-		right: 0px;
-		background-color: var(--glowColor);
-	}
-	25% {
-		top: 50vh;
-		width: var(--animatedLines);
-		right: calc(20% - var(--animatedLines));
-		height: var(--animatedLines);
-	}
-	50% {
-		height: calc(50vh);
-		top: 0px;
-		width: var(--animatedLines);
-		right: calc(20% - var(--animatedLines));
-		background-color: var(--primaryColor);
-	}
-	100% {
-		height: 0px;
-		right: calc(20% - var(--animatedLines));
-		top: 0px;
-		width: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-}
-
 @keyframes line2 {
 	0% {
-		width: 0px;
+		width: 0;
 		height: var(--animatedLines);
-		right: 0px;
+		right: 0;
 		top: 50vh;
 	}
 	15% {
 		width: 20%;
-		right: 0px;
+		right: 0;
 		background-color: var(--glowColor);
 	}
 	25% {
@@ -656,15 +479,15 @@ tr:nth-child(odd) {
 	}
 	50% {
 		height: calc(50vh);
-		top: 0px;
+		top: 0;
 		width: var(--animatedLines);
 		right: calc(20% - var(--animatedLines));
 		background-color: var(--primaryColor);
 	}
 	100% {
-		height: 0px;
+		height: 0;
 		right: calc(20% - var(--animatedLines));
-		top: 0px;
+		top: 0;
 		width: var(--animatedLines);
 		background-color: var(--glowColor);
 	}
@@ -684,122 +507,23 @@ tr:nth-child(odd) {
 	animation-delay: 2s;
 }
 
-@-webkit-keyframes line3 {
-	0% {
-		right: 0px;
-		top: 15%;
-		width: 0%;
-		height: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-	10% {
-		right: 0px;
-		top: 15%;
-		width: 0%;
-		height: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-	55% {
-		right: 0px;
-		background-color: var(--primaryColor);
-	}
-	60% {
-		top: 15%;
-		width: 10%;
-		height: var(--animatedLines);
-	}
-	100% {
-		background-color: var(--glowColor);
-		right: calc(10% - var(--animatedLines));
-		top: 15%;
-		width: 0%;
-		height: var(--animatedLines);
-	}
-}
-
-@-moz-keyframes line3 {
-	0% {
-		right: 0px;
-		top: 15%;
-		width: 0%;
-		height: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-	10% {
-		right: 0px;
-		top: 15%;
-		width: 0%;
-		height: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-	55% {
-		right: 0px;
-		background-color: var(--primaryColor);
-	}
-	60% {
-		top: 15%;
-		width: 10%;
-		height: var(--animatedLines);
-	}
-	100% {
-		background-color: var(--glowColor);
-		right: calc(10% - var(--animatedLines));
-		top: 15%;
-		width: 0%;
-		height: var(--animatedLines);
-	}
-}
-
-@-o-keyframes line3 {
-	0% {
-		right: 0px;
-		top: 15%;
-		width: 0%;
-		height: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-	10% {
-		right: 0px;
-		top: 15%;
-		width: 0%;
-		height: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-	55% {
-		right: 0px;
-		background-color: var(--primaryColor);
-	}
-	60% {
-		top: 15%;
-		width: 10%;
-		height: var(--animatedLines);
-	}
-	100% {
-		background-color: var(--glowColor);
-		right: calc(10% - var(--animatedLines));
-		top: 15%;
-		width: 0%;
-		height: var(--animatedLines);
-	}
-}
-
 @keyframes line3 {
 	0% {
-		right: 0px;
+		right: 0;
 		top: 15%;
-		width: 0%;
+		width: 0;
 		height: var(--animatedLines);
 		background-color: var(--glowColor);
 	}
 	10% {
-		right: 0px;
+		right: 0;
 		top: 15%;
-		width: 0%;
+		width: 0;
 		height: var(--animatedLines);
 		background-color: var(--glowColor);
 	}
 	55% {
-		right: 0px;
+		right: 0;
 		background-color: var(--primaryColor);
 	}
 	60% {
@@ -811,7 +535,7 @@ tr:nth-child(odd) {
 		background-color: var(--glowColor);
 		right: calc(10% - var(--animatedLines));
 		top: 15%;
-		width: 0%;
+		width: 0;
 		height: var(--animatedLines);
 	}
 }
@@ -830,154 +554,10 @@ tr:nth-child(odd) {
 	animation-delay: 3s;
 }
 
-@-webkit-keyframes line4 {
-	0% {
-		width: var(--animatedLines);
-		height: 0px;
-		top: 0;
-		left: 60%;
-		background-color: var(--glowColor);
-	}
-	15% {
-		width: var(--animatedLines);
-		height: 25%;
-		top: 0;
-		left: 60%;
-	}
-	30% {
-		width: var(--animatedLines);
-		height: var(--animatedLines);
-		top: calc(25% - var(--animatedLines));
-		left: 60%;
-	}
-	45% {
-		background-color: var(--primaryColor);
-		width: 30%;
-		left: 30%;
-		top: calc(25% - var(--animatedLines));
-		height: var(--animatedLines);
-	}
-	60% {
-		width: var(--animatedLines);
-		left: 30%;
-		top: calc(25% - var(--animatedLines));
-		height: var(--animatedLines);
-	}
-	75% {
-		width: var(--animatedLines);
-		left: 30%;
-		top: calc(25% - var(--animatedLines));
-		height: 75%;
-	}
-	100% {
-		width: var(--animatedLines);
-		left: 30%;
-		top: 100%;
-		height: 0%;
-		background-color: var(--glowColor);
-	}
-}
-
-@-moz-keyframes  line4 {
-	0% {
-		width: var(--animatedLines);
-		height: 0px;
-		top: 0;
-		left: 60%;
-		background-color: var(--glowColor);
-	}
-	15% {
-		width: var(--animatedLines);
-		height: 25%;
-		top: 0;
-		left: 60%;
-	}
-	30% {
-		width: var(--animatedLines);
-		height: var(--animatedLines);
-		top: calc(25% - var(--animatedLines));
-		left: 60%;
-	}
-	45% {
-		background-color: var(--primaryColor);
-		width: 30%;
-		left: 30%;
-		top: calc(25% - var(--animatedLines));
-		height: var(--animatedLines);
-	}
-	60% {
-		width: var(--animatedLines);
-		left: 30%;
-		top: calc(25% - var(--animatedLines));
-		height: var(--animatedLines);
-	}
-	75% {
-		width: var(--animatedLines);
-		left: 30%;
-		top: calc(25% - var(--animatedLines));
-		height: 75%;
-	}
-	100% {
-		width: var(--animatedLines);
-		left: 30%;
-		top: 100%;
-		height: 0%;
-		background-color: var(--glowColor);
-	}
-}
-
-@-o-keyframes line4 {
-	0% {
-		width: var(--animatedLines);
-		height: 0px;
-		top: 0;
-		left: 60%;
-		background-color: var(--glowColor);
-	}
-	15% {
-		width: var(--animatedLines);
-		height: 25%;
-		top: 0;
-		left: 60%;
-	}
-	30% {
-		width: var(--animatedLines);
-		height: var(--animatedLines);
-		top: calc(25% - var(--animatedLines));
-		left: 60%;
-	}
-	45% {
-		background-color: var(--primaryColor);
-		width: 30%;
-		left: 30%;
-		top: calc(25% - var(--animatedLines));
-		height: var(--animatedLines);
-	}
-	60% {
-		width: var(--animatedLines);
-		left: 30%;
-		top: calc(25% - var(--animatedLines));
-		height: var(--animatedLines);
-	}
-	75% {
-		width: var(--animatedLines);
-		left: 30%;
-		top: calc(25% - var(--animatedLines));
-		height: 75%;
-	}
-	100% {
-		width: var(--animatedLines);
-		left: 30%;
-		top: 100%;
-		height: 0%;
-		background-color: var(--glowColor);
-	}
-}
-
 @keyframes line4 {
 	0% {
 		width: var(--animatedLines);
-		height: 0px;
+		height: 0;
 		top: 0;
 		left: 60%;
 		background-color: var(--glowColor);
@@ -1017,7 +597,7 @@ tr:nth-child(odd) {
 		width: var(--animatedLines);
 		left: 30%;
 		top: 100%;
-		height: 0%;
+		height: 0;
 		background-color: var(--glowColor);
 	}
 }
@@ -1036,124 +616,16 @@ tr:nth-child(odd) {
 	animation-delay: 3.5s;
 }
 
-@-webkit-keyframes line5 {
-	0% {
-		bottom: 0;
-		right: 35%;
-		width: var(--animatedLines);
-		height: 0px;
-		background-color: var(--glowColor);
-	}
-	25% {
-		bottom: 0px;
-		width: var(--animatedLines);
-		height: 18%;
-		right: 35%;
-	}
-	50% {
-		bottom: calc(18% - var(--animatedLines));
-		width: var(--animatedLines);
-		height: var(--animatedLines);
-		right: 35%;
-		background-color: var(--primaryColor);
-	}
-	75% {
-		bottom: calc(18% - 10var (--animatedLines) px);
-		width: 35%;
-		right: calc(-1 * var(--animatedLines));
-		height: var(--animatedLines);
-	}
-	100% {
-		bottom: calc(18% - var(--animatedLines));
-		width: 0%;
-		right: calc(-1 * var(--animatedLines));
-		height: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-}
-
-@-moz-keyframes line5 {
-	0% {
-		bottom: 0;
-		right: 35%;
-		width: var(--animatedLines);
-		height: 0px;
-		background-color: var(--glowColor);
-	}
-	25% {
-		bottom: 0px;
-		width: var(--animatedLines);
-		height: 18%;
-		right: 35%;
-	}
-	50% {
-		bottom: calc(18% - var(--animatedLines));
-		width: var(--animatedLines);
-		height: var(--animatedLines);
-		right: 35%;
-		background-color: var(--primaryColor);
-	}
-	75% {
-		bottom: calc(18% - 10var (--animatedLines) px);
-		width: 35%;
-		right: calc(-1 * var(--animatedLines));
-		height: var(--animatedLines);
-	}
-	100% {
-		bottom: calc(18% - var(--animatedLines));
-		width: 0%;
-		right: calc(-1 * var(--animatedLines));
-		height: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-}
-
-@-o-keyframes line5 {
-	0% {
-		bottom: 0;
-		right: 35%;
-		width: var(--animatedLines);
-		height: 0px;
-		background-color: var(--glowColor);
-	}
-	25% {
-		bottom: 0px;
-		width: var(--animatedLines);
-		height: 18%;
-		right: 35%;
-	}
-	50% {
-		bottom: calc(18% - var(--animatedLines));
-		width: var(--animatedLines);
-		height: var(--animatedLines);
-		right: 35%;
-		background-color: var(--primaryColor);
-	}
-	75% {
-		bottom: calc(18% - 10var (--animatedLines) px);
-		width: 35%;
-		right: calc(-1 * var(--animatedLines));
-		height: var(--animatedLines);
-	}
-	100% {
-		bottom: calc(18% - var(--animatedLines));
-		width: 0%;
-		right: calc(-1 * var(--animatedLines));
-		height: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-}
-
 @keyframes line5 {
 	0% {
 		bottom: 0;
 		right: 35%;
 		width: var(--animatedLines);
-		height: 0px;
+		height: 0;
 		background-color: var(--glowColor);
 	}
 	25% {
-		bottom: 0px;
+		bottom: 0;
 		width: var(--animatedLines);
 		height: 18%;
 		right: 35%;
@@ -1166,14 +638,14 @@ tr:nth-child(odd) {
 		background-color: var(--primaryColor);
 	}
 	75% {
-		bottom: calc(18% - 10var (--animatedLines) px);
+		bottom: calc(18% - 10 - var(--animatedLines)) px;
 		width: 35%;
 		right: calc(-1 * var(--animatedLines));
 		height: var(--animatedLines);
 	}
 	100% {
 		bottom: calc(18% - var(--animatedLines));
-		width: 0%;
+		width: 0;
 		right: calc(-1 * var(--animatedLines));
 		height: var(--animatedLines);
 		background-color: var(--glowColor);
@@ -1194,119 +666,11 @@ tr:nth-child(odd) {
 	animation-delay: 0.2s;
 }
 
-@-webkit-keyframes line6 {
-	0% {
-		bottom: 0;
-		left: 10%;
-		height: 0px;
-
-		width: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-	20% {
-		bottom: 0;
-		left: 10%;
-		height: 75%;
-	}
-	40% {
-		bottom: calc(75% - var(--animatedLines));
-		left: 10%;
-		height: var(--animatedLines);
-		width: var(--animatedLines);
-	}
-	60% {
-		left: 0%;
-		width: 10%;
-	}
-	80% {
-		width: -10%;
-	}
-	100% {
-		bottom: calc(75% - var(--animatedLines));
-		left: 0;
-		height: var(--animatedLines);
-		width: 0;
-		background-color: var(--glowColor);
-	}
-}
-
-@-moz-keyframes line6 {
-	0% {
-		bottom: 0;
-		left: 10%;
-		height: 0px;
-
-		width: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-	20% {
-		bottom: 0;
-		left: 10%;
-		height: 75%;
-	}
-	40% {
-		bottom: calc(75% - var(--animatedLines));
-		left: 10%;
-		height: var(--animatedLines);
-		width: var(--animatedLines);
-	}
-	60% {
-		left: 0%;
-		width: 10%;
-	}
-	80% {
-		width: -10%;
-	}
-	100% {
-		bottom: calc(75% - var(--animatedLines));
-		left: 0;
-		height: var(--animatedLines);
-		width: 0;
-		background-color: var(--glowColor);
-	}
-}
-
-@-o-keyframes line6 {
-	0% {
-		bottom: 0;
-		left: 10%;
-		height: 0px;
-
-		width: var(--animatedLines);
-		background-color: var(--glowColor);
-	}
-	20% {
-		bottom: 0;
-		left: 10%;
-		height: 75%;
-	}
-	40% {
-		bottom: calc(75% - var(--animatedLines));
-		left: 10%;
-		height: var(--animatedLines);
-		width: var(--animatedLines);
-	}
-	60% {
-		left: 0%;
-		width: 10%;
-	}
-	80% {
-		width: -10%;
-	}
-	100% {
-		bottom: calc(75% - var(--animatedLines));
-		left: 0;
-		height: var(--animatedLines);
-		width: 0;
-		background-color: var(--glowColor);
-	}
-}
-
 @keyframes line6 {
 	0% {
 		bottom: 0;
 		left: 10%;
-		height: 0px;
+		height: 0;
 
 		width: var(--animatedLines);
 		background-color: var(--glowColor);
@@ -1323,11 +687,11 @@ tr:nth-child(odd) {
 		width: var(--animatedLines);
 	}
 	60% {
-		left: 0%;
+		left: 0;
 		width: 10%;
 	}
 	80% {
-		width: -10%;
+		width: 10%;
 	}
 	100% {
 		bottom: calc(75% - var(--animatedLines));

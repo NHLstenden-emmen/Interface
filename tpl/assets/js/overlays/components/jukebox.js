@@ -42,7 +42,7 @@ const waitingMusicNext = () => {
 
 waitingMusic.addEventListener('pause', () => {
     currentIndex++;
-    if(!countdownended) {
+    if(!countdownEnded) {
       waitingMusicPlay();
     }
   });

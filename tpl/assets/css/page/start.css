@@ -55,15 +55,15 @@
 
 @keyframes move {
 	0% {
-		top: 0px;
-		left: 0px;
+		top: 0;
+		left: 0;
 	}
 	50% {
 		top: 5px;
-		left: 0px;
+		left: 0;
 	}
 	100% {
-		top: 0px;
-		left: 0px;
+		top: 0;
+		left: 0;
 	}
 }

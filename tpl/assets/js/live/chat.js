@@ -6,7 +6,7 @@ const liveChat = document.getElementById("liveChat");
 const chatInput = document.getElementById("liveChatInput");
 
 const typeMessage = () => {
-  if(event.key === 'Enter')
+  if(event.key == 'Enter')
   {
     sendMessage();
   }
@@ -15,25 +15,28 @@ const typeMessage = () => {
 //Senders
 const sendDelete = (id) =>  livechatWebSocket.send(JSON.stringify({"type": "delete", "id": id}));
 const sendPoll = (option, id) => livechatWebSocket.send(JSON.stringify({"type": "poll", "option": option, "id": id}));
-const sendDrawingPoll = (stars, bot, id) => livechatWebSocket.send(JSON.stringify({"type": "drawingpoll", "bot": bot, "stars":parseInt(stars)+1, "id": id}));
+const sendDrawingPoll = (stars, bot, id) =>
+{
+  disableButton(id);
+  livechatWebSocket.send(JSON.stringify({"type": "drawingpoll", "bot": bot, "stars":parseInt(stars)+1, "id": id}));
+}
 const sendMessage = () => {
   let last;
-  if (user_id !== 0) {
+  if (user_id != 0) {
     document.querySelector('#emojiCheckbox').checked = false;
 
-    if (chatInput.value.trim() !== "") {
+    if (chatInput.value.trim() != "") {
       // Message validation
       let MessageInput = chatInput.value.trim();
 
 
       const MessageWords = MessageInput.toLowerCase().split(" ");
-
+      console.log(blockedWords); //dit s wss gwn nie goed gelade
       let countWords = 0;
 
       for (let i = 0; i < MessageWords.length; i++) {
-        if (blockedWords.includes(MessageWords[i])) {
+        if (blockedWords && blockedWords.includes(MessageWords[i])) {
           countWords++;
-          livechatWebSocket.send(JSON.stringify({"type": "banned"}));
         }
       }
 
@@ -42,7 +45,7 @@ const sendMessage = () => {
         alert('Please don\'t swear!');
       } else {
         MessageInput = MessageInput.replace(/(<([^>]+)>)/gi, "");
-        if (MessageInput.length !== 0) {
+        if (MessageInput.length != 0) {
 
           last = new Date();
           if ((last.getTime() - current.getTime()) / 1000 < cooldownChat) {
@@ -58,7 +61,7 @@ const sendMessage = () => {
         }
       }
 
-      if (MessageInput.toLowerCase() === "f") {
+      if (MessageInput.toLowerCase() == "f") {
         sendMessageSecond();
         window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
         livechatWebSocket.send(JSON.stringify({"type": "rick"}));
@@ -73,7 +76,7 @@ const deleteMessage = (id) => {
   const message = document.getElementById(id);
   if(message) {
     const nextMessage = message.nextElementSibling;
-    if(nextMessage && nextMessage.dataset.userId  === message.dataset.userId) {
+    if(nextMessage && nextMessage.dataset.userId  == message.dataset.userId) {
       if(message.querySelector('.user')) {
         nextMessage.prepend(message.querySelector('.user'));
       }
@@ -88,7 +91,7 @@ const showPoll = (messageData) => toastShow('default', messageData.id, 'Server |
 const closePolls = () => { document.querySelectorAll(".drawingpoll").forEach(element => element.remove()); document.querySelectorAll(".regularpoll").forEach(element => element.remove());}
 
 const onJoin = (messageData) => {
-  if(messageData.user_id === user_id)
+  if(messageData.user_id == user_id)
   {
     localStorage.setItem("fullname",  messageData.username);
     localStorage.setItem("email",  messageData.email);
@@ -104,24 +107,24 @@ const onJoin = (messageData) => {
 }
 
 function showMessage(type, message, id, username, userId, level = null, team = null) {
-  var messageElement = document.createElement("div");
+  const messageElement = document.createElement("div");
   messageElement.classList.add("messageBlock");
   messageElement.setAttribute("id", id);
   messageElement.dataset.userId = userId;
 
 
-  var foundEmojis = message.match(/\p{Emoji_Presentation}/gu);
+  let foundEmojis = message.match(/\p{Emoji_Presentation}/gu);
 
   if(foundEmojis) {
-    var foundEmojis = foundEmojis.filter((v, i, a) => a.indexOf(v) === i);
-    for(var i = 0; i < foundEmojis.length; i++) {
+    foundEmojis = foundEmojis.filter((v, i, a) => a.indexOf(v) == i);
+    for(let i = 0; i < foundEmojis.length; i++) {
       message = message.replaceAll(foundEmojis[i], '<label class="emojiLabel">' + foundEmojis[i] + '</label>');
     }
   }
 
-  var userHTML = "";
-  if(!liveChat.hasChildNodes() || (liveChat.hasChildNodes() && userId !== liveChat.lastChild.dataset.userId)) {
-    if(userId === -420) {
+  let userHTML = "";
+  if(!liveChat.hasChildNodes() || (liveChat.hasChildNodes() && userId != liveChat.lastChild.dataset.userId)) {
+    if(userId == -420) {
       userHTML = `
             <p class="user">
                 <img src="/tpl/assets/images/rick.png" alt="rick" style="width: 1.3rem; margin-right: 0.5rem;">
@@ -130,9 +133,9 @@ function showMessage(type, message, id, username, userId, level = null, team = n
             `;
     } else {
       const isTeam = team;
-      const isMod = (level === 2);
+      const isMod = (level == 2);
 
-      username += team !== undefined ? isTeam ? " [" + team + "]" : "" + isMod ? "[MOD]" : "" : isTeam ? "" : "" + isMod ? "" : "";
+      username += team != undefined ? isTeam ? " [" + team + "]" : "" + isMod ? "[MOD]" : "" : isTeam ? "" : "" + isMod ? "" : "";
 
 
       userHTML = `
@@ -144,12 +147,12 @@ function showMessage(type, message, id, username, userId, level = null, team = n
     }
   }
 
-  const youAreMod = (localStorage.getItem("level") === 2);
+  const youAreMod = (localStorage.getItem("level") == 2);
 
   let messageHTML = `
     <p class="message ` + type + `">
         ` + document.createTextNode(message).nodeValue + `
-        ` + (youAreMod ? (userId !== -420) ? `<i class="far fa-trash-alt" onclick="sendDelete(` + id + `)"></i>` : "" : "") + `
+        ` + (youAreMod ? (userId != -420) ? `<i class="far fa-trash-alt" onclick="sendDelete(` + id + `)"></i>` : "" : "") + `
     </p>
     `;
 
@@ -164,7 +167,7 @@ function showMessage(type, message, id, username, userId, level = null, team = n
 
     liveChat.appendChild(messageElement);
   }
-  $("#liveChat").stop().animate({ scrollTop: $("#liveChat")[0].scrollHeight}, 700);
+  $('#liveChat').stop().animate({ scrollTop: $("#liveChat")[0].scrollHeight}, 700);
 }
 
 function showPollResult(messageData) {
@@ -191,6 +194,10 @@ const updateViewerCount = (amount) => {
   },1000);
 }
 
+const disableButton = (id) => {
+  document.querySelectorAll("#"+ id).forEach(element => element.remove());
+}
+
 function messageListener(chatData) {
   if(isJSON(chatData.data)) {
     const messageData = JSON.parse(chatData.data);
@@ -204,6 +211,9 @@ function messageListener(chatData) {
       case "delete":
         deleteMessage(messageData.id);
         break;
+      case "disablepollbutton":
+        disableButton("drawingpoll-" + messageData.id);
+      break;
       case "poll":
         showPoll(messageData);
         break;
@@ -215,9 +225,6 @@ function messageListener(chatData) {
         break;
       case "drawresult":
         showDrawResult(messageData);
-        break;
-      case "disablepollbutton":
-        disableButton(messageData.id);
         break;
       case "readysignal":
         toastShow('default', 0, 'Server | Ready', "[" + messageData.match + "] " + messageData.team + " zet jullie robot klaar!", null, 10);
@@ -243,21 +250,21 @@ function messageListener(chatData) {
 
 function launchLiveChat(user_idInput)
 {
-  $.getJSON('http://robotv.serverict.nl/api?data=bannedWords', (data) => {
+  $.getJSON('/api?data=bannedWords', (data) => {
     blockedWords = data;
   });
 
   if ("WebSocket" in window)
   {
     user_id = user_idInput;
-    livechatWebSocket = new WebSocket("ws://194.171.181.139:49152");
+    livechatWebSocket = new WebSocket("ws://77.162.30.112:49152");
 
     livechatWebSocket.addEventListener("open", () =>  {
       showMessage("server", "Deze livechat wordt gemodereerd! Schelden in de chat kan resulteren in een automatische ban. Tevens kunnen indiviuele berichten worden verwijderd door een moderator. Never gonna give you up!", "0", "Server", -420);
       livechatWebSocket.send(JSON.stringify({"user_id": user_id, "type": "join"}));
     });
     livechatWebSocket.addEventListener("message", (chatData) => messageListener(chatData));
-    livechatWebSocket.addEventListener("close", () => {
+    livechatWebSocket.addEventListener("close", (e) => {
       console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
       setTimeout(() => launchLiveChat(user_id), 1000);
     });

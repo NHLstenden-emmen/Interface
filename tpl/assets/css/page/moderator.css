@@ -16,8 +16,14 @@ button:hover {
 	border: 0 !important;
 }
 
-select { 
-	width: 80%;
+.emptyButton {
+	margin: 0;
+	padding: 10px;
+	background-color: unset;
+}
+
+select,input {
+	width: 100%;
 }
 
 .details {
@@ -48,10 +54,6 @@ select {
 
 p {
 	margin: 0;
-}
-
-.selectMenu {
-	margin: 100px 0 0 0;
 }
 
 .selectMenu > .row > div > .neonBlock {
@@ -143,7 +145,6 @@ p {
 }
 
 #editUser > input{
-	width: 80%;
 	margin-bottom: 10px;
 }
 

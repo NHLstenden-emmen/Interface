@@ -157,7 +157,6 @@
     background-color: var(--secondaryColor);
     min-width: 100px;
     height: 100%;
-    font-size: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -224,8 +223,8 @@
     --height: 492px;
     --width: 900px;
     position: relative;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     height: var(--height);
     width: var(--width);
     animation: opening 1.5s;
@@ -262,6 +261,49 @@
     padding: 0;
     animation: closing 1s;
     opacity: 0;
+}
+
+.starBorder {
+    stroke: var(--glowColor);
+    filter: url(#strokeGlow);
+    fill-opacity: 0;
+}
+
+.starDisplay {
+    --width: 760px;
+    --height: 380px;
+    --starFillColor: var(--glowColor);
+    height: var(--height);
+    width: var(--width);
+    padding: 3px;
+    display: flex;
+    flex-direction: row;
+    animation: opening 1.5s;
+    overflow: hidden;
+}
+
+.starDisplay.closing{
+    height: 0;
+    width: 0;
+    padding: 0;
+    animation: closing 1s;
+    opacity: 0;
+}
+
+.starColumn {
+    display: flex;
+    flex-direction: row;
+}
+
+.starName {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 50px;
+}
+
+.stars {
+    display: flex;
+    flex-direction: column;
 }
 
 @keyframes opening {

@@ -1,3 +1,5 @@
+  <div id="startSequence"></div>
+
   <!-- Winnaar -->
   <div class="container-fluid" style="display: flex; justify-content: center; align-items: center; text-align: center;">
     <h1 class="ml15">

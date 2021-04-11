@@ -58,7 +58,8 @@
         "symfony/polyfill-ctype": "^1.17.0",
         "symfony/polyfill-mbstring": "^1.17.0",
         "twig/twig": "^2.9 || ^3",
-        "williamdes/mariadb-mysql-kbs": "^1.2"
+        "williamdes/mariadb-mysql-kbs": "^1.2",
+      "ext-sockets": "*"
     },
     "conflict": {
         "phpseclib/phpseclib": "2.0.8",

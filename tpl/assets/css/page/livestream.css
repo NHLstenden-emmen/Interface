@@ -182,7 +182,6 @@ i.far.fa-trash-alt:hover {
 p.message {
   display: flex;
   align-items: center;
-  text-align: right;
   justify-content: flex-start;
   font-size: 0.97rem;
   text-align: left;
@@ -259,14 +258,14 @@ p.message.leave {
   grid-row: 3;
   grid-column: 1;
   background-repeat: no-repeat;
-  margin: 0 0 0 6.5px;
+  margin: 0 0 0 7px;
   transition: all 1s ease;
 }
 
 .checker::before {
   cursor: pointer;
   font-size: 1.3rem;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   content: "\f118";
   filter: grayscale(100%);
@@ -274,7 +273,7 @@ p.message.leave {
 }
 .checker:hover::before {
   filter: grayscale(0%);
-  color: hsl(43deg 100% 65%);
+  color: hsl(43deg, 100%, 65%);
 }
 
 #emojiCheckbox:checked + .checker::before {

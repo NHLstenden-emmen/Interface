@@ -1,26 +1,26 @@
 initializeMonitor();
 
 // Set user
-var user = "Guest";
+let user = "Guest";
 
 function setUser(Username) {
 	user = atob(atob(Username));
 }
 
 // Get ip of user
-var ipClient = "Unknown";
+let ipClient = "Unknown";
 $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
-    var dataSplit = data.split("\n");
+	const dataSplit = data.split("\n");
 	dataSplit.forEach(element => {
-		var dataElement = element.split("=");
-		if(dataElement[0] == "ip"){
+		const dataElement = element.split("=");
+		if(dataElement[0] === "ip"){
 			ipClient = dataElement[1];
 		}
 	});
 });
 
 function monitorAction() {
-	var ua = navigator.userAgent;
+	const ua = navigator.userAgent;
 
 	// Prevent spam
 	let spamHistory = [];
@@ -50,7 +50,7 @@ function monitorAction() {
 		} else {
 			// Keyboard
 			$(document).ready(function () {
-				var screenSize =
+				const screenSize =
 					window.screen.width * window.devicePixelRatio +
 					"x" +
 					window.screen.height * window.devicePixelRatio;
@@ -71,7 +71,7 @@ function monitorAction() {
 
 	$(document).ready(function () {
 		$(document).click(function (event) {
-			var screenSize =
+			const screenSize =
 				window.screen.width * window.devicePixelRatio +
 				"x" +
 				window.screen.height * window.devicePixelRatio;
@@ -80,11 +80,11 @@ function monitorAction() {
 				return this.prop("tagName");
 			};
 
-			var clickTag = $(event.target).tagName();
-			var clickID = $(event.target).attr("id");
-			var clickClass = $(event.target).attr("class");
-			var clickText = $(event.target).text();
-			var clickSrc = $(event.target).attr("src");
+			let clickTag = $(event.target).tagName();
+			let clickID = $(event.target).attr("id");
+			let clickClass = $(event.target).attr("class");
+			let clickText = $(event.target).text();
+			let clickSrc = $(event.target).attr("src");
 
 			// Tag
 			if (clickTag == undefined || clickTag == "NaN") {
@@ -130,7 +130,7 @@ function monitorAction() {
 			}
 
 			// Value voor DB
-			var clickValue =
+			const clickValue =
 				"<" +
 				clickTag +
 				">\n." +
@@ -159,13 +159,13 @@ function monitorAction() {
 	});
 }
 
-/* Block banned words from inputs */
-var blockedWords;
-var banInput = false;
+/* Block banned words from inputs
+let blockedWords;
+let banInput = false;
 $.getJSON('http://robotv.serverict.nl/api?data=bannedWords', function(data) {
     blockedWords = data;
 	$('input[type="text"]').on('input', function(e) {
-		var value = $('input[type="text"]').val();
+		const value = $('input[type="text"]').val();
 		if (!banInput && blockedWords.includes(value)){
 			banInput = true;
 			$('button[type="submit"]').attr('disabled', 'disabled');
@@ -175,9 +175,10 @@ $.getJSON('http://robotv.serverict.nl/api?data=bannedWords', function(data) {
 		}
 	});
 });
+ */
 
 function initializeMonitor() {
-	var url = window.location.href;
+	const url = window.location.href;
 	if (!url.includes("login")) {
 		if (!url.includes("register")) {
 			monitorAction();
@@ -185,41 +186,13 @@ function initializeMonitor() {
 	}
 }
 
-const titlePage = document.title;
-document.addEventListener('visibilitychange', function() {
-	if(document.hidden) {
-		if(readCookie('lang') == 'nl'){
-			document.title = "Hé kom terug!";
-		} else {
-			document.title = "Come back!";
-		}
-	} else {
-		document.title = titlePage;
-	}
-});
-
-function sendMessageSecond(){
-	const titlePage = document.title;
-	document.addEventListener('visibilitychange', function() {
-		if(document.hidden) {
-			if(readCookie('lang') == 'nl'){
-				document.title = "Haha getrolled!!?!";
-			} else {
-				document.title = "Haha Rick pulled a funny one!?!!";
-			}
-		} else {
-			document.title = titlePage;
-		}
-	});
-}
-
 function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+	const nameEQ = name + "=";
+	const ca = document.cookie.split(';');
+	for (let i = 0; i < ca.length; i++) {
+		let c = ca[i];
+		while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
 }

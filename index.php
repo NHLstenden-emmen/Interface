@@ -1,8 +1,8 @@
 ﻿<?php
 
 define('Start', microtime(true));
-define('styleFolder', 'tpl/');
-define('Handlers', styleFolder.'handlers/');
+const styleFolder = 'tpl/';
+const Handlers = styleFolder . 'handlers/';
 
 require_once 'config/classes/mysql.php';
 require_once 'config/classes/core.php';
@@ -34,4 +34,3 @@ $TPL->GetFooter();
 $TPL->GetBackground();
 
 $TPL->Output();
-?>

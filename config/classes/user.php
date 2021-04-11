@@ -185,6 +185,15 @@ class User
 		}
 	}
 
+	function getData($user_id) {
+	    global $DB;
+        return $DB->Select("SELECT * FROM users WHERE user_id = ? LIMIT 1 ", [$user_id])[0];
+    }
+
+    function generateRandomPassword($rnd_string) {
+	    return password_hash($rnd_string, PASSWORD_DEFAULT);
+    }
+
 	function LoginCheck()
 	{
 		global $core;

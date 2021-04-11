@@ -1,20 +1,8 @@
 <?php 
-    $gebruikerResult = $DB->Select("SELECT * FROM users WHERE user_id = ? LIMIT 1 ", [ModeratorPageAction])[0]; 
+    $gebruikerResult = $DB->Select("SELECT * FROM users WHERE user_id = ? LIMIT 1 ", [ModeratorPageAction])[0];
 
     foreach ($gebruikerResult as $key => $value) $this->Set($key, $value);
 
-    $teamResult = $DB->Select("SELECT * FROM teams"); 
-
-    $rankResult = '<select name="levelSelect">';
-    for( $i=0; $i <= 2; $i++) $rankResult .= '<option ' . ($gebruikerResult['level'] == $i ? 'selected="selected"' : '') . ' value="'.$i.'">' . $user->userLevelName($i) . '</option>';
-    $rankResult .= '</select></br ><br />';
-
-    $teamResultView =  '<select name="teamSelect">';
-    foreach ($teamResult as $key => $value)  $teamResultView .= '<option ' . ($gebruikerResult['team'] == $value['TeamID'] ? 'selected="selected"' : '') . ' value="'.$value['TeamID'].'">' . $value['TeamID'] . '</option>';
-    $teamResultView .= '</select></br ><br />';
-
-    $this->Set("rankResult", $rankResult);
-    $this->Set("teamResult", $teamResultView);
 
     if(isset($_POST['submitEdit']))
 	{

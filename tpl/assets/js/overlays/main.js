@@ -1,8 +1,8 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   hidePage();
-  launchOverlayStream();
   clockCheck();
+
+  launchOverlayStream();
 });
 
 const clockCheck = () => {
@@ -10,16 +10,16 @@ const clockCheck = () => {
       waitingMusicPlay();
       setTimeout(initClock, 5000);
       document.querySelector("body").classList.add("countdown");
-  } else countdownended = true;
+  } else countdownEnded = true;
 }
 
 const reconnect = (error) => {
   console.error('Socket is closed. Reconnect will be attempted in 1 second.', error);
   setTimeout(launchOverlayStream, 1000);
-} 
+}
 
 const switchControl = (messageData) => {
-  if(countdownended) {
+  if(countdownEnded) {
     switch(messageData.scene)
     {
         case "confetti":
@@ -27,9 +27,6 @@ const switchControl = (messageData) => {
         break;
         case "stop":
           stopConfetti();
-        break;
-        case "stoplicht":
-            showStoplicht();
         break;
         case "BrokkoBot":
             //playAudio('1E/quoteJetten.mp3');
@@ -47,9 +44,13 @@ const switchControl = (messageData) => {
         case "Lennart":
             playAudio("/tpl/assets/sound/Lenards_Team_Song.mpeg");
         break;
+        default:
+            lapCounterControl(messageData.scene);
+        break;
     }
   } 
-  else if(!countdownended) {
+  else if(!countdownEnded) {
+      /*
     switch (messageData.audio) 
     {
       case "prev":
@@ -65,6 +66,7 @@ const switchControl = (messageData) => {
         console.log(songs);
       break;
     }
+       */
   }
 }
 
@@ -75,7 +77,7 @@ const launchOverlayStream = () =>
       const overlaysWebsocket = new WebSocket("ws:/194.171.181.139:49151");
 
       overlaysWebsocket.addEventListener('open', () => { 
-        connectedMessage();
+      //  connectedMessage();
         overlaysWebsocket.send(JSON.stringify({"type": "overlay", "action": "connected"}));
       });
       overlaysWebsocket.addEventListener('message', (e) => switchControl(e.data));

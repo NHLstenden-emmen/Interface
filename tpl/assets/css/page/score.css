@@ -29,8 +29,8 @@ h2 {
 .box {
     width: 85vw;
     height: 70vh;
-    margin: 2% 0% 0% 15% !important;
-    padding: 5% 0% 3% 10% !important;
+    margin: 2% 0 0 15% !important;
+    padding: 5% 0 3% 10% !important;
     border-right: none;
     background-color: black;
 }
@@ -78,7 +78,7 @@ tbody {
  @media only screen and (max-aspect-ratio: 1/1) {
     #title, .box {
         width: 100vw !important;
-        margin: 25% 0% 0% 2% !important;
+        margin: 25% 0 0 2% !important;
         padding-left: 2% !important;
     }
     

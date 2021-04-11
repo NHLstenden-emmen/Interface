@@ -68,7 +68,7 @@ if(isset($_POST['regSubmit']))
                         else if($regAntwoord == 4)
                         {
 							$verificationLink = "http://robotv.serverict.nl/login?verificationKey=".$verificationKey;
-							$message = "<html><body>";
+							$message = "<html lang='NL'><body>";
 							$message .= 'Hello '.$voorNaam.' '.$achterNaam.',<br><br>';
 							$message .= 'RoboTV is a platform for NHL Stenden Students build by NHL Stenden Students to track an project event.<br>';
 							$message .= 'Lookup the livestream and interact with other users to support the Teams!<br>';
@@ -89,4 +89,3 @@ if(isset($_POST['regSubmit']))
     }
 }
 
-?>

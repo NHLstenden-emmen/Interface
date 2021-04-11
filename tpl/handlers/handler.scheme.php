@@ -25,5 +25,3 @@ foreach ($DB->Select("SELECT speelschema.*, resultaat.score FROM speelschema
 }
 
 $this->Set("speelSchema", $speelSchema);
-
-?>

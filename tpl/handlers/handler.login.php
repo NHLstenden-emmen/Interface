@@ -2,12 +2,18 @@
 
 if(isset($_GET['verificationKey'])){
 	$verificationKey = $filter->sanatizeInput($_GET['verificationKey'], "string");
-	$getUser = $DB->Select("SELECT user_id FROM users WHERE verificationKey = ? LIMIT 1", [$verificationKey]);
-	$var_check = false;
+    try {
+        $getUser = $DB->Select("SELECT user_id FROM users WHERE verificationKey = ? LIMIT 1", [$verificationKey]);
+    } catch (Exception $e) {
+    }
+    $var_check = false;
 	foreach($getUser as $details){
 		$userID = $details['user_id'];
-		$DB->Update("Update users SET verificationKey = NULL WHERE user_id = ?", [$userID]);
-		$var_check = true;
+        try {
+            $DB->Update("UPDATE users SET verificationKey = NULL WHERE user_id = ?", [$userID]);
+        } catch (Exception $e) {
+        }
+        $var_check = true;
 	}
 	if($var_check){
 		echo "<script>alert('Verified!');</script>";
@@ -65,13 +71,11 @@ if(isset($_POST['loginSubmit']))
                  break;
                 case 2:
 					$core->Redirect("?check=verifyaccount");
-                break; 
+                break;
+                case 4:
                 case 3:
                     $this->Set("loginError", $this->Get("LOGIN_GEBAND"));
-                break; 
-				case 4:
-                    $this->Set("loginError", $this->Get("LOGIN_GEBAND"));
-                break; 
+                break;
                 case 5:
 					$loginKey = time();
 					$core->setCookie("loginKey", $loginKey);

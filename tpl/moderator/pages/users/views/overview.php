@@ -16,3 +16,6 @@
         {usersOverview}
     </tbody>
 </table>
+
+<button class="link" data-link="/moderator/users/add"><i class="fas fa-user-plus"></i> Toevoegen</button>
+

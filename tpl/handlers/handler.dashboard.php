@@ -2,7 +2,7 @@
 
 $user->Redirect(false);
 
-define('TeamPages', 'tpl/team/');
+const TeamPages = 'tpl/team/';
 ob_start();
 
 
@@ -26,4 +26,3 @@ else
 
 define('TeamContent', ob_get_clean());
 
-?>

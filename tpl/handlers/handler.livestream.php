@@ -17,5 +17,3 @@ if ($user->logged_in)
 else {
     $this->Set("bericht", "Log in om mee te chatten!");
 }
-
-?>

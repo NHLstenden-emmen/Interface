@@ -362,3 +362,14 @@ gebruikersBestanden/uploads/
 config/Configuration.php
 *.ts
 *.m3u8
+.idea/dataSources.xml
+.idea/dataSources/d0cdf67e-428f-49fe-9624-bc451e4cb430.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/jsLibraryMappings.xml
+.idea/modules.xml
+.idea/php.xml
+.idea/RoboTV.iml
+.idea/sqldialects.xml
+.idea/vcs.xml
+.idea/dataSources.local.xml
+.idea/workspace.xml

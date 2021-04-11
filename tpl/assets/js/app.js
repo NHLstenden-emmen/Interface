@@ -30,7 +30,7 @@ const burgerMenu = () => {
 		});
 
 		window.addEventListener("resize", () => {
-			navLinks.forEach((link, index) => {
+			navLinks.forEach((link) => {
 				link.style.opacity = "1";
 			});
 		});
@@ -70,7 +70,7 @@ const sortByValue = (jsObj) => {
 			console.log(b[0], "is after" , a[0], "because of alphabetical order");
 			return -1; // ->  a before b
 		}
-		console.log(b[0], "==" , a[0], "no difference"); // probeer nu nog is te versutrne (eerst refresh)
+		console.log(b[0], "==" , a[0], "no difference");
 		return 0; // No difference found
 	});
 };
@@ -84,15 +84,15 @@ const isJSON = (item) => {
 		return false;
 	}
 
-	if (typeof item === "object" && item !== null) {
-		return true;
-	}
+	return typeof item === "object" && item !== null;
 
-	return false;
+
 };
 
 const toastShow = (type, id, title, message, buttons = null, length = null) => {
-	var current = new Date();
+	let buttonElement;
+	let option;
+	const current = new Date();
 
 	let Toast = document.createElement("div");
 	Toast.setAttribute("role", "alert");
@@ -143,12 +143,12 @@ const toastShow = (type, id, title, message, buttons = null, length = null) => {
 	ToastBody.classList.add("toast-body");
 	// check if a button is needed in the toast
 
-	if (buttons != "undefined" && buttons != null && type == "default") {
+	if (buttons !== "undefined" && buttons != null && type === "default") {
 		//buttons.
 		ToastBody.appendChild(document.createTextNode(message));
 
-		for (var option in buttons) {
-			var buttonElement = document.createElement("button");
+		for (option in buttons) {
+			buttonElement = document.createElement("button");
 			buttonElement.classList.add("button");
 			buttonElement.innerHTML = buttons[option];
 			buttonElement.setAttribute(
@@ -159,11 +159,11 @@ const toastShow = (type, id, title, message, buttons = null, length = null) => {
 		}
 
 		Toast.classList.add("regularpoll");
-	} else if (type == "drawing") {
+	} else if (type === "drawing") {
 		ToastBody.appendChild(document.createTextNode(message));
 
-		for(var option in buttons.options) {
-			var buttonElement = document.createElement("button");
+		for(option in buttons.options) {
+			buttonElement = document.createElement("button");
 			buttonElement.innerHTML = buttons.options[option];
 			buttonElement.setAttribute("onclick", "javascript:sendDrawingPoll('"+option+"', '"+buttons.bot+"', '"+buttons.id+"')");
 			buttonElement.classList.add("button");
