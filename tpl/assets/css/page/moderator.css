@@ -147,6 +147,15 @@ p {
 #editUser > input{
 	margin-bottom: 10px;
 }
+button:disabled {
+	transition: 0.3s ease;
+	background: #272727;
+}
+button:disabled:hover {
+	background: #272727 !important;
+	transform: scale(1) !important;
+	box-shadow: unset !important;
+}
 
 /* Chat */
 

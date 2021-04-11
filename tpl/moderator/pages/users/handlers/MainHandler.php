@@ -17,7 +17,7 @@
     $teamResultView =  '<select name="teamSelect" id="teamSelect">';
     foreach ($teamResult as $key => $value)
     {
-        $teamResultView .= '<option ' . (ModeratorPageAction !== null ? @$gebruikerResult['team'] == $value['TeamID'] ? 'selected="selected"' : "" : "") . $value['TeamID'] . '</option>';
+        $teamResultView .= '<option ' . (ModeratorPageAction !== null ? @$gebruikerResult['team'] == $value['TeamID'] ? 'selected="selected"' : "" : "").'>'  . $value['TeamID'] . '</option>';
     }
     $teamResultView .= '</select></br ><br />';
 

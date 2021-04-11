@@ -28,7 +28,6 @@
         </tbody>
     </table>
     <br />
-    <?php if($user->id == 1 || $user->id == 2) { ?>
         <style>
             form {
                 margin: 10px;
@@ -46,5 +45,4 @@
     <input type="url" name="urlInput" placeholder="http://xxx/xx.mp3" required>
         <br /><button type="submit" name="urlSubmit">Add</button>
     </form>
-    <?php } ?>
-</div>        
+</div>

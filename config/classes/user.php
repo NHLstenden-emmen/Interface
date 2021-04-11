@@ -113,15 +113,13 @@ class User
 		return 4;
 	}
 
-	function Edit($team, $voorNaam, $achterNaam, $regEmail, $regPass1, $regPass2, $level, $userID)
-	{
+	function Edit($team, $voorNaam, $achterNaam, $regEmail, $level, $userID): int
+    {
 		global $DB, $filter;
 
 		$voorNaam 		= $filter->sanatizeInput($voorNaam, 'string');
 		$achterNaam 	= $filter->sanatizeInput($achterNaam, 'string');
 		$regEmail 		= $filter->sanatizeInput($regEmail, 'email');
-		$regPass1 		= $filter->sanatizeInput($regPass1, 'string');
-		$regPass2 		= $filter->sanatizeInput($regPass2, 'string');
 		$team 			= $filter->sanatizeInput($team, 'string');
 
 		$emailLijst = array(
@@ -131,16 +129,18 @@ class User
 		
 		$emailDomein = explode("@", $regEmail)[1];
 		
-		if (!in_array($emailDomein, $emailLijst)) return 3;
+		if (!in_array($emailDomein, $emailLijst)) return 1;
 
-		if($regPass1 != $regPass2) return 2;
-		
-		$regPass2 = password_hash($regPass2, PASSWORD_DEFAULT);
+        try
+        {
+            $DB->Update("UPDATE users SET Email = ?, Team = ?, firstName = ?, lastName = ?, Level = ? WHERE UserID = ?", [$regEmail, $team, $voorNaam, $achterNaam, $level, $userID]);
+            return 3;
+        }
+        catch (Exception $e) {
+            return 2;
+        }
 
-		$DB->Update("UPDATE users SET Email = ?, Team = ?, firstName = ?, lastName = ?, Password = ?, Level = ?
-						WHERE UserID = ?", [$regEmail, $team, $voorNaam, $achterNaam, $regPass2, $level, $userID]);
 
-        return 4;
 	}
 	
 	function userLevelName($type, $team = "") 
@@ -164,6 +164,37 @@ class User
             break;
         }
 	}
+
+	function resetPassword($userID): bool
+    {
+	    global $mailer, $DB, $filter;
+        $userID = $filter->sanatizeInput($userID, "int");
+        $verificationKey = $this->generateVerificationKey();
+        $userData =  $this->getData($userID);
+
+        try {
+            $DB->Update("UPDATE users SET Password = NULL, verificationKey = ? WHERE UserID = ?", [$userID, $verificationKey]);
+        }
+        catch (Exception $e) {
+            return false;
+        }
+
+        $passwordResetLink = "http://robotv.serverict.nl/login?type=pwreset&verificationKey=".$verificationKey;
+
+        $message = "<html lang='NL'><body>";
+        $message .= 'Hello '.$userData['firstName'].' '.$userData['lastName'].',<br><br>';
+        $message .= 'You requested to change your password!<br>';
+        $message .= '<br><br>In order to keep change your password please follow these instructions: <br>';
+        $message .= 'Please reset your password by pressing this link: <a href="'.$passwordResetLink.'">Verify me!</a><br><br>';
+        $message .= 'Greetings from the <br><a style="color: black;" href="https://youtu.be/dQw4w9WgXcQ">RoboTV Team</a>';
+        $message .= "</body></html>";
+
+        if(!$mailer->send($userData['Email'], 'Verification RoboTV', $message)){
+            return false;
+        }
+
+        return true;
+    }
 
 	function userLevel($id) {
 		global $DB;
@@ -193,7 +224,7 @@ class User
 
 	function getData($user_id) {
 	    global $DB;
-        return $DB->Select("SELECT * FROM users WHERE user_id = ? LIMIT 1 ", [$user_id])[0];
+        return $DB->Select("SELECT * FROM users WHERE UserID = ? LIMIT 1 ", [$user_id])[0];
     }
 
     function generateRandomPassword($rnd_string) {
