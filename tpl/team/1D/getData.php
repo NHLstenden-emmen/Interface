@@ -46,7 +46,7 @@
     $initialE = 0;
 
     // Uitvoeren van query voor het ophalen van de punten per team
-    $points = $DB->Select("SELECT robot, SUM(score) AS score FROM punten GROUP BY robot");
+    $points = $DB->Select("SELECT robot, SUM(score) AS score FROM punten WHERE robot IN ('Dimitri', 'BrokkoBot', 'ROBot Jetten', 'Wall-D', 'BumbleBert') GROUP BY robot");
     foreach($points as $point){
         // Opslaan van punten bij het bijbehorende team
         $team = array_search($point["robot"], $botList);
@@ -62,7 +62,7 @@
     $wedstrijden = array("sps", "doolhof", "race", "tekening");
     
     // Ophalen van uitslagen
-    $uitslagen = $DB->Select("SELECT * FROM resultaat");
+    $uitslagen = $DB->Select("SELECT * FROM resultaat WHERE robot IN ('Dimitri', 'BrokkoBot', 'ROBot Jetten', 'Wall-D', 'BumbleBert')");
     
     // Ophalen gespeelde spellen
     $gespeeldeSpel = $DB->Select("SELECT game, COUNT(*) AS gamesPlayed FROM punten GROUP BY game HAVING gamesPlayed = 5");
