@@ -18,10 +18,11 @@
     </div>
     <div id='test' class="teamData neonBlock">
         <?php include ("changeTeamData.php"); ?>
-        <h3>Beschrijving</h3>
+        <h3>Beschrijving <span id="languageIndication">NL</span></h3>
         <form method="post">
-            <textarea name="teamDescription"><?php echo $description; ?></textarea>
-            <button type="submit" name="veranderenTeam" value="wijzig" class="button">Wijzig</button>
+            <textarea name="teamDescription" id="NL"><?php echo $descriptionNl; ?></textarea>
+            <button type="submit" name="changeTeamNL" value="change" class="button" id="descriptionButton">Wijzig</button>
+            <button type="button" onclick="changeDescriptionLanguage()" class="button">Taal &rlarr;</button>
         </form>
     </div>
     <div class="controls neonBlock">
@@ -72,6 +73,29 @@
         }
     ?>
         
+    function changeDescriptionLanguage()
+    {
+        var nl = document.getElementById('NL');
+        var en = document.getElementById('EN');
+        var language = document.getElementById('languageIndication');
+        var button = document.getElementById('descriptionButton');
+        
+        if(nl !== null)
+        {
+            nl.innerHTML = "<?php echo $descriptionEn; ?>";
+            nl.id = "EN";
+            language.innerHTML = "EN";
+            button.name = "changeTeamEN";
+        }
+        else
+        {
+            en.innerHTML = "<?php echo $descriptionNl; ?>";
+            en.id = "NL";
+            language.innerHTML = "NL";
+            button.name = "changeTeamNL";
+        }
+    }
+         
     $(document).ready(function(){
         setInterval(refreshData, 120000);
 
@@ -94,22 +118,6 @@
             $("#nextGame").load("../tpl/team/1D/upcoming.php");
         };
     });
-
-//    function changeStream()
-//    {
-//        var videoPlayer = document.getElementById('my-video');
-//        
-//        console.log(videoPlayer);
-//
-//        var mp4Vid = document.getElementById("streamSource");
-//
-//        videoPlayer.pause();
-//
-//        mp4Vid.src = "";
-//
-//        videoPlayer.load();
-//        videoPlayer.play();
-//    }
 </script>
 
 <script src="{assetsFolder}/js/jquery_3.5.1.min.js"></script>
