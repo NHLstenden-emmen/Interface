@@ -157,10 +157,6 @@ class User
         catch (Exception $e) {
             return 2;
         }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 	}
 	
 	function userLevelName($type): string

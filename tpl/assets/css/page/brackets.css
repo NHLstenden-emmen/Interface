@@ -1,7 +1,7 @@
 #brackets{
     margin: 100px 0 35px 0;
     color: white;
-	z-index: -9;
+    z-index: -9;
 }
 
 @media (min-width: 1050px) {
@@ -25,6 +25,7 @@
 .match{
     --height: 92px;
     --width: 209px;
+    --padding: 3px;
     height: var(--height);
     width: var(--width);
     position: absolute;
@@ -32,7 +33,7 @@
     grid-template-columns: 50px auto;
     grid-template-rows: 50% auto;
     grid-gap: 3px;
-    padding: 3px;
+    padding: var(--padding);
     animation: opening 1.5s;
     overflow: hidden;
 }
@@ -45,9 +46,9 @@
     opacity: 0;
 }
 
-.match > .teamLabel{    
+.match > .teamLabel{
     transition: ease opacity 2s, ease color 2s;
-    background-color: var(--secondaryColor); 
+    background-color: var(--secondaryColor);
     opacity: 1;
     grid-column: 2;
     font-size: 25px;
@@ -89,11 +90,12 @@
 #scoreboard{
     --height: 492px;
     --width: 428px;
+    --padding: 3px;
     position: relative;
     height: var(--height);
     width: var(--width);
     animation: opening 1.5s;
-    padding: 3px;
+    padding: var(--padding);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -222,13 +224,14 @@
 #leaderboard{
     --height: 492px;
     --width: 900px;
+    --padding: 3px;
     position: relative;
     top: 0;
     left: 0;
     height: var(--height);
     width: var(--width);
     animation: opening 1.5s;
-    padding: 3px;
+    padding: var(--padding);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -245,10 +248,11 @@
 .lapdisplay{
     --height: 492px;
     --width: 730px;
+    --padding: 3px;
     height: var(--height);
     width: var(--width);
     position: absolute;
-    padding: 3px;
+    padding: var(--padding);
     animation: opening 1.5s;
     overflow: hidden;
     display: flex;
@@ -272,10 +276,11 @@
 .starDisplay {
     --width: 760px;
     --height: 380px;
+    --padding: 10px;
     --starFillColor: var(--glowColor);
     height: var(--height);
     width: var(--width);
-    padding: 3px;
+    padding: var(--padding);
     display: flex;
     flex-direction: row;
     animation: opening 1.5s;
@@ -351,18 +356,18 @@
     50% {
         height: var(--height);
         width: 0;
-        padding: 3px 0 3px 0;
+        padding: var(--padding) 0 var(--padding) 0;
     }
     50.00000000001% {
         height: var(--height);
         width: 0;
-        padding: 3px 0 3px 3px;
+        padding: var(--padding) 0 var(--padding) var(--padding);
 
     }
     100% {
         height: var(--height);
         width: var(--width);
-        padding: 3px;
+        padding: var(--padding);
     }
 }
 
@@ -370,19 +375,19 @@
     0% {
         height: var(--height);
         width: var(--width);
-        padding: 3px;
+        padding: var(--padding);
         opacity: 1;
     }
     49.99999999999% {
         height: var(--height);
         width: 0;
-        padding: 3px 0 3px 3px;
+        padding: var(--padding) 0 var(--padding) var(--padding);
         opacity: 1;
     }
     50% {
         height: var(--height);
         width: 0;
-        padding: 3px 0 3px 0;
+        padding: var(--padding) 0 var(--padding) 0;
         opacity: 1;
     }
     80% {
