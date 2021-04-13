@@ -1691,3 +1691,12 @@ width: 100vw;
 pointer-events: none;
 }
 
+/* Footer toespraak */
+
+#toespraak{
+	min-height: 1000px;
+	background-image: url(/tpl/team/1E/img/footer.jpg);
+	background-size: cover;
+	background-repeat: none;
+	background-position: center;
+}
