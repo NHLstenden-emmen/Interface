@@ -27,7 +27,7 @@
     </div>
     <div class="controls neonBlock">
         <div id="gameMenu" class="selectGame">
-            <img id="openLog" onclick="menuVisible();refresh();" src="{assetsFolder}/images/team/1D/menu.png" alt="menu"> 
+            <img id="openLog" onclick="menuVisible();" src="{assetsFolder}/images/team/1D/menu.png" alt="menu"> 
             <div class="games" id="visible" style="display: none">
                 <div class="logTeamD">
                     <?php include ("control.php"); ?>
@@ -35,7 +35,6 @@
             </div>
         </div>
         <div class="startStop">
-            <meta name="color-scheme" content="dark light">
             <form method="post" action="">
                 <button type="submit" name="start" value="start" id="play" class="start" onclick="play()">Start</button>
             </form>
@@ -46,56 +45,50 @@
     </div>
     <?php include("getData.php"); ?>
 </div>
-<script>    
-    function menuVisible()
-    {
+<script>
+    // Functie voor het openen van het logboek
+    function menuVisible() {
         var status = document.getElementById("visible");
         var blok = document.getElementById("gameMenu");
-        if(status.style.display === "none")
-        {
+        if(status.style.display === "none") {
             status.style.display = "flex";
             blok.style.width = "60%";
-        }
-        else
-        {
+        } else {
             status.style.display = "none";
             blok.style.width = "5%";
         }
     }
     
     <?php
-        if(isset($_POST["start"]))
-        {
-            echo "window.onload = function triggerMenu() 
-            {
+        // Automatisch openen logboek nadat op start is geklikt
+        if(isset($_POST["start"])) {
+            echo "window.onload = function triggerMenu() {
                 menuVisible();
             }";
         }
     ?>
-        
-    function changeDescriptionLanguage()
-    {
+    
+    // Functie voor het wijzigen van de taal van de beschrijving
+    function changeDescriptionLanguage() {
         var nl = document.getElementById('NL');
         var en = document.getElementById('EN');
         var language = document.getElementById('languageIndication');
         var button = document.getElementById('descriptionButton');
         
-        if(nl !== null)
-        {
+        if(nl !== null) {
             nl.innerHTML = "<?php echo $descriptionEn; ?>";
             nl.id = "EN";
             language.innerHTML = "EN";
             button.name = "changeTeamEN";
-        }
-        else
-        {
+        } else {
             en.innerHTML = "<?php echo $descriptionNl; ?>";
             en.id = "NL";
             language.innerHTML = "NL";
             button.name = "changeTeamNL";
         }
     }
-         
+    
+    // Refreshen van het huidige spel en de gegevens van de spellen
     $(document).ready(function(){
         setInterval(refreshData, 120000);
 
