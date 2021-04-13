@@ -9,7 +9,7 @@
  /* Custom params */
  $TeamID = "1E";
  $RobotName = "ROBot Jetten";
- $GroupID = "13";
+ $GroupID = 13;
 
  /* Send Data to Robot */
  if(isset($_POST['action'])){
@@ -84,11 +84,11 @@
     // Send Data
     $sendData = $socket->sendToBot($RobotName, $command);
     if($sendData == "bot_not_online"){
-        $DB->Insert("INSERT INTO actions (type_ac, user, keyChar, clickValue, url) VALUES ('SENDTOBOT', ?, ?, 'bot_not_online', 'http://robotv.serverict.nl/dashboard/1E')", [$RobotName, $command]);
+		// Niet online
     } else if ($sendData == "success"){
-        $DB->Insert("INSERT INTO actions (type_ac, user, keyChar, clickValue, url) VALUES ('SENDTOBOT', ?, ?, ?, 'http://robotv.serverict.nl/dashboard/1E')", [$RobotName, command, 'Success']);
+		// Success
     } else {
-        $DB->Insert("INSERT INTO actions (type_ac, user, keyChar, clickValue, url) VALUES ('SENDTOBOT', ?, ?, ?, 'http://robotv.serverict.nl/dashboard/1E')", [$RobotName, $command, 'Error']);
+        // Andere error
     }
 
     echo $sendData;
@@ -111,8 +111,9 @@
 
  /* Data from database */
  $robotData = $DB->Select("SELECT * FROM teams WHERE TeamID = ?",[$TeamID]);
- $userData = $DB->Select("SELECT * FROM users WHERE team = ?",[$TeamID]);
+ $userData = $DB->Select("SELECT * FROM users WHERE Team = ?",[$TeamID]);
  $robotAction = $DB->Select("SELECT * FROM actions WHERE UserID = ? ORDER BY time DESC",[$GroupID]);
+ $robotResults = $DB->Select("SELECT * FROM punten WHERE robot = ?",[$RobotName]);
 
  /* Data from socket */
  if($botList = $socket->getBotList()){
@@ -183,7 +184,11 @@
         <div class="col-lg-4 topCard" onclick="openCardBoxThree();">
             <div class="cardContent">
                 <h5>Scoreboard</h5>
-
+				<?php
+					foreach($robotResults AS $result){
+						echo '<p>' . $result['game'] . ': ' . $result['score'] . '</p>';
+					}				
+				?>
             </div>
         </div>
     </div>
@@ -216,7 +221,7 @@
             <ul id="consoleUL">
                 <?php
                     foreach($robotAction as $robotActions){
-                        if($robotActions['clickValue'] != "sucess"){
+                        if($robotActions['Value'] != "sucess"){
                             $color = "red";
                         } else {
                             $color = "green";
@@ -340,7 +345,7 @@
                 <!-- Details -->
                 <?php                
                     foreach ($userData as $userDetails){
-                        echo $userDetails['voornaam'] . ' ' . $userDetails['achternaam'] . '<br>';
+                        echo $userDetails['firstName'] . ' ' . $userDetails['lastName'] . '<br>';
                     }
                 ?>
             </div>
@@ -368,7 +373,16 @@
                         </tr>
                     </thead>
                     <tbody>
-
+						<?php 
+							foreach($robotResults as $results){
+								$row = 	"<tr><td>";
+								$row .=	$results['game'];
+								$row .=	"</td><td>";
+								$row .=	$results['score'];
+								$row .=	"</td></tr>";
+								echo $row;
+							}
+						?>
                     </tbody>
                 </table>
                 <br><br>

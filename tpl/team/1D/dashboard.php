@@ -79,7 +79,7 @@
             $(".data").wrapAll("<div id='data' style='display: none'></div>");
 
             setTimeout(function() { 
-                $("#data").load("../tpl/team/1D/getData.php");
+                $("#data").load("/tpl/team/1D/getData.php");
 
                 setTimeout(function() { 
                     $(".data").unwrap();
