@@ -1,4 +1,6 @@
 <h1 class="title">{GEBRUIKERS}</h1>
+<button class="link" data-link="/moderator/users/add"><i class="fas fa-user-plus"></i> Invite</button>
+
 <br />
 <table>
     <thead>
@@ -17,5 +19,4 @@
     </tbody>
 </table>
 
-<button class="link" data-link="/moderator/users/add"><i class="fas fa-user-plus"></i> Toevoegen</button>
 

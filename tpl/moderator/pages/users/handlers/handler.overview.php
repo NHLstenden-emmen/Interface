@@ -7,8 +7,8 @@
     foreach($gebuikerResult as $key => $value)  {
         $gebuikerResultView .= "<tr>";
 		if(!empty($value['verificationKey'])) {
-			$gebuikerResultView .= "<td data-label='level' class='link' data-link='/moderator/users/activate/{$value["user_id"]}'><i class='fas fa-check'></i></td>";
-		} else $gebuikerResultView .= "<td data-label='level'></td>";
+			$gebuikerResultView .= "<td data-label='activate' class='link' data-link='/moderator/users/activate/{$value["user_id"]}'><i class='fas fa-check'></i></td>";
+		} else $gebuikerResultView .= "<td></td>";
  
 			$gebuikerResultView .= "
                 <td data-label='level'>{$user->userLevel($value['UserID'])}</td>
@@ -30,7 +30,7 @@
 				}
 			}			
 			if(!empty($value['lastIp']) && $isBanned == false) $gebuikerResultView .= "<td data-label='banIp' class='link' data-link='/moderator/users/ban/".$value['UserID']."?var=ip'>".$value['lastIp']." <i class='far fa-caret-square-right'></i></td>";
-            
+            else  $gebuikerResultView .= "<td data-label='banIp'></td>";
 			
 			$gebuikerResultView .= "</tr>";
 			

@@ -1,4 +1,4 @@
-<h1 class="title">Gebruiker toevoegen</h1>
+<h1 class="title">Invite</h1>
 <form id="editUser" method="POST">
     {updateError} <br>
 

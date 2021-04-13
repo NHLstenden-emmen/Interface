@@ -171,6 +171,10 @@ button.button:hover {
 	cursor: pointer;
 	animation: buttonHover 0.3s ease-in-out forwards;
 }
+button.button.poll {
+	padding: 5px 15px;
+	margin: 0;
+}
 
 a.button {
 	padding: 13px 30px;
@@ -704,6 +708,13 @@ tr:nth-child(odd) {
 
 
 /* toast */
+.toastContainer {
+	position: fixed;
+	top: 27px;
+	right: 20px;
+	z-index: 1;
+}
+
 .toast img {
 	/* width: 30px; */
 	object-fit: cover;
@@ -717,6 +728,19 @@ tr:nth-child(odd) {
 .toast span {
 	color: black;
 }
-.toast .toast-body {
-	color: black;
+.toast-button-holder {
+	display: flex;
+}
+#placeToast {
+	position: absolute;
+	top: 0;
+	max-height: calc(100vh - 40px);
+	right: 0;
+	overflow-y: scroll;
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+
+#placeToast::-webkit-scrollbar {
+	display: none;
 }

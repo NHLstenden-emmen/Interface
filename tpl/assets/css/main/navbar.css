@@ -17,7 +17,7 @@
 }
 
 .nav > ul {
-	z-index: 100;
+	/* z-index: 100; */
 }
 
 #right-wing {
@@ -34,17 +34,17 @@
 	stroke: var(--logoWingsColor);
 }
 
-#logo-body { 
-	stroke: var(--logoBodyColor); 
+#logo-body {
+	stroke: var(--logoBodyColor);
 	fill: var(--logoBodyColor);
 }
 
 #eyes-background {
-	stroke: var(--logoBackdropColor); 
+	stroke: var(--logoBackdropColor);
 }
 
-#eyes { 
-	fill: var(--logoEyesColor); 
+#eyes {
+	fill: var(--logoEyesColor);
 	paint-order: stroke fill markers;
 }
 
@@ -58,7 +58,7 @@
 	transform: translateX(-3px);
 }
 .nav> ul {
-	z-index: 100;
+	z-index: 0;
 }
 .nav>#menu>li,
 .nav>#alternative-menu>li {
@@ -166,6 +166,7 @@
 /* TOP NAV MOBILEBURGER */
 .mobileBurger {
 	cursor: pointer;
+	z-index: 3;
 }
 
 .mobileBurger div {
@@ -186,6 +187,42 @@
 
 .mobileBurger.active div:nth-child(3) {
 	transform: rotate(45deg) translate(-5px, -6px);
+}
+
+@keyframes navLinkFade {
+	from {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+
+.alternative-button span {
+	font-weight: bold;
+}
+
+#logout {
+	position: relative;
+	transition: 0.3s;
+}
+
+#logout:hover span:nth-child(1) {
+	animation: fadeout 0.5s forwards;
+}
+
+#logout:hover span:nth-child(2):after {
+	animation: fadein 0.5s linear;
+	content: "Logout";
+	position: absolute;
+	left: 0;
+	top: 18%;
+	text-align: center;
+	width: 100%;
+	height: 100%;
 }
 
 @media (max-width: 1050px) {
@@ -238,7 +275,7 @@
 	}
 
 	.nav ul {
-		position: absolute;
+		position: fixed;
 		top: 100px;
 		height: calc(100vh - 100px) !important;
 		margin: 0;
@@ -266,22 +303,13 @@
 		overflow: hidden;
 		height: 0;
 	}
-	
+
 	.active #menu{
 		height: 100vh;
+		z-index: 1;
 	}
-
-}
-
-@keyframes navLinkFade {
-	from {
-		opacity: 0;
-		transform: translateX(50px);
-	}
-
-	to {
-		opacity: 1;
-		transform: translateX(0px);
+	.toastContainer {
+		top: 100px;
 	}
 }
 
@@ -289,28 +317,4 @@
 	.mobileBurger {
 		display: none;
 	}
-}
-
-.alternative-button span {
-	font-weight: bold;
-}
-
-#logout {
-	position: relative;
-	transition: 0.3s;
-}
-
-#logout:hover span:nth-child(1) {
-	animation: fadeout 0.5s forwards;
-}
-
-#logout:hover span:nth-child(2):after {
-	animation: fadein 0.5s linear;
-	content: "Logout";
-	position: absolute;
-	left: 0;
-	top: 18%;
-	text-align: center;
-	width: 100%;
-	height: 100%;
 }

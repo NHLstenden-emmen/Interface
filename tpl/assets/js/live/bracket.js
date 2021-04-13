@@ -3,6 +3,13 @@ const bracketsTitle = document.querySelector("#brackets > h1");
 
 class Brackets {
     phase = -1;
+    lastPhases =
+        {0:undefined,
+            1:undefined,
+            2:undefined,
+            3:undefined,
+            4:undefined,
+            5:undefined};
 
     #clear() {
         const children = bracketsHolder.children;
@@ -166,7 +173,7 @@ class Brackets {
         this.#updateScoreboard(this.#sortScoreboard(jsonObject.scoreboard));
     }
 
-    #setupPhase2(jsonObject) {  // Brackets SPS (8x match)
+    #setupPhase2(jsonObject) {  // Bracket SPS (8x match)
         bracketsTitle.innerHTML = 'SPS - Knockout';
         bracketsHolder.innerHTML = `
         <div id="match1" class="match neonBorder" style="left: 0; top: 0;">
@@ -665,7 +672,6 @@ class Brackets {
         let finished = false;
         let star = 0;
         let fill = 0;
-        console.log(results)
 
         for(let i = 0; i < results.length; i++) {
             bracketsHolder.querySelector("#starName-" + i).innerHTML = results[i][0];
@@ -685,11 +691,11 @@ class Brackets {
 
             if(fill == 100) {
                 fill = 0;
-                const audio = new Audio("Robo TV -_files/320655__rhodesmas__level-up-01.wav");
-                audio.play();
+                //const audio = new Audio("Robo TV -_files/320655__rhodesmas__level-up-01.wav");
+                //audio.play();
                 star++;
             }
-            console.log(star);
+
             if(finished || star >= 5) {
                 clearInterval(animation);
             }
@@ -828,6 +834,29 @@ class Brackets {
         });
     }
 
+    showPhase(ind) {
+        console.log(this.lastPhases.length);
+        if(ind in this.lastPhases) {
+            if(this.lastPhases[ind] != undefined) {
+                console.log("a");
+                this.parseJSON(this.lastPhases[ind]);
+            } else {
+                console.log("b");
+            }
+        }
+    }
+
+    #updatePhaseButtons() {
+        for(let i = 0; i < 6; i++) {
+            let button = document.querySelector("#buttonPhase" + i);
+            if(this.lastPhases[i] != undefined) {
+                button.classList.remove("locked");
+            } else {
+                button.classList.add("locked");
+            }
+        }
+    }
+
     parseJSON(json) {
         try {
             const jsonObject = JSON.parse(json);
@@ -841,6 +870,16 @@ class Brackets {
                     }
                     setTimeout(() => {
                         switch(jsonObject.phase) {
+                            case -1:
+                                this.lastPhases =
+                                    {0:undefined,
+                                        1:undefined,
+                                        2:undefined,
+                                        3:undefined,
+                                        4:undefined,
+                                        5:undefined};
+                                bracketsHolder.style = null;
+                                break;
                             case 0:
                                 this.#setupPhase0(jsonObject);
                                 break;
@@ -854,14 +893,13 @@ class Brackets {
                                 this.#setupPhase3(jsonObject);
                                 break;
                             case 4:
-                                this.#setupPhase4(jsonObject); // should do it
+                                this.#setupPhase4(jsonObject);
                                 break;
                             case 5:
                                 this.#setupPhase5(jsonObject);
                                 break;
                             default:
-                                bracketsHolder.style = null;
-                                console.error("Unknown phase for brackets");
+                                this.#clear();
                                 break;
                         }
                     }, timeout);
@@ -892,11 +930,13 @@ class Brackets {
                         case 5:
                             this.#fillStars(jsonObject.results);
                             break;
-                        default:
-                            console.error("Unknown phase for brackets");
-                            break;
                     }
                 }
+
+                if(jsonObject.phase in this.lastPhases) {
+                    this.lastPhases[jsonObject.phase] = json;
+                }
+                this.#updatePhaseButtons();
             }
         } catch (e) {
             console.error(e);
@@ -926,15 +966,13 @@ document.addEventListener("DOMContentLoaded", () => {
     openWebSockets();
 });
 
-staticData.open("GET", "/livedata?type=leaderboard", true);
+staticData.open("GET", "/api?data=bracket", true);
 //staticData.setRequestHeader("battlebots", "leaderboard");
 staticData.send();
 
 
 staticData.addEventListener("readystatechange", () => {
-    if (staticData.readyState === XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
-        brackets.parseJSON(JSON.parse(staticData.getResponseHeader("livedata")).json);
-    }
+    brackets.parseJSON(staticData.responseText.trim());
 });
 // brackets.parseJSON('{"phase":5,"results":{"BrokkoBot":0,"ROBot Jetten":0,"Wall-D":0,"BumbleBert":0,"Dimitri":0}}')
-// setTimeout(() => { brackets.parseJSON('{"phase":5,"results":{"BrokkoBot":2.5,"ROBot Jetten":1.67,"Wall-D":5,"BumbleBert":3.15,"Dimitri":4}}') }, 3000);
+setTimeout(() => { brackets.parseJSON('{"phase":5,"results":{"BrokkoBot":2.5,"ROBot Jetten":1.67,"Wall-D":5,"BumbleBert":3.15,"Dimitri":4}}') }, 3000);

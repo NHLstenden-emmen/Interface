@@ -2,13 +2,13 @@
     $this->Set("updateError", "");
 
     if(ModeratorPageAction !== null) {
-       @$gebruikerResult = $user->getData(ModeratorPageAction);
+       $gebruikerResult = @$user->getData(ModeratorPageAction);
     }
 
     $teamResult = $DB->Select("SELECT * FROM teams");
 
     $rankResult = '<select name="levelSelect" id="levelSelect">';
-    for( $i=0; $i <= 2; $i++)
+    for( $i=0; $i <= 3; $i++)
     {
         $rankResult .= '<option ' . (ModeratorPageAction !== null ? @$gebruikerResult['level'] == $i ? 'selected="selected"' : "" : ""). ' value="'.$i.'">' . $user->userLevelName($i) . '</option>';
     }

@@ -156,4 +156,14 @@ $this->Set("joyStick", '<svg id="joystick" xmlns:dc="http://purl.org/dc/elements
 
 $this->Set("extraJS", '<script src="/tpl/moderator/pages/camera/assets/control.js"></script>');
 $this->Set("pageTitle", "Camera [Control]");
+
+
+if(isset($_POST['question']) && isset($_POST['opties']) && isset($_POST['lengte'])) {
+    $question = $filter->sanatizeInput($_POST['question'], "string");
+    $opties = $filter->sanatizeInput($_POST['opties'], "string");
+    $lengte = $filter->sanatizeInput($_POST['lengte'], "string");
+
+    $statusResponse = $socket->regularPoll($question, $opties, $lengte);
+    header("response: " . json_encode($statusResponse));
+}
 ?>

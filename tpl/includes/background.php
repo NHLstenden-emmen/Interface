@@ -8,4 +8,7 @@
         <div class="line6"></div>
     </div>
 </div>
-<div style="position: absolute; top: 100px; right: 30px" id="placeToast"></div>
+<div aria-live="polite" aria-atomic="true" style="" class="toastContainer">
+    <!-- Position it -->
+    <div id="placeToast"></div>
+</div>

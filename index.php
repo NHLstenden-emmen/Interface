@@ -28,9 +28,9 @@ $TPL->Route($_SERVER['PATH_INFO']);
 $TPL->GetHandlers();
 
 $TPL->GetHeader();
+$TPL->GetBackground();
 $TPL->GetNavigation();
 $TPL->GetContent();
 $TPL->GetFooter();
-$TPL->GetBackground();
 
 $TPL->Output();

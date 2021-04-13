@@ -97,6 +97,15 @@ class ServerConnection
                 else return false;
         }
 
+        function regularPoll($question, $options, $length) {
+            $options = explode($options, ",");
+            if(!empty($options)) {
+                if($response = $this->write(json_encode(["CMD" => "CUSTOM_POLL", "QUESTION" => $question, "OPTIONS" => json_encode($options), "LENGTH" => $length]))) return $response;
+            }
+
+            return false;
+        }
+
         function write($message) {
                 if($this->create()) {
                     if(socket_write($this->socketHost, $message . "\n", strlen($message) + 1)) {
@@ -106,6 +115,8 @@ class ServerConnection
 
                 return false;
         }
+
+
 }
 
 ?>
