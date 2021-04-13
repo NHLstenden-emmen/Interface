@@ -3,7 +3,7 @@
 		display: grid;
 		grid-template-areas:
 			"startGame liveFeed"
-			"console liveFeed"
+			"startGame liveFeed"
 			"credits credits";
 		grid-template-columns: 40vw 59vw;
 	}
@@ -14,7 +14,7 @@
 		grid-template-areas:
 			"startGame"
 			"liveFeed"
-			"console";
+			"credits";
 		margin-top: 90px;
 	}
 }
@@ -24,9 +24,6 @@
 }
 .startGame {
 	grid-area: startGame;
-}
-.console {
-	grid-area: console;
 }
 .credits {
 	grid-area: credits;

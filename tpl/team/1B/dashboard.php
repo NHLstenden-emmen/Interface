@@ -1,16 +1,109 @@
+<?php 
+
+ /* Custom params */
+$TeamID = "1B";
+$RobotName = "Dimitri";
+
+/* Send Data to Robot */
+if(isset($_POST['action'])){
+
+	$action = $_POST['action'];
+
+    if($action == "STOP"){
+        $command = "a";
+    }
+
+    if($action == "CLEAR"){
+        $command = "0";
+    }
+
+    // Straight angles
+
+	// voor
+    if($action == "W"){
+        $command = "b";
+    }
+	// links
+    if($action == "A"){
+        $command = "e";
+    }
+	// achter
+    if($action == "S"){
+        $command = "c";
+    }
+	// rechts
+    if($action == "D"){
+        $command = "d";
+    }
+
+    // Commands
+    if($action == "SPS"){
+        $command = "4";
+    }
+
+    if($action == "DOOLHOF"){
+        $command = "3";
+    }
+
+    if($action == "RACE"){
+        $command = "1";
+    }
+
+    if($action == "TEKENING"){
+        $command = "2";
+    }
+
+    // Ready
+    if($action == "Ready"){
+        print_r($socket->sendStartToBot($RobotName));
+        die();
+    }
+
+    // Send Data
+    $sendData = $socket->sendToBot($RobotName, $command);
+}
+?>
+
 <div id="dashboard">
 	<div class="liveFeed neonBlock1B" data-aos="zoom-in-down">
 		<div class="videoBlock">
-			<video id="livestreamVideo" poster="{assetsFolder}/images/poster.png">
-				Je browser ondersteunt geen HTML5 video's.
-			</video>
+			<video id="my-video" class="video-js" controls preload="auto" width="100%" height="100%" data-setup="{}">
+				<source id="streamSource" src="/streams/dome.m3u8" type="application/vnd.apple.mpegurl" />
+				<p class="vjs-no-js">
+					JavaScript moet aan staan wel licht staat het niet aan op uw browser
+				</p>
+			</video> 
 		</div>
 	</div>
 	<div class="startGame neonBlock1B" data-aos="zoom-in-down">
 		<h1>start the games</h1>
 		<div id="startButton" data-aos="zoom-in-left">
 			<div class="bigStart">
-				<button onclick="Startup()">Start The Robot</button>
+				<button onclick="sendData('Ready');">Start The Robot</button>
+				<div class="icon"><i class="fas fa-play"></i>
+				</div>
+			</div>
+
+			<div class="bigStart">
+				<button onclick="sendData('RACE');">Start The RACE</button>
+				<div class="icon"><i class="fas fa-play"></i>
+				</div>
+			</div>
+
+			<div class="bigStart">
+				<button onclick="sendData('TEKENING');">Start The TEKENING</button>
+				<div class="icon"><i class="fas fa-play"></i>
+				</div>
+			</div>
+
+			<div class="bigStart">
+				<button onclick="sendData('DOOLHOF');">Start The DOOLHOF</button>
+				<div class="icon"><i class="fas fa-play"></i>
+				</div>
+			</div>
+
+			<div class="bigStart">
+				<button onclick="sendData('SPS');">Start The SPS</button>
 				<div class="icon"><i class="fas fa-play"></i>
 				</div>
 			</div>
@@ -19,15 +112,12 @@
 		<audio id="audio" src="{assetsFolder}/sound/Lenards_Team_Song.mpeg" style="display:none;"></audio>
 		<div id="panicButton" data-aos="zoom-in-left">
 			<div class="bigStop">
-				<button onclick="stop()">PANIC BUTTON</button>
+				<button onclick="sendData('STOP');">PANIC BUTTON</button>
 				<div class="icon">
 					<i class="fas fa-skull-crossbones"></i>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="console neonBlock1B" data-aos="zoom-in-down">
-		<h1>console</h1>
 	</div>
 	<div class="credits neonBlock1B" data-aos="zoom-in-down">
 		<div data-aos="zoom-in-left">
