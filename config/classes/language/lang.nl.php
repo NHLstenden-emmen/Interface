@@ -62,5 +62,27 @@ $this->lang['BANNEDACCOUNT'] = 'Dit IP Adres is gebanned, je kunt de livestream 
 $this->lang['NAME'] = 'Naam';
 $this->lang['PASSWORD_RESET'] = 'Wachtwoord vergeten?';
 $this->lang['SEND_MAIL'] = 'Verstuur mail';
-
+$this->lang['GAMERULES_HEADING'] = '<h4>Spelregels</h4>';
+$this->lang['RULES_MAZETITLE'] = '<h2 class="gameTitle">Doolhof</h2>';
+$this->lang['RULES_DRAWINGTITLE'] = '<h2 class="gameTitle">Tekening</h2>';
+$this->lang['RULES_RPSTITLE'] = '<h2 class="gameTitle">Steen, Papier, Schaar</h2>';
+$this->lang['RULES_TABLE'] = '<table class="scoreTable"><tr><td>1e plaats:</td><td>10 punten</td></tr><tr><td>2e plaats:</td><td>8 punten</td></tr><tr><td>3e plaats:</td><td>6 punten</td></tr><tr><td>4e plaats:</td><td>4 punten</td></tr><tr><td>5e plaats:</td><td>2 punten</td></tr><tr><td>Geen tijd:</td><td>0 punten</td></tr></table>';
+$this->lang['RULES_MAZETABLE'] = '<table class="scoreTable"><tr><td>1e plaats:</td><td>10 punten</td></tr><tr><td>2e plaats:</td><td>8 punten</td></tr><tr><td>3e plaats:</td><td>6 punten</td></tr><tr><td>4e plaats:</td><td>4 punten</td></tr><tr><td>5e plaats:</td><td>2 punten</td></tr></table>';
+$this->lang['RULES_RACE'] = '<p>Wanneer het “Start” commando wordt verstuurd naar de robot, gaat er een timer aan op een telefoon.</p><p>De robot rijdt 5 rondes.
+De tijden van elke ronde worden geregistreerd, waarna het gemiddelde van de 5 rondes de eindstand is. Na 5 rondes te hebben gereden, komt de robot tot een stop.</p>
+<p>De robot met de laagste eindstand (dus het minste tijd) wint de race.</p>';
+$this->lang['RULES_MAZE'] = '<p>Wanneer het “Start” commando wordt verstuurd naar de robot, moet er een timer van start gaan
+die pas eindigt wanneer de robot bij de finish is. De tijd moet worden verstuurd naar de
+server en moet zichtbaar zijn in de interface.</p><p>De robot begint in het midden van de doolhof (te zien op de plattegrond).</p><p>Als de robot geheel van het pad is dan moet er een “Stop” commando worden verstuurd en wordt
+er voor de robot geen tijd geregistreerd.</p><p>De robot mag met gedeeltes over de zwarte lijnen komen omdat de robot niet aan elke kant
+sensoren heeft waardoor de robot de lijnranden niet goed kan waarnemen.</p><p>De robot heeft 5 minuten de tijd om uit de doolhof te komen, als de robot het niet haalt binnen 5 min wordt
+er een “Stop” commando verstuurd naar de robot en wordt er geen tijd geregistreerd.</p><p>Bij de finish staat een obstakel (muur) die moet worden gedetecteerd door de
+ultrasonicsensor. Als de robot er 5 cm van is stopt hij en wordt de tijd verstuurd naar de
+server.</p>';
+$this->lang['RULES_RPS'] = '<p>Dit spel bestaat uit 2 fasen.</p><p>Fase 1:</p><p>Iedereen speelt tegen iedereen een spel. Aan de hand van het aantal potjes gewonnen stijg je
+in de poule ranglijst.
+Steen wint van Schaar. Schaar wint van Papier en Papier wint van Steen.</p><p>Fase 2:</p><p>Aan de hand van je positie krijg je een plaats in de knockout ronde toegewezen. Deze wordt
+gunstiger naarmate je hoger in de 1e fase bent geëindigd.</p><p>';
+$this->lang['RULES_DRAWING'] = '<p>De tekening challenge is een spel waarbij de robot een tekening maakt.</p><p>De robot krijgt een canvas waar hij in moet blijven.</p><p>De winnaar zal worden gekozen door middel van een poll die achteraf wordt gehouden tussen
+de tekeningen waarbij alleen ingelogde gebruikers hun stem kunnen laten gelden.</p><p>Ook docenten zullen de tekeningen beoordelen door middel van sterren geven. De tekening met de meeste sterren en stemmen is de beste.</p>';
 ?>
