@@ -13,16 +13,21 @@ class User
 
 	function __construct()
 	{
-		global $core, $DB;
+		global $DB;
 
 		if (isset($_SESSION['email']))
 		{
 			$this->email = $_SESSION['email'];
 			$this->logged_in = true;
 
-			$this->data = $DB->Select("SELECT * FROM users WHERE email = ?", [$this->email])[0];
+            try {
+                $this->data = $DB->Select("SELECT * FROM users WHERE Email = ?", [$this->email])[0];
+            }
+            catch (Exception $e) {
+                $this->Logout();
+            }
 
-			if ($this->data === false)
+            if ($this->data === false)
 			{
 				$this->Logout();
 			}
@@ -35,27 +40,33 @@ class User
 				$this->lastIp = $this->data('lastIp');
 			}
 
-			$this->id = intval($this->data('user_id'));
-			$this->team = $this->data('team');
-			$this->level = intval($this->data('level'));
-			$this->naam = $this->data('voornaam').'	&nbsp;'.$this->data('achternaam');
+			$this->id = intval($this->data('UserID'));
+			$this->team = $this->data('Team');
+			$this->level = intval($this->data('Level'));
+			$this->naam = $this->data('firstName').'&nbsp;'.$this->data('lastName');
 		} 
 	}
 
-	function Login($email, $password)
-	{
+	function Login($email, $password): int
+    {
 		global $DB, $filter;
 
 		$email 		= strtolower($filter->sanatizeInput($email, 'email'));
 		$password 	= $filter->sanatizeInput($password, 'string');
 
-		$userInfo 	= $DB->Select("SELECT * FROM users WHERE email = ? LIMIT 1",[$email]);
-		
-		if (empty($userInfo)) return 1;
+        try {
+            $userInfo = $DB->Select("SELECT * FROM users WHERE Email = ? LIMIT 1",
+                [$email]);
+        }
+        catch (Exception $e) {
+            return 0;
+        }
+
+        if (empty($userInfo)) return 1;
 		
 		if (!empty($userInfo[0]['verificationKey'])) return 2;
 
-		if (!password_verify($password, $userInfo[0]['password'])) return 3;
+		if (!password_verify($password, $userInfo[0]['Password'])) return 3;
 
 		$_SESSION['email'] = $email;
 
@@ -75,8 +86,8 @@ class User
 		return $randomString;
 	}
 	
-	function Register($voorNaam, $achterNaam, $regEmail, $regPass1, $regPass2, $verificationKey, $level = 0)
-	{
+	function Register($voorNaam, $achterNaam, $regEmail, $regPass1, $regPass2, $verificationKey, $level = 0): int
+    {
 		global $DB, $filter;
 
 		$voorNaam 			= $filter->sanatizeInput($voorNaam, 'string');
@@ -96,9 +107,13 @@ class User
 		
 		if (!in_array($emailDomein, $emailLijst)) return 3;
 
-		$userInfo 	= $DB->Select("SELECT * FROM users WHERE email = ?", [$regEmail]);
+        try {
+            $userInfo = $DB->Select("SELECT * FROM users WHERE Email = ?", [$regEmail]);
+        } catch (Exception $e) {
+            return 0;
+        }
 
-		if (!empty($userInfo)) return 1;
+        if (!empty($userInfo)) return 1;
 
 		if($regPass1 != $regPass2) return 2;
 
@@ -106,22 +121,23 @@ class User
 
 		$regPass2 = password_hash($regPass2, PASSWORD_DEFAULT);
 
-		$DB->Insert("INSERT INTO users (email, voornaam, achternaam, password, level, verificationKey) 
-							VALUES (?, ?, ?, ?, ?, ?)", 
-							[$regEmail, $voorNaam, $achterNaam, $regPass2, $level, $verificationKey]);
+        try {
+            $DB->Insert("INSERT INTO users (Email, firstName, lastName, Password, Level, verificationKey) VALUES (?, ?, ?, ?, ?, ?)",
+                [$regEmail, $voorNaam, $achterNaam, $regPass2, $level, $verificationKey]);
+        } catch (Exception $e) {
+            return 0;
+        }
 
-		return 4;
+        return 4;
 	}
 
-	function Edit($team, $voorNaam, $achterNaam, $regEmail, $regPass1, $regPass2, $level, $userID)
-	{
+	function Edit($team, $voorNaam, $achterNaam, $regEmail, $level, $userID): int
+    {
 		global $DB, $filter;
 
 		$voorNaam 		= $filter->sanatizeInput($voorNaam, 'string');
 		$achterNaam 	= $filter->sanatizeInput($achterNaam, 'string');
 		$regEmail 		= $filter->sanatizeInput($regEmail, 'email');
-		$regPass1 		= $filter->sanatizeInput($regPass1, 'string');
-		$regPass2 		= $filter->sanatizeInput($regPass2, 'string');
 		$team 			= $filter->sanatizeInput($team, 'string');
 
 		$emailLijst = array(
@@ -131,48 +147,86 @@ class User
 		
 		$emailDomein = explode("@", $regEmail)[1];
 		
-		if (!in_array($emailDomein, $emailLijst)) return 3;
+		if (!in_array($emailDomein, $emailLijst)) return 1;
 
-		if($regPass1 != $regPass2) return 2;
-		
-		$regPass2 = password_hash($regPass2, PASSWORD_DEFAULT);
-
-		$DB->Update("UPDATE users SET email = ?, team = ?, voornaam = ?, achternaam = ?, password = ?, level = ?
-						WHERE user_id = ?", 
-							[$regEmail, $team, $voorNaam, $achterNaam, $regPass2, $level, $userID]);
-		return 4;
+        try
+        {
+            $DB->Update("UPDATE users SET Email = ?, Team = ?, firstName = ?, lastName = ?, Level = ? WHERE UserID = ?", [$regEmail, $team, $voorNaam, $achterNaam, $level, $userID]);
+            return 3;
+        }
+        catch (Exception $e) {
+            return 2;
+        }
 	}
 	
-	function userLevelName($type, $team = "") 
-	{
+	function userLevelName($type): string
+    {
 		switch ($type) 
 		{
 			default:
 				return 'Gast';
-			break;
-			case 1:
+            case 1:
 				return 'Teamlid';
-			break;			
-			case 2:
-				return 'Moderator';
-			break;		
-		}
+            case 2:
+				return 'Docent';
+            case 3:
+                return 'Moderator';
+            case 4:
+                return 'Administrator';
+        }
 	}
 
-	function userLevel($id) {
+	function resetPassword($userID): bool
+    {
+	    global $mailer, $DB, $filter;
+        $userID = $filter->sanatizeInput($userID, "int");
+        $verificationKey = $this->generateVerificationKey();
+        $userData =  $this->getData($userID);
+
+        try {
+            $DB->Update("UPDATE users SET Password = NULL, verificationKey = ? WHERE UserID = ?", [$userID, $verificationKey]);
+        }
+        catch (Exception $e) {
+            return false;
+        }
+
+        $passwordResetLink = "http://robotv.serverict.nl/login?type=pwreset&verificationKey=".$verificationKey;
+
+        $message = "<html lang='NL'><body>";
+        $message .= 'Hello '.$userData['firstName'].' '.$userData['lastName'].',<br><br>';
+        $message .= 'You requested to change your password!<br>';
+        $message .= '<br><br>In order to keep change your password please follow these instructions: <br>';
+        $message .= 'Please reset your password by pressing this link: <a href="'.$passwordResetLink.'">Verify me!</a><br><br>';
+        $message .= 'Greetings from the <br><a style="color: black;" href="https://youtu.be/dQw4w9WgXcQ">RoboTV Team</a>';
+        $message .= "</body></html>";
+
+        if(!$mailer->send($userData['Email'], 'Verification RoboTV', $message)){
+            return false;
+        }
+
+        return true;
+    }
+
+	function userLevel($id): string
+    {
 		global $DB;
 
-		$gebruikerResult = $DB->Select("SELECT level, team FROM users WHERE user_id = ? LIMIT 1", [$id])[0];
+		$gebruikerResult = $DB->Select("SELECT Level, Team FROM users WHERE UserID = ? LIMIT 1", [$id])[0];
 
-		return $this->userLevelName($gebruikerResult['level'], $gebruikerResult['team']);
+		return $this->userLevelName($gebruikerResult['Level']);
 	}
 
-	function lastUserIP($id) {
+	function lastUserIP($id): array
+    {
 		global $DB;
 
-		$gebruikerResult = $DB->Select("SELECT lastIp FROM users WHERE user_id = ? LIMIT 1", [$id])[0];
+        try {
+            $gebruikerResult = $DB->Select("SELECT lastIp FROM users WHERE UserID = ? LIMIT 1", [$id])[0];
+        } catch (Exception $e) {
+            return [];
+        }
 
-		return $this->lastUserIP($gebruikerResult['lastIp']);
+        return $this->lastUserIP($gebruikerResult['lastIp']);
 	}
 
 	function Redirect($if_logged_in)
@@ -185,6 +239,19 @@ class User
 		}
 	}
 
+	function getData($user_id) {
+	    global $DB;
+        try {
+            return $DB->Select("SELECT * FROM users WHERE UserID = ? LIMIT 1 ", [$user_id])[0];
+        } catch (Exception $e) {
+            return [];
+        }
+    }
+
+    function generateRandomPassword($rnd_string) {
+	    return password_hash($rnd_string, PASSWORD_DEFAULT);
+    }
+
 	function LoginCheck()
 	{
 		global $core;
@@ -194,8 +261,6 @@ class User
 			$core->Redirect('/start');
 		}
 	}
-	
-
 
 	function Logout()
 	{
