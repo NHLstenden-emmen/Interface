@@ -32,18 +32,18 @@ h4.gameTitle {
 }
 
 /* Game photo */
-.gameRulesImage {
-	background-color: red;
-	height: 300px;
+.gameBlock img, i {
+	max-height: 500px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
-.gamePhoto {
-	display: flex;
-	flex-direction: column;
+.gamePhoto img {
+	max-width: 100%;
 }
 
-.gameBlock img {
-	width: 80%;
+.gamePhoto i {
+	color: var(--primaryColor);
 }
 
 .photoRight {
@@ -81,5 +81,15 @@ h4.gameTitle {
 	}
 	.gameDescription {
 		grid-area: gameDescription;
+	}
+
+	.gamePhoto i {
+		font-size: 5.2rem;
+	}
+
+	.gamePhoto {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 }
