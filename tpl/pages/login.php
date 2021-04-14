@@ -4,15 +4,40 @@
     </div>
     <div class="neonBlock">
         {loginError}
-        <form method="POST" id="loginForm" autocomplete="off">
-            <input type="text" id="loginEmail" name="loginEmail" placeholder="{EMAIL}" required><br>
-            <input type="password" id="loginPassword" name="loginPassword" placeholder="{PASSWORD}" required><br>
-            <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-            <input type="hidden" name="action" value="login">
-            <button class="button" name="loginSubmit" type="submit">Login</button>
-            <a class="register" href="/register">{NO_ACCOUNT}</a>
-            <a class="register" href="/resetpassword">{PASSWORD_RESET}</a>
-        </form>
+		<?php
+			if(isset($_GET['type'])){
+				if($_GET['type'] == "pwreset"){
+				?>
+					{resetForm}
+				<?php
+				} else {
+				?>				
+					<form method="POST" id="loginForm" autocomplete="off">
+						<input type="text" id="loginEmail" name="loginEmail" placeholder="{EMAIL}" required><br>
+						<input type="password" id="loginPassword" name="loginPassword" placeholder="{PASSWORD}" required><br>
+						<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+						<input type="hidden" name="action" value="login">
+						<button class="button" name="loginSubmit" type="submit">Login</button>
+						<a class="register" href="/register">{NO_ACCOUNT}</a>
+						<a class="register" href="/resetpassword">{PASSWORD_RESET}</a>
+					</form>
+				<?php
+				}
+			} else {
+				?>				
+					<form method="POST" id="loginForm" autocomplete="off">
+						<input type="text" id="loginEmail" name="loginEmail" placeholder="{EMAIL}" required><br>
+						<input type="password" id="loginPassword" name="loginPassword" placeholder="{PASSWORD}" required><br>
+						<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+						<input type="hidden" name="action" value="login">
+						<button class="button" name="loginSubmit" type="submit">Login</button>
+						<a class="register" href="/register">{NO_ACCOUNT}</a>
+						<a class="register" href="/resetpassword">{PASSWORD_RESET}</a>
+					</form>
+				<?php
+			}
+				
+		?>
     </div>
 </div>
 
