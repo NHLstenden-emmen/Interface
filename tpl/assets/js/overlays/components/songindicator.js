@@ -35,10 +35,10 @@ class SongIndicator {
                                             <text id="title" x="-1" y="283.5"/>
                                             <text id="artist" x="-1" y="285.5"/>
                                         </g>
-                                        <path d="m17.836 279.42 4.4387 4.3907-4.4107 4.3128" stroke="#341963" stroke-width="1.753" fill="none"/>
+                                        <path id="next" d="m17.836 279.42 4.4387 4.3907-4.4107 4.3128" stroke="#341963" stroke-width="1.753" fill="none"/>
                                     </g>
                                 </g>
-                                    <path d="m8.8509 279.41-4.6672 4.2634 4.4805 4.4496" fill="none" stroke="#341963" stroke-width="1.753"/>
+                                    <path id="prev" d="m8.8509 279.41-4.6672 4.2634 4.4805 4.4496" fill="none" stroke="#341963" stroke-width="1.753"/>
                                     <path d="m5.9221 283.69 4.4805 4.4496c1.9347-0.28567 3.9323-0.33321 5.867-0.0315l4.4107-4.3128-4.4387-4.3907c-1.8111 0.31945-3.9509 0.40781-5.6522 0.022z" fill="#5f3fa2" stroke="#5f3fa2" stroke-width="1.7043"/>
                             </g>
                                 <path d="m10.898 283.76h5.3267" fill="none" stroke="#fff" stroke-width="4.3485"/>
@@ -49,6 +49,9 @@ class SongIndicator {
                 </svg>
             `;
         document.body.appendChild(songIndicator);
+
+        songIndicator.querySelector('#next').addEventListener('click', () => waitingMusicNext());
+        songIndicator.querySelector('#prev').addEventListener('click', () => waitingMusicPrev()); // think that should work
 
         this.songIndicator = songIndicator;
         this.art = songIndicator.querySelector('#art');

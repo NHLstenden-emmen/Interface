@@ -35,9 +35,6 @@ const reconnect = (error) => {
 }
 
 
-setTimeout(() => switchControl({"scene": "Wall-D"}), 1000);
-
-
 const switchControl = (messageData) => {
   if(countdownEnded) {
     switch(messageData.scene)

@@ -73,7 +73,7 @@ const stopConfetti = () => {
       targets: '.ml15 .word',
       opacity: [1,0],
       easing: "easeOutExpo",
-      duration: 1500
+      duration: 100
   }).restart();
 }
 

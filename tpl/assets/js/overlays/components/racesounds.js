@@ -164,6 +164,8 @@ const lapCounterControl = (type) => {
     switch (type) {
         case "stop":
             stopCircuitSounds();
+            document.querySelectorAll("video, audio").forEach(element => element.muted = "true");
+            console.log(document.querySelectorAll("video, audio"));
         break;
         case "race_start":
             playReadySound();
