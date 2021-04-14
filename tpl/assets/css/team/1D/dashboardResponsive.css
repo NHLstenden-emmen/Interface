@@ -67,6 +67,10 @@
         font-size: 4.5vw;
     }
     
+    .logoAndTeam span {
+        font-size: 3.75vw;
+    }
+    
     .header button {
         font-size: 2.75vw;
         margin-top: -11%;
