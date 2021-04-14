@@ -1747,7 +1747,16 @@ pointer-events: none;
 
 /* Responsive design */
 
-@media (max-width: 1050px)
-.nav > #menu > li, .nav > #alternative-menu > li, .nav > #menu > li a {
-    color: var(--dark) !important;
+@media (max-width: 1050px) {
+	.nav > #menu > li, .nav > #alternative-menu > li, .nav > #menu > li a {
+		color: var(--dark) !important;
+	}
+	#divDesc_NL,
+	#divDesc_EN{
+		display: none;
+	}
+	
+	#toespraakInformatie{
+		background-color: #000000cc;
+	}
 }
