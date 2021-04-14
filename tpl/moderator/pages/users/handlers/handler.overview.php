@@ -7,7 +7,7 @@
     foreach($gebuikerResult as $key => $value)  {
         $gebuikerResultView .= "<tr>";
 		if(!empty($value['verificationKey'])) {
-			$gebuikerResultView .= "<td data-label='activate' class='link' data-link='/moderator/users/activate/{$value["user_id"]}'><i class='fas fa-check'></i></td>";
+			$gebuikerResultView .= "<td data-label='activate' class='link' data-link='/moderator/users/activate/{$value["UserID"]}'><i class='fas fa-check'></i></td>";
 		} else $gebuikerResultView .= "<td></td>";
  
 			$gebuikerResultView .= "

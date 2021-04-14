@@ -1,4 +1,4 @@
-<div class="container topPadding" data-aos="zoom-in-down">
+<div class="container" data-aos="zoom-in-down">
     <h1>{title}</h1>
     <div class="selectMenu">
         <div class="row">

@@ -42,7 +42,9 @@
 		<link rel="stylesheet" href="{assetsFolder}/css/page/404.css">
 		<link rel="stylesheet" href="{assetsFolder}/css/main/videoPlayer.css">
 		
-        {extraCSS}
+        {extraCSS}		
+		
+		<link rel="stylesheet" href="{assetsFolder}/css/main/responsive.css">
 
     </head>
     <body>

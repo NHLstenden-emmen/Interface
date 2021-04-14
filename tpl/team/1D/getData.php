@@ -1,44 +1,49 @@
 <?php
     // Tijd van een wedstrijd bepalen
-    function TimeGame($game)
-    {
-        if(strpos(strtolower($game), "steen") === false)
-        {
+    function timeGame($game) {
+        if(strpos(strtolower($game), "steen") === false) {
             return "5 minuten";
-        }
-        else
-        {
+        } else {
             return "45 seconden";
+        }
+    }
+    
+    // Volledige Nederlandse spelnaam bepalen aan de hand van meegegeven naam
+    function determineGame($game) {
+        $game = strtolower($game);
+        $alleSpellen = array("Steen, papier, schaar" => "sps/p", "Doolhof" => "maze/z/f", "Race" => "race/c", "Tekenen" => "draw/w/teken");
+        foreach($alleSpellen as $key => $spel) {
+            $vergelijkingsWaarden = explode("/", $spel);
+            foreach($vergelijkingsWaarden as $vergelijkingsWaarde) {
+                if(strpos($game, strtolower($vergelijkingsWaarde)) !== false) {
+                    return $key;
+                }
+            }
         }
     }
 
     // Zorgen voor database object wanneer er wordt gerefreshed
-    if(!isset($DB))
-    {
+    if(!isset($DB)) {
         define('Start', microtime(true));
-
         require_once '../../../config/classes/mysql.php';
         require_once '../../../config/classes/template.php';
-
         require_once '../../../config/Configuration.php';
 
         $DB             = new Database;
         $TPL            = new Template;
-
         $TPL->Output();
     }
     
     // Ophalen van de botnamen en deze aan de teams koppelen
     $botList = array("A" => null, "B" => null, "C" => null, "D" => null, "E" => null);
     $bots = $DB->Select("SELECT TeamID, RobotName FROM teams");
-    foreach($bots as $bot)
-    {
-        $botList[substr($bot["TeamID"], 1)] = $bot["RobotName"];
+    foreach($bots as $bot) {
+        $botList[substr($bot["TeamID"], 1)] = strtolower($bot["RobotName"]);
     }
     
-    // Array met scores van de teams
+    // Scores van de teams
     $arrayOfScores = array("A" => 0, "B" => 0, "C" => 0, "D" => 0, "E" => 0);
-
+    
     $initialA = 0;
     $initialB = 0;
     $initialC = 0;
@@ -46,10 +51,10 @@
     $initialE = 0;
 
     // Uitvoeren van query voor het ophalen van de punten per team
-    $points = $DB->Select("SELECT robot, SUM(score) AS score FROM punten GROUP BY robot");
-    foreach($points as $point){
+    $points = $DB->Select("SELECT robot, SUM(score) AS score FROM punten WHERE robot IN ('Dimitri', 'BrokkoBot', 'ROBot Jetten', 'Wall-D', 'BumbleBert') GROUP BY robot");
+    foreach($points as $point) {
         // Opslaan van punten bij het bijbehorende team
-        $team = array_search($point["robot"], $botList);
+        $team = array_search(strtolower($point["robot"]), $botList);
         $score = $point["score"];
         $arrayOfScores[$team] = $score;
         
@@ -59,36 +64,36 @@
     }
     
     // Te spelen spellen
-    $wedstrijden = array("sps", "doolhof", "race", "tekening");
+    $wedstrijden = array("Steen, papier, schaar" => "sps/p", "Doolhof" => "maze/z/f", "Race" => "race/c", "Tekenen" => "draw/w/teken");
     
     // Ophalen van uitslagen
-    $uitslagen = $DB->Select("SELECT * FROM resultaat");
+    $uitslagen = $DB->Select("SELECT * FROM resultaat WHERE robot IN ('Dimitri', 'BrokkoBot', 'ROBot Jetten', 'Wall-D', 'BumbleBert')");
     
     // Ophalen gespeelde spellen
     $gespeeldeSpel = $DB->Select("SELECT game, COUNT(*) AS gamesPlayed FROM punten GROUP BY game HAVING gamesPlayed = 5");
-       
-    foreach ($wedstrijden as $key => $wedstrijd) {
-        foreach ($gespeeldeSpel as $spel) {
-            if(strtolower($wedstrijd) == strtolower($spel['game']))
-            {
-                unset($wedstrijden[$key]);
+    
+    // Verwijderen van gespeelde spellen uit wedstrijden-array
+    foreach($wedstrijden as $key => $wedstrijd) {
+        $vergelijkingsWaarden = explode("/", $wedstrijd);
+        foreach($gespeeldeSpel as $spel) {
+            foreach($vergelijkingsWaarden as $vergelijkingsWaarde) {
+                if(strpos(strtolower($spel['game']), strtolower($vergelijkingsWaarde)) !== false) {
+                    unset($wedstrijden[$key]);
+                    break;
+                }
             }
         }
     }
     
-    $vindsps = array_search("sps", $wedstrijden);
-    if($vindsps !== false) {
-        $wedstrijden[array_search("sps", $wedstrijden)] = "Steen, papier, schaar";
-    }
+    $wedstrijden = array_keys($wedstrijden);
 ?>
 
         <div class="data currentRanking neonBlock" data-aos="fade-right" data-aos-duration="1000">
             <h3>Huidige stand</h3>
             <table>
-                <?php 
+                <?php
                     // Weergeven scores
-                    foreach($arrayOfScores as $team => $score)
-                    {
+                    foreach($arrayOfScores as $team => $score) {
                         echo "<tr id='team".$team."'>";
                         echo "<td>Team ".$team."</td>";
                         echo "<td>".$score."</td>";
@@ -110,18 +115,14 @@
                     <tbody>
                         <?php
                             // Het weergeven van de wedstrijden die nog gespeeld moeten worden
-                            if(count($wedstrijden) > 0)
-                            {   
-                                foreach($wedstrijden as $wedstrijd)
-                                {
+                            if(count($wedstrijden) > 0) {   
+                                foreach($wedstrijden as $wedstrijd) {
                                     echo "<tr>";
                                     echo "<td>".ucfirst($wedstrijd)."</td>";
-                                    echo "<td>".TimeGame($wedstrijd)."</td>";
+                                    echo "<td>".timeGame($wedstrijd)."</td>";
                                     echo "</tr>";
                                 }
-                            }
-                            else
-                            {
+                            } else {
                                 echo "<tr>";
                                 echo "<td colspan='2'>Er zijn geen wedstrijden gevonden</td>";
                                 echo "</tr>";
@@ -148,19 +149,16 @@
                     </thead>
                     <tbody>
                         <?php
-                            if(count($uitslagen) > 0)
-                            {
-                                foreach($uitslagen as $uitslag)
-                                {
+                            // Weergeven resultaten
+                            if(count($uitslagen) > 0) {
+                                foreach($uitslagen as $uitslag) {
                                     echo "<tr>";
-                                    echo "<td>".ucfirst($uitslag['game'])."</td>";
+                                    echo "<td>".determineGame($uitslag['game'])."</td>";
                                     echo "<td>".$uitslag['score']."</td>";
-                                    echo "<td>".array_search($uitslag['robot'], $botList)."</td>";
+                                    echo "<td>".array_search(strtolower($uitslag['robot']), $botList)."</td>";
                                     echo "</tr>";
                                 }
-                            }
-                            else
-                            {
+                            } else {
                                 echo "<tr>";
                                 echo "<td colspan='3'>Er zijn momenteel geen uitslagen</td>";
                                 echo "</tr>";

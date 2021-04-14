@@ -15,14 +15,14 @@ require_once 'config/classes/mail.php';
 
 require_once 'config/Configuration.php';
 
-$DB             = new Database;
-$core           = new Core;
-$user           = new User;
-$TPL            = new Template;
-$filter         = new Filter;
-$lang           = new Language;
-$socket         = new ServerConnection(Config::$serverPort, Config::$serverIP);
-$mailer 		= new Mailer;
+$DB = new Database;
+$core = new Core;
+$user = new User;
+$TPL = new Template;
+$filter = new Filter;
+$lang = new Language;
+$socket = new ServerConnection(Config::$serverPort, Config::$serverIP);
+$mailer = new Mailer;
 
 $TPL->Route($_SERVER['PATH_INFO']);
 $TPL->GetHandlers();

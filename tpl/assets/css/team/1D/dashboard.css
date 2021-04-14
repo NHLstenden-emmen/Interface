@@ -121,6 +121,10 @@ h2 {
     width: 100%;
 }
 
+.vjs-modal-dialog-content {
+    z-index: -1 !important;
+}
+
 /* Einde live beelden */
 /* Begin teambeschrijving aanpassen */
 

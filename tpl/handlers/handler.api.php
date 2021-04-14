@@ -14,14 +14,15 @@ if(isset($_GET['data'])){
         }
 
         $overallBracket = json_encode($bracket);
-        print_r($overallBracket);
-
         header("bracket:  {$overallBracket}");
 
         for ($i = 0; $i < 6; $i++) {
             @$bracket = json_encode($DB->Select("SELECT * FROM livedata WHERE type = ? LIMIT 1", ["leaderboard-{$i}"])[0]['json']);
             header("bracket-{$i}: {$bracket}");
         }
+    } else if($type == 'playlist') {
+        $playlist = json_encode(@$DB->Select("SELECT * FROM playlist ORDER BY RAND()"));
+        header("playlist:  {$playlist}");
     }
 }
 

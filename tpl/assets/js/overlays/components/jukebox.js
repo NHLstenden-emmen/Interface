@@ -1,8 +1,8 @@
-var songs = ['/tpl/assets/sound/countdown/2.mp3', 
-              '/tpl/assets/sound/countdown/1.mp3'];
+const songs = ['/tpl/assets/sound/countdown/2.mp3',
+  '/tpl/assets/sound/countdown/1.mp3'];
 
-var waitingMusic = document.createElement("audio");
-var currentIndex = 0;
+const waitingMusic = document.createElement("audio");
+let currentIndex = 0;
 
 const waitingMusicPlay = () => {
   if(currentIndex > songs.length) {

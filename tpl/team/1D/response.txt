@@ -1,4 +1,2 @@
-<p>10:37:16	No schemes generated</p>
-<p>10:36:08	No schemes generated</p>
-<p>10:36:05	No schemes generated</p>
-<p>20:23:02	No game running</p>
+<p>15:31:58	No schemes generated</p>
+<p>15:25:07	No schemes generated</p>

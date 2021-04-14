@@ -7,9 +7,9 @@
             <!-- Race -->
             <div class="col-sm-12 gameBlock" id="race" data-aos="fade-up">
                 <div class="row">
-                    <div class="col-sm-6 gamePhoto photoLeft">
+                    <div class="col-sm-6 gamePhoto">
                         <h2 class="gameTitle titleLeft">Race</h2>
-                        <img src="{assetsFolder}/images/team/1A/logo.png" title="Team A" alt="Team A">
+                        <img src="{assetsFolder}/images/race.png" title="Team A" alt="Team A">
                     </div>
                     <div class="col-sm-6 neonBorder gameDescription">
                         {GAMERULES_HEADING}
@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-sm-6 gamePhoto photoRight">
                         {RULES_MAZETITLE}
-                        <img src="{assetsFolder}/images/team/1A/logo.png" title="Team A" alt="Team A">
+                        <img src="{assetsFolder}/images/maze.png" title="Team A" alt="Team A">
                     </div>
                 </div>
             </div>
@@ -41,7 +41,11 @@
                 <div class="row">
                     <div class="col-sm-6 gamePhoto">
                         {RULES_RPSTITLE}
-                        <img src="{assetsFolder}/images/team/1A/logo.png" title="Team A" alt="Team A">
+                        <div id="rpsIcons">
+                            <i class="fas fa-hand-rock fa-10x"></i>
+                            <i class="fas fa-hand-paper fa-10x"></i>
+                            <i class="fas fa-hand-scissors fa-10x"></i>
+                        </div>
                     </div>
                     <div class="col-sm-6 neonBorder gameDescription">
                         {GAMERULES_HEADING}
@@ -63,7 +67,7 @@
                     </div>
                     <div class="col-sm-6 gamePhoto photoRight">
                         {RULES_DRAWINGTITLE}
-                        <img src="{assetsFolder}/images/team/1A/logo.png" title="Team A" alt="Team A">
+                        <i class="fas fa-pencil-alt fa-10x"></i>
                     </div>
                 </div>
             </div>

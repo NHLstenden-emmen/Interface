@@ -1,7 +1,7 @@
 /* Send Data to Robot */
-function sendData(data) {	
-	var current = new Date();
-	var logLine;
+function sendData(data) {
+    var current = new Date();
+    var logLine;
     $(document).ready(function () {
         $.ajax({
             type: 'POST',
@@ -11,16 +11,16 @@ function sendData(data) {
             },
             success: function (response) {
                 if (response != "") {
-                    console.log(data + ' - ' + response);					
-					/* Add to console */
-					if(response != "success"){
-						var responseFormat = '<p style="color: red; display: inline-block;">' + response + '</p>';
-					} else {
-						var responseFormat = '<p style="color: green; display: inline-block;">' + response + '</p>';
-					}
-					
-					logLine = current.getHours() + ':' + current.getMinutes() + ':' + current.getSeconds() + '&#9; > [' + data + '] > &#9; &#9;' + responseFormat;
-					$("#consoleUL").prepend('<li>' + logLine + '</li>');
+                    console.log(data + ' - ' + response);
+                    /* Add to console */
+                    if (response != "success") {
+                        var responseFormat = '<p style="color: red; display: inline-block;">' + response + '</p>';
+                    } else {
+                        var responseFormat = '<p style="color: green; display: inline-block;">' + response + '</p>';
+                    }
+
+                    logLine = current.getHours() + ':' + current.getMinutes() + ':' + current.getSeconds() + '&#9; > [' + data + '] > &#9; &#9;' + responseFormat;
+                    $("#consoleUL").prepend('<li>' + logLine + '</li>');
                 } else {
                     console.log(data);
                 }
@@ -30,7 +30,7 @@ function sendData(data) {
 }
 
 /* Play audio */
-$( document ).ready(function() {
+$(document).ready(function () {
     function playAudio(url) {
         new Audio(url).play();
     }
@@ -38,99 +38,100 @@ $( document ).ready(function() {
 
 /* CardBoxes */
 
-$( document ).ready(function() {
-    $("html").css({"overflow-x":"hidden"});
+$(document).ready(function () {
+    $("html").css({"overflow-x": "hidden"});
 });
 
 
 // Card 1
-function openCardBoxOne(){
+function openCardBoxOne() {
     $("#robotCardBox").fadeIn('slow');
-    $(".disableScroll").css({"overflow":"hidden"});
+    $(".disableScroll").css({"overflow": "hidden"});
     var navHeight = (0 - $("#navbar").height()) + "px";
-    $(".cardBox").css({"top":navHeight});
+    $(".cardBox").css({"top": "0"});
+    $(".cardBox").css({"position": "fixed"});
     var cardHeight = $("#robotCardBox").height();
-    $("body").css({"height":cardHeight + "px"});
-    $("body").css({"overflow-y":"hidden"});
+    $("body").css({"height": cardHeight + "px"});
+    $("body").css({"overflow-y": "hidden"});
 }
 
-function closeCardBoxOne(){  
+function closeCardBoxOne() {
     $("#robotCardBox").fadeOut('slow');
-    $(".disableScroll").css({"overflow":"visible"});
+    $(".disableScroll").css({"overflow": "visible"});
     var navHeight = (0 - $("#navbar").height()) + "px";
-    $(".cardBox").css({"top":navHeight});
-    $("body").css({"height":"auto"});
+    $(".cardBox").css({"top": navHeight});
+    $("body").css({"height": "auto"});
 }
 
 // Card 2
-function openCardBoxTwo(){
+function openCardBoxTwo() {
     $("#membersCardBox").fadeIn('slow');
-    $(".disableScroll").css({"overflow":"hidden"});
+    $(".disableScroll").css({"overflow": "hidden"});
     var navHeight = (0 - $("#navbar").height()) + "px";
-    $(".cardBox").css({"top":navHeight});
+    $(".cardBox").css({"top": "0"});
+    $(".cardBox").css({"position": "fixed"});
     var cardHeight = $("#robotCardBox").height();
-    $("body").css({"height":cardHeight + "px"});
-    $("body").css({"overflow-y":"hidden"});
+    $("body").css({"height": cardHeight + "px"});
+    $("body").css({"overflow-y": "hidden"});
 }
 
-function closeCardBoxTwo(){  
+function closeCardBoxTwo() {
     $("#membersCardBox").fadeOut('slow');
-    $(".disableScroll").css({"overflow":"visible"});
+    $(".disableScroll").css({"overflow": "visible"});
     var navHeight = (0 - $("#navbar").height()) + "px";
-    $(".cardBox").css({"top":navHeight});
-    $("body").css({"height":"auto"});
+    $(".cardBox").css({"top": navHeight});
+    $("body").css({"height": "auto"});
 }
 
 // Card 3
-function openCardBoxThree(){
+function openCardBoxThree() {
     $("#scoreCardBox").fadeIn('slow');
-    $(".disableScroll").css({"overflow":"hidden"});
+    $(".disableScroll").css({"overflow": "hidden"});
     var navHeight = (0 - $("#navbar").height()) + "px";
-    $(".cardBox").css({"top":navHeight});
+    $(".cardBox").css({"top": "0"});
+    $(".cardBox").css({"position": "fixed"});
     var cardHeight = $("#robotCardBox").height();
-    $("body").css({"height":cardHeight + "px"});
-    $("body").css({"overflow-y":"hidden"});
+    $("body").css({"height": cardHeight + "px"});
+    $("body").css({"overflow-y": "hidden"});
 }
 
-function closeCardBoxThree(){  
+function closeCardBoxThree() {
     $("#scoreCardBox").fadeOut('slow');
-    $(".disableScroll").css({"overflow":"visible"});
+    $(".disableScroll").css({"overflow": "visible"});
     var navHeight = (0 - $("#navbar").height()) + "px";
-    $(".cardBox").css({"top":navHeight});
-    $("body").css({"height":"auto"});
+    $(".cardBox").css({"top": navHeight});
+    $("body").css({"height": "auto"});
 }
 
 
 /* Launch controls */
-function launchControls(){
-    $("html").css({"overflow":"hidden"});
-    $("body").css({"overflow":"hidden"});
+function launchControls() {
+    $("html").css({"overflow": "hidden"});
+    $("body").css({"overflow": "hidden"});
     $(".launch").slideDown('slow');
 }
 
-function closeLaunchControls(){
+function closeLaunchControls() {
     $(".launch").slideUp('slow');
-    $("html").css({"overflow-y":"visible"});
-    $("body").css({"overflow-y":"visible"});
+    $("html").css({"overflow-y": "visible"});
+    $("body").css({"overflow-y": "visible"});
 }
 
-function openToespraak(){
-	
-	$("#jettenLopen").css({"animation":"jettenLopen 1s forwards"});
+function openToespraak() {
+
+    $("#jettenLopen").css({"animation": "jettenLopen 1s forwards"});
 }
 
 /* Joystick */
 
-$( document ).ready(function() {
+$(document).ready(function () {
 
     var lastDirection = "Stop";
     var moveDirection = "Stop";
 
 
-    class JoystickController
-    {
-        constructor( stickID, maxDistance, deadzone )
-        {
+    class JoystickController {
+        constructor(stickID, maxDistance, deadzone) {
             this.id = stickID;
             let stick = document.getElementById(stickID);
 
@@ -141,12 +142,11 @@ $( document ).ready(function() {
             this.touchId = null;
 
             this.active = false;
-            this.value = { x: 0, y: 0 };
+            this.value = {x: 0, y: 0};
 
             let self = this;
 
-            function handleDown(event)
-            {
+            function handleDown(event) {
                 self.active = true;
 
                 // all drag movements are instantaneous
@@ -156,28 +156,24 @@ $( document ).ready(function() {
                 event.preventDefault();
 
                 if (event.changedTouches)
-                    self.dragStart = { x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY };
+                    self.dragStart = {x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY};
                 else
-                    self.dragStart = { x: event.clientX, y: event.clientY };
+                    self.dragStart = {x: event.clientX, y: event.clientY};
 
                 // if this is a touch event, keep track of which one
                 if (event.changedTouches)
                     self.touchId = event.changedTouches[0].identifier;
             }
 
-            function handleMove(event)
-            {
-                if ( !self.active ) return;
+            function handleMove(event) {
+                if (!self.active) return;
 
                 // if this is a touch event, make sure it is the right one
                 // also handle multiple simultaneous touchmove events
                 let touchmoveId = null;
-                if (event.changedTouches)
-                {
-                    for (let i = 0; i < event.changedTouches.length; i++)
-                    {
-                        if (self.touchId == event.changedTouches[i].identifier)
-                        {
+                if (event.changedTouches) {
+                    for (let i = 0; i < event.changedTouches.length; i++) {
+                        if (self.touchId == event.changedTouches[i].identifier) {
                             touchmoveId = i;
                             event.clientX = event.changedTouches[i].clientX;
                             event.clientY = event.changedTouches[i].clientY;
@@ -204,45 +200,44 @@ $( document ).ready(function() {
                 const xPercent = parseFloat((xPosition2 / maxDistance).toFixed(4));
                 const yPercent = parseFloat((yPosition2 / maxDistance).toFixed(4));
 
-                self.value = { x: xPercent, y: yPercent };
+                self.value = {x: xPercent, y: yPercent};
 
                 // Set directions
 
                 // Horizontaal
-                if(yPosition > -25 && yPosition < 25){
-                    if(xPosition > 25){
+                if (yPosition > -25 && yPosition < 25) {
+                    if (xPosition > 25) {
                         moveDirection = "D";
                     }
-                    if(xPosition < -25){
+                    if (xPosition < -25) {
                         moveDirection = "A";
                     }
                 }
 
                 // Vericaal
-                if(xPosition > -25 && xPosition < 25){
-                    if(yPosition < -25){
+                if (xPosition > -25 && xPosition < 25) {
+                    if (yPosition < -25) {
                         moveDirection = "W";
                     }
-                    if(yPosition > 25){
+                    if (yPosition > 25) {
                         moveDirection = "S";
                     }
                 }
 
                 // Center
-                if(yPosition < 25 && yPosition > -25 && xPosition > -25 && xPosition < 25){
+                if (yPosition < 25 && yPosition > -25 && xPosition > -25 && xPosition < 25) {
                     moveDirection = "Stop";
                 }
 
-                if(lastDirection != moveDirection){
+                if (lastDirection != moveDirection) {
                     lastDirection = moveDirection;
                     sendData(moveDirection);
                 }
 
             }
 
-            function handleUp(event)
-            {
-                if ( !self.active ) return;
+            function handleUp(event) {
+                if (!self.active) return;
 
                 // if this is a touch event, make sure it is the right one
                 if (event.changedTouches && self.touchId != event.changedTouches[0].identifier) return;
@@ -252,7 +247,7 @@ $( document ).ready(function() {
                 stick.style.transform = `translate3d(0px, 0px, 0px)`;
 
                 // reset everything
-                self.value = { x: 0, y: 0 };
+                self.value = {x: 0, y: 0};
                 self.touchId = null;
                 self.active = false;
 
@@ -270,11 +265,5 @@ $( document ).ready(function() {
 
     let myStick = new JoystickController("stick", 64, 8);
 
-
-});
-
-/* WASD */
-
-$( document ).ready(function() {
 
 });
