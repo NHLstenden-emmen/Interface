@@ -1,6 +1,5 @@
 const minTimeBetweenTicks = 1500; // ms
-let websocket;
-
+let webSocket;
 const video = document.createElement('video');
 const canvas = document.createElement('canvas');
 
@@ -10,7 +9,6 @@ const statusImage    = document.getElementById("statusimage");
 let connectionRejected = false;
 let lastTick = new Date();
 
-document.addEventListener("DOMContentLoaded",websocketConnect);
 
 function initSuccess() {
 	DiffCamEngine.start();
@@ -42,7 +40,7 @@ DiffCamEngine.init({
 DiffCamEngine.setScoreThreshold(700);
 
 const websocketConnect = (() => { 
-	websocket = new WebSocket("ws://194.171.181.139:49151");
+	websocket = new WebSocket(webSocketURL + "49151");
 
 	websocket.addEventListener('open', () => {
 		websocket.send(JSON.stringify({"type": "lapcounter", "action": "connected"}));
@@ -69,6 +67,8 @@ const websocketConnect = (() => {
 		}
 	});
 });
+
+document.addEventListener("DOMContentLoaded",websocketConnect);
 
 const sendPing = () => {
 	if(!connectionRejected) {

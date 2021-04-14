@@ -10,7 +10,7 @@
 
 video#livestreamVideo {
   min-height: 25vw !important;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .chatStyle {

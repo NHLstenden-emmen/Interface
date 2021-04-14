@@ -38,14 +38,14 @@
     --overlaying-accentcolor: #ffffff;
 }
 
-#right-wing > text {
+#right-wing text {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.6px;
     fill: var(--overlaying-accentcolor);
     overflow: hidden;
 }
 
-#right-wing > #title {
+#right-wing #title {
     font-weight: bold;
 }
 

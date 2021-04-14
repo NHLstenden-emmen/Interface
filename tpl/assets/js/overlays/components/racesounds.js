@@ -145,10 +145,26 @@ const stopCircuitSounds = () => {
     currentCircuit.pause();
     currentCircuit.currentTime = 0;
     currentCircuit_F.currentTime = 0;
+
+    CoconutMall.pause();
+    luigiCircuit.pause();
+    toadsFactory.pause();
+    mushRoomGorge.pause();
+    DKSnowboardCross.pause();
+
+    CoconutMall_F.pause();
+    luigiCircuit_F.pause();
+    toadsFactory_F.pause();
+    mushRoomGorge_F.pause();
+    DKSnowboardCross_F.pause();
 }
 
 const lapCounterControl = (type) => {
+    console.log(type);
     switch (type) {
+        case "stop":
+            stopCircuitSounds();
+        break;
         case "race_start":
             playReadySound();
         break;

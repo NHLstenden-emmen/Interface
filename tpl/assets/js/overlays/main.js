@@ -1,3 +1,5 @@
+let brokkoIndex = 0;
+
 
 document.addEventListener('DOMContentLoaded', () => {
   hidePage();
@@ -15,10 +17,10 @@ const getPlaylist = () => {
         if (Http.readyState == 4 && Http.status == 200) {
             const playList = JSON.parse(Http.getResponseHeader("playlist"));
             startJukeBox(playList);
-            console.log("music started", playList);
         }
     }
 }
+
 const clockCheck = () => {
   if(countDownDate - new Date().getTime() > 0) {
       setTimeout(initClock, 5000);
@@ -31,9 +33,12 @@ const reconnect = (error) => {
   console.error('Socket is closed. Reconnect will be attempted in 1 second.', error);
   setTimeout(launchOverlayStream, 1000);
 }
-setTimeout(() => switchControl({"scene": "ROBot Jetten"}), 1000);
+
+
+setTimeout(() => switchControl({"scene": "Wall-D"}), 1000);
+
+
 const switchControl = (messageData) => {
-    console.log(messageData)
   if(countdownEnded) {
     switch(messageData.scene)
     {
@@ -44,51 +49,40 @@ const switchControl = (messageData) => {
           stopConfetti();
         break;
         case "BrokkoBot":
-            //playAudio('1E/quoteJetten.mp3');
+            brokkoIndex++;
+            if(brokkoIndex >= 3) {
+                brokkoIndex = 0;
+            } else {
+                playAudio("/tpl/assets/sound/team/1C"+brokkoIndex+".mp3");
+            }
         break;
         case "BumbleBert":
-           //playAudio('1E/quoteJetten.mp3');
+            playAudio("/tpl/assets/sound/team/1A.mp3");
         break;
         case "Wall-D":
-            //playAudio('1E/quoteJetten.mp3');
+            playAudio("/tpl/assets/sound/team/1D.mp3");
         break;
         case "ROBot Jetten":
             readyBot1E();
-            playAudio("/tpl/assets/sound/INF1E.mp3");
+            playAudio("/tpl/assets/sound/team/1E.mp3");
         break;
         case "Dimitri":
-            playAudio("/tpl/assets/sound/Lenards_Team_Song.mpeg");
+            let dimitri = document.getElementById("Dimitrivideo");
+
+            dimitri.style.display = "block";
+            dimitri.volume = "0.5";
+            dimitri.play();
+            dimitri.addEventListener('ended', () => dimitri.style.display = "none");
         break;
         default:
             lapCounterControl(messageData.sound);
         break;
     }
-  } 
-  else if(!countdownEnded) {
-      /*
-    switch (messageData.audio) 
-    {
-      case "prev":
-        currentIndex--;
-        waitingMusicPrev();
-      break;
-      case "next":
-        currentIndex++;
-        waitingMusicNext();
-      break;
-      case "custom":
-        songs.push(messageData.custom);
-        console.log(songs);
-      break;
-    }
-       */
   }
 }
 
-const launchOverlayStream = () =>
-{
-    if ("WebSocket" in window)
-    {
+const launchOverlayStream = () => {
+    if ("WebSocket" in window) {
       const overlaysWebsocket = new WebSocket(webSocketURL + "49151");
 
       overlaysWebsocket.addEventListener('open', () => { 

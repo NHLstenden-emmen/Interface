@@ -26,7 +26,6 @@ const closePolls = () => {
 
 const currentlyPlaying = (bot, game) => {
     if(document.querySelector("video") !== null) {
-        console.log("hoi");
         document.getElementById("currentGame").innerHTML = game;
         document.getElementById("currentRobot").innerHTML = bot;
     }
@@ -58,6 +57,7 @@ const dataWebsocketHandler = (type) => {
                 break;
             case "readyToast":
                 showReadyToast(serverMessage.id, serverMessage.message, serverMessage.bot, serverMessage.game, 10);
+                currentlyPlaying(serverMessage.bot, serverMessage.game);
                 break;
             case "resultToast":
                 showResultToast(serverMessage.id, serverMessage.message, serverMessage.game, 10);

@@ -1,5 +1,3 @@
-/*const playlist = ['/tpl/assets/sound/countdown/2.mp3',
-  '/tpl/assets/sound/countdown/1.mp3']; */
 const songPath = "./tpl/assets/sound/countdown/";
 const songFormat = ".mp3";
 const waitingMusic = document.createElement("audio");

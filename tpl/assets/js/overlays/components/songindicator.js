@@ -28,9 +28,14 @@ class SongIndicator {
                                         <image id="art" x="-10" y="279.41" width="8.7035" height="8.7035" preserveAspectRatio="xMidYMid slice"/>
                                         <rect x="-10.1" y="279.41" width="8.9035" height="8.7035" fill="url(#grad)"/>
                                         <path class="playcase"  d="m17.836 279.42 4.4387 4.3907-4.4107 4.3128"/>
+                                        <clipPath id="textClip">
+                                            <path d="m17.836 279.42 4.4387 4.3907-4.4107 4.3128 -20 0 0 -8.7035"/>
+                                        </clipPath>
+                                        <g clip-path="url(#textClip)">
+                                            <text id="title" x="-1" y="283.5"/>
+                                            <text id="artist" x="-1" y="285.5"/>
+                                        </g>
                                         <path d="m17.836 279.42 4.4387 4.3907-4.4107 4.3128" stroke="#341963" stroke-width="1.753" fill="none"/>
-                                        <text id="title" x="-1" y="283.5"/>
-                                        <text id="artist" x="-1" y="285.5"/>
                                     </g>
                                 </g>
                                     <path d="m8.8509 279.41-4.6672 4.2634 4.4805 4.4496" fill="none" stroke="#341963" stroke-width="1.753"/>

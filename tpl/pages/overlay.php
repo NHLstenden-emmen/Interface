@@ -32,9 +32,8 @@
 
     <!-- Groep 1E Ready -->
     <div id="terrorRob"></div>
-    <!-- Groep 1B 
-	<video id="Dimitrivideo">
-        <source src="{assetsFolder}/sound/DimitriDance.mp4" type="video/mp4">
+	<video id="Dimitrivideo" style="position: fixed; top: 0px; height: 100vh; display: none">
+        <source src="{assetsFolder}/sound/team/1B.mp4" type="video/mp4" >
         Your browser does not support HTML5 video.
-    </video>-->
+    </video>
 </div>

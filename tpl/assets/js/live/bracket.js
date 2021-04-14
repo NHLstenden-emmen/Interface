@@ -973,7 +973,7 @@ staticData.send();
 staticData.addEventListener("readystatechange", () => {
     if (staticData.readyState == 4 && staticData.status == 200) {
         for(let i = 0; i < 6; i++) {
-            if(staticData.getResponseHeader("bracket-"+i) != "null") { //denk da hij die null gaat zien als een string but we will see
+            if(staticData.getResponseHeader("bracket-"+i) != "null") {
                 brackets.lastPhases[i] = JSON.parse(staticData.getResponseHeader("bracket-" + i));
             }
         }

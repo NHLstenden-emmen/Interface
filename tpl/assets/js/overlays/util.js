@@ -78,7 +78,9 @@ const stopConfetti = () => {
 }
 
 const playAudio = (url) => {
-  new Audio(url).play();
+    let audio = new Audio(url);
+    audio.volume = "0.7";
+    audio.play();
 }
 
 const sleep = (ms) => {
