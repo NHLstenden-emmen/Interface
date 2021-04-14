@@ -6,8 +6,32 @@ $this->Set("extraCSS", '<link rel="stylesheet" href="'.$this->Get("assetsFolder"
 $this->Set("pageTitle", $this->Get("LOGIN_INLOGGEN"));
 $this->Set("loginError", "");
 $resetForm = false;
-
-
+	
+if(isset($_POST['resetSubmit']) && isset($_POST['keyID']) && isset($_POST['passFirst']) && isset($_POST['passSecond'])){
+	$verificationKey = $filter->sanatizeInput($_POST['keyID'], "string");
+	try {
+		$getUser = $DB->Select("SELECT UserID FROM users WHERE verificationKey = ? LIMIT 1", [$verificationKey]);
+	} catch (Exception $e) {
+		
+	}
+		$passwordFirst 	= $filter->sanatizeInput($_POST['passFirst'], 'string');
+		$passwordSecond 	= $filter->sanatizeInput($_POST['passSecond'], 'string');
+		if($passwordFirst == $passwordSecond){
+			$passwordNew = password_hash($passwordFirst, PASSWORD_DEFAULT);
+			foreach ($getUser as $details) {
+				$userID = $details['UserID'];
+				try {
+					$DB->Update("UPDATE users SET Password = ?, verificationKey = NULL WHERE UserID = ?", [$passwordNew, $userID]);
+					echo "<script>alert('Wachtwoord is veranderd!');</script>";
+				} catch (Exception $e){
+					echo $e;
+					die();							
+				}
+			}		
+		} else{
+		echo "<script>alert('Deze 2 wacthwoorden zijn niet gelijk!');</script>";
+	}
+}
 
 if(isset($_GET['verificationKey'])){
 	$verificationKey = $filter->sanatizeInput($_GET['verificationKey'], "string");
@@ -24,24 +48,10 @@ if(isset($_GET['verificationKey'])){
 			<form method=\"POST\" id=\"resetForm\" autocomplete=\"off\">
 				<input type=\"password\" id=\"loginPassword\" name=\"passFirst\" placeholder=\"Wachtwoord\" required><br>
 				<input type=\"password\" id=\"loginPassword\" name=\"passSecond\" placeholder=\"Herhaal wachtwoord\" required><br>
+				<input type=\"hidden\" id=\"key\" name=\"keyID\" value=\"". $_GET['verificationKey'] . "\"><br>
 				<button class=\"button\" name=\"resetSubmit\" type=\"submit\">Reset</button>
 			</form>
 			");
-			if(isset($_POST['resetSubmit']) && isset($_POST['passFirst']) && isset($_POST['passSecond'])){
-				$passwordFirst 	= $filter->sanatizeInput($_POST['passFirst'], 'string');
-				$passwordSecond 	= $filter->sanatizeInput($_POST['passSecond'], 'string');
-				if($passwordFirst == $passwordSecond){
-					$passwordNew = password_hash($passwordFirst, PASSWORD_DEFAULT);
-					foreach ($getUser as $details) {
-						$userID = $details['UserID'];
-						$DB->Update("UPDATE users SET Password = ?, verificationKey = NULL WHERE UserID = ?", [$passwordNew, $userID]);
-						echo "<script>alert('Wachtwoord is veranderd!');</script>";
-						$core->Redirect("/login");
-					}
-				} else{
-					echo "<script>alert('Deze 2 wacthwoorden zijn niet gelijk!');</script>";
-				}
-			}
         }
     } else {
         // verify account
