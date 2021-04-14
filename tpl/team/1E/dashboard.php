@@ -112,7 +112,6 @@
  /* Data from database */
  $robotData = $DB->Select("SELECT * FROM teams WHERE TeamID = ?",[$TeamID]);
  $userData = $DB->Select("SELECT * FROM users WHERE Team = ?",[$TeamID]);
- $robotAction = $DB->Select("SELECT * FROM actions WHERE UserID = ? ORDER BY time DESC",[$GroupID]);
  $robotResults = $DB->Select("SELECT * FROM punten WHERE robot = ?",[$RobotName]);
 
  /* Data from socket */
@@ -219,21 +218,6 @@
         <div class="col-lg-8" id="console">
             <h5 class="blockTitle">Console</h5>
             <ul id="consoleUL">
-                <?php
-                    foreach($robotAction as $robotActions){
-                        if($robotActions['Value'] != "sucess"){
-                            $color = "red";
-                        } else {
-                            $color = "green";
-                        }
-                        $row    =   "<li class=\"consoleLog\" id=\"" . $robotActions['ActionID'] . "\">";
-                        $row    .=  "<p>CMD -> </p>";
-                        $row    .=  "<p>" . "&nbsp;" . $robotActions['keyChar'] . '&nbsp; -> Response:&nbsp;' . "</p><p style=\"color: " . $color . ";\">" . $robotActions['clickValue'] . "</p>";
-                        $row    .=  "<p>&nbsp;&nbsp;&nbsp;&nbsp;<i>" . $robotActions['time'] . "</i></p>";
-                        $row    .=  "</li>";
-                        echo $row;
-                    }
-                ?>
             </ul>
         </div>
     </div>
@@ -256,7 +240,37 @@
 
 <!-- ROB Jetten -->
 <div class="container-fluid" id="toespraak">
-
+	<div class="row">
+		<div class="col-lg-6" id="jettenWalk" onclick="openToespraak(); new Audio('/tpl/team/1E/audio/quoteJetten.mp3').play();">
+			<img id="jettenLopen" src="/tpl/team/1E/img/jetten_lopen.png"/>
+		</div>
+		<div class="col-lg-6" id="toespraakInformatie">
+			<h4><b>Sigrid Kaag is al bezig met de overwinningsspeech!</b></h4>
+			<h4 style="margin-top: 15px;"><b id="twitterLink">#HupROBotJetten</b></h4>
+			<br><br><br><br>
+			<div class="row" id="groupMembers">
+				<div class="col-sm-4">
+					<i class="fas fa-network-wired"></i>
+					<br>
+					<p>Simchaja Schonewille</p>
+				</div>
+				<div class="col-sm-4">
+					<i class="fas fa-laptop-code"></i>
+					<br>
+					<p>Feike Falkena</p>
+					<p>Tamme Tuncil</p>
+				</div>
+				<div class="col-sm-4">
+					<i class="fas fa-robot"></i>
+					<br>
+					<p>Erik Jan Zandberg</p>
+					<p>Peter Bos</p>
+					<p>Daisy Bruggeman</p>
+					<p>John Horstman</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 
@@ -268,9 +282,9 @@
     <div id="exitLaunch"><i class="fas fa-times" onclick="closeLaunchControls();"></i></div>
     <div id="launchController">
         <!-- Content -->
-        <i class="cloud fas fa-cloud" id="cloud1" onclick="sendData('Ready'); new Audio('/tpl/team/1E/quoteJetten.mp3').play();"></i>
-        <i class="cloud fas fa-cloud" id="cloud2" onclick="sendData('Ready'); new Audio('/tpl/team/1E/quoteJetten.mp3').play();"></i>
-        <i class="cloud fas fa-cloud" id="cloud3" onclick="sendData('Ready'); new Audio('/tpl/team/1E/quoteJetten.mp3').play();"></i>
+        <i class="cloud fas fa-cloud" id="cloud1" onclick="sendData('Ready'); new Audio('/tpl/team/1E/audio/quoteJetten.mp3').play();"></i>
+        <i class="cloud fas fa-cloud" id="cloud2" onclick="sendData('Ready'); new Audio('/tpl/team/1E/audio/quoteJetten.mp3').play();"></i>
+        <i class="cloud fas fa-cloud" id="cloud3" onclick="sendData('Ready'); new Audio('/tpl/team/1E/audio/quoteJetten.mp3').play();"></i>
     </div>
 
     <div id="centerJoystick" class="topZ">

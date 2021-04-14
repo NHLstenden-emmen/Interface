@@ -1,5 +1,7 @@
 /* Send Data to Robot */
-function sendData(data) {
+function sendData(data) {	
+	var current = new Date();
+	var logLine;
     $(document).ready(function () {
         $.ajax({
             type: 'POST',
@@ -10,6 +12,16 @@ function sendData(data) {
             success: function (response) {
                 if (response != "") {
                     console.log(data + ' - ' + response);
+					
+					/* Add to console */
+					if(response != "success"){
+						var responseFormat = '<p style="color: red; display: inline-block;">' + response + '</p>';
+					} else {
+						var responseFormat = '<p style="color: green; display: inline-block;">' + response + '</p>';
+					}
+					
+					logLine = current.getHours() + ':' + current.getMinutes() + ':' + current.getSeconds() + '&#9; > [' + data + '] > &#9; &#9;' + responseFormat;
+					$("#consoleUL").prepend('<li>' + logLine + '</li>');
                 } else {
                     console.log(data);
                 }
@@ -101,6 +113,11 @@ function closeLaunchControls(){
     $(".launch").slideUp('slow');
     $("html").css({"overflow-y":"visible"});
     $("body").css({"overflow-y":"visible"});
+}
+
+function openToespraak(){
+	
+	$("#jettenLopen").css({"animation":"jettenLopen 1s forwards"});
 }
 
 /* Joystick */
