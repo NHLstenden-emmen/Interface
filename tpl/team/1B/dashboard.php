@@ -10,10 +10,6 @@ if(isset($_POST['action'])){
 	$action = $_POST['action'];
 
     if($action == "STOP"){
-        $command = "a";
-    }
-
-    if($action == "CLEAR"){
         $command = "0";
     }
 
@@ -37,21 +33,22 @@ if(isset($_POST['action'])){
     }
 
     // Commands
-    if($action == "SPS"){
-        $command = "4";
-    }
+	
+	if($action == "RACE"){
+		$command = "1";
+	}
+	
+	if($action == "TEKENING"){
+		$command = "2";
+	}
 
-    if($action == "DOOLHOF"){
-        $command = "3";
-    }
-
-    if($action == "RACE"){
-        $command = "1";
-    }
-
-    if($action == "TEKENING"){
-        $command = "2";
-    }
+	if($action == "DOOLHOF"){
+		$command = "3";
+	}
+	
+	if($action == "SPS"){
+		$command = "4";
+	}
 
     // Ready
     if($action == "Ready"){
@@ -158,27 +155,5 @@ function playSound(isPlaying){
         audio.pause()
         audio.currentTime = 0
     }
-}
-function Startup() {
-	var isPlaying = true;
-	playSound(isPlaying);
-	$(document).ready(function() {
-		$.post("/tpl/team/1B/sendData.php", {
-			'action': 'Startup'
-		});
-		var timestamp = '[' + Date.now() + '] ';
-		console.log(timestamp + 'Startup');
-	});
-}
-function stop() {
-	var isPlaying = false;
-	playSound(isPlaying);
-	$(document).ready(function() {
-		$.post("/tpl/team/1B/sendData.php", {
-			'action': 'STOP'
-		});
-		var timestamp = '[' + Date.now() + '] ';
-		console.log(timestamp + 'STOP');
-	});
 }
 </script>
