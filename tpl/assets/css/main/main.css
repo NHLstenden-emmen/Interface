@@ -708,6 +708,9 @@ tr:nth-child(odd) {
 
 
 /* toast */
+.toast {
+	min-width: 300px;
+}
 .toastContainer {
 	position: fixed;
 	top: 27px;

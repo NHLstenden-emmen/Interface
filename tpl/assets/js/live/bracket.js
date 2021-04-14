@@ -10,6 +10,7 @@ class Brackets {
             3:undefined,
             4:undefined,
             5:undefined};
+    curPhase = "";
 
     #clear() {
         const children = bracketsHolder.children;
@@ -676,30 +677,34 @@ class Brackets {
         for(let i = 0; i < results.length; i++) {
             bracketsHolder.querySelector("#starName-" + i).innerHTML = results[i][0];
             results[i][1] -= 0.01;
+            for(let j = 0; j < 5; j++) {
+                bracketsHolder.querySelector("#gradient-" + i + "-" + star + " > .fill").setAttribute('offset', 0 + "%");
+            }
         }
-
-        let animation = setInterval(() => {
-            fill++;
-            finished = true;
-            for(let i = 0; i < results.length; i++) {
-                if(results[i][1] > 0) {
-                    results[i][1] -= 0.01;
-                    finished = false;
-                    bracketsHolder.querySelector("#gradient-" + i + "-" + star + " > .fill").setAttribute('offset', fill + "%");
+        setTimeout(() => {
+            let animation = setInterval(() => {
+                fill++;
+                finished = true;
+                for(let i = 0; i < results.length; i++) {
+                    if(results[i][1] > 0) {
+                        results[i][1] -= 0.01;
+                        finished = false;
+                        bracketsHolder.querySelector("#gradient-" + i + "-" + star + " > .fill").setAttribute('offset', fill + "%");
+                    }
                 }
-            }
 
-            if(fill == 100) {
-                fill = 0;
-                //const audio = new Audio("Robo TV -_files/320655__rhodesmas__level-up-01.wav");
-                //audio.play();
-                star++;
-            }
+                if(fill == 100) {
+                    fill = 0;
+                    const audio = new Audio("/tpl/assets/sound/stars.wav");
+                    audio.play();
+                    star++;
+                }
 
-            if(finished || star >= 5) {
-                clearInterval(animation);
-            }
-        }, 10);
+                if(finished || star >= 5) {
+                    clearInterval(animation);
+                }
+            }, 10);
+        }, 1500);
     }
 
     #updateMatches(matches) {
@@ -744,7 +749,6 @@ class Brackets {
     }
 
     #updateLeaderboard(leaderboard) {
-        console.log(leaderboard);
         this.#sortLeaderboard(leaderboard);
 
         for(let i = 1; i <= leaderboard.length; i++) {
@@ -835,13 +839,9 @@ class Brackets {
     }
 
     showPhase(ind) {
-        console.log(this.lastPhases.length);
         if(ind in this.lastPhases) {
             if(this.lastPhases[ind] != undefined) {
-                console.log("a");
                 this.parseJSON(this.lastPhases[ind]);
-            } else {
-                console.log("b");
             }
         }
     }
@@ -860,7 +860,7 @@ class Brackets {
     parseJSON(json) {
         try {
             const jsonObject = JSON.parse(json);
-            if(jsonObject && 'phase' in jsonObject) {
+            if(jsonObject && 'phase' in jsonObject && json != this.curPhase) {
                 if(this.phase != jsonObject.phase) {
                     this.phase = jsonObject.phase;
                     let timeout = 0;
@@ -937,6 +937,7 @@ class Brackets {
                     this.lastPhases[jsonObject.phase] = json;
                 }
                 this.#updatePhaseButtons();
+                this.curPhase = json;
             }
         } catch (e) {
             console.error(e);
@@ -967,12 +968,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 staticData.open("GET", "/api?data=bracket", true);
-//staticData.setRequestHeader("battlebots", "leaderboard");
 staticData.send();
 
-
 staticData.addEventListener("readystatechange", () => {
-    brackets.parseJSON(staticData.responseText.trim());
+    for(let i = 0; i < 6; i++) {
+        if(staticData.getResponseHeader("bracket-"+i) != "null") { //denk da hij die null gaat zien als een string but we will see
+            brackets.lastPhases[i] = JSON.parse(staticData.getResponseHeader("bracket-" + i));
+        }
+    }
+    if(staticData.getResponseHeader("bracket") instanceof Object) {
+        console.log("hoi")
+    }
+    brackets.parseJSON(JSON.parse(staticData.getResponseHeader("bracket")));
 });
-// brackets.parseJSON('{"phase":5,"results":{"BrokkoBot":0,"ROBot Jetten":0,"Wall-D":0,"BumbleBert":0,"Dimitri":0}}')
-setTimeout(() => { brackets.parseJSON('{"phase":5,"results":{"BrokkoBot":2.5,"ROBot Jetten":1.67,"Wall-D":5,"BumbleBert":3.15,"Dimitri":4}}') }, 3000);

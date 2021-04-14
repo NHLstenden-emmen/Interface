@@ -5,8 +5,6 @@
       <sourceFolder url="file://$MODULE_DIR$/phpmyadmin/libraries/classes" isTestSource="false" packagePrefix="PhpMyAdmin\" />
       <sourceFolder url="file://$MODULE_DIR$/phpmyadmin/test/classes" isTestSource="true" packagePrefix="PhpMyAdmin\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/phpmyadmin/test/selenium" isTestSource="true" packagePrefix="PhpMyAdmin\Tests\Selenium\" />
-      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/phpmyadmin/vendor/google/recaptcha" />
       <excludeFolder url="file://$MODULE_DIR$/phpmyadmin/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/phpmyadmin/vendor/dasprid/enum" />

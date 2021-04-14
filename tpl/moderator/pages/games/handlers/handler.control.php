@@ -6,8 +6,8 @@
     }
 
     if(isset($_POST['secondChance'])) {
-        $this->Set("statusResponse", $core->cleanServerResponse($socket->retryMatch()->server));
-        $core->Refresh();
+        $statusResponse =  $core->cleanServerResponse($socket->retryMatch()->server);
+        header("response: " . json_encode($statusResponse));
     }
 
     if(isset($_POST['disqualifyButton'])) {

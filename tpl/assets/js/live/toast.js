@@ -31,7 +31,7 @@ const showPollToast = (id, drawing, message, buttons) => {
                             <img src="/tpl/assets/images/server.png" class="rounded mr-2" alt="Server">
                             <strong class="mr-auto">Server</strong>
                             <small class="text-muted">`+ new Date().toLocaleTimeString("nl-NL") +`</small>
-                            <div type="button" class="ml-2 mb-1 close poll" aria-label="Close" data-dismiss="toast"->
+                            <div type="button" class="ml-2 mb-1 close poll" aria-label="Close" data-dismiss="toast">
                               <span aria-hidden="true">&times;</span>
                             </div>
                           </div>
@@ -59,10 +59,10 @@ const showToast = (id, message, duration = undefined) => {
                             <small class="text-muted">11 mins ago</small>
                             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
-                            </button>
+                            </div>
                           </div>
                           <div class="toast-body">
-                            `+ message +`
+                            <span>`+ message +`</span>
                           </div>
                         </div>`;
 
@@ -79,15 +79,15 @@ const showReadyToast = (id, message, bot, game, duration = undefined) => {
 
     Toast.innerHTML = `<div id="`+id+`" class="toast" role="alert" aria-live="assertive" aria-atomic="true" `+autoHide+`>
                           <div class="toast-header">
-                            <img src="" class="rounded mr-2" alt="...">
-                            <strong class="mr-auto">Bootstrap</strong>
-                            <small class="text-muted">11 mins ago</small>
-                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                            <img src="/tpl/assets/images/server.png" class="rounded mr-2" alt="Server">
+                            <strong class="mr-auto">Server</strong>
+                            <small class="text-muted">`+ new Date().toLocaleTimeString("nl-NL") +`</small>
+                            <div type="button" class="ml-2 mb-1 close poll" aria-label="Close" data-dismiss="toast">
                               <span aria-hidden="true">&times;</span>
-                            </button>
+                            </div>
                           </div>
                           <div class="toast-body">
-                            `+ message +`
+                             <span>`+ message +`</span>
                           </div>
                         </div>`;
 
@@ -104,16 +104,16 @@ const showResultToast = (id, message, game, duration = undefined) => {
 
     Toast.innerHTML = `<div id="`+id+`" class="toast" role="alert" aria-live="assertive" aria-atomic="true" `+autoHide+`>
                           <div class="toast-header">
-                            <img src="" class="rounded mr-2" alt="...">
-                            <strong class="mr-auto">Bootstrap</strong>
-                            <small class="text-muted">11 mins ago</small>
-                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                            <img src="/tpl/assets/images/server.png" class="rounded mr-2" alt="Server">
+                            <strong class="mr-auto">Server</strong>
+                            <small class="text-muted">`+ new Date().toLocaleTimeString("nl-NL") +`</small>
+                            <div type="button" class="ml-2 mb-1 close poll" aria-label="Close" data-dismiss="toast">
                               <span aria-hidden="true">&times;</span>
-                            </button>
+                            </div>
                           </div>
                           <div class="toast-body">
-                            `+ message +`
-                            <button class="button poll link" data-link="/bracket"><i class="fas fa-trophy"></i> Brackets</button>
+                              <span style="margin: 1em">`+ message +`</span>
+                            <button onclick="window.location.href='/bracket'" class="button poll"><i class="fas fa-trophy"></i> Brackets</button>
                           </div>
                         </div>`;
 

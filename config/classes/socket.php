@@ -78,7 +78,7 @@ class ServerConnection
         }
 
         function retryMatch() {
-                if($response = $this->write(json_encode(["CMD" => "RETRY_MATCH"]))) return $response;
+                if($response = $this->write(json_encode(["CMD" => "REDO", "BOT" => "CURRENT"]))) return $response;
                 else return false;
         }
 
