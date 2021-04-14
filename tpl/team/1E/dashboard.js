@@ -11,8 +11,7 @@ function sendData(data) {
             },
             success: function (response) {
                 if (response != "") {
-                    console.log(data + ' - ' + response);
-					
+                    console.log(data + ' - ' + response);					
 					/* Add to console */
 					if(response != "success"){
 						var responseFormat = '<p style="color: red; display: inline-block;">' + response + '</p>';
