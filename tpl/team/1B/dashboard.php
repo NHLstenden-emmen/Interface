@@ -10,10 +10,6 @@ if(isset($_POST['action'])){
 	$action = $_POST['action'];
 
     if($action == "STOP"){
-        $command = "a";
-    }
-
-    if($action == "CLEAR"){
         $command = "0";
     }
 
@@ -37,21 +33,22 @@ if(isset($_POST['action'])){
     }
 
     // Commands
-    if($action == "SPS"){
-        $command = "4";
-    }
+	
+	if($action == "RACE"){
+		$command = "1";
+	}
+	
+	if($action == "TEKENING"){
+		$command = "2";
+	}
 
-    if($action == "DOOLHOF"){
-        $command = "3";
-    }
-
-    if($action == "RACE"){
-        $command = "1";
-    }
-
-    if($action == "TEKENING"){
-        $command = "2";
-    }
+	if($action == "DOOLHOF"){
+		$command = "3";
+	}
+	
+	if($action == "SPS"){
+		$command = "4";
+	}
 
     // Ready
     if($action == "Ready"){
@@ -86,25 +83,36 @@ if(isset($_POST['action'])){
 
 			<div class="bigStart">
 				<button onclick="sendData('RACE');">Start The RACE</button>
-				<div class="icon"><i class="fas fa-play"></i>
+				<div class="icon">
+					<i class="fas fa-flag-checkered"></i>
 				</div>
 			</div>
 
 			<div class="bigStart">
 				<button onclick="sendData('TEKENING');">Start The TEKENING</button>
-				<div class="icon"><i class="fas fa-play"></i>
+				<div class="icon">
+					<i class="fas fa-pencil-alt"></i>
 				</div>
 			</div>
 
 			<div class="bigStart">
 				<button onclick="sendData('DOOLHOF');">Start The DOOLHOF</button>
-				<div class="icon"><i class="fas fa-play"></i>
+				<div class="icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.00005 26.007172" height="18px" width="18px">
+						<g id="layer1" transform="translate(0,-270.99283)">
+							<path style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 10.50005,296.49288 v 0 -5 h -5 v -5 h 10 v 5 h 5.000001 v -10 H 15.50005"></path>
+							<path style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 5.50005,296.49288 h -5 v -15 h 10 v -5 h -5"></path>
+							<path style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 0.50005,276.49288 v -5 h 15 v 5 h 5.000001"></path>
+							<path style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 15.50005,271.49288 h 10 v 25 h -15"></path>
+						</g>
+					</svg>
 				</div>
 			</div>
 
 			<div class="bigStart">
 				<button onclick="sendData('SPS');">Start The SPS</button>
-				<div class="icon"><i class="fas fa-play"></i>
+				<div class="icon">
+					<i class="fas fa-hand-scissors"></i>
 				</div>
 			</div>
 		</div>
@@ -114,7 +122,7 @@ if(isset($_POST['action'])){
 			<div class="bigStop">
 				<button onclick="sendData('STOP');">PANIC BUTTON</button>
 				<div class="icon">
-					<i class="fas fa-skull-crossbones"></i>
+					<i class="fas fa-hand-paper"></i>
 				</div>
 			</div>
 		</div>
@@ -158,27 +166,5 @@ function playSound(isPlaying){
         audio.pause()
         audio.currentTime = 0
     }
-}
-function Startup() {
-	var isPlaying = true;
-	playSound(isPlaying);
-	$(document).ready(function() {
-		$.post("/tpl/team/1B/sendData.php", {
-			'action': 'Startup'
-		});
-		var timestamp = '[' + Date.now() + '] ';
-		console.log(timestamp + 'Startup');
-	});
-}
-function stop() {
-	var isPlaying = false;
-	playSound(isPlaying);
-	$(document).ready(function() {
-		$.post("/tpl/team/1B/sendData.php", {
-			'action': 'STOP'
-		});
-		var timestamp = '[' + Date.now() + '] ';
-		console.log(timestamp + 'STOP');
-	});
 }
 </script>
