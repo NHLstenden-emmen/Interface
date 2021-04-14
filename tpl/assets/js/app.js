@@ -1,4 +1,4 @@
-const countDownDateText = "Apr 15, 2021 10:00:00";
+const countDownDateText = "Apr 14, 2021 10:00:00";
 const webSocketURL = "ws://77.162.30.112:";
 
 /* Burger Menu Controller */

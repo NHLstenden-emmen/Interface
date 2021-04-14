@@ -19,8 +19,8 @@
         </div>
         <div class="videoDetails">
             <div class="videoUpload">
-                <span class="videoTitle" id="currentGame">Race</span>
-                <span><i class="fas fa-robot"></i>&nbsp;<span id="currentRobot" style="font-weight: 700">ROBOT</span></span>
+                <span class="videoTitle" id="currentGame"></span>
+                <span><i class="fas fa-robot"></i>&nbsp;<span id="currentRobot"></span></span>
                 <span><i class="far fa-eye"></i>&nbsp;<span id="viewerCounter">0</span> {VIEWERS}</span>
             </div>
             <div class="videoCamera">
