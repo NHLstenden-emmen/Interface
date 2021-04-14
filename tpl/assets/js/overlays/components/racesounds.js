@@ -59,22 +59,27 @@ document.addEventListener('DOMContentLoaded', () => {
     DKSnowboardCross_F.src  = soundsPath + "circuit/DK/final.mp3";
 
 
-    readyAudio.src          = soundsPath + "ready/ready.mp3";
+    readyAudio.src          = soundsPath + "gamestart/ready.mp3";
     regularLapAudio.src     = soundsPath + "lap/lap.mp3";
     finalLapAudio.src       = soundsPath + "lap/final_lap.mp3";
     startAudio.src          = soundsPath + "start/start.mp3";
-    finishAudioSucces       = soundsPath + "ending/succes.mp3";
-    finishAudioFail         = soundsPath + "ending/fail.mp3";
+    finishAudioSucces.src   = soundsPath + "ending/succes.mp3";
+    finishAudioFail.src     = soundsPath + "ending/fail.mp3";
 
     start_1.src             = imagePath + "start/1.png";
     start_2.src             = imagePath + "start/2.png";
     start_3.src             = imagePath + "start/3.png";
     start_4.src             = imagePath + "start/4.png";
     start_5.src             = imagePath + "start/5.png";
+
+    startLights.appendChild(start_1);
+    startLights.style.display = "none";
 });
 
 startAudio.addEventListener('ended', () => {
-    setTimeout(() => startLights.style.animation = `spiralOut 2.5s ease forwards`, 500);
+     startLights.style.animation = `spiralOut 2.5s ease forwards`;
+
+     setTimeout(() =>  startLights.style.display = "none", 2500);
 });
 
 
@@ -108,7 +113,6 @@ const startSequence = async () => {
     startLights.style.display = "block";
     startLights.style.animation = `spiralIn 3.5s cubic-bezier(0, 0, 0.2, 1) forwards`;
 
-    startLights.appendChild(start_1);
     startLights.style.position = "relative";
 
     await sleep(3500).then(() => {
@@ -139,6 +143,8 @@ const finalLapSequence = () => {
 const stopCircuitSounds = () => {
     currentCircuit_F.pause();
     currentCircuit.pause();
+    currentCircuit.currentTime = 0;
+    currentCircuit_F.currentTime = 0;
 }
 
 const lapCounterControl = (type) => {
@@ -147,25 +153,27 @@ const lapCounterControl = (type) => {
             playReadySound();
         break;
         case "start":
+            botFinished = false;
             startSequence();
         break;
         case "lap":
             lapSequence();
         break;
-        case "final_lap":
+        case "last_lap":
             finalLapSequence();
         break;
         case "finished":
             botFinished = true;
+            console.log("finished vgm");
             changeLapVolume(0.5);
+            stopCircuitSounds();
             playFinishedSound();
-            setTimeout(stopCircuitSounds, 2500);
         break;
         case "disqualified":
             botFinished = true;
             changeLapVolume(0.5);
             disqualifiedSound();
-            setTimeout(stopCircuitSounds, 2500);
+            stopCircuitSounds();
         break;
     }
 }

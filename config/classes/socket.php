@@ -57,16 +57,6 @@ class ServerConnection
             else return false;
         }
 
-        function startSPS() {
-                if($response = $this->write(json_encode(["CMD" => "START_SPS"]))) return $response;
-                else return false;
-        }
-
-        function startMaze() {
-                if($response = $this->write(json_encode(["CMD" => "START_MAZE"]))) return $response;
-                else return false;
-        }
-
         function startDrawing() {
                 if($response = $this->write(json_encode(["CMD" => "START_DRAW"]))) return $response;
                 else return false;

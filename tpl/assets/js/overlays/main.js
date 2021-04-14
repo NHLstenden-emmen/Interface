@@ -29,8 +29,9 @@ const reconnect = (error) => {
   console.error('Socket is closed. Reconnect will be attempted in 1 second.', error);
   setTimeout(launchOverlayStream, 1000);
 }
-
+setTimeout(() => switchControl({"scene": "ROBot Jetten"}), 1000);
 const switchControl = (messageData) => {
+    console.log(messageData)
   if(countdownEnded) {
     switch(messageData.scene)
     {
@@ -57,7 +58,7 @@ const switchControl = (messageData) => {
             playAudio("/tpl/assets/sound/Lenards_Team_Song.mpeg");
         break;
         default:
-            lapCounterControl(messageData.scene);
+            lapCounterControl(messageData.sound);
         break;
     }
   } 
@@ -92,7 +93,7 @@ const launchOverlayStream = () =>
         connectedMessage();
         overlaysWebsocket.send(JSON.stringify({"type": "overlay", "action": "connected"}));
       });
-      overlaysWebsocket.addEventListener('message', (e) => switchControl(e.data));
+      overlaysWebsocket.addEventListener('message', (e) => switchControl(JSON.parse(e.data)));
       overlaysWebsocket.addEventListener("close", (e) =>  reconnect(e.reason));
     }
     else alert("WebSocket is NOT supported by your Browser!");
