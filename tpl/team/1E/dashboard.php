@@ -6,87 +6,87 @@
  * 
  */
 
- /* Custom params */
- $TeamID = "1E";
- $RobotName = "ROBot Jetten";
- $GroupID = 13;
+/* Custom params */
+$TeamID = "1E";
+$RobotName = "ROBot Jetten";
+$GroupID = 13;
 
- /* Send Data to Robot */
- if(isset($_POST['action'])){
+/* Send Data to Robot */
+if (isset($_POST['action'])) {
 
-     $action = $_POST['action'];
+    $action = $_POST['action'];
 
-    if($action == "Stop"){
+    if ($action == "Stop") {
         $command = "a";
     }
 
-    if($action == "CLEAR"){
+    if ($action == "CLEAR") {
         $command = "0";
     }
 
     // Straight angles
 
-	// voor
-    if($action == "W"){
+    // voor
+    if ($action == "W") {
         $command = "b";
     }
-	// links
-    if($action == "A"){
+    // links
+    if ($action == "A") {
         $command = "e";
     }
-	// achter
-    if($action == "S"){
+    // achter
+    if ($action == "S") {
         $command = "c";
     }
-	// rechts
-    if($action == "D"){
+    // rechts
+    if ($action == "D") {
         $command = "d";
     }
 
     // Custom angles
 
-    if($action == "WA"){
+    if ($action == "WA") {
         $command = "w";
     }
-    if($action == "WD"){
+    if ($action == "WD") {
         $command = "q";
     }
-    if($action == "SD"){
+    if ($action == "SD") {
         $command = "m";
     }
-    if($action == "SA"){
+    if ($action == "SA") {
         $command = "n";
     }
 
     // Commands
-    if($action == "SPS"){
+    if ($action == "SPS") {
         $command = "4";
     }
 
-    if($action == "DOOLHOF"){
+    if ($action == "DOOLHOF") {
         $command = "3";
     }
 
-    if($action == "RACE"){
+    if ($action == "RACE") {
         $command = "1";
     }
 
-    if($action == "TEKENING"){
+    if ($action == "TEKENING") {
         $command = "2";
     }
 
     // Ready
-    if($action == "Ready"){
+    if ($action == "Ready") {
         print_r($socket->sendStartToBot($RobotName));
         die();
     }
 
     // Send Data
     $sendData = $socket->sendToBot($RobotName, $command);
-    if($sendData == "bot_not_online"){
-		// Niet online
-    } else if ($sendData == "success"){
-		// Success
+    if ($sendData == "bot_not_online") {
+        // Niet online
+    } else if ($sendData == "success") {
+        // Success
     } else {
         // Andere error
     }
@@ -94,38 +94,38 @@
     echo $sendData;
 
     die();
- }
+}
 
- /* Form handling */ 
- if(isset($_POST['EditDesc_NL']) || isset($_POST['EditDesc_EN'])){
-    if (isset($_POST['EditDesc_NL']) && trim($_POST['EditDesc_NL']) != ""){
-       $DB->Update("UPDATE teams SET TeamDesc_NL = ? WHERE TeamID = ?", [$_POST['EditDesc_NL'], $TeamID]);
-       unset($_POST['TeamDesc_NL']);
-    } else if (isset($_POST['EditDesc_EN']) && trim($_POST['EditDesc_EN']) != ""){
-       $DB->Update("UPDATE teams SET TeamDesc_EN = ? WHERE TeamID = ?", [$_POST['EditDesc_EN'], $TeamID]);
-       unset($_POST['TeamDesc_EN']);
+/* Form handling */
+if (isset($_POST['EditDesc_NL']) || isset($_POST['EditDesc_EN'])) {
+    if (isset($_POST['EditDesc_NL']) && trim($_POST['EditDesc_NL']) != "") {
+        $DB->Update("UPDATE teams SET TeamDesc_NL = ? WHERE TeamID = ?", [$_POST['EditDesc_NL'], $TeamID]);
+        unset($_POST['TeamDesc_NL']);
+    } else if (isset($_POST['EditDesc_EN']) && trim($_POST['EditDesc_EN']) != "") {
+        $DB->Update("UPDATE teams SET TeamDesc_EN = ? WHERE TeamID = ?", [$_POST['EditDesc_EN'], $TeamID]);
+        unset($_POST['TeamDesc_EN']);
     } else {
         // Error inserting data
     }
 }
 
- /* Data from database */
- $robotData = $DB->Select("SELECT * FROM teams WHERE TeamID = ?",[$TeamID]);
- $userData = $DB->Select("SELECT * FROM users WHERE Team = ?",[$TeamID]);
- $robotResults = $DB->Select("SELECT * FROM punten WHERE robot = ?",[$RobotName]);
+/* Data from database */
+$robotData = $DB->Select("SELECT * FROM teams WHERE TeamID = ?", [$TeamID]);
+$userData = $DB->Select("SELECT * FROM users WHERE Team = ?", [$TeamID]);
+$robotResults = $DB->Select("SELECT * FROM punten WHERE robot = ?", [$RobotName]);
 
- /* Data from socket */
- if($botList = $socket->getBotList()){
-     $botStatus = "Offline";
-     foreach (json_decode(json_encode($botList),true) as $key => $botInArray){
-         if (strpos($botInArray, $RobotName) !== false) {
-             $botStatus = "Online";
-         }
-     }
-
- } else {
+/* Data from socket */
+if ($botList = $socket->getBotList()) {
     $botStatus = "Offline";
- }
+    foreach (json_decode(json_encode($botList), true) as $key => $botInArray) {
+        if (strpos($botInArray, $RobotName) !== false) {
+            $botStatus = "Online";
+        }
+    }
+
+} else {
+    $botStatus = "Offline";
+}
 
 ?>
 
@@ -145,8 +145,8 @@
                 <h5>Robot specs</h5>
 
                 <!-- Details -->
-                <p>{NAME}: <?php echo $RobotName;?></p>
-                <p>Team: <?php echo $TeamID;?></p>
+                <p>{NAME}: <?php echo $RobotName; ?></p>
+                <p>Team: <?php echo $TeamID; ?></p>
 
                 <!-- Status -->
                 <div id="robotStatus">
@@ -163,15 +163,15 @@
 
                 <!-- Details -->
                 <?php
-                    if (count($userData) < 4){
-                        for($x = 0; $x < count($userData); $x++){
-                            echo $userData[$x]['firstName'] . ' ' . $userData[$x]['lastName'] . '<br>';
-                        }
-                    } else {
-                        for($x = 0; $x < 4; $x++){
-                            echo $userData[$x]['firstName'] . ' ' . $userData[$x]['lastName'] . '<br>';
-                        }
+                if (count($userData) < 4) {
+                    for ($x = 0; $x < count($userData); $x++) {
+                        echo $userData[$x]['firstName'] . ' ' . $userData[$x]['lastName'] . '<br>';
                     }
+                } else {
+                    for ($x = 0; $x < 4; $x++) {
+                        echo $userData[$x]['firstName'] . ' ' . $userData[$x]['lastName'] . '<br>';
+                    }
+                }
                 ?>
 
                 <!-- Members -->
@@ -183,11 +183,11 @@
         <div class="col-lg-4 topCard" onclick="openCardBoxThree();">
             <div class="cardContent">
                 <h5>Scoreboard</h5>
-				<?php
-					foreach($robotResults AS $result){
-						echo '<p>' . $result['game'] . ': ' . $result['score'] . '</p>';
-					}				
-				?>
+                <?php
+                foreach ($robotResults as $result) {
+                    echo '<p>' . $result['game'] . ': ' . $result['score'] . '</p>';
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -206,11 +206,16 @@
         <div class="col-lg-3" id="sendButtons">
             <h5 class="blockTitle">Send-to-bot</h5>
             <div>
-                <button class="button" onclick="sendData('SPS');">SPS</button><br><br>
-                <button class="button" onclick="sendData('DOOLHOF');">Doolhof</button><br><br>
-                <button class="button" onclick="sendData('RACE');">Race</button><br><br>
-                <button class="button" onclick="sendData('TEKENING');">Tekening</button><br><br>
-                <button class="button" onclick="sendData('CLEAR');">Stop</button><br><br>
+                <button class="button" onclick="sendData('SPS');">SPS</button>
+                <br><br>
+                <button class="button" onclick="sendData('DOOLHOF');">Doolhof</button>
+                <br><br>
+                <button class="button" onclick="sendData('RACE');">Race</button>
+                <br><br>
+                <button class="button" onclick="sendData('TEKENING');">Tekening</button>
+                <br><br>
+                <button class="button" onclick="sendData('CLEAR');">Stop</button>
+                <br><br>
                 <button class="button" onclick="sendData('Ready');">Ready</button>
             </div>
         </div>
@@ -240,41 +245,39 @@
 
 <!-- ROB Jetten -->
 <div class="container-fluid" id="toespraak">
-	<div class="row">
-		<div class="col-lg-6" id="jettenWalk" onclick="openToespraak(); new Audio('/tpl/team/1E/audio/quoteJetten.mp3').play();">
-			<img id="jettenLopen" src="/tpl/team/1E/img/jetten_lopen.png"/>
-		</div>
-		<div class="col-lg-6" id="toespraakInformatie">
-			<h4><b>Sigrid Kaag is al bezig met de overwinningsspeech!</b></h4>
-			<h4 style="margin-top: 15px;"><b id="twitterLink">#HupROBotJetten</b></h4>
-			<br><br><br><br>
-			<div class="row" id="groupMembers">
-				<div class="col-sm-4">
-					<i class="fas fa-network-wired"></i>
-					<br>
-					<p>Simchaja Schonewille</p>
-				</div>
-				<div class="col-sm-4">
-					<i class="fas fa-laptop-code"></i>
-					<br>
-					<p>Feike Falkena</p>
-					<p>Tamme Tuncil</p>
-				</div>
-				<div class="col-sm-4">
-					<i class="fas fa-robot"></i>
-					<br>
-					<p>Erik Jan Zandberg</p>
-					<p>Peter Bos</p>
-					<p>Daisy Bruggeman</p>
-					<p>John Horstman</p>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-lg-6" id="jettenWalk"
+             onclick="openToespraak(); new Audio('/tpl/team/1E/audio/quoteJetten.mp3').play();">
+            <img id="jettenLopen" src="/tpl/team/1E/img/jetten_lopen.png"/>
+        </div>
+        <div class="col-lg-6" id="toespraakInformatie">
+            <h4><b>Sigrid Kaag is al bezig met de overwinningsspeech!</b></h4>
+            <h4 style="margin-top: 15px;"><b id="twitterLink">#HupROBotJetten</b></h4>
+            <br><br><br><br>
+            <div class="row" id="groupMembers">
+                <div class="col-sm-4">
+                    <i class="fas fa-network-wired"></i>
+                    <br>
+                    <p>Simchaja Schonewille</p>
+                </div>
+                <div class="col-sm-4">
+                    <i class="fas fa-laptop-code"></i>
+                    <br>
+                    <p>Feike Falkena</p>
+                    <p>Tamme Tuncil</p>
+                </div>
+                <div class="col-sm-4">
+                    <i class="fas fa-robot"></i>
+                    <br>
+                    <p>Erik Jan Zandberg</p>
+                    <p>Peter Bos</p>
+                    <p>Daisy Bruggeman</p>
+                    <p>John Horstman</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-
 
 
 <!-- Launch overlay -->
@@ -282,9 +285,12 @@
     <div id="exitLaunch"><i class="fas fa-times" onclick="closeLaunchControls();"></i></div>
     <div id="launchController">
         <!-- Content -->
-        <i class="cloud fas fa-cloud" id="cloud1" onclick="sendData('Ready'); new Audio('/tpl/team/1E/audio/quoteJetten.mp3').play();"></i>
-        <i class="cloud fas fa-cloud" id="cloud2" onclick="sendData('Ready'); new Audio('/tpl/team/1E/audio/quoteJetten.mp3').play();"></i>
-        <i class="cloud fas fa-cloud" id="cloud3" onclick="sendData('Ready'); new Audio('/tpl/team/1E/audio/quoteJetten.mp3').play();"></i>
+        <i class="cloud fas fa-cloud" id="cloud1"
+           onclick="sendData('Ready'); new Audio('/tpl/team/1E/audio/quoteJetten.mp3').play();"></i>
+        <i class="cloud fas fa-cloud" id="cloud2"
+           onclick="sendData('Ready'); new Audio('/tpl/team/1E/audio/quoteJetten.mp3').play();"></i>
+        <i class="cloud fas fa-cloud" id="cloud3"
+           onclick="sendData('Ready'); new Audio('/tpl/team/1E/audio/quoteJetten.mp3').play();"></i>
     </div>
 
     <div id="centerJoystick" class="topZ">
@@ -321,8 +327,8 @@
                 <h5>Robot specs</h5>
 
                 <!-- Details -->
-                <p>{NAME}: <?php echo $RobotName;?></p>
-                <p>Team: <?php echo $TeamID;?></p>
+                <p>{NAME}: <?php echo $RobotName; ?></p>
+                <p>Team: <?php echo $TeamID; ?></p>
             </div>
         </div>
         <div class="row">
@@ -368,10 +374,10 @@
             <div class="col-lg-12">
                 <br>
                 <!-- Details -->
-                <?php                
-                    foreach ($userData as $userDetails){
-                        echo $userDetails['firstName'] . ' ' . $userDetails['lastName'] . '<br>';
-                    }
+                <?php
+                foreach ($userData as $userDetails) {
+                    echo $userDetails['firstName'] . ' ' . $userDetails['lastName'] . '<br>';
+                }
                 ?>
             </div>
         </div>
@@ -392,22 +398,22 @@
                 <!-- Details -->
                 <table>
                     <thead>
-                        <tr>
-                            <th>Game</th>
-                            <th>Score</th>
-                        </tr>
+                    <tr>
+                        <th>Game</th>
+                        <th>Score</th>
+                    </tr>
                     </thead>
                     <tbody>
-						<?php 
-							foreach($robotResults as $results){
-								$row = 	"<tr><td>";
-								$row .=	$results['game'];
-								$row .=	"</td><td>";
-								$row .=	$results['score'];
-								$row .=	"</td></tr>";
-								echo $row;
-							}
-						?>
+                    <?php
+                    foreach ($robotResults as $results) {
+                        $row = "<tr><td>";
+                        $row .= $results['game'];
+                        $row .= "</td><td>";
+                        $row .= $results['score'];
+                        $row .= "</td></tr>";
+                        echo $row;
+                    }
+                    ?>
                     </tbody>
                 </table>
                 <br><br>
