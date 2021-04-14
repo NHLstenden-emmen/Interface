@@ -5,62 +5,57 @@ $TeamID = "1B";
 $RobotName = "Dimitri";
 
 /* Send Data to Robot */
-if(isset($_POST['action'])){
+if (isset($_POST['action'])) {
 
-	$action = $_POST['action'];
+    $action = $_POST['action'];
 
-    if($action == "STOP"){
+    if ($action == "Stop") {
+        $command = "a";
+    }
+
+    if ($action == "CLEAR") {
         $command = "0";
     }
 
-    // Straight angles
-
-	// voor
-    if($action == "W"){
-        $command = "b";
-    }
-	// links
-    if($action == "A"){
-        $command = "e";
-    }
-	// achter
-    if($action == "S"){
-        $command = "c";
-    }
-	// rechts
-    if($action == "D"){
-        $command = "d";
-    }
-
     // Commands
-	
-	if($action == "RACE"){
-		$command = "1";
-	}
-	
-	if($action == "TEKENING"){
-		$command = "2";
-	}
+    if ($action == "SPS") {
+        $command = "4";
+    }
 
-	if($action == "DOOLHOF"){
-		$command = "3";
-	}
-	
-	if($action == "SPS"){
-		$command = "4";
-	}
+    if ($action == "DOOLHOF") {
+        $command = "3";
+    }
+
+    if ($action == "RACE") {
+        $command = "1";
+    }
+
+    if ($action == "TEKENING") {
+        $command = "2";
+    }
 
     // Ready
-    if($action == "Ready"){
+    if ($action == "Ready") {
         print_r($socket->sendStartToBot($RobotName));
         die();
     }
 
     // Send Data
     $sendData = $socket->sendToBot($RobotName, $command);
+    if ($sendData == "bot_not_online") {
+        // Niet online
+    } else if ($sendData == "success") {
+        // Success
+    } else {
+        // Andere error
+    }
+
+    echo $sendData;
+
+    die();
 }
 ?>
-
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <div id="dashboard">
 	<div class="liveFeed neonBlock1B" data-aos="zoom-in-down">
 		<div class="videoBlock">
@@ -120,7 +115,7 @@ if(isset($_POST['action'])){
 		<audio id="audio" src="{assetsFolder}/sound/Lenards_Team_Song.mpeg" style="display:none;"></audio>
 		<div id="panicButton" data-aos="zoom-in-left">
 			<div class="bigStop">
-				<button onclick="sendData('STOP');">PANIC BUTTON</button>
+				<button onclick="sendData('Stop');">PANIC BUTTON</button>
 				<div class="icon">
 					<i class="fas fa-hand-paper"></i>
 				</div>
@@ -166,5 +161,19 @@ function playSound(isPlaying){
         audio.pause()
         audio.currentTime = 0
     }
+}
+
+function sendData(data) {
+    var current = new Date();
+    var logLine;
+    $(document).ready(function () {
+        $.ajax({
+            type: 'POST',
+            url: '',
+            data: {
+                'action': data
+            }
+        });
+    });
 }
 </script>

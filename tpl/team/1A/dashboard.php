@@ -33,10 +33,10 @@
 					?>
 					<!-- FORMULIER -->
 					<form method="POST">
-						<input type="text" id="robotName" name="robotName" value="<?php echo $robotName; ?>" required><br>
+						<input type="text" id="robotName" name="robotName" value="<?php echo $robotName; ?>" required><br><br>
 						<textarea id="teamDescription" rows="4" cols="50"
-							name="teamDescription"><?php echo $teamDesc; ?></textarea><br>
-						<input class="button" type="submit" name="editTeamDetails" value="Submit">
+							name="teamDescription"><?php echo $teamDesc; ?></textarea><br><br>
+						<button class="button" type="submit" name="editTeamDetails" value="Submit">Submit</button>
 					</form>
 				</p>
 			</div>

@@ -9,3 +9,13 @@
 		top: -100px;
 	}
 }
+
+/* IOS Devices */
+@supports (-webkit-touch-callout: none){
+	.active#menu{
+		height: 100vh !important;
+		overflow: scroll;
+		position: absolute;
+		top: 0;
+	}
+}

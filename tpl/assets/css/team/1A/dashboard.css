@@ -155,3 +155,12 @@ section h1{
     color: #f9c901;
 }
 
+#teamDescription{
+	background: none;
+	padding: 15px;
+}
+
+.content{
+	background-color: #0f0f0feb;
+}
+

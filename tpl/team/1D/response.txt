@@ -1,2 +1,5 @@
+<p>20:59:03	No game running</p>
+<p>20:57:03	No game running</p>
+<p>20:57:00	No game running</p>
 <p>15:31:58	No schemes generated</p>
 <p>15:25:07	No schemes generated</p>
