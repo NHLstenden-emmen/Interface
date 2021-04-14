@@ -1,3 +1,5 @@
+let playList;
+
 document.addEventListener('DOMContentLoaded', () => {
   hidePage();
   clockCheck();
@@ -5,9 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
   launchOverlayStream();
 });
 
+const getPlaylist = () => {
+    const Http = new XMLHttpRequest();
+    Http.open("GET", "/api?type=playlist");
+    Http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    Http.onreadystatechange = () => {
+        console.log(Http.getResponseHeader("response"));
+    }
+}
 const clockCheck = () => {
   if(countDownDate - new Date().getTime() > 0) {
-      waitingMusicPlay();
+      getPlaylist();
+      //waitingMusicPlay();
       setTimeout(initClock, 5000);
       document.querySelector("body").classList.add("countdown");
   } else countdownEnded = true;
@@ -41,7 +53,7 @@ const switchControl = (messageData) => {
             readyBot1E();
             playAudio("/tpl/assets/sound/INF1E.mp3");
         break;
-        case "Lennart":
+        case "Dimitri":
             playAudio("/tpl/assets/sound/Lenards_Team_Song.mpeg");
         break;
         default:
@@ -74,10 +86,10 @@ const launchOverlayStream = () =>
 {
     if ("WebSocket" in window)
     {
-      const overlaysWebsocket = new WebSocket("ws:/194.171.181.139:49151");
+      const overlaysWebsocket = new WebSocket(webSocketURL + "49151");
 
       overlaysWebsocket.addEventListener('open', () => { 
-      //  connectedMessage();
+        connectedMessage();
         overlaysWebsocket.send(JSON.stringify({"type": "overlay", "action": "connected"}));
       });
       overlaysWebsocket.addEventListener('message', (e) => switchControl(e.data));

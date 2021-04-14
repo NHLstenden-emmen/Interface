@@ -143,8 +143,7 @@ const stopCircuitSounds = () => {
 
 const lapCounterControl = (type) => {
     switch (type) {
-        case "ready":
-            botFinished = false;
+        case "race_start":
             playReadySound();
         break;
         case "start":
@@ -172,4 +171,4 @@ const lapCounterControl = (type) => {
 }
 
 
-setTimeout(() => lapCounterControl("start"), 1000);
+//setTimeout(() => lapCounterControl("start"), 1000);
