@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb41299e-d822-4c43-b753-4419c52080f4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/RoboTV.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RoboTV.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/classes/socket.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/classes/socket.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/assets/css/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/assets/css/main/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tpl/assets/css/page/brackets.css" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/assets/css/page/brackets.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/assets/images/ESP.png" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/assets/images/ESP.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/assets/images/ESPFill.png" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/assets/images/ESPFill.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/assets/images/arduino_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/assets/images/arduino_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/assets/js/live/bracket.js" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/assets/js/live/bracket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/assets/js/live/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/assets/js/live/chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/assets/js/live/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/assets/js/live/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/assets/js/live/toast.js" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/assets/js/live/toast.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/handlers/handler.api.php" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/handlers/handler.api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/moderator/pages/games/handlers/handler.control.php" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/moderator/pages/games/handlers/handler.control.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/moderator/pages/games/views/control.php" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/moderator/pages/games/views/control.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +91,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -100,6 +116,7 @@
       <updated>1618005700551</updated>
       <workItem from="1618005703017" duration="27348000" />
       <workItem from="1618139510598" duration="10349000" />
+      <workItem from="1618349308254" duration="8429000" />
     </task>
     <servers />
   </component>

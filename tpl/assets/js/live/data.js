@@ -26,6 +26,7 @@ const closePolls = () => {
 
 const currentlyPlaying = (bot, game) => {
     if(document.querySelector("video") !== null) {
+        console.log("hoi");
         document.getElementById("currentGame").innerHTML = game;
         document.getElementById("currentRobot").innerHTML = bot;
     }
@@ -89,5 +90,5 @@ const dataWebSocketConnect = (id) => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    showPollToast(0, true, "test", {"CUSTOM" :['1', '2', '3', '4', '5']});
+
 });
