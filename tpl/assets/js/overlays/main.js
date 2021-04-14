@@ -13,7 +13,7 @@ const getPlaylist = () => {
     Http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     Http.onreadystatechange = () => {
-        console.log(Http.getResponseHeader("response"));
+        console.log(Http.getResponseHeader("playlist"));
     }
 }
 const clockCheck = () => {
