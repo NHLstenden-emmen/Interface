@@ -36,13 +36,13 @@
             </p>
 
                 <br /> <br />
-                <?php if($user->level == 4) {?>
-                        <h5 class="title">Polls</h5>
+                <?php //if($user->level == 4) {?>
+                <!--        <h5 class="title">Polls</h5>
                     <label><input id="pollText" type="text" placeholder="Pollvraag.."</label><br /><br />
                     <label><input id="pollOptie" type="text"  placeholder="Opties (gescheiden door een komma)"></label><br />
                     <label><input id="pollLength" type="number"  placeholder="Lengte in seconds"></label><br />
-                    <button id="submitForm" onclick="requestRegularPoll()"><i class="fas fa-poll"></i> Send</button>
-                <?php } ?>
+                    <button id="submitForm" onclick="requestRegularPoll()"><i class="fas fa-poll"></i> Send</button> -->
+                <?php //} ?>
         </div>
     </div>
 </div>        

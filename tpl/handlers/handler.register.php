@@ -40,10 +40,8 @@ if(isset($_POST['regSubmit']))
 						// Dit is een bot
 						echo "<script>alert('Het vermoeden gaat dat je een robot bent, ben je het hier niet mee eens? Probeer het opnieuw!');</script>";
 						header('Location: register');
-					}
-						
-						
-						
+					}					
+											
                         $voorNaam = $_POST['voorNaam'];
                         $achterNaam = $_POST['achterNaam'];
                         $regEmail = strtolower($_POST['regEmail']);
@@ -56,14 +54,17 @@ if(isset($_POST['regSubmit']))
                         if($regAntwoord == 1)
                         {
                             $this->Set("regError", $this->Get("GEBRUIKER_BESTAAT"));
+							echo "<script>alert('Gebruiker bestaat al.');</script>";
                         }
                         else if($regAntwoord == 2)
                         {
                             $this->Set("regError", $this->Get("WACHTWOORD_NIETOVEREEN"));
+							echo "<script>alert('Wachtwoorden komen niet overeen');</script>";
                         }
                         else if($regAntwoord == 3)
                         {
                             $this->Set("regError", $this->Get("GELDIGE_MAIL"));
+							echo "<script>alert('Gebruik een NHL Stenden mailadres!');</script>";
                         }
                         else if($regAntwoord == 4)
                         {

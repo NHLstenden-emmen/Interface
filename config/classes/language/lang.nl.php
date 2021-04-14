@@ -45,6 +45,7 @@ $this->lang['NAV_SCHEME'] = 'Speelschema';
 $this->lang['NAV_STATS'] = 'Scorebord';
 $this->lang['NAV_RULES'] = 'Speluitleg';
 $this->lang['NAV_LOGIN'] = 'Login';
+$this->lang['USENHLACCOUNT'] = 'Gebruik een NHL Stenden mailaccount*';
 $this->lang['NAV_LOGOUT'] = 'Uitloggen';
 $this->lang['NAV_DASHBOARD'] = 'Dashboard';
 $this->lang['SCHEME_TITLE'] = 'Speelschema';

@@ -948,7 +948,7 @@ class Brackets {
 let webSocketData;
 
 const openWebSockets = () => {
-    webSocketData = new WebSocket("ws://77.162.30.112:49151");
+    webSocketData = new WebSocket(webSocketURL + "49151");
 
     webSocketData.addEventListener("message", (evt) => {
         brackets.parseJSON(evt.data);

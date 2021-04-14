@@ -6,6 +6,7 @@
         {regError}
         <form method="post" autocomplete="off">
             <br />
+			<p><i>{USENHLACCOUNT}</i></p><br />
             <input type="text" name="voorNaam" placeholder="{VOORNAAM}" required><br />
             <input type="text" name="achterNaam" placeholder="{ACHTERNAAM}" required><br />
             <input type="email" name="regEmail" placeholder="{EMAIL}" required><br />

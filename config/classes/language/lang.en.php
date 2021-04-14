@@ -63,6 +63,7 @@ $this->lang['GEBRUIKERS'] = 'Users';
 $this->lang['VERIFYACCOUNT'] = 'Check your email to verify the account!';
 $this->lang['BANNEDACCOUNT'] = 'This IP Adress is banned, you can still watch the livestream!';
 $this->lang['NAME'] = 'Name';
+$this->lang['USENHLACCOUNT'] = 'Use a NHL Stenden mailaccount*';
 $this->lang['PASSWORD_RESET'] = 'Forgot password?';
 $this->lang['SEND_MAIL'] = 'Send email';
 $this->lang['WACHTWOORD_RESET'] = 'Reset password';
