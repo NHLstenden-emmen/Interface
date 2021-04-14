@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2021 at 12:04 AM
+-- Generation Time: Apr 14, 2021 at 03:36 PM
 -- Server version: 8.0.23
 -- PHP Version: 7.4.16
 
@@ -29,16 +29,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `actions` (
   `ActionID` int NOT NULL,
-  `type_ac` varchar(50) NOT NULL,
-  `user` varchar(100) NOT NULL,
+  `UserID` int DEFAULT '0',
+  `ActionType` varchar(50) NOT NULL,
   `keyInt` varchar(5) NOT NULL,
-  `keyChar` varchar(5) NOT NULL,
-  `clickValue` varchar(255) NOT NULL,
+  `keyChar` varchar(50) NOT NULL,
+  `Value` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
   `device` varchar(255) NOT NULL,
   `screen` varchar(15) NOT NULL,
-  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ip` varchar(20) NOT NULL
+  `ip` varchar(20) NOT NULL,
+  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -63,6 +63,85 @@ INSERT INTO `livedata` (`type`, `json`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `playlist`
+--
+
+CREATE TABLE `playlist` (
+  `SongID` int NOT NULL,
+  `Title` varchar(255) NOT NULL,
+  `Artist` varchar(255) NOT NULL,
+  `Location` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `playlist`
+--
+
+INSERT INTO `playlist` (`SongID`, `Title`, `Artist`, `Location`) VALUES
+(1, 'Whats Up?', '4 Non Blondes', '/tpl/assets/sound/countdown/1.mp3'),
+(2, 'Take on Me', 'a-ha', '/tpl/assets/sound/countdown/2.mp3'),
+(3, 'Forever Young', 'Interactive', '/tpl/assets/sound/countdown/3.mp3'),
+(4, 'Do I Wanna Know', 'Arctic Monkeys', '/tpl/assets/sound/countdown/4.mp3'),
+(5, 'The Nights', 'Avicii', '/tpl/assets/sound/countdown/5.mp3'),
+(6, 'More Than You Know', 'Axwell & Ingrosso', '/tpl/assets/sound/countdown/6.mp3'),
+(7, 'Habiba', 'Boef', '/tpl/assets/sound/countdown/8.mp3'),
+(8, 'Flying High', 'Captain Hollywood', '/tpl/assets/sound/countdown/12.mp3'),
+(9, 'Believe ', 'Cher', '/tpl/assets/sound/countdown/14.mp3'),
+(10, 'Moskau', 'Da Tweekaz', '/tpl/assets/sound/countdown/15.mp3'),
+(11, 'Sandstorm', 'Darude', '/tpl/assets/sound/countdown/16.mp3'),
+(12, 'Strjitlizzer', 'De Doelleazen', '/tpl/assets/sound/countdown/17.mp3'),
+(13, 'One Tribe', 'Sefa', '/tpl/assets/sound/countdown/18.mp3'),
+(14, 'September', 'Earth, Wind & Fire', '/tpl/assets/sound/countdown/19.mp3'),
+(15, 'Jailhouse Rock', 'Elvis Presley', '/tpl/assets/sound/countdown/20.mp3'),
+(16, 'The Final Countdown', 'Europe', '/tpl/assets/sound/countdown/21.mp3'),
+(17, 'Sweet Dreams (Are Made of This)', 'Eurythmics', '/tpl/assets/sound/countdown/22.mp3'),
+(18, 'Het land van FvD ;)', 'Thierry B & Lange Hans', '/tpl/assets/sound/countdown/23.mp3'),
+(19, 'Whistle', 'Flo Rida', '/tpl/assets/sound/countdown/24.mp3'),
+(20, 'Pumped Up Kicks', 'Foster the People', '/tpl/assets/sound/countdown/25.mp3'),
+(21, 'Runaway (U & I)', 'Galantis', '/tpl/assets/sound/countdown/26.mp3'),
+(22, 'Somebody That I Used to Know', 'Gotye', '/tpl/assets/sound/countdown/27.mp3'),
+(23, 'What is Love', 'Haddaway', '/tpl/assets/sound/countdown/28.mp3'),
+(24, 'Hangover', 'Taio Cruz', '/tpl/assets/sound/countdown/29.mp3'),
+(25, 'Happy Togerther', 'The Jam', '/tpl/assets/sound/countdown/30.mp3'),
+(26, 'Hey Jude', 'The Beatles', '/tpl/assets/sound/countdown/31.mp3'),
+(27, 'Dont Stop Believin', 'Journey', '/tpl/assets/sound/countdown/32.mp3'),
+(28, 'Come & Go', 'Juice WRLD', '/tpl/assets/sound/countdown/33.mp3'),
+(29, 'Good Life', 'G-Eazy', '/tpl/assets/sound/countdown/34.mp3'),
+(30, 'Just Dance', 'Lady Gaga', '/tpl/assets/sound/countdown/35.mp3'),
+(31, 'Euphoria', 'Loreen', '/tpl/assets/sound/countdown/36.mp3'),
+(32, 'My ex&#39;s best friend', 'Machine Gun Kelly', '/tpl/assets/sound/countdown/37.mp3'),
+(33, 'Payphone', 'Maroon 5', '/tpl/assets/sound/countdown/38.mp3'),
+(34, 'Crash', 'Matt Willis', '/tpl/assets/sound/countdown/39.mp3'),
+(35, 'Mr. Blue Sky', 'Electric Light Orchestra', '/tpl/assets/sound/countdown/40.mp3'),
+(36, 'My Heart will Go on', 'Titanic', '/tpl/assets/sound/countdown/41.mp3'),
+(37, 'Am I Wrong', 'Nice & Vinz', '/tpl/assets/sound/countdown/42.mp3'),
+(38, 'Don&#39;t Worry', 'Madcon', '/tpl/assets/sound/countdown/43.mp3'),
+(39, 'Good Time', 'Owl City', '/tpl/assets/sound/countdown/44.mp3'),
+(40, 'Timber', 'Pitbull', '/tpl/assets/sound/countdown/45.mp3'),
+(41, 'Cirlces', 'Post Malone', '/tpl/assets/sound/countdown/46.mp3'),
+(42, 'Saint-Tropez', 'Post Malone', '/tpl/assets/sound/countdown/47.mp3'),
+(43, 'Don&#39;t stop me now', 'Queen', '/tpl/assets/sound/countdown/48.mp3'),
+(44, 'Bohemian Rhapsody', 'Queen', '/tpl/assets/sound/countdown/49.mp3'),
+(45, 'Never Gonna Give You Up', 'Rick Astley', '/tpl/assets/sound/countdown/51.mp3'),
+(46, 'All Stars', 'Smash Mouth', '/tpl/assets/sound/countdown/52.mp3'),
+(47, 'Tacata', 'Tacabro', '/tpl/assets/sound/countdown/53.mp3'),
+(48, 'Dynamite', 'Taio Cruz', '/tpl/assets/sound/countdown/54.mp3'),
+(49, 'Mr Brightside', 'The Killers', '/tpl/assets/sound/countdown/55.mp3'),
+(50, 'I&#39;m Gonna Be (500 miles)', 'The Proclaimers', '/tpl/assets/sound/countdown/56.mp3'),
+(51, 'Tis net echt hé', 'Rapper Sjors & Udo de Beatboxer', '/tpl/assets/sound/countdown/57.mp3'),
+(52, 'Africa', 'Toto', '/tpl/assets/sound/countdown/58.mp3'),
+(53, 'Hold The Line', 'Toto', '/tpl/assets/sound/countdown/59.mp3'),
+(54, 'Dreamscape', '009 Sound System', '/tpl/assets/sound/countdown/60.mp3'),
+(55, 'Wêr Bisto', 'Twarres', '/tpl/assets/sound/countdown/61.mp3'),
+(56, 'Jump', 'Van Halen', '/tpl/assets/sound/countdown/62.mp3'),
+(57, 'A Thousand Miles', 'Vanessa Carlton', '/tpl/assets/sound/countdown/63.mp3'),
+(58, 'We Like To Party', 'Vengaboys', '/tpl/assets/sound/countdown/64.mp3'),
+(59, 'Wake me up before you go-go', 'Wham!', '/tpl/assets/sound/countdown/65.mp3'),
+(60, 'I wanna dance with somebody', 'Withney Houston', '/tpl/assets/sound/countdown/66.mp3');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `punten`
 --
 
@@ -77,8 +156,7 @@ CREATE TABLE `punten` (
 --
 
 INSERT INTO `punten` (`game`, `robot`, `score`) VALUES
-('doolhof', 'BOT1', 20),
-('doolhof', 'BOT2', 25);
+('doolhof', 'ROBot Jetten', 20);
 
 -- --------------------------------------------------------
 
@@ -99,7 +177,16 @@ CREATE TABLE `resultaat` (
 INSERT INTO `resultaat` (`game`, `robot`, `score`) VALUES
 ('doolhof', 'BOT1', '00:00.700'),
 ('doolhof', 'BOT2', '00:00.557'),
-('RACE1', 'BrokkoBot', '01:06.826');
+('RACE1', 'BrokkoBot', '01:06.826'),
+('RACE10', 'ROBot Jetten', '00:41.346'),
+('RACE10', 'Wall-D', '00:53.878'),
+('RACE6', 'BumbleBert', '00:54.641'),
+('RACE6', 'Wall-D', '01:13.368'),
+('RACE7', 'Dimitri', '01:34.823'),
+('RACE7', 'ROBot Jetten', '00:39.342'),
+('RACE8', 'BrokkoBot', '01:28.287'),
+('RACE9', 'Dimitri', '00:37.107'),
+('RACE9', 'Wall-D', '01:09.129');
 
 -- --------------------------------------------------------
 
@@ -109,8 +196,8 @@ INSERT INTO `resultaat` (`game`, `robot`, `score`) VALUES
 
 CREATE TABLE `security` (
   `securityID` int NOT NULL,
-  `Type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `Value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Type` varchar(255) NOT NULL,
+  `Value` varchar(255) NOT NULL,
   `Created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2181,7 +2268,7 @@ CREATE TABLE `speelschema` (
 
 CREATE TABLE `teams` (
   `TeamID` varchar(2) NOT NULL,
-  `TeamDesc_NL` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `TeamDesc_NL` longtext NOT NULL,
   `TeamDesc_EN` longtext NOT NULL,
   `RobotName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2191,11 +2278,11 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`TeamID`, `TeamDesc_NL`, `TeamDesc_EN`, `RobotName`) VALUES
-('1A', ' ', '', 'Bumble Bert'),
+('1A', 'In 2021, a crack commando unit was sent to prison\r\nby a military court for a robot they didn\'t make.\r\nThese people promptly escaped from a maximum security stockade\r\nto the Emmen underground.\r\nToday, still wanted by the government they survive as software engineers of fortune.\r\nIf you have a problem, if no one else can help, and if you can find them...\r\nmaybe you can hire The A-Team.', 'In 2021, a crack commando unit was sent to prison by a military court for a robot they didn\'t make. These people promptly escaped from a maximum security stockade to the Emmen underground. Today, still wanted by the government they survive as software engineers of fortune. If you have a problem, if no one else can help, and if you can find them... maybe you can hire The A-Team.', 'BumbleBert'),
 ('1B', 'Dimitri de 14e was vroeger het huisdier van Vladimir Putin, omdat Putin allergisch was voor hondenharen, liet hij zijn knechten een robot programmeren, die zou lijken op een hond. De programmeurs sloegen een beetje door, waardoor het meer een mensachtig beest werd, dan een hond. Dimitri hielp Putin met sporten, eten, slapen en allerlei andere dingen wat Putin zelf niet kon. Dimitri had soms ook vrij, in zijn vrije tijd ging hij golfen in zijn tuin van 12 hectare met een wijntje en een Ralph Lauren polo aan met een vest schuin over zijn bovenlichaam. Tijdens het golfen had Dimitri wel een goeie jam nodig om op te viben, dus luisterde hij naar het Nederlandse supertalent Famke Louise. Toen Putin hem betrapte tijdens het luisteren naar “Vroom”, sloeg hij helemaal door. Putin was zelf niet echt van buitenlandse muziek, en vooral niet deze stijl. Hij luisterde zelf liever naar Tri Poloski, of EZ4ENCE. Omdat Putin zo boos werd, besloot Dimitri te vertrekken. Hij pakte 1 van Putins tanks, en zette koers richting het vliegveld, waarin hij met een F16 naar Nederland vertrok. Hij kwam er als doel om het hart van Famke te veroveren, maar wilde dit op een goede manier doen. Om haar aandacht te krijgen, doet hij mee aan Project Battlebots. Hij is hier met het doel om alles en iedereen te verslaan, kosten wat het kost.', 'Dimitri the 14th used to be Vladimir Putin\'s pet, because Putin was allergic to dog hair, he had his servants program a robot that would look like a dog. The programmers blew a bit, making it more of a human-like beast than a dog. Dimitri helped Putin with sports, eating, sleeping and all kinds of other things that Putin could’nt do himself. Dimitri also had some time off, in his spare time he played golf at his 12-hectare garden with a glass of wine and a Ralph Lauren polo with a vest sloping over his upper body. While playing golf, Dimitri needed a good jam to vibe on, so he listened to the Dutch super talent Famke Louise. When Putin caught him listening to “Vroom”, he went completely crazy. Putin himself was not really into foreign music, especially this style. He preferred to listen to Tri Poloski, or EZ4ENCE himself. Because Putin got so angry, Dimitri decided to leave. He picked up 1 of Putin\'s tanks and set course to the airfield, where he left for the Netherlands with an F16 Jet. His goal was to find a way into Famke\'s heart, but wanted to do it in a good way. To get her attention, he participates in Project Battlebots. He\'s here with the aim of beating anything and everything at any cost.\r\n', 'Dimitri'),
 ('1C', '', '', 'BrokkoBot'),
-('1D', 'Waste Allocation Load Lifter D-class, voor vrienden Wall-D, is de relatief onbekende broer van de wereldberoemde Wall-E. Hoewel beide gemaakt zijn om afval samen te persen en op te ruimen, schopte Wall-D het nog niet zover als Wall-E, die inmiddels voor een zakenreis op het ruimteschip Axiom verblijft.&#13;&#10;Wall-D overleeft, net als Wall-E voor zijn skyrocketing carrière, door zichzelf te repareren met onderdelen van andere robots. Daarvoor doet hij regelmatig mee met robot contests, om andere robots te CRUSHEN en zo hun onderdelen mee te nemen, zodat hij weer een tijdje door kan.&#13;&#10;Wall-D heeft een team professionals ingehuurd om hem hierbij te helpen. Van manager tot planner: dit team laat Wall-D reiken tot ongekende hoogte. Hij wordt door hen dagelijks voorzien van updates en rapportages. Er worden ook prognoses en kansen opgesteld, die teruggekoppeld worden naar het hoofdkwartier.&#13;&#10;Maak dan ook plaats voor Wall-D, die ongekend gemotiveerd is om iedereen en alles op zijn pad te slopen om door te gaan met zijn roeping: afval opruimen.', 'Waste Allocation Load Lifter D-class, voor vrienden Wall-D, is de relatief onbekende broer van de wereldberoemde Wall-E. Hoewel beide gemaakt zijn om afval samen te persen en op te ruimen, schopte Wall-D het nog niet zover als Wall-E, die inmiddels voor een zakenreis op het ruimteschip Axiom verblijft.&#13;&#10;Wall-D overleeft, net als Wall-E voor zijn skyrocketing carrière, door zichzelf te repareren met onderdelen van andere robots. Daarvoor doet hij regelmatig mee met robot contests, om andere robots te CRUSHEN en zo hun onderdelen mee te nemen, zodat hij weer een tijdje door kan.&#13;&#10;Wall-D heeft een team professionals ingehuurd om hem hierbij te helpen. Van manager tot planner: dit team laat Wall-D reiken tot ongekende hoogte. Hij wordt door hen dagelijks voorzien van updates en rapportages. Er worden ook prognoses en kansen opgesteld, die teruggekoppeld worden naar het hoofdkwartier.&#13;&#10;Maak dan ook plaats voor Wall-D, die ongekend gemotiveerd is om iedereen en alles op zijn pad te slopen om door te gaan met zijn roeping: afval opruimen.', 'Wall-D'),
-('1E', 'ROBot Jetten, onze prachtige cyborg en de beste robot die er is. De andere A.I. zijn er absoluut niets bij. Zo snel, dat je hem gewoon niet kan volgen. De tekeningen zo precies, zoals je nog nooit hebt gekend. Steen, papier, schaar? Geen verliezen aan! Zo snel door de doolhof heen, dat je denkt dat er wordt valsgespeeld. Onderschat de kracht van ROBot Jetten niet! Zo is deze robot niet alleen een winnaar, maar ook een leider. Stem voor een nieuwe leider!\r\n<br><br>\r\nDeze beste en prachtige robot ooit is geprogrammeerd door: Erik Jan Zandberg, Feike Falkena, John Horstman, Peter Bos, Daisy Bruggeman, Tamme Tuncil en Simchaja Schonewille.\r\n', 'ROBot Jetten, onze prachtige cyborg en de beste robot die er is. De andere A.I. zijn er absoluut niets bij. Zo snel, dat je hem gewoon niet kan volgen. De tekeningen zo precies, zoals je nog nooit hebt gekend. Steen, papier, schaar? Geen verliezen aan! Zo snel door de doolhof heen, dat je denkt dat er wordt valsgespeeld. Onderschat de kracht van ROBot Jetten niet! Zo is deze robot niet alleen een winnaar, maar ook een leider. Stem voor een nieuwe leider!', 'ROBot Jetten');
+('1D', 'Waste Allocation Load Lifter D-class, voor vrienden Wall-D of D-class, is de relatief onbekende broer van de wereldberoemde Wall-E. Hoewel beide gemaakt zijn om afval samen te persen en op te ruimen, schopte Wall-D het nog niet zover als Wall-E, die inmiddels voor een zakenreis op het ruimteschip Axiom verblijft.\r\nWall-D overleeft, net als Wall-E voor zijn skyrocketing carrière, door zichzelf te repareren met onderdelen van andere robots. Daarvoor doet hij regelmatig mee met robot contests, om andere robots te CRUSHEN en zo hun onderdelen mee te nemen, zodat hij weer een tijdje door kan.\r\nD-class heeft een team professionals ingehuurd om hem hierbij te helpen. Van manager tot planner: dit team laat Wall-D reiken tot ongekende hoogte. Hij wordt door hen dagelijks voorzien van updates en rapportages. Er worden ook prognoses en kansen opgesteld, die teruggekoppeld worden naar het hoofdkwartier.\r\nMaak dan ook plaats voor Wall-D, die ongekend gemotiveerd is om iedereen en alles op zijn pad te slopen om door te gaan met zijn roeping: afval opruimen.', 'Waste Allocation Load Lifter D-class, Wall-D or D-class for friends, is the relatively unknown brother of the famous Wall-E. Although they’re both made to compress and clean up waste, D-class hasn’t made it as far as his brother, who’s currently staying on the Axiom-spaceship for a business trip. \r\nWall-D survives by repairing himself with the components of other robots, just like Wall-E did before his skyrocketing career. For this purpose, he regularly participates in robot contests to CRUSH other bots, subsequently taking their components, so he can go on for a while.\r\nD-class has hired a team of professionals to support him with this. From manager to planner: this team will make Wall-D reach to unprecedented heights. They daily provide him with updates and reports. In the headquarters they’re also making forecasts, providing Wall-D insight into his chances.\r\nThus, make way for Wall-D, who’s incredibly motivated to destroy everything and anything standing in his way to continue with his vocation: cleaning up waste.', 'Wall-D'),
+('1E', 'ROBot Jetten, onze prachtige cyborg en de beste robot die er is. De andere A.I. zijn er absoluut niets bij. Zo snel, dat je hem gewoon niet kan volgen. De tekeningen zo precies, zoals je nog nooit hebt gekend. Steen, papier, schaar? Geen verliezen aan! Zo snel door de doolhof heen, dat je denkt dat er wordt valsgespeeld. Onderschat de kracht van ROBot Jetten niet! Zo is deze robot geen winnaar, maar een leider. Stem voor een nieuwe leider!', 'ROBot Jetten, our beautiful cyborg and the best robot in existence. The other A.I. are absolutely nothing alike. So fast, you just can\'t follow him. The drawings so precise, as you have never known. Rock Paper Scissors? No losses! Get through the maze so fast you\'ll think it\'s cheating. Don\'t underestimate the power of ROBot Jetten! This robot is not a winner, but a leader. Vote for a new leader! ', 'ROBot Jetten');
 
 -- --------------------------------------------------------
 
@@ -2204,14 +2291,14 @@ INSERT INTO `teams` (`TeamID`, `TeamDesc_NL`, `TeamDesc_EN`, `RobotName`) VALUES
 --
 
 CREATE TABLE `users` (
-  `user_id` int NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `voornaam` varchar(100) NOT NULL,
-  `achternaam` varchar(100) NOT NULL,
-  `team` char(2) DEFAULT NULL,
-  `level` int NOT NULL DEFAULT '0',
-  `lang` varchar(2) NOT NULL DEFAULT 'nl',
+  `UserID` int NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `firstName` varchar(100) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
+  `Team` char(2) DEFAULT NULL,
+  `Level` int NOT NULL DEFAULT '0',
+  `Lang` varchar(2) NOT NULL DEFAULT 'nl',
   `lastIp` varchar(255) DEFAULT NULL,
   `loginKey` varchar(255) DEFAULT NULL,
   `verificationKey` varchar(255) DEFAULT NULL,
@@ -2222,18 +2309,35 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `email`, `password`, `voornaam`, `achternaam`, `team`, `level`, `lang`, `lastIp`, `loginKey`, `verificationKey`, `deleted_at`) VALUES
-(1, 'feike', '$2y$10$83eUKedBVSOexTQpvMPMXOEndhy5kqwRC1ZZTgNQAAUE77rHFhZdO', 'Feike', ' Falkena', '1E', 2, 'nl', '141.0.29.254', '1617832618', NULL, NULL),
-(2, 'remco', '$2y$10$u3OHfev1oU8c4ojXAkWS9udKWOtYefXpkvzKFsYAhSNgcXWPHz2Jq', 'Remco', 'Hassing', '1C', 2, 'nl', '141.0.29.254', '1617832411', NULL, NULL),
-(3, 'kevin.smulders@student.nhlstenden.com', '$2y$10$cujvh9UZ.NmPIj6rdFY5veYhuzEhVM9fvrXhgV35sbiCm6C/0urVi', 'Kevin', 'Smulders', '1B', 2, 'nl', NULL, NULL, NULL, NULL),
-(6, 'moderator1', '$2y$10$VYG2bjjOfibHXE4ON2.B1emnJ/Fbq.GnoSav5XfuNDG43qIRldU16', 'Moderator', '1', NULL, 2, 'nl', NULL, NULL, NULL, NULL),
-(7, 'moderator2', '$2y$10$mBnuyj.YwhoY/4jHD/gDyezdoYhSrDPLKl/gUtWKr/4dOaMwLG5Fm', 'moderator', '2', NULL, 2, 'nl', NULL, NULL, NULL, NULL),
-(8, 'moderator3', '$2y$10$v/5Bd03fxHZ.1fM3m.SU6ew6A5rLQO9iGNhTWFST0qkwp0x9KRNdW', 'moderator', '3', NULL, 2, 'nl', NULL, NULL, NULL, NULL),
+INSERT INTO `users` (`UserID`, `Email`, `Password`, `firstName`, `lastName`, `Team`, `Level`, `Lang`, `lastIp`, `loginKey`, `verificationKey`, `deleted_at`) VALUES
+(1, 'feike', '$2y$10$83eUKedBVSOexTQpvMPMXOEndhy5kqwRC1ZZTgNQAAUE77rHFhZdO', 'Feike', 'Falkena', '1E', 4, 'nl', '141.0.29.254', '1618404659', NULL, NULL),
+(2, 'remco', '$2y$10$u3OHfev1oU8c4ojXAkWS9udKWOtYefXpkvzKFsYAhSNgcXWPHz2Jq', 'Remco', 'Hassing', '1C', 4, 'nl', '::1', '1618312588', NULL, NULL),
+(3, 'kevin.smulders@student.nhlstenden.com', '$2y$10$cujvh9UZ.NmPIj6rdFY5veYhuzEhVM9fvrXhgV35sbiCm6C/0urVi', 'Kevin', 'Smulders', '1B', 4, 'nl', '82.72.109.10', '1618391353', NULL, NULL),
+(6, 'moderator1', '$2y$10$VYG2bjjOfibHXE4ON2.B1emnJ/Fbq.GnoSav5XfuNDG43qIRldU16', 'Moderator', '1', NULL, 3, 'nl', '::1', '1618388680', NULL, NULL),
+(7, 'moderator2', '$2y$10$mBnuyj.YwhoY/4jHD/gDyezdoYhSrDPLKl/gUtWKr/4dOaMwLG5Fm', 'moderator', '2', NULL, 3, 'nl', NULL, NULL, NULL, NULL),
+(8, 'moderator3', '$2y$10$v/5Bd03fxHZ.1fM3m.SU6ew6A5rLQO9iGNhTWFST0qkwp0x9KRNdW', 'moderator', '3', NULL, 3, 'nl', NULL, NULL, NULL, NULL),
 (9, 'teama@student.nhlstenden.com', '$2y$10$YzHcNiVD3sH/g3PPxEoVwuoKDbXl8k0Kasp6sa8gy1PQ/TBB4QMh2', 'Team', 'A', '1A', 1, 'nl', NULL, NULL, NULL, NULL),
 (10, 'teamb@student.nhlstenden.com', '$2y$10$PxbQBjg8qYI4wE/ypk1.8OCQWwXWgLdvtKdFzA4F/D2fugMcn1fNu', 'Team', 'B', '1B', 1, 'nl', NULL, NULL, NULL, NULL),
-(11, 'teamc@student.nhlstenden.com', '$2y$10$syvecCQOWWX3mVdqBbJs/ufncbh9PUzZvd07d3tBI/BFvOeF5YW2C', 'Team', 'C', '1C', 1, 'nl', NULL, NULL, NULL, NULL),
-(12, 'teamd@student.nhlstenden.com', '$2y$10$wL3VNLTwoWcLNSzXNiD4COF.Zgbw8Z6s5JPY9JGsvvQ/MlzTy5Bq2', 'Team', 'D', '1D', 1, 'nl', NULL, NULL, NULL, NULL),
-(13, 'teame@student.nhlstenden.com', '$2y$10$VEGSaNnBKOAgjc634yDEXO0HyZR.rth5JNMBU8JIgZ6T8UpEDHYoC', 'Team', 'E', '1E', 1, 'nl', NULL, NULL, NULL, NULL);
+(11, 'teamc@student.nhlstenden.com', '$2y$10$syvecCQOWWX3mVdqBbJs/ufncbh9PUzZvd07d3tBI/BFvOeF5YW2C', 'Team', 'C', '1C', 1, 'nl', '94.157.123.34', '1618316986', NULL, NULL),
+(12, 'teamd@student.nhlstenden.com', '$2y$10$wL3VNLTwoWcLNSzXNiD4COF.Zgbw8Z6s5JPY9JGsvvQ/MlzTy5Bq2', 'Team', 'D', '1D', 1, 'nl', '94.213.86.250', '1618407275', NULL, NULL),
+(13, 'teame@student.nhlstenden.com', '$2y$10$VEGSaNnBKOAgjc634yDEXO0HyZR.rth5JNMBU8JIgZ6T8UpEDHYoC', 'Team', 'E', '1E', 1, 'nl', '94.157.123.34', '1618315808', NULL, NULL),
+(20, 'lapcounter', '$2y$10$qXxb/0CFCk.A6dHPHA6g7O1lMpje/EtWydwYszaBS.yEWG1bTAe46', 'Lapcounter', ' ', NULL, 4, 'nl', '194.171.182.60', '1617864334', NULL, NULL),
+(32, 'talip.korkut@student.nhlstenden.com', '$2y$10$M2U9yr2oeHF0GWPIVVJyk.DSDM.sjuV5WDkZYsVV2HkteipL0KiXO', 'Talip', 'Korkut', NULL, 0, 'nl', '77.161.39.91', '1618387529', NULL, NULL),
+(33, 'erik.jan.zandberg@student.nhlstenden.com', '$2y$10$vbeXcbpC4kSge4tk3Lr8S.jaPb/jTPDy2.AXObf6uX1/MWeCiJzDe', 'Erik Jan', 'Zandberg', '1E', 1, 'nl', '147.12.12.214', '1618399673', NULL, NULL),
+(34, 'roan.meijer@student.nhlstenden.com', '$2y$10$eNyRvQKtwj7ljxm/BH6IS.w.z/T91MSPk0/Pq2p6WJLxqPUj5Zyy2', 'Roan', 'Meijer', NULL, 0, 'nl', '109.37.139.0', '1618388526', NULL, NULL),
+(35, 'tamara@student.nhlstenden.com', '$2y$10$A97EaJESKZh6kfusnp1WZ.fTkWyw.hhyUUKnzg/bOmJHNBZ50NVK.', 'Tamara', 'Kijk', '1A', 4, 'nl', '217.122.34.147', '1618391556', NULL, NULL),
+(36, 'esmee.kajuiter@student.nhlstenden.com', '$2y$10$g46Uh7UB8y/JIdIBT4e9geyk4R3H5bD33gCP4taRtuihmhDoyk6pW', 'Esmee', 'Kajuiter', '1C', 0, 'nl', NULL, NULL, NULL, NULL),
+(37, 'david.vos@student.nhlstenden.com', '$2y$10$o2StLVHIHbtwr6.UsZ3ds.DyYc2fjRedXf4zdOW2ARq1EhL6q/0Qa', 'David', 'Vos', '1D', 0, 'nl', '94.213.86.250', '1618406659', NULL, NULL),
+(38, 'nathan.vos@student.nhlstenden.com', '$2y$10$sZCpTmnxXud6AW8k.QBp4.7OCargY1WcjAJP0LHLR1g2gy.zk0VK.', 'Nathan', 'Vos', '1D', 0, 'nl', NULL, NULL, NULL, NULL),
+(39, 'tim.aalders@student.nhlstenden.com', '$2y$10$WBcvIpgywkF8q0O6HBUHG.msAZtnGiW5Yip6M8aJ1gnkb6l4xM6OC', 'Tim', 'Aalders', NULL, 0, 'nl', NULL, NULL, NULL, NULL),
+(40, 'tamme.tuncil@student.nhlstenden.com', '$2y$10$qo4k/GWxstP.Ol30vD8Dv.KAwMtamJeX.gF/AUKq4EtVZ4AZhkeaW', 'Tamme', 'Tuncil', '1E', 0, 'nl', NULL, NULL, NULL, NULL),
+(41, 'batuhan.gezgin@student.nhlstenden.com', '$2y$10$eEHUP6xgCfZxjbe6VVujCObk2cIfWhx4U8c4TQ4IX7Iap9EL3oOaS', 'Batuhan', 'Gezgin', NULL, 0, 'nl', '94.213.122.76', '1618393209', NULL, NULL),
+(42, 'jeffrey.roossien@student.nhlstenden.com', '$2y$10$BQiN6tnmRy6xFRQ7jpdv7uAinkdz.m383TzaaRwByZe1IAG0T09mu', 'Jeffrey', 'Roossien', NULL, 0, 'nl', '217.122.30.33', '1618400563', NULL, NULL),
+(44, 'simchaja.schonewille1@student.nhlstenden.com', '$2y$10$fpPwSrMUWSsfUclYeEW/S.qxaJcjH4xXf.pCuTPCAUFpIBS78tW6q', 'Simchaja', 'Schonewille', '1E', 0, 'nl', NULL, NULL, NULL, NULL),
+(45, 'lucas.haijtink@student.nhlstenden.com', '$2y$10$1kYl3REPELVXTXXkpVEcf.eOnhwBFzgYReAgEcKzPx2j4kbJrypL6', 'Lucas', 'Haijtink', NULL, 0, 'nl', NULL, NULL, NULL, NULL),
+(46, 'hylke.sijbesma@student.nhlstenden.com', '$2y$10$yjr5qYFbvMfF5a8F9PmVt.6cQfQ.oLu6hJQj4FtWL81q2DkCfupx6', 'Hylke', 'Sybesma', '1A', 1, 'nl', '94.213.200.43', '1618396916', NULL, NULL),
+(47, 'sjouke.van.der.wal@student.nhlstenden.com', '$2y$10$j/uojJlcSN0RQOwD2xoBYelaCsbIZ4Min6ysNgTPPDSeXOUYfpvLe', 'Sjouke', 'van der Wal', NULL, 0, 'nl', NULL, NULL, NULL, NULL),
+(48, 'arjan.loof1@student.nhlstenden.com', '$2y$10$Dy9qhhYozjP5/uHmEjrl1.Ik2ynNhhTamcFUb91ZUeprBCtctpiYe', 'Arjan', 'Loof', NULL, 0, 'nl', '86.95.30.100', '1618404631', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -2243,13 +2347,21 @@ INSERT INTO `users` (`user_id`, `email`, `password`, `voornaam`, `achternaam`, `
 -- Indexes for table `actions`
 --
 ALTER TABLE `actions`
-  ADD PRIMARY KEY (`ActionID`);
+  ADD PRIMARY KEY (`ActionID`),
+  ADD KEY `UserAction` (`UserID`);
 
 --
 -- Indexes for table `livedata`
 --
 ALTER TABLE `livedata`
   ADD PRIMARY KEY (`type`);
+
+--
+-- Indexes for table `playlist`
+--
+ALTER TABLE `playlist`
+  ADD PRIMARY KEY (`SongID`),
+  ADD UNIQUE KEY `Location` (`Location`);
 
 --
 -- Indexes for table `punten`
@@ -2286,8 +2398,9 @@ ALTER TABLE `teams`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `UserTeam` (`team`);
+  ADD PRIMARY KEY (`UserID`),
+  ADD UNIQUE KEY `email` (`Email`),
+  ADD KEY `UserTeam` (`Team`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -2300,6 +2413,12 @@ ALTER TABLE `actions`
   MODIFY `ActionID` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `playlist`
+--
+ALTER TABLE `playlist`
+  MODIFY `SongID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
 -- AUTO_INCREMENT for table `security`
 --
 ALTER TABLE `security`
@@ -2309,17 +2428,23 @@ ALTER TABLE `security`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `UserID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `actions`
+--
+ALTER TABLE `actions`
+  ADD CONSTRAINT `UserID` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `UserTeam` FOREIGN KEY (`team`) REFERENCES `teams` (`TeamID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `UserTeam` FOREIGN KEY (`Team`) REFERENCES `teams` (`TeamID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
