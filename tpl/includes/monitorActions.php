@@ -30,11 +30,14 @@
 			$clickValue = NULL;
 		}
 
-		$UserID = $DBNew->Select("SELECT UserID FROM users WHERE email = ? LIMIT 1", [$user])[0]['UserID'];
-		
-		$DBNew->Insert("INSERT INTO actions (UserID, ActionType, keyInt, keyChar, Value, url, device, screen, ip)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", ["$UserID", "$type", "$keyInt", "$keyChar", "$clickValue", "$url", "$device", "$screen", "$ip"]);
-		
-		echo "Success";
+		$UserID = $DBNew->Select("SELECT UserID FROM users WHERE Email = ? LIMIT 1", [$user]);
+		if(count($UserID) > 0){
+			$ID = $UserID[0]['UserID'];
+			$DBNew->Insert("INSERT INTO actions (UserID, ActionType, keyInt, keyChar, Value, url, device, screen, ip)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", ["$ID", "$type", "$keyInt", "$keyChar", "$clickValue", "$url", "$device", "$screen", "$ip"]);
+			echo "Success";
+		} else {
+			echo "No logging on guests";
+		}			
 	}
 ?>
