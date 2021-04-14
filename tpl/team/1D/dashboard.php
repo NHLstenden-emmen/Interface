@@ -18,15 +18,16 @@
     </div>
     <div id='test' class="teamData neonBlock">
         <?php include ("changeTeamData.php"); ?>
-        <h3>Beschrijving</h3>
+        <h3>Beschrijving <span id="languageIndication">NL</span></h3>
         <form method="post">
-            <textarea name="teamDescription"><?php echo $description; ?></textarea>
-            <button type="submit" name="veranderenTeam" value="wijzig" class="button">Wijzig</button>
+            <textarea name="teamDescription" id="NL"><?php echo $descriptionNl; ?></textarea>
+            <button type="submit" name="changeTeamNL" value="change" class="button" id="descriptionButton">Wijzig</button>
+            <button type="button" onclick="changeDescriptionLanguage()" class="button">Taal &rlarr;</button>
         </form>
     </div>
     <div class="controls neonBlock">
         <div id="gameMenu" class="selectGame">
-            <img id="openLog" onclick="menuVisible();refresh();" src="{assetsFolder}/images/team/1D/menu.png" alt="menu"> 
+            <img id="openLog" onclick="menuVisible();" src="{assetsFolder}/images/team/1D/menu.png" alt="menu"> 
             <div class="games" id="visible" style="display: none">
                 <div class="logTeamD">
                     <?php include ("control.php"); ?>
@@ -34,7 +35,6 @@
             </div>
         </div>
         <div class="startStop">
-            <meta name="color-scheme" content="dark light">
             <form method="post" action="">
                 <button type="submit" name="start" value="start" id="play" class="start" onclick="play()">Start</button>
             </form>
@@ -45,33 +45,50 @@
     </div>
     <?php include("getData.php"); ?>
 </div>
-<script>    
-    function menuVisible()
-    {
+<script>
+    // Functie voor het openen van het logboek
+    function menuVisible() {
         var status = document.getElementById("visible");
         var blok = document.getElementById("gameMenu");
-        if(status.style.display === "none")
-        {
+        if(status.style.display === "none") {
             status.style.display = "flex";
             blok.style.width = "60%";
-        }
-        else
-        {
+        } else {
             status.style.display = "none";
             blok.style.width = "5%";
         }
     }
     
     <?php
-        if(isset($_POST["start"]))
-        {
-            echo "window.onload = function triggerMenu() 
-            {
+        // Automatisch openen logboek nadat op start is geklikt
+        if(isset($_POST["start"])) {
+            echo "window.onload = function triggerMenu() {
                 menuVisible();
             }";
         }
     ?>
+    
+    // Functie voor het wijzigen van de taal van de beschrijving
+    function changeDescriptionLanguage() {
+        var nl = document.getElementById('NL');
+        var en = document.getElementById('EN');
+        var language = document.getElementById('languageIndication');
+        var button = document.getElementById('descriptionButton');
         
+        if(nl !== null) {
+            nl.innerHTML = "<?php echo $descriptionEn; ?>";
+            nl.id = "EN";
+            language.innerHTML = "EN";
+            button.name = "changeTeamEN";
+        } else {
+            en.innerHTML = "<?php echo $descriptionNl; ?>";
+            en.id = "NL";
+            language.innerHTML = "NL";
+            button.name = "changeTeamNL";
+        }
+    }
+    
+    // Refreshen van het huidige spel en de gegevens van de spellen
     $(document).ready(function(){
         setInterval(refreshData, 120000);
 
@@ -94,22 +111,6 @@
             $("#nextGame").load("../tpl/team/1D/upcoming.php");
         };
     });
-
-//    function changeStream()
-//    {
-//        var videoPlayer = document.getElementById('my-video');
-//        
-//        console.log(videoPlayer);
-//
-//        var mp4Vid = document.getElementById("streamSource");
-//
-//        videoPlayer.pause();
-//
-//        mp4Vid.src = "";
-//
-//        videoPlayer.load();
-//        videoPlayer.play();
-//    }
 </script>
 
 <script src="{assetsFolder}/js/jquery_3.5.1.min.js"></script>
