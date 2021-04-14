@@ -48,7 +48,8 @@ function openCardBoxOne(){
     $("#robotCardBox").fadeIn('slow');
     $(".disableScroll").css({"overflow":"hidden"});
     var navHeight = (0 - $("#navbar").height()) + "px";
-    $(".cardBox").css({"top":navHeight});
+    $(".cardBox").css({"top": "0"});
+	$(".cardBox").css({"position": "fixed"});
     var cardHeight = $("#robotCardBox").height();
     $("body").css({"height":cardHeight + "px"});
     $("body").css({"overflow-y":"hidden"});
@@ -67,7 +68,8 @@ function openCardBoxTwo(){
     $("#membersCardBox").fadeIn('slow');
     $(".disableScroll").css({"overflow":"hidden"});
     var navHeight = (0 - $("#navbar").height()) + "px";
-    $(".cardBox").css({"top":navHeight});
+    $(".cardBox").css({"top": "0"});
+	$(".cardBox").css({"position": "fixed"});
     var cardHeight = $("#robotCardBox").height();
     $("body").css({"height":cardHeight + "px"});
     $("body").css({"overflow-y":"hidden"});
@@ -86,7 +88,8 @@ function openCardBoxThree(){
     $("#scoreCardBox").fadeIn('slow');
     $(".disableScroll").css({"overflow":"hidden"});
     var navHeight = (0 - $("#navbar").height()) + "px";
-    $(".cardBox").css({"top":navHeight});
+    $(".cardBox").css({"top": "0"});
+	$(".cardBox").css({"position": "fixed"});
     var cardHeight = $("#robotCardBox").height();
     $("body").css({"height":cardHeight + "px"});
     $("body").css({"overflow-y":"hidden"});

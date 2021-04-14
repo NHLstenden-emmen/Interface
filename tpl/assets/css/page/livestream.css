@@ -1,5 +1,4 @@
 .livestream {
-  padding-top: 3vw;
   color: white;
   min-height: 60vh;
   z-index: -9;
@@ -400,7 +399,10 @@ label.emojiLabel {
 .showInformation {
   display: block !important;
   animation: fadeInInfo ease 0.5s forwards;
-  min-height: 100vh;
+  min-height: 120vh;
+  position: fixed;
+  top: 0;
+  overflow: scroll;
 }
 
 .hideInformation {
@@ -429,8 +431,8 @@ label.emojiLabel {
 .closeInfo {
   width: 60px;
   height: 60px;
-  position: fixed;
-  bottom: 35px;
+  position: absolute;
+  top: 35px;
   right: 35px;
   background: var(--glowColor);
   display: flex;
@@ -450,11 +452,15 @@ label.emojiLabel {
 }
 
 .gamesInfo {
-  margin-top: 150px;
+  margin-top: 100px;
   padding-bottom: 50px;
 }
 .gameItem {
   padding: 25px;
+}
+
+.gameItem p{
+	font-size: 0.8em;
 }
 
 /* Stats */

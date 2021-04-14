@@ -137,7 +137,7 @@
 <script src="/tpl/team/1E/dashboard.js"></script>
 
 <!-- Card Content -->
-<div class="container topPadding cardBlock disableScroll">
+<div class="container cardBlock disableScroll">
     <div class="row cardList" data-aos="fade-up">
         <div class="col-lg-4 topCard" onclick="openCardBoxOne();">
             <div class="cardContent" id="robot">

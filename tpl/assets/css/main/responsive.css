@@ -1,0 +1,11 @@
+/* Responsive layout */
+
+
+/* Livestream */
+
+@media only screen and (max-width: 776px) {
+	.infoModalBox{
+		position: absolute;
+		top: -100px;
+	}
+}
