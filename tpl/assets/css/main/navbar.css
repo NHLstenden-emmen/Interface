@@ -12,7 +12,7 @@
 	margin: 0;
 }
 
-.nav>#logo {
+.navbar > #logo {
 	width: 100px;
 }
 
@@ -20,30 +20,30 @@
 	/* z-index: 100; */
 }
 
-#right-wing {
+#logo #right-wing {
 	pointer-events: none;
 	transform: translateX(0px);
 	transition: all 1s;
 	stroke: var(--logoWingsColor);
 }
 
-#left-wing {
+#logo #left-wing {
 	pointer-events: none;
 	transform: translateX(0px);
 	transition: all 1s;
 	stroke: var(--logoWingsColor);
 }
 
-#logo-body {
+#logo #logo-body {
 	stroke: var(--logoBodyColor);
 	fill: var(--logoBodyColor);
 }
 
-#eyes-background {
+#logo #eyes-background {
 	stroke: var(--logoBackdropColor);
 }
 
-#eyes {
+#logo #eyes {
 	fill: var(--logoEyesColor);
 	paint-order: stroke fill markers;
 }

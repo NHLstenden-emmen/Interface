@@ -1,5 +1,3 @@
-<pre>
-
 <?php
 
 if(isset($_GET['data'])){
@@ -23,15 +21,16 @@ if(isset($_GET['data'])){
             header("bracket-{$i}: {$bracket}");
         }
     } else if($type == 'playlist') {
+
         $playlist = [];
         foreach (@$DB->Select("SELECT * FROM playlist ORDER BY RAND()") as $key => $value) {
-            array_push($playlist, [$key => $value]);
+            array_push($playlist, $value);
         }
         $playlist = json_encode($playlist);
         header("playlist:  {$playlist}");
+
     }
 }
 
-echo '</pre>';
 // Stop loading page
 die();	

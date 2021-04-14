@@ -1,4 +1,3 @@
-let playList;
 
 document.addEventListener('DOMContentLoaded', () => {
   hidePage();
@@ -9,18 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const getPlaylist = () => {
     const Http = new XMLHttpRequest();
-    Http.open("GET", "/api?type=playlist");
-    Http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    Http.open("GET", "/api?data=playlist");
+    Http.send();
 
     Http.onreadystatechange = () => {
-        console.log(Http.getResponseHeader("playlist"));
+        if (Http.readyState == 4 && Http.status == 200) {
+            const playList = JSON.parse(Http.getResponseHeader("playlist"));
+            startJukeBox(playList);
+            console.log("music started", playList);
+        }
     }
 }
 const clockCheck = () => {
   if(countDownDate - new Date().getTime() > 0) {
-      getPlaylist();
-      //waitingMusicPlay();
       setTimeout(initClock, 5000);
+      getPlaylist();
       document.querySelector("body").classList.add("countdown");
   } else countdownEnded = true;
 }

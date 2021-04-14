@@ -971,13 +971,15 @@ staticData.open("GET", "/api?data=bracket", true);
 staticData.send();
 
 staticData.addEventListener("readystatechange", () => {
-    for(let i = 0; i < 6; i++) {
-        if(staticData.getResponseHeader("bracket-"+i) != "null") { //denk da hij die null gaat zien als een string but we will see
-            brackets.lastPhases[i] = JSON.parse(staticData.getResponseHeader("bracket-" + i));
+    if (staticData.readyState == 4 && staticData.status == 200) {
+        for(let i = 0; i < 6; i++) {
+            if(staticData.getResponseHeader("bracket-"+i) != "null") { //denk da hij die null gaat zien als een string but we will see
+                brackets.lastPhases[i] = JSON.parse(staticData.getResponseHeader("bracket-" + i));
+            }
         }
+        if(staticData.getResponseHeader("bracket") instanceof Object) {
+            console.log("hoi")
+        }
+        brackets.parseJSON(JSON.parse(staticData.getResponseHeader("bracket")));
     }
-    if(staticData.getResponseHeader("bracket") instanceof Object) {
-        console.log("hoi")
-    }
-    brackets.parseJSON(JSON.parse(staticData.getResponseHeader("bracket")));
 });
